@@ -1,0 +1,385 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{report} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage[czech]{babel}
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+\geometry{top=45 px, left=65px,right=65px,bottom=55px} % for example, change the margins to 2 inches all round
+
+\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xfrac}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{mathtools}
+
+\newcommand{\R}{\mathbb{R}}
+
+\lstset
+{ %Formatting for code in appendix
+	numbers=left,
+	stepnumber=1,
+	tabsize = 4
+}
+\usepackage{wrapfig}
+
+%%% The "real" document content comes below...
+
+
+\begin{document}
+	
+\tableofcontents
+\part{Společné povinné okruhy}
+\chapter{Základy složitosti a vyčíslitelnosti}
+\section{Výpočetní modely (Turingovy stroje, RAM).}
+\section{Rekurzivní a rekurzivně spočetné množiny.}
+\section{Algoritmicky nerozhodnutelné problémy (halting problem).}
+\section{Nedeterministický výpočetní model.}
+\section{Základní třídy složitosti a jejich vztahy.}
+\section{Věty o hierarchii.}
+\section{Úplné problémy pro třídu NP, Cook-Levinova věta.}
+\section{Pseudopolynomiální algoritmy, silná NP-úplnost.}
+\section{Aproximační algoritmy a schémata.}
+
+\chapter{Datové struktury}
+\section{Vyhledávací stromy ((a,b)-stromy, Splay stromy).}
+\section{Haldy (regulární, binomiální).}
+\section{Hašování, řešení kolizí, univerzální hašování, výběr hašovací funkce.}
+\section{Analýza nejhoršího, amortizovaného a očekávaného chování datových struktur.}
+\section{Chování a analýza datových struktur na systémech s paměťovou hierarchií.}
+
+
+
+\part{Inteligentní agenti}
+
+\include{inteligentni_agenti/prirodou_inspirovane_pocitani}
+
+\part{Strojové učení}
+\chapter{Strojové učení a jeho aplikace}
+\section{Strojové učení; prohledávání prostoru verzí, učení s učitelem a bez učitele, pravděpodobnostní přístupy, teoretické aspekty strojového učení.}
+\section{Evoluční algoritmy; základní pojmy a teoretické poznatky, hypotéza o stavebních blocích, koevoluce, aplikace evolučních algoritmů.}
+\section{Strojové učení v počítačové lingvistice a algoritmy pro statistický parsing.}
+\section{Pravděpodobnostní algoritmy pro analýzu biologických sekvencí; hledávání motivů v DNA, strategie pro detekci genů a predikci struktury proteinů.}
+
+
+\chapter{Neuronové sítě}
+\section{Neurofyziologické minimum.}
+Neuronové sítě jsou výpočetní model inspirovaný lidským mozkem a jeho fungováním, proto rozebereme základní biologické poznatky.
+
+\subsection{Mozek}
+
+\includegraphics[width=\textwidth]{img/mozek.png}
+
+\subsection{Neuron}
+Biologický neuron se skládá z \textbf{těla (somatu)}, \textbf{dendritů} a \textbf{axonu}. Jednotlivé neurony jsou spojeny prostřednictvím \textbf{synapsí}.
+\begin{description}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item[tělo (soma)] Obsahuje organely neuronu včetně jádra (nukleus). Na základě signálů z dendritů může dojít k \textbf{excitaci}.
+	\item[dendrity] \uv{Antény} neuronu, místa vstupu signálů z ostatních neuronů (přijímací strana synapse). Místa synapsí jsou pokryta speciální membránou plnou tzv. \textit{receptorů}, které detekují neurotransmittery v synaptické mezeře (\textit{synaptic cleft}). Délka cca 2-3\,mm.
+	\item[axon] Jediný výstup neuronu, který však bývá bohatě (typicky pravoúhle) rozvětvený. Přenáší signál k synapsím a dále do ostatních napojených neuronů. Délka může být i přes 1\,m.
+	\item[synapse] Místo kontaktu z jiným neuronem. Dochází původně elektrický signál přivedený axonem se zde mění na chemický, který překlene mezeru (\textit{synaptic cleft}) mezi presynaptickou a postsynaptickou plochou (z axonu jednoho neuronu do dendritu jiného neuronu). Na 1 neuron připadá až $10^6$ spojů s jinými neurony.
+\end{description}
+
+Kromě neuronů se v mozku nachází ještě \textit{glie}, které mají především podpůrnou funkci. Prvním typem jsou \textbf{astrocyty}, které vyplňují prostor mezi neurony a obalují místa synapsí, čímž brání šíření neurotransmitterů mimo \textit{synaptic cleft}. Druhým typem jsou \textbf{myelinating glia}, které obalují axony (celý obal se nazývá \textit{myelin}). Obálka není zcela souvislá, v pravidelných intervalech je membrána axonu exponována (tzv. \textit{node of Ranvier}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{img/neuron.png}
+\end{figure}
+
+
+\subsection{Přenos signálu}
+Obal neuronu tvoří \textit{membrána}, která se skládá ze dvou vrstev molekul \textbf{fosfolipidů}. V membráně jsou umístěny \textbf{iontové pumpy} a \textbf{kanály}. Iontové kanály volně propouští ionty daného typu, iontové pumpy je přenáší aktivně a spotřebovávají přitom energii (ve formě ATP). Každý kanál či pumpa jsou selektivní vůči jednomu typu iontů: především K$^+$, Na$^+$ a Cl$^-$.
+
+\subsubsection{Klidový potenciál}
+Pomocí pump je udržována neustálá \textbf{polarizace membrány}. Vně je kladný potenciál, uvnitř záporný (rozdíl se pohybuje kolem -70\,mV). Nejvíce prominentní jsou sodíkovo-draslíkové pumpy, které pumpují K$^+$ dovnitř a současně Na$^+$ ven. Draslíkové kanály jsou otevřené, takže nepoměr koncentrace draslíkových iontů vně a uvnitř se může vyrovnávat. Sodíkové kanály jsou ovšem uzavřené, takže sodík zůstává více koncentrovaný vně. To vede k zápornému potenciálu uvnitř neuronu.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{img/resting_potential.png}
+\end{figure}
+
+
+\subsubsection{Akční potenciál}
+Některé Na$^+$ a K$^+$ kanály jsou \textit{voltage-gated}, tj. při dosažení jisté úrovně napětí (-55\,mV) dochází k jejich automatickému uzavření/otevření. Tím je umožněno generování akčního potenciálu. Přílivem Na$^+$ (například z jiného neuronu, vybuzením receptorů v dendritech) dochází k depolarizaci neuronu. Dosáhne-li depolarizace kritické úrovně (\textit{threshold}), dojde k uzavření K$^+$ kanálů a otevření Na$^+$ kanálů a rapidnímu přílivu Na$^+$ dovnitř neuronu, neboť v něm je stále negativní potenciál. Tzv. \textit{rising phase}. Příliv je natolik veliký, že dojde k tzv. \textit{overshoot}, kdy je vnitřek neuronu nabit kladně na cca 40\,mV. V tuto chvíli dochází k uzavření Na$^+$ kanálů a otevření K$^+$ kanálů a potenciál se opět začíná snižovat - tzv. \textit{falling phase}. Jelikož je otevřeno více K$^+$ kanálů než obvykle (klasické + voltage-gated), dochází k tzv. \textit{undershoot}, tj. hyperpolarizaci neuronu. Po zavření voltage-gated kanálů se napětí opět ustálí na klidovém potenciálu.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{img/action_potential.png}
+\end{figure}
+
+\subsection{Paměť}
+\begin{description}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item[Krátkodobý paměťový mechanismus] Založen na cyklickém oběhu vzruchů v neuronových sítích. Proběhne-li tato cirkulace cca 300-krát, začne docházet k fixaci informace ve střednědobé paměti – to trvá cca 30 s.
+	\item[Střednědobý paměťový mechanismus] Založen na změnách \uv{vah neuronů}. Změna váhových koeficientů v synapsi je vyvolána mnohonásobným působením téhož signálu na příslušných synaptických přechodech. Ve spánku přecházejí některé z takto uchovaných informací do dlouhodobých pamětí. Informace se uchovává několik hodin a případně i dnů.
+	\item[Dlouhodobý paměťový mechanismus] Spočívá v kopírování informací ze střednědobé paměti do bílkovin, které jsou uvnitř neuronů – hlavně v jejich jádrech. Některé takto uchovávané informace zůstanou v organismu celý život.
+\end{description}
+
+
+\section{Modely pro učení s učitelem, algoritmus zpětného šíření, strategie pro urychlení učení, regularizační techniky a generalizace.}
+
+\subsection{Modely pro učení s učitelem}
+\subsubsection{Formální neuron}
+\textbf{Formální neuron} s vahami $(w_1, w_2, \dots w_n) \in \R^n$, prahem $\theta \in \R$ a přenosovou funkcí $f : \R^{n+1} \times \R^n \rightarrow \R$ počítá pro libovolný vstup $\vec{x} \in \R^n$ svůj výstup $y$ jako hodnotu přenosové funkce $f$ v $\vec{x}$, $f[\vec{w}, \theta](\vec{z})$. Mezi nejznámější \textbf{přenosové funkce} (také \textbf{aktivační funkce}) patří \textit{skoková} (unit step), \textit{sigmoidální} nebo \textit{hyperbolická tangentoida}. \textbf{Potenciál neuronu} je vážená suma jeho vstupů: $\xi = \sum\limits_{i=1}^n x_i w_i + \theta$. Právě tento potenciál je vstupem přenosové funkce (na přehledu níže je potenciál neuronu označen písmenem $z$).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{img/activation_functions.png}
+\end{figure}
+
+\subsubsection{Perceptron}
+\textbf{(Jednoduchý) perceptron} je výpočetní jednotka sestávající z jediného neuronu se skokovou přenosovou funkcí, tj.
+\[
+y = f[\vec{w},\theta](\vec{x}) = 
+\begin{cases}
+1 	& \quad \sum\limits_{i=1}^n w_i x_i \geq \theta \quad \text{tedy pokud} \quad \vec{w}\cdot\vec{x} \geq \theta\\
+0 	& \quad \text{jinak}\\
+\end{cases}
+\]
+Často se uvažuje tzv. \textbf{rozšířený váhový a vstupní vektor}, kde je navíc umělý vstup s konstantní hodnotou 1 a vahou $-\theta$, tj. $\overrightarrow{w_{ext}} = (w_1, w_2, \dots, w_n, -\theta)$, $\overrightarrow{x_{ext}} = (x_1, x_2, \dots, x_n, 1)$. Potom lze práh neuronu považovat za váhu speciálního vstupu a přenosovou funkci počítat jako 
+
+\[
+y = f[\vec{w},\theta](\vec{x}) = 
+\begin{cases}
+1 	& \quad \overrightarrow{w_{ext}}\cdot\overrightarrow{x_{ext}} \geq 0\\
+0 	& \quad \text{jinak}\\
+\end{cases}
+\]
+
+Jednoduchý perceptron ve skutečnosti realizuje \textbf{dělící nadrovinu}, jejíž poloha je dána váhovým vektorem: je to množina všech bodů $\vec{x} \in \R$, pro něž $\vec{w}\cdot\vec{x} = 0$. Ve dvourozměrném případě odpovídá perceptron dělicí přímce. Všechny body na jedné straně přímky jsou perceptronem klasifikovány jako 1, všechny body na druhé straně jako 0. Formálně mluvíme o \textit{pozitivním a negativním podprostoru}: \textbf{otevřený (uzavřený) pozitivní podprostor} určený váhovým vektorem $\vec{w}$ je množina všech bodů $\vec{x} \in \R$, pro něž $\vec{w}\cdot\vec{x} > 0$ ($\vec{w}\cdot\vec{x} \geq 0$). \textbf{Negativní podprostor} je definován analogicky.
+
+Abychom mohli formulovat typy úloh, které perceptron umí řešit, budeme také potřebovat následující definici:
+
+Dvě množiny $A$ a $B$ se nazývají \textbf{lineárně separabilní} v $n$-rozměrném prostoru, pokud existuje $n+1$ reálných čísel $w_1, w_2, \dots w_n, \theta$ takových, že každý bod $\vec{x} = (x_1, x_2, \dots, x_n) \in A$ splňuje $\sum\limits_{i=1}^n w_i x_i \geq \theta$ a každý bod $\vec{x} = (x_1, x_2, \dots, x_n) \in B$ splňuje $\sum\limits_{i=1}^n w_i x_i < \theta$. Pokud dokonce v obou případech platí ostrá nerovnost, mluvíme o \textbf{absolutní lineární separabilitě}. 
+
+Lze dokázat, že pokud jsou dvě množiny separabilní, jsou i absolutně separabilní (idea důkazu: posun přímky o $\sfrac{\varepsilon}{2}$).
+
+Nalezení vhodné dělicí nadroviny pro zadané body je ekvivalentní nalezení vhodného vektoru $\vec{w}$. To probíhá pomocí \textbf{perceptronového učení}:
+\begin{enumerate}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item inicializace vah náhodnými hodnotami $w_i(0)$
+	\item předložení trénovacího vzoru, tj. $\vec{x} = (x_1, x_2,\dots,x_n)$ a očekávaného výstupu $d(t)$
+	\item výpočet skutečného výstupu jako $y(t) = sgn(\vec{w}\cdot\vec{x})$
+	\item adaptace vah:
+	\begin{align*}
+		w_i(t+1)& = w_i(t)			& \text{výstup je správný}\\
+		w_i(t+1)& = w_i(t) + x_i	& \text{výstup je 0 a měl být 1}\\
+		w_i(t+1)& = w_i(t) - x_i	& \text{výstup je 1 a měl být 0}
+	\end{align*}
+	\item pokud $t$ nedosáhl požadované hodnoty, přejdi ke kroku 2
+\end{enumerate}
+
+Základním principem je natáčení vektoru $\vec{w}$ (který je kolmý na dělicí nadrovinu) ve směru kladných vzorků. Je-li výstupv kroku 3 kladný, svírají $\vec{w}$ a $\vec{x}$ úhel menší než 90\,°, je-li záporný, je úhel větší než 90\,°. 
+
+Pro nastavení počátečních vah může být použita jednoduchá heuristika: vezmi průměr kladných vstupů mínus průměr záporných vstupů.
+
+Další heuristikou je použít parametr učení $\eta \in (0,1)$, který ovlivňuje plasticitu modelu. Váhy se pak aktualizují podle $w_i(t+1) = w_i(t) + \eta\cdot x_i$, resp. $w_i(t+1) = w_i(t) - \eta\cdot x_i$.
+
+\medskip\noindent\textbf{Věta (konvergence perceptronového algoritmu učení):} \textit{Nechť P a N jsou konečné a lineárně separabilní množiny. Potom provede perceptronový algoritmus učení konečný počet aktualizací váhového vektoru $\vec{w}$.}
+
+\begin{proof}
+Nejprve provedeme 3 zjednodušení:
+\begin{enumerate}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item Sjednotíme $P$ a $N$ jako $P' = P \cup N^-$, kde $N^-$ jsou negované prvky $N$.
+	\item Vektory $P'$ normalizujeme.
+	\item Váhový vektor bude také normalizovaný. Předpokládané řešení označíme jako $\vec{w^*}$.
+\end{enumerate}
+
+Nyní uvážíme situaci v kroku $t$, kdy došlo k aktualizaci váhového vektoru pomocí nějakého $\vec{p_i} \in P'$, tedy $\vec{w_{t+1}} = \vec{w_t} + \vec{p_i}$ (pro přehlednost přesuneme $t$ do dolního indexu). Nyní budeme zkoumat úhel mezi $\vec{w^*}$ a $\vec{w_{t+1}}$, konkrétně výraz:
+\begin{equation}
+\label{perc_cos}
+\cos{\rho} = \frac{\vec{w^*} \cdot \vec{w_{t+1}}}{||\vec{w_{t+1}}||}
+\end{equation}
+
+Pro výraz v čitateli víme, že:
+$$\vec{w^*}\cdot\vec{w_{t+1}} = \vec{w^*}\cdot(\vec{w_{t}} + \vec{p_i}) = \vec{w^*}\cdot\vec{w_{t}} + \vec{w^*}\cdot\vec{p_i} \geq \vec{w^*}\cdot\vec{w_{t}} + \delta$$ 
+kde $\delta = min\{\vec{w^*}\cdot\vec{p}\ |\ \forall\vec{p} \in P'\}$. Protože $\vec{w^*}$ definuje \textit{absolutní} lineární separaci $P$ a $N$, víme, že $\delta > 0$. Indukcí dostáváme
+\begin{equation}
+	\label{perc_nomin}
+	\vec{w^*}\cdot\vec{w_{t+1}} \geq \vec{w^*}\cdot\vec{w_0} + (t+1)\delta
+\end{equation}
+
+Pro výraz ve jmenovateli platí
+$$||\vec{w_{t+1}}||^2 
+= (\vec{w_{t}} + \vec{p_i}) \cdot (\vec{w_{t}} + \vec{p_i}) 
+= ||\vec{w_t}||^2 + 2\vec{w_t}\cdot\vec{p_i} + ||\vec{p_i}||^2
+$$
+
+Všechny vektory v $P'$ jsou normalizovány, takže poslední člen je roven 1. Navíc $\vec{w_t}\cdot\vec{p_i} \leq 0$ (jinak by nebylo třeba aktualizovat váhový vektor), takže dostáváme
+$$
+||\vec{w_{t+1}}||^2 \leq ||\vec{w_t}||^2 + ||\vec{p_i}||^2 \leq ||\vec{w_t}||^2 + 1
+$$
+a indukcí dostaneme
+\begin{equation}
+\label{perc_denom}
+||\vec{w_{t+1}}||^2 \leq ||\vec{w_0}||^2 + (t+1)
+\end{equation}
+
+Porovnáním \ref{perc_nomin} a \ref{perc_denom} s původní \ref{perc_cos} dostáváme nerovnici
+$$
+\cos\rho \geq \frac{\vec{w^*}\cdot\vec{w_0} + (t+1)\delta}{\sqrt{||\vec{w_0}||^2 + (t+1)}}
+$$
+
+Pravá strana nerovnice roste proporcionálně k $\sqrt{t}$, a protože $\delta > 0$, mohla by být libovolně velká. Protože ale $\cos\rho \leq 1$, musí existovat horní mez a počet aktualizací váhového vektoru musí být konečný.
+
+\end{proof}
+
+Zmíníme ještě, že popsaný algoritmus není jediný. Existují různé varianty a vylepšení, ve slajdech pí. Mrázové je popsán ještě \textit{přihrádkový algoritmus}.
+
+\subsubsection{Neuronová síť}
+\textbf{Neuronová síť} je uspořádaná 6-tice $M=(N,C,I,O,w,t)$, kde:
+\begin{itemize}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item $N$ je konečná neprázdná množina neuronů
+	\item $C \subseteq N \times N$ je neprázdná množina orientovaných spojů mezi neurony
+	\item $I \subseteq N$ je neprázdná množina vstupních neuronů
+	\item $O \subseteq N$ je neprázdná množina výstupních neuronů
+	\item $w: C \rightarrow \R$ je váhová funkce
+	\item $t: N \rightarrow \R$ je prahová funkce
+\end{itemize}
+
+Neurony jsou typicky uspořádány do vrstev, pak mluvíme o \textbf{vrstevnatých sítích}. První vrstva je \textbf{vstupní vrstva} sestávající ze vstupních neuronů, ty nemají v grafu spojů žádné předchůdce a \textbf{jejich výstup je roven jejich vstupu}. Poslední vrstva je \textbf{výstupní vrstva} obsahující výstupní neurony. Zbylé vrstvy jsou \textbf{skryté vrstvy}. 
+
+Typicky uvažujeme sítě s acyklickým grafem spojů, tzv. \textbf{dopředné sítě (angl. feed-forward networks)}. Sítě obsahující cykly nazýváme obecně \textbf{rekurentní sítě}.
+
+\subsection{Algoritmus zpětného šíření (Backpropagation)}
+Nejpoužívanější algoritmus učení pro neuronové sítě. Cílem učení je nastavit váhy sítě tak, aby síť správně počítala výstupy pro předkládané vzory. Přitom však není specifikována ani skutečná, ani očekávaná aktivita skrytých neuronů. Jedná se o tzv. \textit{gradientní metodu}, tzn. snaží se minimalizovat nějakou (chybovou) funkci, k čemuž využívá kroky ve směru gradientu funkce v aktuálním bodě.
+
+Pro konečnou množinu trénovacích vzorů $T$ lze celkovou chybu vyjádřit pomocí rozdílu mezi skutečným a
+požadovaným výstupem sítě u každého předloženého vzoru. Definujeme tedy \textbf{chybovou funkci} jako
+$$E = \frac{1}{2} \sum\limits_{p \in T}\sum\limits_{j\in O}(y_{j,p} - d_{j,p})^2$$
+kde $T$ je trénovací množina, $O$ jsou výstupní neurony, $y_{j,p}$ je skutečný výstup neuronu $j$ pro vzor $p$ a $d_{j,p}$ je očekávaná odezva neuronu $j$ na vzor $p$. Používá se kvadratická chyba, aby se zanedbal směr chyby. Zlomek $\sfrac{1}{2}$ je ve vzorci pouze pro pohodlnější počítání při pozdějším derivování. 
+
+Cílem učení je minimalizovat chybu na dané trénovací množině. Úprava vah sítě probíhá iterativně, tj. předloží se vzor, porovná se skutečný a očekávaný výstup, spočte se chyba, adaptují se váhy a pak se pokračuje dalším vzorem. Váhy se upravují od výstupní vrstvy směrem ke vstupní a \textit{proti gradientu chybové funkce}.
+
+Dlužno poznamenat, že síť je po naučení ještě třeba otestovat na nezávislé testovací množině, aby se stanovila její úspěšnost.
+
+\subsubsection{Adaptační pravidla}
+V každém kroku aktualizujeme váhy:
+$$
+w_{ij}(t+1) = w_{ij}(t) + \Delta_E w_{ij}(t)
+$$
+kde $w_{ij}$ je váha spoje mezi neurony $i$ a $j$; a $\Delta_E w_{ij}(t)$ je přírůstek váhy přispívající k minimalizaci chyby $E$. Ten nalezneme \uv{derivací chyby ve směru této váhy}, kteroužto hodnotu pak odečteme:
+$$
+\Delta_E w_{ij}(t) 
+= -\frac{\partial E}{\partial w_{ij}} 
+= -\frac{\partial E}{\partial y_j} \cdot \frac{\partial y_j}{\partial \xi_j} \cdot \frac{\partial \xi_j}{\partial w_{ij}}
+$$
+Hodnota $y_j$ je skutečný výstup neuronu $j$ a $\xi_j$ je potenciál neuronu $j$, tj. vážená suma jeho vstupů. Tento vzorec ještě dále upravíme, a to zvlášť pro výstupní vrstvu a pro skryté vrstvy. 
+
+\paragraph{Aktualizace synaptických vah pro výstupní vrstvu:}
+\begin{align*}
+\Delta_E w_{ij}(t) 
+&\cong -\frac{\partial E}{\partial y_j} \cdot \frac{\partial y_j}{\partial \xi_j} \cdot \frac{\partial \xi_j}{\partial w_{ij}}\\
+&= -\frac{\partial E}{\partial y_j} \cdot \frac{\partial y_j}{\partial \xi_j} \cdot \frac{\partial}{\partial w_{ij}}\sum\limits_{i'} w_{i'j}y_{i'}\\
+&\stackrel{(1)}{=} -\frac{\partial E}{\partial y_j} \cdot \frac{\partial y_j}{\partial \xi_j} \cdot y_{i}\\
+&\stackrel{(2)}{=} -\frac{\partial E}{\partial y_j} \cdot f'(\xi_j) \cdot y_{i}\\
+&\stackrel{(3)}{=} -(y_j - d_j) \cdot f'(\xi_j) \cdot y_{i} = \delta_j \cdot y_{i}\\
+\end{align*}
+
+Rovnost (1) platí, neboť v sumě je pouze jediný člen, v němž se vyskytuje \uv{proměnná} $w_ij$, a to $w_{ij}y_i$, který bude po derivaci roven $y_i$. Ostatní členy jsou vůči $w_{ij}$ konstatní a jejich derivace je tedy 0.
+
+Rovnost (2) pracuje pouze s jiným vyjádřením druhého zlomku. Neboť $y_j = f(\xi_j)$ a tedy druhý zlomek je vlastně pouze jednoduchá derivace přenosové funkce.
+
+Rovnost (3) platí triviálně z definice chybové funkce. Ta je suma rozdílů $(y_k - d_k)$, z nichž pouze jediný zůstane po derivaci nenulový. Celkovou derivaci chyby $E$ podle potenciálu $\xi_j$ označíme symbolem $\delta_j$ (bude se nám to hodit později).
+
+\paragraph{Aktualizace synaptických vah pro skryté vrstvy:}
+\begin{align*}
+\Delta_E w_{ij}(t) 
+&\cong -\frac{\partial E}{\partial y_j} \cdot \frac{\partial y_j}{\partial \xi_j} \cdot \frac{\partial \xi_j}{\partial w_{ij}}\\
+&\stackrel{(1)}{=} -\frac{\partial E}{\partial y_j} \cdot f'(\xi_j) \cdot y_i\\
+&\stackrel{(2)}{=} -\left(\sum\limits_k\frac{\partial E}{\partial\xi_k}\cdot\frac{\partial\xi_k}{\partial y_j} \right) \cdot f'(\xi_j) \cdot y_i \\
+&= -\left(\sum\limits_k\frac{\partial E}{\partial\xi_k}\cdot\frac{\partial}{\partial y_j}\sum\limits_{j'}w_{j'k}y_{j'} \right) \cdot f'(\xi_j) \cdot y_i \\
+&\stackrel{(3)}{=} -\left(\sum\limits_k\frac{\partial E}{\partial\xi_k}\cdot w_{jk} \right) \cdot f'(\xi_j) \cdot y_i \\
+&\stackrel{(4)}{=} -\left(\sum\limits_k \delta_k\cdot w_{jk} \right) \cdot f'(\xi_j) \cdot y_i = \delta_j \cdot y_i\\
+\end{align*}
+
+Rovnost (1) plyne stejně, jako v předchozím případě (zestručněno). 
+
+Rovnost (2) platí, neboť $y_j$ již není výstup neuronu ve výstupní vrstvě, který by šlo přímo porovnat s očekávaným výstupem, nýbrž výstup nějakého vniřního neuronu. Budeme tedy iterovat přes všechny neurony $k$, do nichž vede spoj z $j$ (a $y_j$ tedy přispívá do potenciálu $\xi_k$) a tak vyjádříme vliv $y_j$ na celkovou chybu takto nepřímo. 
+
+Rovnost (3) platí analogicky jako rovnost (1) v předchozím případě.
+
+Rovnost (4) využívá označení $\delta_j$ zavedeného v předchozím případě. Jak je vidět, pro úpravu vah vedoucích do vnitřního neuronu $j$ potřebujeme znát $\delta_k$ pro všechny vrcholy $k$, do nichž vede z $j$ hrana. Toto vynucuje počítat směrem od výstupní vrstvy, neboť pro všechny výstupní neurony umíme $\delta_k$ jednoduše spočíst. Pak můžeme spočítat $\delta_k$ (a aktualizace vah) pro předposlední vrstvu, pak pro před-předposlední atd.
+
+Než přejdeme k finálnímu sjednocení vzorců a vyjádření aktualizace vah, vyjádříme si ještě $f'(\xi_j)$. Pracujeme se \textit{sigmoidální přenosovou funkcí}, tj. $f(\xi_j) = \frac{1}{1 + e^{-\lambda\xi_j}}$. Pro tu platí zajímavá a užitečná věc, a to že $f'(\xi_j) = \lambda f(\xi_j)(1 - f(\xi_j))$ neboli $f'(\xi_j) = \lambda y_j(1 - y_j)$.
+
+Nyní tedy umíme vyjádřit přírůstek váhy jako
+$$
+w_{ij}(t+1) = w_{ij}(t) + \alpha\delta_jy_i
+$$
+kde
+$$
+\delta_j =
+\begin{dcases*}
+(d_j - y_j)\lambda y_j (1-y_j) 	& \quad pro výstupní neuron\\
+\left(\sum\limits_k \delta_k\cdot w_{jk} \right) \lambda y_j (1-y_j)  	& \quad pro skrytý neuron\\
+\end{dcases*}
+$$
+Parametr $\alpha \in (0,1)$ nazýváme \textbf{parametrem učení}.
+
+Posledním kouskem skládačky je přidání členu reprezentujícího setrvačnost učení:
+$$
+w_{ij}(t+1) = w_{ij}(t) + \alpha\delta_jy_i + \alpha_m(w_{ij}(t) - w_{ij}(t-1))
+$$
+kde $\alpha_m$ nazýváme \textbf{moment učení}. Vyvážení parametrů $\alpha$ a $\alpha_m$ určuje, nakolik se učení řídí gradientem a nakolik setrvačností.
+
+Nyní se pokusíme celý algoritmus zpětného šíření stručně shrnout:
+
+\noindent\fbox{
+	\setlength{\fboxsep}{30pt}
+	\parbox{\textwidth}{
+		Krok 1: Zvolte náhodné hodnoty synaptických vah.\\
+		Krok 2: Předložte nový trénovací vzor ve tvaru:
+			$$[\ \text{vstup } \vec{x}, \text{požadovaný výstup }\vec{d}\ ]$$
+		Krok 3: Vypočtěte skutečný výstup. Aktivita neuronů v každé vrstvě je dána pomocí:
+			$$y_j = f(\xi_j) = \frac{1}{1 + e^{-\lambda\xi_j}} , \quad \text{kde } \xi_j = \sum\limits_i{w_{ij}y_i}$$
+		Krok 4: Aktualizujte váhy postupně směrem od výstupní vrstvy ke vstupní podle vzorce
+			$$
+			w_{ij}(t+1) = w_{ij}(t) + \alpha\delta_jy_i + \alpha_m(w_{ij}(t) - w_{ij}(t-1))
+			$$
+			\hskip 40pt kde
+			$$
+			\delta_j =
+			\begin{dcases*}
+				(d_j - y_j)\lambda y_j (1-y_j) 	& \quad pro výstupní neuron\\
+				\left(\sum\limits_k \delta_k\cdot w_{jk} \right) \lambda y_j (1-y_j)  	& \quad pro skrytý neuron\\
+			\end{dcases*}
+			$$
+			\hskip 40pt a dále
+			\begin{itemize}
+				\leftskip 40pt
+				\setlength{\itemsep}{0pt}
+				\item $w_{ij}(t)$ je váha spoje z neuronu $i$ do neuronu $j$ v čase $t$
+				\item $\alpha$ je parametr učení
+				\item $\alpha_m$ je moment učení
+				\item $\xi_j$ je potenciál neuronu $j$
+				\item $\delta_j$ je chyba na neuronu $j$
+				\item $k$ je index pro neurony z vrstvy nad neuronem $j$
+				\item $\lambda$ je strmost přenosové funkce
+			\end{itemize}
+		Krok 5: Přejdi ke kroku 2.
+			
+	}
+}
+
+
+\section{Asociativní paměti, Hebbovské učení a hledání suboptimálních řešení, stochastické modely.}
+\section{Umělé neuronové sítě založené na principu učení bez učitele.}
+\section{Modulární, hierarchické a hybridní modely neuronových sítí.}
+\section{Genetické algoritmy a jejich využití při učení umělých neuronových sítí.}
+
+\end{document}
