@@ -19,8 +19,23 @@
 \usepackage{xfrac}
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{mathtools}
+\usepackage{array}
 
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\newtheorem{theorem}{Věta}[section]
+
+\newtheorem{implication}{Důsledek}[section]
+
+\makeatletter
+\newcommand{\dotminus}{\mathbin{\text{\@dotminus}}}
+
+\newcommand{\@dotminus}{%
+	\ooalign{\hidewidth\raise1ex\hbox{.}\hidewidth\cr$\m@th-$\cr}%
+}
+\makeatother
 
 \lstset
 { %Formatting for code in appendix
@@ -39,14 +54,780 @@
 \part{Společné povinné okruhy}
 \chapter{Základy složitosti a vyčíslitelnosti}
 \section{Výpočetní modely (Turingovy stroje, RAM).}
+\subsection{Turingův stroj}
+\textbf{(Jednopáskový deterministický) Turingův stroj (TS)} $M$ je pětice
+$$M = (Q, \Sigma, \delta, q_0, F)$$
+\begin{itemize}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item $Q$ je konečná \textbf{množina stavů}.
+	\item $\Sigma$ je konečná \textbf{pásková abeceda}, která obsahuje znak $\lambda$ pro prázdné políčko. (Často budeme rozlišovat \textbf{páskovou (vnitřní)} a \textbf{vstupní (vnější) abecedu}.)
+	\item $\delta : Q \times \Sigma \mapsto Q \times \Sigma \times \{R, N, L\} \cup {\bot}$ je \textbf{přechodová funkce},
+	kde $\bot$ označuje nedefinovaný přechod.
+	\item $q_0 \in Q$ je \textbf{počáteční stav}.
+	\item $F \subseteq Q$ je \textbf{množina přijímajících stavů}.
+\end{itemize}
+
+Turingův stroj sestává z \textbf{řídící jednotky}, \textbf{pásky}, která je potenciálně nekonečná v obou směrech, a
+\textbf{hlavy} pro čtení a zápis, která se pohybuje oběma směry.
+
+\textbf{Displej} je dvojice $(q, a)$, kde $q \in Q$ je aktuální stav Turingova stroje a $a \in \Sigma$ je symbol pod hlavou. Na základě displeje TS rozhoduje, jaký další krok má vykonat.
+
+\textbf{Konfigurace} zachycuje stav výpočtu Turingova stroje a skládá se ze
+\begin{itemize}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item stavu řídící jednotky
+	\item slova na pásce (od nejlevějšího do nejpravějšího neprázdného políčka)
+	\item pozice hlavy na pásce (v rámci slova na této pásce)
+\end{itemize}
+
+\subsubsection{Výpočet TS}
+\textbf{Výpočet} zahajuje TS $M$ v \textbf{počáteční konfiguraci}, tedy v počátečním stavu se vstupním slovem zapsaným na pásce a hlavou nad nejlevějším symbolem vstupního slova. Vstupní slovo nesmí obsahovat prázdné políčko. Pokud se $M$ nachází ve stavu $q \in Q$ a pod hlavou je symbol $a \in \Sigma$, pak krok výpočtu probíhá následovně:
+\begin{enumerate}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item Je-li $\delta(q, a) = \bot$, výpočet $M$ končí,
+	\item Je-li $\delta(q, a) = (q', a', Z)$, kde $q' \in Q$, $a' \in \Sigma$ a $Z \in \{L, N, R\}$, přejde $M$ do stavu $q'$, zapíše na pozici hlavy symbol $a'$ a pohne hlavou doleva (pokud $Z = L$), doprava (pokud $Z = R$), nebo hlava zůstane stát (pokud $Z = N$).	
+\end{enumerate}
+
+TS $M$ \textbf{přijímá slovo} $w$, pokud výpočet $M$ se vstupem $w$ skončí a $M$ se po ukončení výpočtu nachází v přijímajícím stavu. 
+
+TS $M$ \textbf{odmítá slovo} $w$, pokud výpočet $M$ nad vstupem $w$ skončí a $M$ se po ukončení výpočtu nenachází v přijímajícím stavu. 
+
+Fakt, že výpočet $M$ nad vstupním slovem $w$ skončí, označíme pomocí $M(w){\downarrow}$ a řekneme, že výpočet \textbf{konverguje}. 
+
+Fakt, že výpočet $M$ nad vstupním slovem $w$ nikdy neskončí, označíme pomocí $M(w){\uparrow}$ a řekneme, že výpočet \textbf{diverguje}.
+
+\subsubsection{Turingovsky rozhodnutelné jazyky}
+\textbf{Jazyk slov přijímaných} TS $M$ označíme pomocí $L(M)$. 
+
+Řekneme, že jazyk $L$ je \textbf{částečně (Turingovsky) rozhodnutelný} (též \textbf{rekurzivně spočetný}), pokud existuje
+Turingův stroj $M$, pro který $L = L(M)$.
+
+Řekneme, že jazyk $L$ je \textbf{(Turingovsky) rozhodnutelný} (též \textbf{rekurzivní}), pokud existuje Turingův stroj $M$, který se \textit{vždy zastaví} a $L = L(M)$.
+
+\subsubsection{Turingovsky vyčíslitelné funkce}
+Turingův stroj $M$ s páskovou abecedou $\Sigma$ \textbf{počítá} nějakou \textit{částečnou} funkci $f_M : \Sigma^* \mapsto \Sigma^*$ (částečná = pro některé vstupy není definovaná). Pokud $M(w){\downarrow}$ pro daný vstup $w \in \Sigma^*$, je hodnota funkce $f_M(w)$ \textbf{definovaná}, což označíme pomocí $f_M(w){\downarrow}$. \textbf{Hodnotou funkce} $f_M(w)$ je potom slovo na (výstupní) pásce $M$ po ukončení výpočtu nad $w$. Pokud $M(w){\uparrow}$, pak je hodnota $f_M(w)$ \textbf{nedefinovaná}, což označíme pomocí $f_M(w){\uparrow}$. 
+
+Funkce $f : \Sigma^* \mapsto \Sigma^*$ je \textbf{turingovsky vyčíslitelná}, pokud existuje Turingův stroj \textbf{M}, který ji počítá. \textbf{\textit{Každá turingovsky vyčíslitelná funkce má nekonečně mnoho různých Turingových strojů, 	které ji počítají!}}
+
+\subsubsection{Varianty TS}
+Turingovy stroje mají řadu variant, například:
+\begin{itemize}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item TS s jednosměrně nekonečnou páskou
+	\item TS s více páskami (vstupní/výstupní/pracovní)
+	\item TS s více hlavami na páskách
+	\item TS s pouze binární abecedou
+	\item nedeterministické TS
+\end{itemize}
+Zmíněné varianty jsou ekvivalentní \uv{našemu} modelu v tom smyslu, že všechny přijímají touž třídu jazyků a vyčíslují touž třídu funkcí.
+
+\textbf{$k$-páskový Turingův stroj} se od jednopáskového Turingova stroje líší následujícím způsobem:
+\begin{itemize}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item Má $k$ pásek, na každé je zvláštní hlava.
+	\begin{itemize}
+		\leftskip 40pt
+		\setlength{\itemsep}{0pt}	
+		\item Vstupní páska na počátku obsahuje vstupní řetězec. Často je určena jen pro čtení.
+		\item Pracovní pásky jsou určeny pro čtení i zápis.
+		\item Výstupní páska na konci obsahuje výstupní řetězec. Často je určena jen pro zápis s pohybem hlavy jen vpravo.
+	\end{itemize}
+	\item Hlavy na páskách se pohybují nezávisle na sobě.
+	\item Přechodová funkce je typu
+		$$\delta : Q \times \Sigma^k \mapsto Q \times \Sigma^k \times \{R, N, L\}^k \cup {\bot}$$
+\end{itemize}
+
+Neplést \textit{multi-tape (vícepáskové)} a \textit{multi-track} TS. Druhé jmenované mají také více pásek, ale \textit{jedinou hlavu společnou pro všechny}.
+
+\begin{theorem}
+Ke každému $k$-páskovému Turingovu stroji $M$ existuje jednopáskový Turingův stroj $M'$, který simuluje práci $M$, přijímá týž jazyk jako $M$ a počítá touž funkci jako $M$.
+\end{theorem}
+\begin{proof}
+	Pouze idea. Chceme simulovat $k$-páskový na jednopáskovém. Dvě varianty:
+	\begin{enumerate}
+		\leftskip 40pt
+		\setlength{\itemsep}{0pt}
+		\item Obsahy pásek zapíšeme na jedinou, oddělíme je novým symbolem $\#$. Pozice hlav označuje speciální značka, např. je-li hlava nad symbolem $0$, označíme to pomocí $\overline{0}$ -- v praxi to znamená pro každý symbol přidat do abecedy jeho označkovanou variantu, tj. $|\Sigma|$ nových symbolů. Dojde-li nějaké pásce místo, musí se všechny symboly vpravo od ní posunout.
+		
+		\item Vytvoříme novou abecedu $\Sigma'$ jako kartézský součin $k$ abeced, tj. $\Sigma' = \Sigma^k$. Jeden symbol tedy reprezentuje $k$-tici původních symbolů. Je taky potřeba ošetřit pozici hlav.
+	\end{enumerate}
+\end{proof}
+
+\includegraphics[width=0.6\textwidth]{img/turing_multi_seq.png}
+
+\subsection{RAM (Random Access Machine)}
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\centering
+	\includegraphics[width=0.35\textwidth]{img/ram.png}
+\end{wrapfigure}
+RAM je stroj s náhodným přístupem do paměti. Jde o model, který se často používá jako základní výpočetní model při měření časové i prostorové složitosti algoritmů. Cílem bylo vytvořit model, který by se co nejvíce blížil reálným počítačům. Podobně jako Turingovy stroje, i RAM je strojem s \textbf{oddělenou pamětí pro data a pro instrukce}, nejedná se tedy o stroje Von Neumannovy architektury. 
+
+\textbf{Program} pro RAM je konečnou posloupností instrukcí $P = I_0, I_1, I_2, \dots I_l$
+
+Paměť pro data se skládá z neomezené posloupnosti registrů $r_i, i \in \mathbb{N}$ Obsahem registru může být libovolně velké přirozené číslo. Při popisu instrukcí budeme dodržovat následující konvence:
+\begin{itemize}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item Obsah registru $r_i$ budeme označovat pomocí $[r_i]$.
+	\item Nepřímá adresace (tj. obsahem jiného registru) pomocí $[[r_i]] = [r_{[r_j]}]$. 
+	\item Přiřazení hodnoty $c$ do registru $r_i$ označíme $r_i \leftarrow c$
+\end{itemize}
+
+Seznam instrukcí pro RAM viz tabulka \ref{ram_instrukce}.
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|l|l|}
+		\hline
+		LOAD($C, r_i$) 			& $r_i \leftarrow C$ 							\\ \hline
+		ADD($r_i, r_j, r_k$) 	& $r_k \leftarrow [r_i] + [r_j]$				\\ \hline
+		SUB($r_i, r_j, r_k$) 	& $r_k \leftarrow [r_i] \dotminus [r_j]$\quad ($x \dotminus y = max(x-y, 0)$)    	\\ \hline
+		COPY($[r_p], r_d$) 		& $r_d \leftarrow [[rp]]$				 		\\ \hline
+		COPY($r_s,[r_d]$) 		& $r_{[r_d]} \leftarrow [r_s]$                  \\ \hline
+		JNZ($r_i, I_z$) 		& if $[r_i] > 0$ then goto instruction $I_z$ 	\\ \hline
+		READ($r_i$) 			& $r_i \leftarrow$ input						\\ \hline
+		PRINT($r_i$) 			& output $\leftarrow [r_i]$   					\\ \hline
+	\end{tabular}
+	\caption{Seznam instrukcí RAM}
+	\label{ram_instrukce}
+\end{table}
+
+\subsubsection{Jazyky rozhodnutelné RAM}
+Uvažme abecedu $\Sigma = \{\sigma_1, \sigma_2, \dots, \sigma_k\}$. Slovo $w = \sigma_{i_1}, \sigma_{i_2} \dots \sigma_{i_n}$ předáme RAMu $R$ jako posloupnost čísel $i_1, \dots, i_n$. Konec slova pozná $R$ díky tomu, že READ načte 0, není-li už k dispozici vstup.
+
+RAM $R$ \textbf{přijme} slovo $w$, pokud $R(w){\downarrow}$ a první číslo, které $R$ zapíše na výstup je 1.
+
+RAM $R$ \textbf{odmítne} slovo w, pokud $R(w){\downarrow}$ a $R$ buď na výstup nezapíše nic, nebo první zapsané číslo je jiné než 1.
+
+\textbf{Jazyk slov přijímaných RAMem} $R$ označíme pomocí $L(R)$. 
+
+Pokud pro jazyk $L$ platí, že $L = L(R)$ pro nějaký RAM, pak řekneme, že je \textbf{částečně rozhodnutelný (RAMem)}. Pokud se navíc výpočet $R$ \textit{nad každým vstupem zastaví}, řekneme, že je $L = L(R)$ \textbf{rozhodnutelný (RAMem)}.
+
+\subsubsection{Funkce vyčíslitelné na RAMu}
+O RAMu $R$ řekneme, že \textbf{počítá} částečnou \textit{aritmetickou} funkci $f : \N^n \mapsto \N, n \geq 0$, pokud za předpokladu, že $R$ dostane na vstup $n$-tici $(x_1, \dots, x_n)$, platí následující:
+\begin{itemize}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item Je-li $f(x_1, \dots, x_n){\downarrow}$, pak $R(x_1, \dots, x_n){\downarrow}$ a $R$ vypíše na výstup hodnotu $f(x_1, \dots, x_n)$.
+	\item Je-li $f(x_1, \dots, x_n){\uparrow}$, pak $R(x_1, \dots, x_n){\uparrow}$.
+\end{itemize}
+O funkci $f$, pro niž existuje RAM, který ji počítá, řekneme, že je \textbf{vyčíslitelná na RAMu}.
+
+\subsubsection{Řetězcové (string) funkce vyčíslitelné na RAMu}
+RAM $R$ \textbf{počítá} částečnou (\textit{řetězcovou}) funkci $f : \Sigma^* \mapsto \Sigma^*$, kde $\Sigma = \{\sigma_1, \sigma_2, \dots, \sigma_k\}$, pokud platí:
+\begin{itemize}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item Vstupní řetězec $w = \sigma_{i_1}\sigma_{i_2}\dots\sigma_{i_n}$ je předaný jako posloupnost čísel $i_1, \dots, i_n$.
+	\item Konec slova pozná $R$ díky tomu, že READ načte 0, není-li už k dispozici vstup.
+	\item Pokud je $f(w){\downarrow}= \sigma_{j_1}\sigma_{j_2}\dots\sigma_{j_m}$, pak $R(w){\downarrow}$ a na výstup je
+	zapsaná posloupnost čísel $j_1, j_2, \dots, j_m, 0$.
+	\item Pokud $f(w){\uparrow}$, pak $R(w){\uparrow}$.
+\end{itemize}
+O funkci $f$, pro níž existuje RAM $R$, který ji počítá, říkáme, že je \textbf{vyčíslitelná na RAMu}.
+
+\subsubsection{Programování na RAMu}
+Programy pro RAM odpovídají procedurálnímu jazyku:
+\begin{itemize}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item Máme k dispozici \textbf{proměnné} (\textbf{skalární} i \textbf{neomezená pole}):
+	
+	Předpokládejme, že v programu používáme pole $A_1, \dots, A_p$ a skalární proměnné $x_0, \dots, x_s$.
+	\begin{itemize}
+		\leftskip 40pt
+		\setlength{\itemsep}{0pt}
+		
+		\item Pole indexujeme od 0.
+		\item Prvek $A_i[j]$, kde $i \in \{1, \dots, p\}, j \in \N$, umístíme do registru $r_{i+j\cdot(p+1)}$.
+		\item Prvky pole $A_i, i = 1, \dots, p$ jsou tedy v registrech $r_i, r_{i+p+1}, r_{i+2(p+1)}, \dots$
+		\item Proměnnou $x_i$, kde $i \in \{0, \dots, s\}$ umístíme do registru $r_{i\cdot(p+1)}$.
+		\item Skalární proměnné jsou tedy postupně v registrech $r_0, r_{p+1}, r_{2(p+1)}, \dots$
+	\end{itemize}
+
+	\item Cykly (\textbf{for} i \textbf{while}) – s pomocí podmíněného skoku, případně čítače v proměnné.
+	\item Nepodmíněný skok (\textbf{goto}) – s použitím pomocného registru, kam uložíme 1 a použijeme podmíněný skok.
+	\item \textbf{Podmíněný příkaz} – s pomocí podmíněného skoku.
+	\item \textbf{Funkce a procedury} – do místa použití funkce rovnou v programu napíšeme tělo funkce (inline).
+	\item \textit{Nemáme rekurzivní volání funkcí} – ta se však dají vždy nahradit pomocí cyklu while a zásobníku.	
+\end{itemize}
+
+\subsubsection{Ekvivalence RAM a TS}
+\begin{theorem}
+	Ke každému Turingovu stroji $M$ existuje ekvivalentní RAM $R$.
+\end{theorem}
+\begin{proof}
+	Odpovídající RAM sestrojíme takto:
+	\begin{itemize}
+		\leftskip 20pt
+		\setlength{\itemsep}{0pt}
+		\item Obsah pásky uložen ve dvou polích: $T_r$ obsahuje pravou část pásky a $T_l$ obsahuje levou část pásky.
+		\item Poloha hlavy – pamatujeme si index v proměnné $h$ a stranu pásky (pravá/levá) v proměnné $s$.
+		\item Stav – v proměnné $q$.
+		\item Výběr instrukce – podmíněný příkaz podle $h$, $s$ a $q$		
+	\end{itemize}
+
+\end{proof}
+
+
+\begin{theorem}
+Ke každému RAMu $R$ existuje ekvivalentní Turingův stroj $M$.
+\end{theorem}
+\begin{proof}
+	K RAMu $R$ sestrojíme TS $M$ jako 4-páskový:
+	\begin{description}
+		\leftskip 40pt
+		\setlength{\itemsep}{0pt}
+		
+		\item[Vstupní páska] Posloupnost čísel, která má dostat $R$ na vstup. Jsou zakódovaná binárně a oddělená znakem $\#$. Z této pásky $M$ jen čte.
+		\item[Výstupní páska] Sem zapisuje $M$ čísla, která $R$ zapisuje na výstup. Jsou zakódovaná binárně a oddělená znakem $\#$. Na tuto pásku M jen zapisuje.
+		\item[Paměť RAM] Obsah paměti stroje $R$ reprezentujeme na pásce $M$ takto:
+
+		Jsou-li aktuálně využité registry $r_{i_1}, r_{i_2}, \dots, r_{i_m}$, kde $i_1 <
+		i_2 < \dots < i_m$, pak je na pásce reprezentující paměť RAM $R$ řetězec:
+		$$(i_1)_B|([r_{i_1}])_B\#(i_2)_B|([r_{i_2}])_B\#\dots\#(i_m)_B|([r_{i_m}])_B$$
+		Index $B$ značí binární zápis daného čísla.
+		\item[Pomocná páska] Pro výpočty součtu, rozdílu, nepřímých adres, posunu části paměťové pásky a podobně.
+	\end{description}
+
+\end{proof}
+
+\noindent\textbf{Churchova-Turingova teze:} \textit{Ke každému algoritmu v intuitivním smyslu existuje ekvivalentní Turingův stroj.}
+
 \section{Rekurzivní a rekurzivně spočetné množiny.}
 \section{Algoritmicky nerozhodnutelné problémy (halting problem).}
 \section{Nedeterministický výpočetní model.}
+\textbf{Nedeterministický Turingův stroj (NTS)} je pětice $M = (Q, \Sigma, \delta, q_0, F)$, kde $Q, \Sigma, q_0, F$ mají týž význam jako u \uv{obyčejného} deterministického Turingova stroje (DTS). Rozdíl oproti DTS je v přechodové funkci, nyní
+$$\delta : Q \times \Sigma \mapsto \mathcal{P}(Q \times \Sigma \times \{L, N, R\})$$
+Možné představy:
+\begin{itemize}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item NTS $M$ v každém kroku \uv{uhodne} nebo \uv{vybere} správnou instrukci.
+	\item NTS $M$ vykonává všechny možné instrukce současně a nachází se během výpočtu ve více konfiguracích současně.
+\end{itemize}
+
+\textbf{\textit{Nedeterministický Turingův stroj není reálný výpočetní model ve smyslu silnější Churchovy-Turingovy teze.}}
+\medskip
+
+\textbf{Výpočet NTS} $M$ nad slovem $x$ je posloupnost konfigurací $C_0, C_1, C_2, \dots$, kde $C_0$ je počáteční konfigurace a z $C_i$ do $C_{i+1}$ lze přejít pomocí přechodové funkce $\delta$. Výpočet je \textbf{přijímající}, pokud je konečný a v poslední konfiguraci výpočtu se $M$ nachází v přijímajícím stavu.
+
+Slovo $x$ je \textbf{přijato NTS} $M$ pokud \textit{existuje přijímající výpočet} $M$ nad $x$. \textbf{Jazyk slov přijímaných NTS} $M$ označíme pomocí $L(M)$.
+
+\subsection{Časová a prostorová složitost NTS}
+Nechť $M$ je nedeterministický Turingův stroj a nechť $f : \N \mapsto \N$ je funkce.
+
+Řekneme, že $M$ \textbf{pracuje v čase} $f(n)$, pokud \textit{každý} výpočet $M$ nad \textit{libovolným} vstupem $x$ délky $|x| = n$ skončí po provedení nejvýše $f(n)$ kroků.
+
+Řekneme, že $M$ \textbf{pracuje v prostoru} $f(n)$, pokud \textit{každý} výpočet $M$ nad \textit{libovolným} vstupem $x$ délky $|x| = n$ využije nejvýše $f(n)$ buněk pracovní pásky.
+
+Nechť $f : \N \mapsto \N$ je funkce, potom definujeme třídy:
+\begin{description}
+	\item[NTIME($f(n)$)] – třída jazyků přijímaných nedeterministickými TS, které pracují v čase $O(f(n))$.
+	\item[NSPACE($f(n)$)] – třída jazyků přijímaných nedeterministickými TS, které pracují v prostoru $O(f(n))$.
+\end{description}
+
+Třída \textbf{NP} je třída jazyků přijímaných nedeterministickými Turingovými stroji v polynomiálním čase, tj. 
+$$NP = \bigcup_{k\in\N}NTIME(n^k) $$
+
+\textit{Pozn.: Třída NP se definuje ještě jinak, viz další sekce. Ekvivalence definic se dokazuje, důkaz v další sekci, ale mohl by se hodit i sem.}
+
 \section{Základní třídy složitosti a jejich vztahy.}
+Zatímco vyčíslitelnost řeší, zda vůbec lze nějaký problém řešit, \textit{složitost} se zabývá tím, jak efektivně jej lze řešit, a to především z hlediska času a prostoru. Formálně nyní odlišíme 2 typy řešených úkolů: \textit{rozhodovací problémy} a \textit{(optimalizační) úlohy}.
+
+V \textbf{rozhodovacím problému} se ptáme, zda daná \textbf{instance} $x$ splňuje danou podmínku. Odpověď je \textbf{typu ano/ne}. Rozhodovací problém formalizujeme jako \textbf{jazyk kladných instancí} $L \in \Sigma^*$  a otázku, zda $x \in L.$
+
+V \textbf{úloze} pro danou \textbf{instanci} $x$ hledáme $y$, které splňuje určitou podmínku. Odpovědí je zde  \textbf{$y$ nebo informace o tom, že žádné vhodné $y$ neexistuje}. Úlohu formalizujeme jako \textbf{relaci} $R \subseteq \Sigma^* \times \Sigma^*$.
+
+V \textbf{optimalizační úloze} navíc požadujeme, aby hodnota $y$ byla maximální nebo minimální vzhledem k nějaké míře.
+
+
+\subsection{Základní třídy složitosti}
+Nechť $M$ je (deterministický) Turingův stroj, který se zastaví na každém vstupu a nechť $f : \N \mapsto \N$ je funkce.
+
+Řekneme, že $M$ \textbf{pracuje v čase} $f(n)$, pokud výpočet $M$ nad libovolným vstupem $x$ délky $|x| = n$ skončí po provedení nejvýše $f(n)$ kroků.
+
+Řekneme, že $M$ \textbf{pracuje v prostoru} $f(n)$, pokud výpočet $M$ nad libovolným vstupem $x$ délky $|x| = n$ využije nejvýše $f(n)$ buněk pracovní pásky.
+
+\subsubsection{Základní deterministické třídy složitosti}
+Nechť $f : \N \mapsto \N$ je funkce, potom definujeme třídy:
+\begin{description}
+	\item[TIME($f(n)$)] – třída jazyků přijímaných Turingovými stroji, které pracují v čase $O(f(n))$.
+	\item[SPACE($f(n)$)] – třída jazyků přijímaných Turingovými stroji, které pracují v prostoru $O(f(n))$.	
+\end{description}
+Často se místo TIME používá DTIME a místo SPACE se používá DSPACE, aby se zdůraznilo, že jde o deterministické TS.
+
+\subsubsection{Význačné deterministické třídy složitosti}
+Třída problémů řešitelných \textbf{v polynomiálním čase}:
+$$\text{P} = \bigcup_{k\in\N} \text{TIME}(n^k)$$
+
+Třída problémů řešitelných \textbf{v polynomiálním prostoru}:
+$$\text{PSPACE} = \bigcup_{k\in\N} \text{SPACE}(n^k)$$
+
+Třída problémů řešitelných \textbf{v exponenciálním čase}:
+$$\text{EXPTIME} = \bigcup_{k\in\N} \text{TIME}(2^{n^k})$$
+
+Polynomiální třídy jsou význačné díky několika hezkým vlastnostem polynomů:
+\begin{itemize}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item nerostou příliš rychle
+	\item jsou uzavřeny na skládání
+	\item Silnější verze \textit{Churchovy-Turingovy teze} tvrdí, že každý \uv{rozumný a obecný} výpočetní
+	model lze na Turingově stroji simulovat s polynomiálním zpomalením či polynomiálním zvětšením potřebného prostoru. 
+	
+	Z toho plyne, že třídy P a PSPACE jsou nezávislé na použitém výpočetním modelu (pokud lze tento simulovat na TS s polynomiálním zpomalení/nárůstem prostoru). Rozhodně jsou nezávislé na tom, v jakém běžném programovacím jazyce algoritmus implementujeme. 
+\end{itemize}
+
+Třída P tedy zhruba odpovídá třídě problémů, které lze řešit na počítači v rozumném čase. Opatrně však na big-O notaci, do které se můžou schovat i velké konstanty a polynomiální algoritmus pak může být v reálu pomalý.
+
+\subsubsection{Třída NP}
+Abychom mohli definovat třídu NP, potřebujeme nejprve následující definici:
+
+\textbf{Verifikátorem} pro jazyk $L$ je algoritmus $V$, pro který platí, že
+$$L = \{x\ |\ (\exists y)[V \text{ přijme } (x, y)]\}$$
+Řetězec $y$ zveme také \textbf{certifikátem} $x$.
+
+Časovou složitost verifikátoru měříme vzhledem k $|x|$. \textbf{Polynomiální verifikátor} je takový, který pracuje v polynomiálním čase vzhledem k $|x|$. Pokud polynomiální verifikátor $V$ přijímá $(x, y)$, pak $y$ má nutně délku polynomiální vzhledem k $x$. Řetězec $y$ je pak zván \textbf{polynomiálním certifikátem} $x$.	
+
+\textbf{Třída NP} je třídou jazyků, které mají \textit{polynomiální verifikátory}. Odpovídá třídě úloh, u nichž jsme schopni v polynomiálním čase ověřit, že daný řetězec $y$ je řešením, i když jej \textit{nejsme nutně schopni v polynomiálním čase najít}.
+
+Třídu NP je možno také definovat jako třídu jazyků přijímaných nedeterministickými Turingovými stroji v polynomiálním čase, tj. 
+$$\bigcup_{k\in\N}\text{NTIME}(n^k) $$
+
+Nedeterminismus zde odpovídá \uv{hádání} správného certifikátu $y$ vstupu $x$.
+
+\begin{theorem}
+Obě výše uvedené definice třídy NP jsou ekvivalentní, tj.
+$$\text{NP} = \bigcup_{k\in\N}\text{NTIME}(n^k) $$
+\end{theorem}
+\begin{proof}
+	Ukážeme, že $L \in NP \Leftrightarrow L \in \bigcup_{k\in\N}NTIME(n^k)$:
+	
+	\uv{$\Rightarrow$} Předpokládejme nejprve, že jazyk $L \in NP$, to znamená, že existuje polynom $p$ a polynomiální verifikátor $B \in P$, pro které platí, že $x \in L$ právě když existuje $y$, $|y| \leq p(|x|)$, pro které $(x, y) \in B$. NTS $M_L$ , který bude přijímat $L$, bude pracovat ve dvou fázích. V první fázi zapíše na vstupní pásku za slovo $x$ slovo $y$, tato fáze je nedeterministická a pro každé slovo $y$, takové že $|y| \leq p(|x|)$ existuje výpočet $M_L$, který jej napíše. Na zápis $y$ stačí čas $p(|x|)$. Ve druhé fázi bude $M_L$ simulovat práci TS $M_B$, který rozpoznává jazyk $B$, na vstupu $(x, y)$, přičemž přijme, pokud $(x, y) \in B$. Zřejmě $L = L(M_B)$ a $M_B$ pracuje v polynomiálním čase (neboť B je \textit{polynomiální} verifikátor).
+	
+	\uv{$\Leftarrow$} Nyní předpokládejme, že $L \in \bigcup_{k\in\N}\text{NTIME}(n^k)$. To znamená, že $x \in L$ právě když existuje polynomiálně dlouhý výpočet nedeterministického Turingova stroje $M$, kde $L = L(M)$, jenž $x$ přijme. V každém kroku tohoto výpočtu vybírá M z několika možných instrukcí, nechť řetězec $y$ kóduje právě to, které instrukce byly v každém kroku vybrány. Řetězec $y$ má délku nejvýš $p(|x|)$ pro nějaký polynom $p$, protože $M$ pracuje v polynomiálním čase a možností, jak pokračovat z dané konfigurace podle přechodové funkce je jen konstantně mnoho (protože máme konečnou abecedu). Simulací $M$ s použitím instrukcí daných dle $y$ můžeme deterministicky ověřit, zda $y$ kóduje přijímající výpočet. Řetězec $y$ tedy může sloužit jako polynomiálně dlouhý certifikát kladné odpovědi a DTS simulující $M$ s pomocí instrukcí daných $y$ je polynomiální verifikátor.
+\end{proof}
+
+\subsubsection{Modely TS s menším než lineárním prostorem}
+Ač se zdá na první pohled nesmyslné uvažovat TS pracující v prostoru menším než $O(n)$, tj. menším než je samotná délka vstupu, po menších úpravách je to možné. Model TS s menším než lineárním prostorem vypadá takto: 
+\begin{itemize}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item uvažujeme vícepáskový TS: vstupní páska je pouze pro čtení, pracovní pásky jsou pro čtení i zápis, výstupní páska je pouze pro zápis a pohybuje se jen vpravo
+	\item \textit{do prostoru se počítá pouze obsah pracovních pásek}
+	\item součástí konfigurace je stav, poloha hlavy na vstupní pásce, polohy hlav na pracovních páskách a obsah pracovních pásek
+	\item konfigurace \textit{neobsahuje} vstupní slovo
+\end{itemize}
+
+S pomocí tohoto modelu TS můžeme definovat následující třídy jazyků:
+$$\text{L} = \text{SPACE}(log_2n)$$
+$$\text{NL} = \text{NSPACE}(log_2n)$$
+$$\text{NPSPACE} = \bigcup_{k\in\N}\text{NSPACE}(n^k)$$
+
+\subsubsection{Přehled všech zmíněných tříd jazyků}
+\begin{table}[H]
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|l|l|}
+		\hline
+		(D)TIME($f(n)$) & jazyky přijímané DTS v čase $f(n)$\\ \hline
+		(D)SPACE($f(n)$) & jazyky přijímané DTS v prostoru $f(n)$\\ \hline
+		NTIME($f(n)$) & jazyky přijímané NTS v čase $f(n)$\\ \hline
+		NSPACE($f(n)$) & jazyky přijímané NTS v prostoru $f(n)$\\ \hline
+		P & $\bigcup_{k\in\N} \text{TIME}(n^k)$ \\ \hline
+		NP & $\bigcup_{k\in\N}\text{NTIME}(n^k)$ / jazyky s polynomiálními verifikátory \\ \hline
+		PSPACE & $\bigcup_{k\in\N} \text{SPACE}(n^k)$ \\ \hline
+		NPSPACE & $\bigcup_{k\in\N}\text{NSPACE}(n^k)$ \\ \hline
+		EXPTIME & $\bigcup_{k\in\N} \text{TIME}(2^{n^k})$ \\ \hline
+		L & $\text{SPACE}(log_2n)$ \\ \hline
+		NL & $\text{NSPACE}(log_2n)$ \\ \hline
+	\end{tabular}
+	\caption{Přehled tříd jazyků}
+	\label{complexity_languages}
+\end{table}
+
+\subsection{Vztahy mezi třídami}
+\begin{theorem}
+	Pro každou funkci $f : \N \mapsto \N$ platí, že \emph{TIME($f(n)$) $\subseteq$ SPACE($f(n)$)}.
+\end{theorem}
+\begin{proof}
+	Během své práce nad vstupem $x$ nestihne TS $M$ popsat víc buněk, než kolik na to má času, pracuje-li tedy $M$ v čase $f(n)$, nestihne popsat víc než $f(n)$ buněk. Tvrzení platí i v případě, kdy $f(n) < n$, i když v tom případě musíme uvažovat jiný model TS, který umožňuje nepočítat do prostoru velikost vstupu.
+\end{proof}
+
+\begin{theorem}
+\label{complexity_basic}
+Pro každou funkci $f : \N \mapsto \N$ platí 
+$$\text{TIME}(f(n)) \subseteq \text{NTIME}(f(n)) \subseteq \text{SPACE}(f(n)) \subseteq \text{NSPACE}(f(n))$$
+\end{theorem}
+\begin{proof}
+První a třetí inkluze platí triviálně (DTS je speciální případ NTS). 
+
+Druhá inkluze, tj. $\text{NTIME}(f(n)) \subseteq \text{SPACE}(f(n))$: Chceme simulovat NTS $M$ pracující v čase $f(n)$ pomocí DTS $M'$. $M$ se v každém kroku nederministicky rozhoduje, má však jen konstatně mnoho možností $c_M$. $M'$ bude mít string kódující všechny možné volby, ten zabere prostor $c_M\cdot f(n)$. Tento string se bude používat jako look-up tabulka kdykoliv $M$ provádí nedeterministickou volbu. Pro každou volbu tedy $M'$ simuluje $M$ a pokud $M$ přijme, tak přijme i $M'$. Celkově $M'$ potřebuje $c_mf(n) + f(n)$ místa, tedy $M' \in \text{SPACE}f(n)$
+\end{proof}
+
+\begin{theorem}
+\label{complexity_nspace_time}
+Nechť $f(n)$ je funkce, pro kterou platí $f(n) \geq \log_2n$. Pro každý jazyk L $\in$ NSPACE($f(n)$) platí, že L $\in$ TIME($2^{c_L f(n)}$), kde $c_L$ je konstanta závislá na jazyku $L$.
+\end{theorem}
+\begin{proof}
+Nechť $M = (Q, \Sigma, \delta, q_0, F)$. Konfigurace se skládá ze slova na pásce, polohy hlavy v rámci tohoto slova a stavu, v němž se stroj $M$ nachází. Délka slova na pásce je omezená $f(n)$, počet různých poloh hlavy v rámci tohoto slova je $f(n)$ a počet stavů je $|Q|$. Počet konfigurací je tedy shora omezen pomocí
+$$|\Sigma|^{f(n)}\cdot f(n)\cdot |Q| = 2^{f(n) \log_2 |\Sigma|}2^{\log_2 f(n)}2^{\log_2|Q|} = 2^{f(n) \log_2 |\Sigma|+\log_2 f(n) + \log_2 |Q|} \leq 2^{f(n)·(\log_2 |\Sigma|+1+\log_2 |Q|)}$$
+
+Horní odhad na počet konfigurací je současně i horním odhadem na časovou složitost, neboť přijímací výpočet se v každé konfiguraci octne nejvýše jednou. Pokud bychom se totiž do nějaké dostali vícekrát, pak jsme se nutně octli v cyklu a výpočet tedy nikdy neskončí, což je pro slova z $L$ spor.
+
+Stačí tedy zvolit $c_M = (\log_2 |\Sigma| + \log_2 |Q| + 1)$. 
+\end{proof}
+
+\begin{theorem}
+Platí následující inkluze:
+$$L \subseteq P \subseteq NP \subseteq PSPACE \subseteq NPSPACE \subseteq EXPTIME$$
+\end{theorem}
+\begin{proof}
+	Jednotlivé inkluze:
+	\begin{description}
+		\leftskip 40pt
+		\setlength{\itemsep}{0pt}
+		\item[P $\subseteq$ NP, PSPACE $\subseteq$ NPSPACE]: Přímo z definice.
+		\item[NP $\subseteq$ PSPACE]: Plyne z \ref{complexity_basic}.
+		\item[L $\subseteq$ P, NPSPACE $\subseteq$ EXPTIME]: Plyne z \ref{complexity_nspace_time}.
+	\end{description}
+
+\end{proof}
+
+\begin{theorem}[Savičova]
+Pro každou funkci $f(n) \geq \log_2n$ vyčíslitelnou v prostoru $O(f(n))$ platí, že:
+	$$NSPACE(f(n)) \subseteq SPACE(f^2(n))$$
+\end{theorem}
+\begin{proof}
+Díky \ref{complexity_nspace_time} víme, že každý $M$ pracující v prostoru $f(n)$ má až $2^{c_Mf(n)}$ různých konfigurací. Chceme simulovat NTS $M$ nějakým DTS, ale standardní techniky procházení stromu konfigurací (do šířky či do hloubky) jistě zaberou příliš mnoho prostoru. Půjdeme na to jinak.
+
+\textit{Konfigurační strom} NTS (strom všech výpočtů) zredukujeme na \textit{konfigurační graf} tím způsobem, že každá konfigurace zde bude právě jednou. Vrcholy tedy tvoří jednotlivé konfigurace a hrana se mezi dvěma vrcholy nachází právě tehdy, pokud lze přejit z jedné příslušné konfigurace do druhé podle přechodové funkce $M$. Na uložení celého grafu nemáme prostor, máme ho zadaný jen implicitně pomocí funkce $hrana(i,j)$, která nám řekne, zda lze přejít z $i$ do $j$
+
+Hledáme cestu z $K_0^x$ (poč. konfigurace nad slovem $x$) do $K_F^x$ (přijímající konfigurace, BÚNO každá je jen jedna (jediný přijímací stav, smazaná páska, hlava na začátku)). $M$ přijme $x$ pokud existuje orientovaná cesta z $K_0^x$ do $K_F^x$. Chceme tedy algoritmus, který existenci této cesty ověří. 
+
+Zavedeme funkci \textit{Dosažitelná}($i,K_1,K_2$), která zjistí, zda z konfigurace $K_1$ je konfigurace $K_2$ dosažitelná
+v nejvýše $2^i$ krocích Turingova stroje $M$.
+\bigskip
+
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[language=Python, frame=single, escapeinside={\%*}{*)}]
+	Dosazitelna(i, K1, K2):
+		if i = 0:
+			if (K1, K2) in E or K1 == K2:
+				return true
+			else
+				return false
+		for K in V:
+			if Dosazitelna(i-1, K1, K) and Dosazitelna(i-1, K, K2):
+				return true
+		return false
+	\end{lstlisting}
+\end{minipage}
+
+Víme, že počet vrcholů je nejvýše $2^{c_Mf(n)}$ a tedy voláním \textit{Dosažitelná}$(c_Mf(n), K_0^x, K_F^x)$ na grafu $G_{M,x}$ zjistíme, zda existuje přijímací výpočet.
+
+Zbývá spočítat prostorovou složitost funkce \textit{Dosažitelná}. Pro otestování existence hrany na řádku 3 nám stačí přechodová funkce $\delta$ stroje $M$, která je konstatně velká a nezávislá na $n$. V cyklu na řádcích 7-9 potřebujeme generovat všechny konfigurace. Na uložení jedné konfigurace stačí $c_Mf(n)$ bitů, stačí tedy generovat všechny binární řetězce této délky a vybírat si ty, které kódují konfigurace.
+
+Jedna instance funkce Dosažitelná tedy vyžaduje prostor pro uložení $K_1, K_2, K$ a $i$, na všechny tyto proměnné stačí prostor $c_Mf(n)$. Navíc potřebujeme jen bity pro uložení odpovědí z rekurzivních volání, které už prostorovou složitost nenaruší. 
+
+Abychom mohli v cyklu generovat konfigurace K, musíme však vědět, jak velký prostor rezervovat pro jednu konfiguraci,
+potřebujeme tedy umět označit $c_Mf(n)$ buněk, máme-li vstup $x$ délky $n$, a při tom si musíme vystačit s prostorem $O(f(n))$. To platí, je-li funkce $f$ \textit{vyčíslitelná}\footnote{Funkce je \textit{f vyčíslitelná} v prostoru $O(f(n))$, pokud k ní existuje Turingův stroj $M_f$, který pracuje v prostoru $O(f(n))$ a při výpočtu nad vstupem $x = 1^n$ je po ukončení jeho činnosti na výstupu zapsán řetězec $y = 1^f(n)$. 
+
+Unární kódování přirozeně odpovídá tomu, co chceme: rezervovat buňky pro výsledek funkce; tj. zapíšeme jedničky na tolik polí, kolik chceme rezervovat. Ne každá funkce $f$ je vyčíslitelná v prostoru $O(f(n))$, nicméně pro běžné funkce to platí.}
+
+Hloubka rekurze je omezena pomocí $c_Mf(n) = O(f(n))$, protože to je počáteční hodnota $i$, které předáváme funkci jako parametr a v každém dalším voláním toto $i$ snížíme o jedna. 
+
+Dohromady tedy dostaneme, že celkový prostor, který potřebujeme, je velký $O(f(n) \cdot f(n)) = O(f^2(n))$. Protože funkce Dosažitelná je deterministická, vyžaduje její volání \textit{deterministický} prostor $O(f^2(n))$. Nebylo by také obtížné na základě této funkce vytvořit DTS $M'$, který by vyžadoval týž prostor a přijímal jazyk $L$. Z toho plyne, že
+$L \in \text{SPACE}(O(f^2(n)))$.
+\end{proof}
+
+\noindent\textbf{Důsledek:} PSPACE = NPSPACE.
+
 \section{Věty o hierarchii.}
+\subsection{Věta o deterministické prostorové hierarchii}
+Funkci $f : \N \mapsto \N$, kde $f(n) \geq \log n$, nazveme \textbf{prostorově konstruovatelnou}, je-li funkce, která zobrazuje $1^n$ na binární reprezentaci $f(n)$ vyčíslitelná v prostoru $O(f(n))$.
+
+
+\begin{theorem}[o deterministické prostorové hierarchii]
+Pro každou prostorově konstruovatelnou funkci $f : \N \mapsto \N$ existuje jazyk $L$, který je rozhodnutelný v prostoru $O(f(n))$, nikoli však v prostoru $o(f(n))$.
+\end{theorem}
+
+\begin{proof}
+	Připomenutí big O a little O notace:
+	\begin{align*}
+		f(n) \in O(g(n)) \quad &\Leftrightarrow \quad \exists c > 0,\ \exists n_0 > 0,\ \forall n>n_0 : 0 \leq f(n) \leq c\cdot g(n) \\
+		f(n) \in o(g(n)) \quad &\Leftrightarrow \quad \forall c > 0,\ \exists n_0 > 0,\ \forall n>n_0 : 0 \leq f(n) \leq c\cdot g(n) \\
+	\end{align*}
+	
+	Chceme najít jazyk $L$, který je rozhodnutelný v prostoru $O(f(n))$, ale ne v prostoru $o(f(n))$. Definujeme 
+	$$L = \{(\langle M \rangle, 10^k)\ |\ M \text{ nepřijímá (odmítá) } (\langle M \rangle, 10^k) \text{ v prostoru }\leq f(|(\langle M \rangle, 10^k)|) $$
+	Zápis $10^k$ reprezentuje slovo skládající se z jedničky a $k$ nul, tj. $100\dots0$.
+	
+	\begin{enumerate}
+		\item \textbf{$L$ je rozhodnutelný v $O(f(n))$:}
+		
+		Algoritmus pro rozhodnutí L je tento:
+		\begin{enumerate}
+			\leftskip 20pt
+			\setlength{\itemsep}{0pt}
+			\item Pro vstup $x$ spočti $f(|x|)$ (díky prostorové konstruovatelnosti) a označ $f(|x|)$ buněk na pásce. Pokud se algoritmus pokusí označit více než $f(|x|)$ buněk, \textit{odmítni}.
+			\item Pokud $x$ není tvaru $(\langle M \rangle, 10^k)$ pro nějaký validní $M$, \textit{odmítni}.
+			\item Simuluj běh $M$ na vstupu $x$. Pokud $M$ přesáhne $f(|x|)$ prostoru nebo $2^{f(|x|)}$ času, \textit{odmítni}.
+			\item Pokud $M$ přijme, \textit{odmítni}. Jinak \textit{přijmi}.
+		\end{enumerate}
+		Časový limit v bodě (c) je pro ošetření situace, kdy sice $M$ nepřekročí povolený prostor, ale zacyklí se a nezastaví.
+		
+		\item \textbf{$L$ je nerozhodnutelný v $o(f(n))$:}
+		
+		Dokážeme sporem. Nechť $L$ je \textit{rozhodnutelný} v $o(f(n))$, pak existuje TS $M$, který jej rozhoduje. Uvažme slovo $w = (\langle M \rangle, 10^k)$, pro nějaké dostatečně velké $k$. Platí:
+
+		$$w \in L \Leftrightarrow M \text{ přijme } w \Leftrightarrow w \notin L \text{ (spor)}$$
+
+		
+		Zde se uplatní slovo $10^k$ uměle přidané ke vstupu. Kdyby tam nebylo, tak je délka vstupu pouze $|M|$ a tedy i práce $M$ by se musela vejít do prostoru $O(|M|)$. Což by mohlo být komplikované, jelikož $M$ si potřebuje v paměti držet celé vstupní slovo zapsané v nějaké své interní abecedě plus další složky určující konfiguraci $M$. Umělé prodloužení vstupu poskytne $M$ více prostoru a přitom samo nároky nijak moc nezvýší. Když tedy řekneme, že použijeme slovo $w = (\langle \overline{M} \rangle, 10^k)$ \textit{pro nějaké dostatečně velké} $k$, tak tím myslíme, že $M$ zajistíme dostatek prostoru pro práci a tedy odmítnutí nebude způsobeno překročením prostoru.
+	\end{enumerate}
+	
+	Celkově je princip důkazu založen na odlišnosti při zpracování slova $(\langle M \rangle, 10^k)$. Uměle přidané slovo nám zajistí, že $M$ při výpočtu nepřekročí povolený prostor.
+\end{proof}
+	
+\begin{implication}	~
+	\begin{enumerate}
+		\item Jsou-li $f_1, f_2 : \N \mapsto \N$ funkce, pro které platí, že $f_1(n) \in o(f_2(n))$ a $f_2$ je prostorově konstruovatelná, potom 
+			$$SPACE(f_1(n)) \subsetneq SPACE(f_2(n))$$
+		\item Pro každá dvě reálná čísla $0 \leq \epsilon_1 < \epsilon_2$ platí, že
+			$$SPACE(n^{\epsilon_1}) \subsetneq SPACE(n^{\epsilon_2})$$
+		\item $\text{NL} \subsetneq \text{PSPACE} \subsetneq \text{EXPSPACE} = \bigcup_{k\in\N} \text{SPACE}(2^{n^k})$
+	\end{enumerate}
+
+\end{implication}
+
+\subsection{Věta o časové prostorové hierarchii}
+Funkci $f : \N \mapsto \N$, kde $f(n) \in \Omega(n\log n)$, nazveme \textbf{časově konstruovatelnou}, je-li funkce, která zobrazuje $1^n$ na binární reprezentaci $f(n)$ vyčíslitelná v čase $O(f(n))$.
+
+\begin{theorem}[o deterministické časové hierarchii] Pro každou časově konstruovatelnou funkci $f : \N \mapsto \N$ existuje jazyk $A$, který je rozhodnutelný v čase $O(f(n))$, nikoli však v čase $o(f(n)/\log f(n))$.
+\end{theorem}
+
+\begin{proof}
+	%TODO věta o časové hierarchii
+\end{proof}
+
+\begin{implication}~
+	\begin{enumerate}
+		\item Jsou-li $f_1, f_2 : \N \mapsto \N$ funkce, pro které platí, že $f_1(n) \in o(f_2(n)/ \log f_2(n))$ a $f_2$ je časově konstruovatelná, potom
+			$$TIME(f_1(n)) \subsetneq TIME(f_2(n))$$
+		\item Pro každá dvě reálná čísla $0 \leq \epsilon_1 < \epsilon_2$
+			$$TIME(n^{\epsilon_1}) \subsetneq TIME(n^{\epsilon_2})$$
+		\item $P \subsetneq EXPTIME$
+	\end{enumerate}
+\end{implication}
+
 \section{Úplné problémy pro třídu NP, Cook-Levinova věta.}
+\subsection{Polynomiální převoditelnost, NP-úplnost}
+Jazyk $A$ je \textbf{převoditelný v polynomiálním čase (polynomiálně převoditelný)} na jazyk $B$, psáno $A \leq_m^P B$, pokud existuje funkce $f : \Sigma^* \mapsto \Sigma^*$ vyčíslitelná v polynomiálním čase, pro kterou platí
+$$(\forall w \in \Sigma^*) (w \in A \Leftrightarrow f(w) \in B)$$
+\textbf{Vlastnosti:}
+\begin{enumerate}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item $\leq_m^P$ je reflexivní a tranzitivní relace (\textit{kvaziuspořádání}).
+	\item Pokud A $\leq_m^P B$ a $B \in P$, pak $A \in P$.
+	\item Pokud A $\leq_m^P B$ a $B \in NP$, pak $A \in NP$.
+\end{enumerate}
+\begin{proof}~
+	\begin{enumerate}
+		\leftskip 20pt
+		\setlength{\itemsep}{0pt}
+		\item Reflexivita plyne z toho, že identita je funkce spočitatelná v polynomiálním čase. Tranzitivita plyne z toho, že složením dvou polynomů vznikne opět polynom.
+		\item Je-li $B \in P$, pak existuje Turingův stroj $M$, který přijímá $B$ v polynomiálním čase. Je-li $f$ funkce, která převádí $A$ na $B$, a je-li $f$ spočitatelná v polynomiálním čase, pak TS $M'$, který pro vstup $x$ spočítá $f(x)$ a poté pustí $M$ k rozhodnutí, zda $f(x) \in B$, přijímá $A$ v polynomiálním čase.
+		\item Platí z téhož důvodu jako předchozí bod, protože tytéž argumenty lze použít i pro nedeterministický TS.
+	\end{enumerate}
+\end{proof}
+
+Jazyk $B$ je \textbf{NP-těžký}, pokud je na něj převoditelný kterýkoli problém $A \in NP$.
+
+Jazyk $B$ je \textbf{NP-úplný}, je-li NP-těžký a navíc $B \in NP$.
+
+Pokud chceme ukázat, že nějaký problém B je NP-úplný, pak stačí
+\begin{enumerate}
+\leftskip 20pt
+\setlength{\itemsep}{0pt}
+	\item ukázat $B \in NP$
+	\item najít jiný NP-úplný problém $A$ a převést jej na $B$ (tj. ukázat $A \leq_m^P B$).
+\end{enumerate}
+
+\textbf{\textit{Za předpokladu $P \neq NP$ platí, že pokud $B$ je NP-úplný problém, pak $B \notin P$.}}
+
+\subsection{Cook-Levinova věta}
+Původní znění Cook-Levinovy věty je následující:
+
+\begin{theorem}
+Pokud by byl problém \textit{splnitelnosti booleovských formulí} řešitelný v polynomiálním čase, pak by se P = NP. Přesněji, \textit{splnitelnost booleovských formulí} je NP-úplný problém.
+\end{theorem}
+
+Obecněji lze označení \textit{Cook-Levinova věta} použít pro libovolnou větu, která \textit{ukazuje NP-úplnost praktického problému přímo z definice} třídy NP. Jako první praktický NP-úplný problém se obvykle uvažuje splnitelnost formule v konjunktivně normální formě. U nás se však jako výchozí problém vžilo \textit{\textsc{Kachlíkování}}.
+
+\begin{minipage}{\textwidth}
+	\bigskip
+	\centering
+	\fbox{
+		\parbox{0.7\textwidth}{
+		\smallskip
+		{\centering
+		\textsc{Kachlíkování} (anglicky \textit{Tiling})\\
+		}
+\medskip		
+\textbf{Instance}: Množina barev $B$, přirozené číslo $s$, čtvercová síť $S$ velikosti $s \times s$, hrany jejíchž krajních políček jsou obarveny barvami z $B$. Dále je součástí instance množina $K \subseteq B \times B \times B \times B $ s typy kachlíků, které odpovídají čtverci, jehož hrany jsou obarveny barvami z B. Tyto kachlíky mají přesně definovaný horní, dolní, levý i pravý okraj a není možné je otáčet.
+\smallskip
+
+\textbf{Otázka:} Existuje přípustné vykachlíkování čtvercové sítě $S$ kachlíky, jejichž typy jsou v množině $K$? Přípustné vykachlíkování je takové přiřazení typů kachlíků jednotlivým polím čtvercové sítě S, v němž kachlíky, které spolu sousedí mají touž barvu na vzájemně dotýkajících se hranách a kachlíky, které se dotýkají strany S, mají shodnou barvu s okrajem. Jednotlivé typy kachlíků lze použít víckrát.
+		}
+	}
+	\bigskip
+\end{minipage}
+
+Dokážeme, že \textsc{Kachlíkování (KACHL)} je NP-úplný problém:
+\begin{proof}
+Všimněme si nejprve, že KACHL $\in$ NP. To plyne z toho, že dostaneme-li vykachlíkování sítě S, tedy přiřazení typů kachlíků jednotlivým políčkům, dokážeme ověřit v polynomiálním čase, jde-li o přípustné vykachlíkování. 
+ 
+Nechť $A \subseteq \{0,1\}^*, A \in NP $. Ukážeme, že $A \leq_m^P KACHL$. Jelikož $A \in NP$, existuje NTS $M, L(M) = A$, a počet kroků každého přijímajícího výpočtu je omezen polynomem $p(n)$. BÚNO $p(n) > n$, jinak vezmeme $max(p(n), n)$.
+
+Připomeňme si, že podle definice $x \in A$, právě když existuje přijímající výpočet NTS $M$ nad vstupem x délký nejvýše $p(|x|)$. Nechť $M = (Q, \Sigma, \delta, q_0, F)$, kde Q obsahuje stavy $q_0$ a $q_1$ a $\{0, 1, \lambda\} \subseteq \Sigma$. BÚNO platí:
+\begin{enumerate}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item  $F = {q_1}$, tj. $M$ má jediný přijímající stav $q_1$ různý od $q_0$.
+	\item $\forall a \in \Sigma : \delta(q_1, a) = \emptyset$, tj. z přijímajícího stavu neexistuje definovaný přechod.
+	\item Počáteční konfigurace vypadá tak, že hlava stojí na nejlevějším symbolu vstupního slova $x$, které je zapsáno počínaje od levého okraje vymezeného prostoru délky $p(|x|)$. Zbytek pásky je prázdný.
+	\item Během výpočtu se hlava M nepohne nalevo od místa, kde byla v počáteční konfiguraci, tj. mimo vymezený prostor.
+	\item Přijímající konfigurace: že páska je prázdná a hlava stojí na nejlevější pozici vymezeného prostoru. To odpovídá tomu, že než se M rozhodne přijmout, smaže nejprve obsah pásky a přesune hlavu k levému okraji vymezeného prostoru.
+\end{enumerate}
+Není těžké ukázat, že ke každému NTS $M_1$ lze zkonstruovat NTS $M_2$, který přijímá týž jazyk jako $M_1$ a splňuje uvedené podmínky.
+
+Nechť $x$ je instance problému $A$, popíšeme, jak z $M$, polynomu $p$ a instance $x$ vytvořit instanci \textsc{Kachlíkování}, pro kterou bude platit, že v ní existuje přípustné vykachlíkování, právě když existuje přijímající výpočet M(x).
+
+Idea důkazu je taková, že hrany barev mezi dvěma řádky kachlíků budou kódovat konfigurace výpočtu NTS $M$ nad vstupem $x$. Vhodným výběrem kachlíků zabezpečíme, že v přípustném vykachlíkování bude řada kachlíků simulovat změnu konfigurace na následující pomocí přechodové funkce. Horní a dolní okraje sítě $S$ obarvíme tak, aby barvy určovaly počáteční a
+přijímající konfiguraci, obě jsou dané jednoznačně, přijímající zcela jednoznačně, počáteční je sice závislá na x, ale pro dané x je již jednoznačná. Konstrukce je ilustrovaná na obrázku \ref{kachl_overview}.
+
+\begin{figure}[H]
+	\label{kachl_overview}
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/kachl_overview.png}
+\end{figure}
+
+Barvy kachlíků tedy budou odpovídat symbolům, které potřebujeme pro zakódování konfigurace, ale budeme potřebovat i pomocné barvy pro přenos informace o stavu o kachlík vlevo nebo vpravo. Položíme tedy
+$$ B = \Sigma \cup Q \times \Sigma \cup \{q_L, q_R\ |\ q \in Q\}$$
+
+\begin{itemize}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item Barva $(q, a)$ v této konfiguraci bude kódovat políčko na pásce, nad kterým se vyskytuje hlava, přičemž $q$ označuje stav, ve kterém se $M$ nachází. Vždy je pouze jedna barva tohoto typu na řádku.
+	\item Ostatní políčka konfigurace budou obarvena barvou odpovídající symbolu na daném místě.
+	\item Velikost jedné strany čtvercové sítě položíme $s = p(|x|)$.
+	\item Boční strany $S$ budou obarveny barvou $\lambda$ (prázdný symbol).
+	\item Horní strana $S$ bude obarvena počáteční konfigurací: $[(q_0, x_1), x2, x3, \dots, x_n, \lambda, \dots,\lambda]$, pro vstup $x = x_1x_2x_3\dots x_n$.
+	\item Spodní hrana $S$ bude obarvena jednoznačnou přijímající konfigurací: $[(q_1, \lambda), \lambda, \dots, \lambda]$
+\end{itemize}
+
+Do typů kachlíků zakódujeme přechodovou funkci Turingova stroje $M$, čímž dosáhneme toho, že správné vykachlíkování řádků 2 až $s$ bude odpovídat výpočtu $M$ nad $x$. Navíc přidáme možnost kopírování přijímající konfigurace tak, abychom ošetřili i případ, kdy výpočet $M$ nad $x$ skončí po méně než $p(|x|)$ krocích.
+
+Použité kachlíky jsou vypsány v tabulce \ref{kachliky}.
+
+\begin{table}[H]
+	\centering
+	\caption{Kachlíky}
+	\label{kachliky}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{| m{0.05\linewidth}  m{0.45\linewidth} | m{0.5\linewidth}| }
+		\hline
+		(I) & \smallskip\includegraphics[width=70pt]{img/kachl1.png} 
+		& $\forall a \in \Sigma$ kopírování buněk, nad nimiž není hlava\\ 
+		(II) & \includegraphics[width=70pt]{img/kachl2.png} 
+		& $\forall q \forall a \forall q' \forall a' : (q',a',N) \in \delta(q,a)$\\ 
+		(III), (IV) & \includegraphics[width=70pt]{img/kachl3.png} \includegraphics[width=70pt]{img/kachl4.png} 
+		& $\forall q \forall a \forall q' \forall a' : (q',a',R) \in \delta(q,a)$\\
+		(V), (VI) & \includegraphics[width=70pt]{img/kachl5.png} \includegraphics[width=70pt]{img/kachl6.png} 
+		& $\forall q \forall a \forall q' \forall a' : (q',a',L) \in \delta(q,a)$\\
+		(VII) & \includegraphics[width=70pt]{img/kachl7.png} 
+		& \\ \hline
+
+	\end{tabular}
+
+\end{table}
+
+Funkce f, která bude převádět instanci problému $A$ na instanci problému KACHL provede právě popsanou konstrukci, tj. z popisu $M$ a instance $x$ vytvoří instanci $(B, K, s, S)$, kde množina $K$ obsahuje popsané typy kachlíků a pod $S$ míníme obarvení okrajů sítě. Tuto konstrukci je zřejmě možné provést v polynomiálním čase. Jediné co je v konstrukci závislé na velikosti vstupu je tedy rozměr sítě $s = p(|x|)$ a obarvení horního okraje S počáteční konfigurací.
+
+Zbývá ukázat, že $x \in A \Leftrightarrow $ takto zkonstruovaná instance KACHL má přípustné vykachlíkování:
+\begin{description}
+	\leftskip 40pt
+	\item[$\Rightarrow$:] 
+	Předpokládejme nejprve, že $x \in A$ a tedy existuje přijímající výpočet $M(x)$ daný posloupností konfigurací $K_0^x = K_0, \dots, K_t = K_F$. Podle předpokladu platí, že $t \leq p(|x|)$ a délka slova na pásce v každé konfiguraci je rovněž nejvýš $p(|x|)$. Popíšeme, jak s pomocí konfigurací $K_0, \dots, K_t$ obarvit síť $S$. Pro řadu $i = 0$, tj. horní okraj $S$ je vybarvení správně díky konstrukci. Dále indukcí: máme-li validně vybarvenou $i$-tou řadu, vykachlíkujeme $(i + 1)$-ní řadu s odsimulováním příslušné instrukce, která vedla k přechodu z $K_i$ do $K_{i+1}$. Takto se dostaneme k $K_t = K_F$ a poté dokopírujeme KF až na poslední řádek čtvercové sítě $S$. 
+	Instrukci lze vždy odsimulovat díky použitým typům kachlíků. 
+
+	\item[$\Leftarrow$] Nechť $\exists$ přípustné vykachlíkování čtvercové sítě $S$. Ukážeme, že řádky barev mezi jednotlivými řádky kachlíků určují posloupnost konfigurací v přijímajícím výpočtu $M$ nad $x$. 
+	
+	Indukcí dle i: nechť $b_{i,1}, \dots, b_{i,s} \in B$ je posloupnost barev mezi $i$-tým a $(i+1)$-ním řádkem. Musíme ukázat tyto dvě vlastnosti pro každé $i = 0, \dots, s$:
+	\begin{enumerate}
+		\leftskip 40pt
+		\setlength{\itemsep}{0pt}
+		\item V posloupnosti $b_{i,1}, \dots, b_{i,s}$ je \textbf{právě jedna barva} typu $(q, a) \in Q \times \Sigma$, ostatní jsou typu $a \in \Sigma$, tj. posloupnost $b_{i,1}, \dots, b_{i,s}$ \textbf{určuje validní konfiguraci} $K_i$.
+		\item Platí, že $K_i$ lze z $K_{i-1}$ \textbf{vytvořit pomocí přechodové funkce} $\delta$ pro $i > 0$ a $K_0 = K_0^x$.
+	\end{enumerate}
+
+	Obě vlastnosti jsou jistě splněné pro $i = 0$. Předpokládejme nyní, že jsou splněny pro $i \in [0, \dots, s]$ a ukažme, že platí pro $i + 1$. Obě vlastnosti opět jednoduše plynou z toho, jaké kachlíky máme k dispozici. Podle indukčního předpokladu se na řádku barev vyskytuje právě jedna pozice, řekněme $k$, pro kterou platí, že $b_{i,k} = (q, a)$ pro nějaký stav $q \in Q$ a znak $a \in \Sigma$. To znamená, že v $(i + 1)$-ním řádku kachlíků je právě jeden kachlík s horní barvou $(q, a)$, a to na pozici $S[i+1, k]$. Kachlíky nám neumožňují vytvořit barvu $(q, a)$ z ničeho, musí jít o barvu tohoto typu převedenou z předchozího řádku, a to buď kachlíkem (II) a nebo kachlíky (III) a (IV) a nebo kachlíky (V) a (VI).
+
+	Spodní hrana $S$ je obarvena přijímající konfigurací, takže poslední řada barev kachlíků musí
+	odpovídat přijímající konfiguraci. 
+	
+	Dostáváme tedy, že posloupnost konfigurací daných barvami na hranách mezi řádky kachlíků v čtvercové síti $S$ odpovídají přijímajícímu výpočtu $M$ nad vstupem $x$ a jde dokonce o vzájemnou korespondenci, a tedy máme-li přípustné vykachlíkování, znamená to, že $M(x)$ přijme. Z toho plyne, že $x \in A.$
+\end{description}
+
+
+\end{proof}
+
 \section{Pseudopolynomiální algoritmy, silná NP-úplnost.}
+
+
 \section{Aproximační algoritmy a schémata.}
+Pokud nejsme schopni rychle získat optimální řešení NP-úplné úlohy, můžeme slevit ze svých požadavků a pokusit se najít řešení, jež není od toho optimálního příliš vzdáleno. Nejprve si upřesníme pojem optimalizační úlohy:
+
+\textbf{Optimalizační úlohu} definujeme jako trojici $A = (D_A, S_A, \mu_A)$, kde
+\begin{itemize}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item $D_A \subseteq \Sigma^*$ je \textbf{množina instancí}
+	\item $S_A(I)$ je \textbf{množina přípustných řešení} pro instanci $I \in D_A$
+	\item $\mu_A(I, \sigma)$ přiřazuje instanci $I \in D_A$ a přípustnému řešení  $\sigma \in S_A(I)$ kladné racionální číslo, tzv. \textbf{hodnotu řešení}.
+\end{itemize}
+
+Úloha může být $A$ \textbf{maximalizační} resp. \textbf{minimalizační}, pak optimálním řešením instance $I$ je to přípustné řešení $\sigma \in S_A(I)$, jež má \textit{maximální} resp. \textit{minimální} hodnotu $\mu_A(I, \sigma)$.
+
+\textbf{Hodnotu optimálního řešení} označíme pomocí $opt(I)$.
+
+Příklad: Minimalizační úloha \textit{Vrcholového pokrytí (VP)}: 
+\begin{itemize}
+	\leftskip 20pt
+	\setlength{\itemsep}{0pt}
+	\item množina instancí $D_{VP}$ = všechny řetězce kódující nějaký graf $G = (V,E)$	
+	\item množina přípustných řešení pro instanci $G$, tj. $S_{VP}(G)$ = všechny množiny vrcholů $S \subseteq V$ pokrývající všechny hrany
+	\item hodnota řešení S, tj. $\mu_{VP}(G,S) = |S|$, tedy počet vrcholů v množině
+\end{itemize}
+
+
+Algoritmus $R$ nazveme \textbf{aproximačním algoritmem} pro optimalizační úlohu $A$, pokud pro každou instanci $I \in D_A$ je výstupem $R(I)$ přípustné řešení $\sigma \in S_A(I)$ (pokud nějaké existuje).
+
+Je-li $A$ \textit{maximalizační} úloha, pak $\varepsilon \geq 1$ je \textbf{aproximačním poměrem} algoritmu $R$, pokud pro každou instanci $I \in D_A$ platí, že 
+$$opt(I) \leq \varepsilon \cdot \mu_A(I, R(I))$$
+
+Je-li $A$ \textit{minimalizační} úloha, pak $\varepsilon \geq 1$ je \textbf{aproximačním poměrem} algoritmu $R$, pokud pro každou instanci $I \in D_A$ platí, že 
+$$\mu_A(I, R(I)) \leq \varepsilon \cdot opt(I)$$
+
+
 
 \chapter{Datové struktury}
 \section{Vyhledávací stromy ((a,b)-stromy, Splay stromy).}
@@ -376,8 +1157,64 @@ Nyní se pokusíme celý algoritmus zpětného šíření stručně shrnout:
 	}
 }
 
+\subsection{Strategie pro urychlení učení}
+Popsaný standardní model zpětného učení je poměrně jednoduchý, dává poměrně dobré výsledky, ale má i mnohé nevýhody. V první řadě je docela pomalý. Problém učení neuronových sítí je obecně NP-úplný a výpočetní složitost roste exponenciálně s počtem proměnných. Důležité je taky počáteční nastavení parametrů. 
+
+Existují různé postupy a algoritmy pro urychlení učení. Některé zachovávají pevnou topologii sítě, jiné jsou naopak založeny na použití modulárních sítí, některé algoritmy adaptují jak parametry (váhy, prahy, \dots) i topologii.
+
+\subsubsection{Volba počátečních vah}
+Příliš malé počáteční váhy mohou \uv{paralyzovat učení}, tj. propagovaná chyba je příliš malá. Příliš velké váhy naopak vedou k \uv{saturaci} neuronů a rovněž pomalému učení. Oba extrémy mají pak za následek ukončení učení v suboptimálním lokálním extrému. Správná volba počátečních vah může toto riziko výrazně snížit.
 
 \section{Asociativní paměti, Hebbovské učení a hledání suboptimálních řešení, stochastické modely.}
+\subsection{Asociativní paměti}
+Principem asociativních sítí (a pamětí) je mapování vstupních vektorů $\vec{x}$ na dané výstupní vzory $\vec{y}$, přičemž blízké okolí $\vec{x}$ by se mělo mapovat na týž cílový vzor -- ten se tedy chová jako \uv{araktor}. Asociativní paměti by tedy měly být schopné správně přiřadit vzor i zašuměným vstupům. 
+
+Rozlišujeme 3 základní typy asociativních sítí:
+\begin{description}
+	\leftskip 40pt
+	\setlength{\itemsep}{0pt}
+	\item[heteroasociativní sítě] Zobrazují $m$ vstupních vzorů $\vec{x}^1, \vec{x}^2, \dots, \vec{x}^m$ z $n$-rozměrného prostoru na $m$ výstupních vektorů $\vec{y}^1, \vec{y}^2, \dots, \vec{y}^m$ v $k$-rozměrném prostoru tak, že $\vec{x}^i \mapsto \vec{y}^i$. 
+	
+	Jestliže pro nějaký vektor $\vec{x}$ platí, že $||\vec{x} - \vec{x}^i|| < \varepsilon$, potom $\vec{x} \mapsto \vec{y}^i$ (pro zvolené $\varepsilon > 0$).
+	
+	\item[autoasociativní sítě] Podmnožina heteroasociativních sítí: každý vzor se zobrazuje 
+	sám na sebe, tj. $\vec{y}^i = \vec{x}^i \quad \forall i = 1, \dots, m$. Funkcí těchto sítí je oprava zašuměných vzorů.
+	
+	\item[sítě pro rozpoznávání vzorů] Speciální typ heteroasociativních sítí, kde je každému vektoru $\vec{x}^i$ přiřazena skalární hodnota $i$, která reprezentuje třídu daného vzoru. Cílem je identifikace třídy daného vstupního vzoru.
+\end{description}
+
+\subsubsection{Struktura asociativních pamětí}
+Asociativní paměť lze implementovat pomocí jedné vrstvy neuronů (resp. jedné vstupní a jedné výstupní). Síť má $n$ vstupních a $k$ výstupních neuronů. Označíme $w_{ij}$ váhu mezi neurony $i$ a $j$. Pak $\vec{W}$ bude \textbf{matice vah} o rozměrech $n \times k$. Vektor potenciálů výstupních neuronů označíme jako \textbf{excitační vektor} $\vec{e} = \vec{x}\cdot \vec{W}$. V případě identické přenosové funkce na výstupních neuronech pak dostáváme \textit{lineární asociátor} a výstup sítě spočteme jako $\vec{y} = \vec{x} \cdot \vec{W}$.
+
+Nechť $\vec{X}$ je $m \times n$ matice vstupních vzorů a $\vec{Y}$ je $m \times k$ matice výstupních vzorů. Pak lze problém vyjádřit maticově: hledáme $\vec{W}$ tak, aby $\vec{X}\cdot \vec{W} = \vec{Y}$ (v případě autoasociativní paměti $\vec{X}\cdot \vec{W} = \vec{X}$). Pokud je $\vec{X}$ čtvercová a regulární, lze řešení najít jednoduše jako $\vec{W} = \vec{X}^{-1} \cdot \vec{Y}$. Obecně to ale samozřejmě platit nemusí.
+
+\subsubsection{Rekurentní asociativní síť}
+Než se budeme zabývat učením asociativních sítí, podíváme se ještě podrobněji na problém autoasociativních pamětí a jak jej lze popsat. Autoasociativní sítě jsou rekurentní, tj. z výstupních neuronů vedou spoje zpět do vstupních a výstup sítě v čase $t$ se použije jako vstup sítě v čase $t+1$. Toto se opakuje, dokud se výstup sítě neustálí, tj. dokud $\vec{x}(t+1) = \vec{x}(t)$. Vzhledem k tomu, že váhová matice $\vec{W}$ je u autoasociativních sítí čtvercová, je problém stabilizace sítě ve skutečnosti otázkou nalezení \textit{vlastního vektoru} matice $\vec{W}$ s vlastním číslem 1, tj. 
+$$\overrightarrow{\xi} \cdot \vec{W} = \overrightarrow{\xi}$$
+Jedná se vlastně o dynamický systém prvního řádu, jelikož stav $\vec{x}(t+1)$ je zcela určen stavem $\vec{x}(t)$.
+
+\subsubsection{Vlastní automaty (eigenvector automata)}
+Podívejme se nyní na vlastnosti čtvercové matice $\vec{W}$. Jak jsme již řekli, zajímají nás pevné body dynamického systému, tedy vlastní vektory matice. Samozřejmě ale ne všechny matice mají netriviální vlastní vektory. Nás budou zajímat pouze takové, které mají dokonce kompletní sadu $n$ lineárně nezávislých vlastních vektorů. Připomeneme, že pro vlastní vektory $x^1, x^2, \dots x^n$ platí
+$$
+\vec{x}^i\vec{W} = \lambda_i x^i \quad \forall i = 1 \dots n
+$$
+kde $\lambda_i$ jsou vlastní čísla.
+
+Každá matice s kompletní sadou vlastních vektorů definuje jakýsi \uv{vlastní automat}. Ten funguje tak, že po předložení libovolného vzoru nalezne vlastní vektor s největším vlastním číslem. BÚNO $\lambda_1$ je největší vlastní číslo. Nechť $\lambda_1 > 0$ a nechť $\vec{a_0}$ je nějaký nenulový $n$-rozměrný vektor. Ten můžeme vyjádřit jako lineární kombinaci $n$ nezávislých vektorů, konkrétně vlastních vektorů $\vec{W}$:
+$$\vec{a_0} = \alpha_1\vec{x^1} + \alpha_2\vec{x^2} + \dots + \alpha_n\vec{x^n}$$ 
+Předpokládáme že konstanty $\alpha_i$ jsou nenulové. Po jedné iteraci s maticí $\vec{W}$ dostáváme:
+\begin{align*}
+\vec{a_1} &= \vec{a_0}\vec{W} \\
+&= (\alpha_1\vec{x^1} + \alpha_2\vec{x^2} + \dots + \alpha_n\vec{x^n})\vec{W} \\
+&= \alpha_1\lambda_1\vec{x^1} + \alpha_2\lambda_2\vec{x^2} + \dots + \alpha_n\lambda_n\vec{x^n}\\
+\end{align*}
+Po $t$ iteracích dostáváme
+$$\vec{a_t} = \alpha_1\lambda_1^t\vec{x^1} + \alpha_2\lambda_2^t\vec{x^2} + \dots + \alpha_n\lambda_n^t\vec{x^n}\\$$
+Je zjevné, že pro dost velké $t$ bude člen s $\lambda_1$ dominovat a vektor $\vec{a_t}$ můžeme dostat libovolně blízko k $\vec{x^1}$ (ve smyslu směru, ne nutně délky). Vlastní vektor $\vec{x^1}$ s největším vlastním číslem $\lambda_1$ je \textit{atraktorem} pro všechny vektory $a_0$, které mají \textbf{nenulovou složku $\alpha_1$}.
+
+\subsubsection{Asociativní učení}
+Automat popsaný v předchozí části vystihuje to, čeho chceme dosáhnout: chceme použít asociativní síť jako dynamický systém, jehož atraktory jsou právě ty vektory, které si chceme uložit. Problémem ovšem je, že případě lineárního vlastního automatu je pouze jeden jediný vektor, který dominuje téměř celý vstupní prostor -- to je vlastní vektor odpovídající největšímu vlastnímu číslu. My bychom ale chtěli použít co nejvíce atraktorů, s vlivem rovnoměrně rozprostřeným po vstupním prostoru. Řešením je použít nelineární systém, tj. ve výstupních neuronech použít místo identity binární (0,1) nebo bipolární (-1, 1) skokovou přenosovou funkci. Bipolární je častější, neboť bipolární vektory mají větší šanci být ortogonální, než binární. 
+
 \section{Umělé neuronové sítě založené na principu učení bez učitele.}
 \section{Modulární, hierarchické a hybridní modely neuronových sítí.}
 \section{Genetické algoritmy a jejich využití při učení umělých neuronových sítí.}
