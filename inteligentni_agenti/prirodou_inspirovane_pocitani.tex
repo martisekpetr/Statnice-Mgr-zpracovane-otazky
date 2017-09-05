@@ -1,19 +1,20 @@
 \chapter{Přírodou inspirované počítání}
 \section{Genetické algoritmy, genetické a evoluční programování.}
 \subsection{Evoluční algoritmy}
+\label{ea}
 \textbf{Evoluční algoritmy (EA)} je souhrnné označení pro všechny výpočetní metody inspirované evolucí. Historicky se nejdříve paralelně vyvíjely 3 metodiky: genetické algoritmy, evoluční strategie a evoluční programování. Až později došlo k jejich seskupení pod společný zastřešující název: evoluční algoritmy (někdy také evoluční počítání).
 
 EA jsou populační stochastické prohledávací algoritmy. Obecně se hodí spíše označení meta-algoritmus, jelikož pro specifické problémy se vytváří doménově specifické varianty EA s doménově danou reprezentací a vlastními implementacemi evolučních operátorů. Obecně platí \uv{no free lunch theorem} -- tj. neexistuje jeden ultimátní nejlepší algoritmus pro všechny typy problémů.
 
 Základní struktura obecného EA je následující:
 \begin{enumerate}
-	\leftskip 40pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item vytvoř náhodnou iniciální populaci $P(t=0)$, ohodnoť $P(0)$
 	\item dokud není splněna ukončovací podmínka:
 	\begin{enumerate}
-		\leftskip 40pt
-		\setlength{\itemsep}{0pt}
+		
+		
 		\item rodičovská selekce podle fitness
 		\item křížení s pravděpodobností $p_c$
 		\item mutace s pravděpodobností $p_m$
@@ -78,8 +79,8 @@ Pointou experimentu bylo porovnat výkonnost obou variant a určit, nakolik opra
 \subsection{Schémata}
 \textbf{Schéma} v kontextu genetických algoritmů (tj. jedinec je slovo v abecedě \{0,1\}) je reprezentace množiny jedinců jako slova v abecedě \{0,1,*\}, kde * označuje libovolný symbol (\uv{žolík}). Například schéma 0*11* reprezentuje množinu jedinců \{00110, 00111, 01110, 01111\}. Platí následující:
 \begin{itemize}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item schéma s $r$ * reprezentuje $2^r$ jedinců
 	\item jedinec délky $m$ je reprezentován $2^m$ schématy
 	\item je $3^m$ schémat délky $m$
@@ -87,8 +88,8 @@ Pointou experimentu bylo porovnat výkonnost obou variant a určit, nakolik opra
 \end{itemize}
 Pro schéma S lze definovat následující vlastnosti:
 \begin{description}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[Řád schématu o(S):] počet pevných pozic (0 a 1) 
 	\item[Definující délka d(S):] vzdálenost mezi první a poslední pevnou pozicí
 	\item[Fitness F(S)] průměrná fitness odpovídajících jedinců v populaci
@@ -145,17 +146,17 @@ Od 90. let se objevují snahy přesně modelovat chování GA, konkrétně: jak 
 \subsubsection{Ještě jednodušší jednoduchý GA (JJJGA)}
 Pro jednodušší tvorbu modelů byl původní jednoduchý GA ještě o něco zjednodušen a formalizován takto:
 \begin{itemize}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item inicializuj náhodnou počáteční populaci binárních řetězců $x$ délky $l$
 	\item dokud nenajdeš dost dobré $x$:
 	\begin{itemize}
-		\leftskip 40pt
-		\setlength{\itemsep}{0pt}
+		
+		
 		\item dokud nenaplníš novou populaci:
 		\begin{itemize}
-			\leftskip 40pt
-			\setlength{\itemsep}{0pt}
+			
+			
 			\item vyber selekcí 2 jedince, zkřiž je s pravděpodobností $p_c$, jednoho potomka zahoď
 			\item mutuj každý bit nového řetězce s pravděpodobností $p_m$
 			\item vlož do nové populace
@@ -197,8 +198,8 @@ Vznikly v 60. letech, autoři \textbf{Rechenberg a Schwefel.} ES jsou jedna z v�
 
 \subsubsection{Notace}
 \begin{description}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[\textit{M}] počet jedinců v populaci
 	\item[\textit{L}] počet vznikajících potomků
 	\item[\textit{R}] počet rodičů každého nového jedince
@@ -207,8 +208,8 @@ Doporučení: $M > 1$, $L > M$ aby se vytvořily různé selekce (např. $L \app
 
 \subsubsection{Varianty}
 \begin{description}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[\textit{(M+L)} ES] -- M jedinců do nové populace je vybráno z M+L starých i nových jedinců
 	\item[\textit{(M,L)} ES] -- M nových jedinců je vybráno jen z L nových potomků (tato varianta se ukázala být robustnější vůči uvíznutí v lokálních extrémech)
 \end{description}
@@ -216,8 +217,8 @@ Doporučení: $M > 1$, $L > M$ aby se vytvořily různé selekce (např. $L \app
 \subsubsection{Kódování, genetické operátory}
 Jedinec je tvaru $C(i) = [G_n(i), S_k(i)], k \in \{1, n, 2n\}$, tedy první část je samotný genotyp, druhá část jsou parametry evoluce, konkrétně \textbf{hodnoty standardních odchylek floating point mutací}. Podle hodnoty $k$ rozlišujeme 3 varianty:
 \begin{description}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[k=1]: jedna společná odchylka pro všechny parametry
 	\item[k=n]: nekorelované mutace; geometricky se mutuje po elipse rovnoběžné s osami
 	\item[k=2n]: korelované mutace, odpovídají mutování z n-rozměrného normálního rozdělení. 
@@ -284,7 +285,7 @@ Evoluce bez konce, tj. neexistuje ukončovací podmínka ani optimální řešen
 Míra změn fitness může být různá: 
 \begin{description}
 	\leftskip 30pt
-	\setlength{\itemsep}{0pt}
+	
 	\item[malé změny] robot se opotřebuje, v chemické továrně se trochu změní suroviny apod.
 	\item[výrazné morfologické změny] vrcholy zanikají, nové vznikají, \uv{emerging markets}
 	\item[cyklické změny] roční období, spotřeba elektřiny, \dots
@@ -388,8 +389,8 @@ while notTerminated do
 
 \subsubsection{Existují dva přístupy, co dělat s výsledkem:}
 \begin{description}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[Lamarckismus] Když prohledáváním najdu lepšího jedince, vezmu ho (to je ovšem darwinisticky nekorektní, změnil jsem genotyp na základě fenotypu).
 	\item[Baldwinismus] Když lokálním prohledáváním najdu lepšího jedince, vezmu jen jeho fitness (ale neměním genotyp).
 \end{description}
@@ -403,7 +404,7 @@ Algoritmus tak expanduje uzly se stále vyšším ohodnocením, dokud nenarazí 
 \medskip\textbf{Varianty:}
 \begin{description}
 	\leftskip 30pt
-	\setlength{\itemsep}{0pt}
+	
 	\item[first choice HC vs. steepest ascent HC] First choide HC vezme prvního lepšího souseda, steepest zkusí všechny a vezme nejlepšího.
 	\item[stochastic HC] Ze zlepšujících sousedů vybere náhodně podle míry zlepšení.
 	\item[random restart HC (or shotgun HC)] Náhodné restarty v různých místech, částečně řeší problém uvíznutí v lokálním optimu.
@@ -419,8 +420,8 @@ Algoritmus tak expanduje uzly se stále vyšším ohodnocením, dokud nenarazí 
 \end{wrapfigure}
 Lokální prohledávání kombinující HC a náhodnou procházku. Algoritmus náhodně volí stav okolí a vydá se do něj pokud:
 \begin{itemize}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item je lepší než aktuální stav
 	\item je horší, ale zhoršení je povoleno s určitou mírou pravděpodobnosti odvozenou od aktuální \textbf{teploty}; teplota se přitom postupně snižuje podle „ochlazovacího“ schématu
 \end{itemize}
@@ -470,8 +471,8 @@ tedy vyjadřuje pravidlo: pokud první atribut nabývá první či druhé hodnot
 
 Na těchto binárních řetězcích lze pak snadno aplikovat genetické operátory. Ty fungují na různých úrovních:
 \begin{description}
-	\leftskip 40pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[na úrovni jedince (množiny pravidel)] výměna pravidel, kopírování pravidel, generalizace pravidla, smazání pravidla, specializace pravidla, zahrnutí jednoho pozitivního příkladu
 	\item[na úrovni komplexů] rozdělení komplexu na 1 selektoru, generalizace selektoru (nahrazení 11\dots1), specializace
 	generalizovaného selektoru, zahrnutí negativního příkladu
@@ -489,8 +490,8 @@ Problémem při klasifikaci celou populací realizace algoritmu odměn pro pravi
 
 Zjednodušením tohoto systému byl \textbf{ZCS (Zero Classifier System)}. Neměl vnitřní zprávy ani žádný složitý systém alokace odměn. Síla pravidel se upravovala podle jednoduchého algoritmu:
 \begin{itemize}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item pravidlům, která odpovídají vstupu, ale mají jiný výstup, se síla zmenší násobením konstantou $0 < T < 1$
 	\item všem pravidlům se zmenší síla o malou část B
 	\item tahle síla se rozdělí rovnoměrně mezi pravidla, která \textit{minule} odpověděla správně, zmenšená o faktor $0<G<1$
@@ -504,6 +505,7 @@ Dalším vylepšením byl systém \textbf{XCS}, který zakládá fitness pravidl
 
 
 \subsection{Neuroevoluce}
+\label{neuroevolution}
 Neuronové sítě se klasicky učí pomocí nějaké varianty backpropagation, ale jsou situace, kdy může být lepší pokusit se vyvinout optimální síť (řešící daný problém) pomocí EA. Mnohdy nelze \textit{učení s učitelem} použít vůbec -- například v robotice -- a je nutno spoléhat na \textit{zpětnovazební učení} (reinforced learning).
 
 Předmětem evoluce mohou být synaptické váhy, struktura sítě, nebo obojí najednou. 
@@ -517,8 +519,8 @@ Nejjednodušší je zakódovat váhy do vektoru a pak použít klasický floatin
 Prostor možných architektur je nekonečný a především nediferencovatelný, takže gradientní metody jsou k ničemu. Evoluce však může fungovat bez problémů.
 Strukturu sítě lze zakódovat několika způsoby:
 \begin{description}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[přímé kódování] -- binární matice synapsí, před evolucí se typicky převedou na jeden dlouhý linearizovaný vektor 
 	\item[gramatické kódování] 2D formální gramatiky, které jsou \uv{programem} pro vytvoření matice	
 	\item[růst sítě ve 2D] rané pokusy v evoluční robotice, velmi neefektivní
@@ -538,8 +540,8 @@ Strukturu sítě lze zakódovat několika způsoby:
 \subsubsection{NEAT (Neuroevolution of Augmenting Topologies)}
 Základními charakteristikami algoritmu NEAT jsou: 
 \begin{enumerate}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item evoluce topologie společně s vahami
 	\item smysluplné křížení pomocí historických značek
 	\item ochrana inovací pomocí druhů
@@ -553,7 +555,21 @@ Každý neuron a každý synaptický spoj dostanou při svém vzniku svou \texti
 
 Když během evoluce vznikne jedinec, který se výrazně liší od ostatních (na to musí být definovaná nějaká metrika), založí se nový \textbf{druh}. Ten je několik generací chráněný -- jedinci nového druhu soutěží pouze mezi sebou.
 
-%TODO hyperneat
+\subsubsection{HyperNEAT (Hyper-cube NEAT)}
+Varianta NEAT, kdy nevyvíjíme síť samotnou, ale jinou síť, která nám naši síť postaví. Tato pomocná síť se nazývá CPPN (Compositional Pattern Producing Network) a liší se od klasických sítí především tím, že v neuronech se místo sigmoidy používají nejrůznější geometrické funkce, např. absolutní hodnota, bipolární sigmoida, Gaussovská funkce, lineární funkce, sinusoida nebo kroková funkce. Na vstupu CPPN je dvojice souřadnic dvou neuronů (pro 2D síť tedy 4 souřadnice: $x_1, y_1, x_2, y_2$), na výstupu je váha, která se má přidělit synapsi mezi neurony na těchto souřadnicích.
+
+Pomocí CPPN tedy můžeme doplnit vhodné váhy do ANN sítě nazývané \textit{substrát}, ta se poté použije pro řešení daného problému. Tato konstrukce umožňuje využít geometrické pravidelnosti daného problému. Příklady použití: šachy, dáma, dravec-kořist, Go, atd. Neurony jsou uspořádány v prostoru daném doménou problému, lze je adresovat souřadnicemi, které využívá CPPN. Síť může být i 3D, kde jednotlivé vrstvy sítě jsou umístěné v různých $z$ souřadnicích.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[]{img/hyperneat.png}
+\end{figure}
+
+Pro evoluci CPPN se používá klasický NEAT s 2 odlišnostmi: nově vygenerovaný neuron dostane náhodně jednu z geometrických funkcí (namísto sigmoidy); a fitness CPPN se spočte podle správnosti výstupu ANN substrátu vygenerovaného pomocí CPPN.
+
+Substrát lze libovolně škálovat. Můžeme třeba použít dvojnásobný počet neuronů, kterým pak ale přidělíme souřadnice ze stejného intervalu, jako u menšího substrátu.
+
+Zdroj: \url{http://kocmi.tk/photos/DiplomaThesis.pdf}
 
 \subsection{Řešení kombinatorických úloh}
 EA jsou velmi vhodné pro řešení NP-těžkých úloh. Rozebereme několik příkladů:
@@ -570,14 +586,14 @@ $$\max\limits_{B \subset \{1..n\}} \sum\limits_{i \in B} v(i) \text{\ \ a souča
 
 Problém s víceúčelovou optimalizací lze řešit různě:
 \begin{itemize}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item Oba členy fitness zvážit a sečíst
 	\item Použít jeden z obecných EA pro víceúčelové funkce
 	\item Anebo chytře změnit zakódování:
 	\begin{itemize}	
-		\setlength{\itemsep}{0pt}
-		\leftskip 20pt
+		
+		
 		\item 1 znamená: DEJ věc do batohu POKUD se nepřeplní
 		\item takto dosáhneme i toho, že všechny řetězce jsou přípustná řešení
 	\end{itemize}
@@ -590,14 +606,14 @@ Problém s víceúčelovou optimalizací lze řešit různě:
 
 Existuje několik možných reprezentací a na nich závislých genetických operátorů:
 \begin{description}
-	\leftskip 40pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[reprezentace sousednosti:] Cesta je seznam měst, město $j$ je na pozici $i$, vede-li cesta z $i$ do $j$. Např. (248397156) odpovídá cestě 1-2-4-3-8-5-9-6-7. Některé seznamy negenerují přípustnou cestu. Klasické křížení nefunguje. Schémata fungují, např (*3*\dots) značí všechny cesty s hranou 2-3.
 	\item[reprezentace bufferem] Máme buffer vrcholů, třeba uspořádaný. Reprezentace představuje pořadí města v bufferu, města se z bufferu postupně mažou. Např. buffer (123456789) a reprezentace (112141311) kóduje cestu 1-2-4-3-8-5-9-6-7. V této reprezentaci lze použít jednobodové křížení.
 	\item[reprezentace permutací] Nejvíce přímočaré: řetězec (517894623) kóduje cestu 5-1-7-8-9-4-6-2-3. Klasické křížení nefunguje, byly navrženy speciální operátory (dobrý přehled viz \footnote{http://www.rubicite.com/Tutorials/GeneticAlgorithms/CrossoverOperators/PMXCrossoverOperator.aspx}):
 	\begin{description}
 		\leftskip 30pt
-		\setlength{\itemsep}{0pt}
+		
 		\item[PMX (partially mapped crossover] Náhodně vybereme podřetězec z rodiče 1, ten zkopírujeme do nového jedince. Pak se podíváme na tytéž pozice v rodiči 2. Pro každou hodnotu, která se ještě nevyskytuje v budovaném potomkovi, budeme hledat vhodné umístění: nechť chceme umístit hodnotu $h$, která se nachází v rodiči 2 na pozici $i$. Vezmeme hodnotu $h_2$ na téže pozici $i$, ale v rodiči 1. Pak se podíváme, kde se $h_2$ nachází v rodiči 2 -- označme tuto pozici jako $i_2$. Je-li to mimo zkopírovanou oblast, pak jsme našli vhodné umístění a zkopírujeme původní hodnotu $h$ do nového potomka na $i_2$. Je-li $i_2$ uvnitř kopírovaného intervalu, pak pokračujeme v hledání -- do $h_2$ dosadíme hodnotu na $i_2$ v rodiči 1. Viz obr. \ref{pmx}.
 		\begin{figure}[H]
 			\centering			
@@ -643,8 +659,8 @@ Existuje několik možných reprezentací a na nich závislých genetických ope
 
 Mutace jsou obecně jednodušší (pro všechny reprezentace), používá se:
 \begin{itemize}
-	\leftskip 20pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item inverze podcesty
 	\item posun podcesty
 	\item záměna 2 měst
@@ -656,8 +672,8 @@ Mutace jsou obecně jednodušší (pro všechny reprezentace), používá se:
 
 Úspěšnost evoluce závisí také na inicializaci. Nejpoužívanější jsou dvě varianty:
 \begin{description}
-	\leftskip 40pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[nejbližší sousedi] Začni s náhodným městem, postupně vybírej jako další to nejbližší z dosud nevybraných.
 	\item[vkládání hran] Budujeme cestu T, na začátku náhodná hrana. K cestě T vyber nejbližší město c mimo T. Najdi hranu k-j v T tak, že minimalizuje rozdíl mezi k-c-j a k-j. Vyhoď k-j, vlož k-c-j do T.
 \end{description}
@@ -684,8 +700,8 @@ V případě MOEA není jeden nejlepší jedinec v populaci, používá se celá
 \subsubsection{Algoritmy}
 Hlavní rozdíl mezi jednokriteriálními a vícekriteriálními algoritmy je v selekci (operátory mohou klidně zůstat stejné). S čímž samozřejmě souvisí způsob, jakým se počítá fitness. Celkově je potřeba zajistit konvergenci k Pareto optimální frontě a zároveň zajistit i dobré pokrytí této fronty.
 \begin{description}
-	\leftskip 40pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[Agregace fitness] Nejjednodušší přístup. Definujeme agregovanou fitness $f$ jako váženou sumu všech $f_i$ a problém řešíme jako klasickou jednokriteriální optimalizaci. Problémem je nastavení vah u jednotlivých $f_i$.
 	\item[VEGA (Vector Evaluated GA)] Populaci $N$ jedinců utřídím podle každé z $n$ fitness funkcí, poté pro každé $i$ vyberu $\frac{N}{n}$ nejlepších jedinců dle $f_i$. Na ty poté aplikuji křížení, mutaci a provedu selekci do další generace. 
 	
@@ -694,8 +710,8 @@ Hlavní rozdíl mezi jednokriteriálními a vícekriteriálními algoritmy je v 
 	
 	Populace $P$ je rozdělena na postupně konstruované fronty $F_1$, $F_2$, \dots, a to takto: 
 	\begin{itemize}
-		\leftskip 40pt
-		\setlength{\itemsep}{0pt}
+		
+		
 		\item $F_1$ je množina všech nedominovaných jedinců z $P$
 		\item $F_2$ je množina všech nedominovaných jedinců z $P-F_1$
 		\item $F_3$ je množina všech nedominovaných jedinců z $P - (F_1 \cup F_2)$
@@ -725,8 +741,8 @@ Hlavní rozdíl mezi jednokriteriálními a vícekriteriálními algoritmy je v 
 \subsubsection{Porovnání algoritmů}
 Pro porovnání kvality řešení dvou různých algoritmů je třeba vyhodnotit, která z výsledných populací lépe aproximuje Pareto optimální množinu. 
 \begin{description}
-	\leftskip 40pt
-	\setlength{\itemsep}{0pt}
+	
+	
 	\item[IGD (Inverted Generational Distance)] IGD měří průměrnou vzdálenost každého řeše\-ní na \textit{skutečné} Pareto optimální frontě k nejbližšímu řešení ve výsledné množině. Díky tomu indikátor vyjadřuje jak blízkost řešení k Pareto-optimální frontě (convergence), tak to, jestli jsou řešení po frontě rozmístěna rovnoměrně (spread). Menší hodnoty tohoto indikátoru jsou lepší. 
 	\begin{figure}[H]
 		\centering
