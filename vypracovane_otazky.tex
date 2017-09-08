@@ -27,6 +27,7 @@
 \usepackage{titlesec}
 
 \setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
 \titleformat{\paragraph}
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph}
@@ -6664,38 +6665,27 @@ V každém kroku algoritmu se de facto trénuje jediná vrstva vah, tj. jediná 
 Typicky kombinace samoorganizujících a dopředných sítí.
 
 \subsubsection{ART (Adaptive Resonance Theory)}
+Klastrovací sítě, shluky reprezentovanými váhovými vektory $w_1, w_2, \dots w_n$. Kolem každého vektoru je kužel o poloměru $r$, ten je nepřímo úměrný \uv{attention} parametru dané jednotky. Po předložení nového vzorku je nalezen nejbližší klastr a pokud je vzorek uvnitř kuželu, je klasifikace hotova. Pokud je mimo kužel, je pro něj založen nový shluk.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{img/art1.png}
+\end{figure}
 
-\bigskip
-\begin{algorithm}[H]
-	\caption{Kohonenovské učení}
-	\begin{algorithmic}[1]
-		\Function{ART1}{}
-		\State $\rho \gets$ hodnota z intervalu $[0,1]$ \Comment{práh bdělosti}
-		\State $t = 0$
-		\For{$i$ \textbf{in} 0 \textbf{to} $N-1$}
-			\For{$j$ \textbf{in} 0 \textbf{to} $M-1$}
-				\State $t_{ij}(0) \gets 1$ \Comment{váha mezi vstupním neuronem $i$ a výstupním neuronem $j$ v čase 0}
-				\State $b_{ij}(0) \gets \frac{1}{1+N}$ \Comment{váha mezi výstupním neuronem $j$ a vstupním neuronem $i$ v čase 0}
-			\EndFor		
-		\EndFor
-		\While{existuje vstupní vzor}
-			\State $\vec{x} \gets$ vstupní vzor 
-			\For{j \textbf{in} 0 \textbf{to} $M-1$}
-				\State $\mu_j = \sum_{i=0}^{N-1} b_{ij}(t) x_{i}$ \Comment{výstup výstupního neuronu $j$}
-			\EndFor
-			\State $k = \arg\max_j \{\mu_j\}$ \Comment{neuron nejlépe odpovídající vstupnímu vzoru}
-			\State $||\vec{x}|| = \sum_{i=0}^{N-1} x_i$
-			\State $|| \vec{T}\cdot\vec{x}|| = \sum_{i=0}^{N-1} t_{ik}\cdot x_i$
-			\If{$|| \vec{T}\cdot\vec{x}|| / ||\vec{x}|| > \rho$}
-				\State $t_{ik}(t+1) = t_{ik}(t)\cdot x_i$
-				\State 
-			\EndIf
-		\EndWhile
-		
-		\EndFunction
-	\end{algorithmic}
-\end{algorithm}	
+ART poměrně dobře řeší \textit{plasticity-stability dilema}: síť je plastická (dovede reagovat na neznámé vstupy) a současně stabilní (existující klastry zůstávají zachovány i po předložení nových informací.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{img/art2.png}
+\end{figure}
+
+\subparagraph{Struktura}
+ART se skládají ze 2 základních vrstev neuronů $F_1, F_2$. Neurony ve vrstvě $F_2$ se aktivují na principu \uv{winner takes all}. 
+
+Algoritmus:
+\begin{itemize}
+\item
+\end{itemize}
 
 
 \subsubsection{Sítě se vstřícným šířením (counterpropagation networks)}
@@ -6770,7 +6760,7 @@ Díky použití Gaussovských funkcí je výsledná aproximace spojitá, viz. ob
 	\caption{Aproximace funkce pomocí RBF.}
 \end{figure}
 
-\subsection{Vícevrstvé Kohonenovy mapy}
+\subsubsection{Vícevrstvé Kohonenovy mapy}
 
 
 \section{Genetické algoritmy a jejich využití při učení umělých neuronových sítí.}
