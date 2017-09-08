@@ -259,7 +259,7 @@ Dnes nejkomplexnější verzí je \textbf{CMA-ES} (Correlation Matrix Adaptation
 Alternativní algoritmus spojité optimalizace, který funguje dobře i pro funkce které jsou nediferencovatelné, nespojité, zašuměné, neseparabilní nebo vysoce podmíněné. Každý jedinec prochází opakovaně cyklem \textbf{mutace} $\rightarrow$ \textbf{křížení} $\rightarrow$ \textbf{selekce}. Během mutace dochází k posunu \uv{podle ostatních}, tj. jedinec se posouvá ve směru populace. DE je také invariantní vůči rotaci či škálování prohledávaného prostoru.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{img/DE_scheme.png}
+	\includegraphics[width=0.7\textwidth]{img/de_scheme.png}
 \end{figure}
 
 \subsubsection{Mutace}
@@ -277,7 +277,60 @@ Jako nový jedinec $x_{i,p+1}$ se vezme lepší (dle fitness) z dvojice $x_{i,p}
 \subsection{Koevoluce}
 Situace, kdy se dva či více druhů vyvíjí závisle na sobě, tj. fitness jedince není závislá pouze na prostředí, ale především na interakci s jinými jedinci (tzv. \textit{kontextová fitness}). Rozlišujeme koevoluci \textbf{kooperativní} a \textbf{kompetitivní}. Typickým modelem kompetitivní koevoluce je tzv. \textbf{dravec-kořist} (predator-prey). Kompetitivně lze rovněž vyvíjet strategie pro nejrůznější hry - např. dáma apod.
 
+\subsubsection{Kompetitivní evoluce: dravec-kořist}
+Na začátku jednoduché strategie obou hráčů se postupně zdokonalují, a to i bez změny prostředí (\uv{závody ve zbrojení}. Jedná se o \textit{inkrementální učení}. Řeší se i problém s nastartováním učení tj. kdybychom pustili dravce na dokonale se chovající kořist, tak ji nikdy nechytí a selekce nebude fungovat.
+
+\textbf{Příklady: }
+\begin{itemize}
+\item hráči Tic-Tac-Toe
+\item strategie pro vězňovo dilema
+\item třídící vs. \uv{parazitní} programy
+\item roboti \uv{dravec} a \uv{kořist} v aréně (kořist rychlejší, dravec lépe vidí)
+\end{itemize}
+
+\paragraph{Sledování fitness}
+V případě koevoluce nestačí jednoduše sledovat fitness, ta totiž závisí na měnící se strategii soupeře. Tj. změna chování hráče vede ke změně \textit{krajiny fitness} pro soupeře. Používají se dvě strategie:
+\begin{description}
+\item[CIAO (Current Individual vs. Ancestral Opponents)] V každé generaci necháme nejlepšího jedince soupeřit se všemi nejlepšími jedinci z předchozích generací. Výsledek můžeme zaznamenat do čtvercové bitmapy, kde bílý pixel znamená vítězství kořisti a černý vítězství dravce. Získáme tak grafickou reprezentaci evoluce, kterou můžeme sledovat v průběhu.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{img/ciao.png}
+\caption{CIAO obrázek ukazující \uv{ideální} výsledek (nejlepší z nové generace vždy porazí nejlepší z předchozích)}
+\end{figure}
+
+\item[Mistrovství] Vyhodnocení \textit{po skončení evoluce}. Necháme soupeřit nejlepšího z každé generace s nejlepšími soupeři \textit{ze všech} generací(tj. nejen z předchozích. \uv{Fitness} jedince je pak množství vítězství.
+\end{description}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{img/mistrovstvi.png}
+\end{figure}
+
+
+\subsubsection{Zacyklení strategií}
+Typickým problémem kompetitivní koevoluce je \textbf{zacyklení} strategií. Tj. existuje množina efektivních chování jako reakce na chování soupeře, jakmile však změním strategii, změní ji i soupeř, na což reaguji svou změnou strategie, \dots Toto chování by ideálně mělo najít optimální strategii pro všechny strategie soupeře, často se ale stává, že se zacyklíme. 
+
+Příklad pro roboty dravec-kořist:
+\begin{itemize}
+\item\textbf{Strategie dravce}
+	\begin{itemize}
+	\item D1: pronásleduj kořist
+	\item D2: \uv{číhej}, tj. zůstaň na místě, sleduj kořist a zaútoč pouze pokud se kořist přiblíží
+	\end{itemize}
+\item\textbf{Strategie kořisti}
+	\begin{itemize}
+	\item K1: stůj na místě (u stěny)
+	\item K2: rychle se pohybuj a vyhýbej se dravci (i stěnám)
+	\end{itemize}
+\end{itemize}
+Na každou strategii dravce funguje nějaká strategie kořisti a naopak: D1 $>$ K1 $>$ D2 $>$ K2 $>$ D1 $>$ \dots
+
+
+
 %TODO koevoluce
+TODO koevoluce
+
 
 \subsection{Otevřená evoluce}
 Evoluce bez konce, tj. neexistuje ukončovací podmínka ani optimální řešení, neboť fitness funkce je \textit{dynamická}. Často je dynamické i kódování jedince -- např. pokud u neuroevoluce mohou síti ubývat a přibývat neurony či synapse. 
