@@ -6174,11 +6174,45 @@ kde $e_k$ je excitace neuronu $k$ (po odečtení prahu). Jelikož došlo k aktua
 Tedy vždy, když dojde k aktualizaci, dojde ke snížení energie. Jelikož máme jen konečný počet stavů, musí síť někdy dosáhnout stavu, z nějž už nelze energii dále snižovat = stabilní stav.
 \end{proof}
 
-Důležitá je nazávislost excitace neuronu na jeho stavu (protože $w_{kk} = 0$).
+Důležitá je nezávislost excitace neuronu na jeho stavu (protože $w_{kk} = 0$).
 
 \subsubsection{Perceptronové učení pro Hopfieldův model}
-%TODO perceptron pro hopfield
+V některých případech nelze nalézt pomocí Hebbovského učení váhovou matici Hopfieldovy sítě tak, aby
+$m$ daných vektorů odpovídalo stabilním stavům sítě (i když taková matice existuje). Pokud leží vektory, které mají být do sítě uloženy, hodně blízko, může být crosstalk příliš velký. 
 
+Alternativou je použít percetronové učení. Uvažme Hopfieldovu síť s $n$ neurony, které mají nenulový práh a bipolární přenosovou funkci (výstup 1 nebo -1). Nechť $\vec{W}$ je $n\times n$ matice vah a $\theta$ $n$-rozměrný vektor prahů. Chceme-li si zapamatovat vektor $\vec{x} = (x_1,\dots x_n)$, pak tento vektor bude odpovídat stabilnímu stavu, jestliže se po jeho předložení síti nezmění stav sítě, tj. pro každou složku je znaménko excitace příslušného neuronu (mínus práh) stejné jako předchozí stav. Tedy
+\begin{align*}
+	\text{Neuron 1: } sgn(x_1)(0 +x_2w_{12}+x_3w_{13} + \dots  + x_nw_{1n} -\theta_1) < 0\\	\text{Neuron 2: } sgn(x_1)(x_1w_{21}  + 0 +x_3w_{23} + \dots  + x_nw_{2n} -\theta_2) < 0\\
+	\vdots\\
+	\text{Neuron n: } sgn(x_1)(x_1w_{n1} +x_2w_{n2} + x_3w_{n3} + \dots + 0 -\theta_n) < 0\\
+\end{align*}
+Díky symetrii vah má váhová matice $\vec{W}$ pouze $n\cdot(n-1)/2$ nenulových prvků. Sestrojíme vektor $\vec{v}$ dimenze $n(n-1)/2 + n$:
+$$\vec{v} = (
+\underbrace{w_{12},w_{13},\dots,w_{1n}}_\text{n-1},
+\underbrace{w_{23},w_{24},\dots,w_{2n}}_\text{n-2},
+\dots
+\underbrace{w_{n-1,n}}_\text{1},
+\underbrace{-\theta_1,\dots,-\theta_n}_\text{n}
+)$$
+Každý vektor $\vec{x}$ tranformujeme do $n$ pomocných vektorů $\vec{z}_1,\vec{z}_2,\dots,\vec{z}_n$
+\begin{align*}
+\vec{z_1} &= (\underbrace{x_2,x_3,\dots,x_n}_\text{n-1},0,0,\dots, \underbrace{1,0,\dots,0}_\text{n})\\
+\vec{z_2} &= (\underbrace{x_1,0,\dots,0}_\text{n-1},
+\underbrace{x_3,\dots,x_n}_\text{n-2},
+0,0,\dots, \underbrace{0,1,\dots,0}_\text{n})\\
+\vdots\\
+\vec{z_n} &= (\underbrace{0,0,\dots,x_1}_\text{n-1},
+\underbrace{0,0,\dots,x_2}_\text{n-2},
+0,0,\dots, \underbrace{0,0,\dots,1}_\text{n})\\
+\end{align*}
+
+Nyní můžeme psát předchozí nerovnosti jako
+\begin{align*}
+\text{Neuron 1: } sgn(x_1)\vec{z}_1 \vec{v} > 0\\	
+\text{Neuron 2: } sgn(x_2)\vec{z}_2 \vec{v} > 0\\	
+\vdots\\
+\text{Neuron n: } sgn(x_n)\vec{z}_n \vec{v} > 0\\	
+\end{align*}
 
 \subsubsection{Hledání suboptimálních řešení (řešení NP-úplných problémů pomocí Hopfieldovy sítě)}
 Hopfieldovy sítě lze použít pro řešení těžkých optimalizačních úloh. Základní myšlenkou je přeformulovat úlohu tak, aby její analytický zápis byl isomorfní energetické funkci nějakého Hopfieldova modelu. Ten pak nalezne lokální minimum této funkce a tím i nějaké suboptimální řešení daného problému.
