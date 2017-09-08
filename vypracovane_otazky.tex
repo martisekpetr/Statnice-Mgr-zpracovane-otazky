@@ -3630,9 +3630,21 @@ Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious anal�
 				\end{minipage}
 			\end{figure}
 		\end{enumerate}
-		\item \textbf{násobení matic}
-		\item \textbf{merge-sort}
-		\item \textbf{funnel-sort}
+		\item \textbf{násobení matic} Velice podobný princip jako transpozice.
+		\item \textbf{mergesort (binární):} Pokud $n \leq M/2$, tak se vejdeme do cache (polovina cache se použije pro vstupní pole, polovina pro slité). Přenášíme $2n/B + O(1)$ bloků.
+		
+		Pokud $n > M/2$: nechť $z$ je maximální velikost pole, které může být setříděno v cache (pro jednoduchost předpokládáme, že velikost polí v jedné úrovni cache jsou stejná), tzn. dvě pole velikosti $z/2$ mohou být slity v jedno pole velikosti $z$. Platí $z \leq M/2 < 2z$. Slití jedné úrovně vyžaduje $2\frac{n}{B} + 2\frac{n}{z} + O(1) = O(\frac{n}{B})$ přenosů (přečtení všech prvků + rezerva pro nezarovnané bloky). Celkový počet přenesených bloků je $O(\frac{n}{B})(1+\log_2\frac{n}{z}) = O(\frac{n}{B}\log_2\frac{n}{M})$.
+		
+		\item \textbf{funnel-sort} Chceme dostat $O(\frac{n}{B}\log_{\frac{M}{B}}\frac{n}{M})$ (lze ukázat, že to je dolní mez pro cache oblivious třídící algoritmy). Funnelsort rozdělí data na $N^{\frac{1}{3}}$ částí o velikosti $N^{\frac{2}{3}}$, ty rekurzivně setřídí a slije pomocí $N^{\frac{1}{3}}$-mergeru. 
+		
+		Obecný \textbf{$k$-merger} je stromovitá struktura bufferů, která slije $k$ vstupních bufferů do jediného výstupního. Stuktura viz obrázek \ref{merger}.
+		
+		Lze dokázat že za předpokladu tall cache je funnelsort optimální, tj. provede $O(\frac{n}{B}\log_{\frac{M}{B}}\frac{n}{M})$ přístupů do paměti.
+		\begin{figure}[H]
+			\label{merger}
+			\centering
+			\includegraphics[]{img/kmerger.png}
+		\end{figure}
 \end{itemize}
 
 
@@ -3656,6 +3668,17 @@ Počet načtených bloků je tedy $\Theta(\log_B n)$.
 \end{figure}
 	
 \end{itemize}
+
+\subsubsection{Dynamické cache-oblivious datové struktury}
+\paragraph{Dynamické stromy}
+Základní myšlenka je doplnit dynamický strom $T$ \uv{prázdnými} uzly na statický kompletní strom $T'$ a ten poté uložit v poli pomocí van Emde Boasova rozložení. Strom vyvažujeme. Pro každý uzel definujeme \textit{hustotu} $\rho(u) = \frac{|T_u|}{T'_u}$, tj. poměr reálných a (reálných + virtuálních) uzlů v podstromu zakořeněném v $u$. Pro každou úroveň definujeme horní a dolní práh hustoty uzlů na této úrovni a při porušení vyvažujeme.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img/dynamic_oblivious.png}
+\end{figure}
+
+Vyhledávání: $O(\log_B N)$, range query: $O(\log_B N + 	\frac{K}{B})$, update $O(\log_B N + \frac{\log^2N}{B})$.
+
 
 %TODO další cache oblivious struktury, merge a funnel sort
 
