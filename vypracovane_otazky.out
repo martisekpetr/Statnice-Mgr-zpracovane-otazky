@@ -87,43 +87,48 @@
 \BOOKMARK [-1][-]{part.3}{III Strojov\351 ucen\355}{}% 87
 \BOOKMARK [0][-]{chapter.4}{Strojov\351 ucen\355 a jeho aplikace}{part.3}% 88
 \BOOKMARK [1][-]{section.4.1}{Strojov\351 ucen\355; prohled\341v\341n\355 prostoru verz\355, ucen\355 s ucitelem a bez ucitele, pravdepodobnostn\355 pr\355stupy, teoretick\351 aspekty strojov\351ho ucen\355.}{chapter.4}% 89
-\BOOKMARK [1][-]{section.4.2}{Evolucn\355 algoritmy; z\341kladn\355 pojmy a teoretick\351 poznatky, hypot\351za o stavebn\355ch bloc\355ch, koevoluce, aplikace evolucn\355ch algoritmu.}{chapter.4}% 90
-\BOOKMARK [1][-]{section.4.3}{Strojov\351 ucen\355 v poc\355tacov\351 lingvistice a algoritmy pro statistick\375 parsing.}{chapter.4}% 91
-\BOOKMARK [2][-]{subsection.4.3.1}{Z\341klady teorie informace}{section.4.3}% 92
-\BOOKMARK [2][-]{subsection.4.3.2}{Modelov\341n\355 jazyka, za\235umen\375 kan\341l}{section.4.3}% 93
-\BOOKMARK [2][-]{subsection.4.3.3}{Vyhlazov\341n\355 jazykov\351ho modelu}{section.4.3}% 94
-\BOOKMARK [2][-]{subsection.4.3.4}{Tr\355dy slov}{section.4.3}% 95
-\BOOKMARK [2][-]{subsection.4.3.5}{Markovovy modely}{section.4.3}% 96
-\BOOKMARK [2][-]{subsection.4.3.6}{Tagging}{section.4.3}% 97
-\BOOKMARK [2][-]{subsection.4.3.7}{Statistick\375 parsing}{section.4.3}% 98
-\BOOKMARK [2][-]{subsection.4.3.8}{Statistick\375 strojov\375 preklad}{section.4.3}% 99
-\BOOKMARK [1][-]{section.4.4}{Pravdepodobnostn\355 algoritmy pro anal\375zu biologick\375ch sekvenc\355; hled\341v\341n\355 motivu v DNA, strategie pro detekci genu a predikci struktury proteinu.}{chapter.4}% 100
-\BOOKMARK [2][-]{subsection.4.4.1}{Restrikcn\355 mapov\341n\355}{section.4.4}% 101
-\BOOKMARK [2][-]{subsection.4.4.2}{Hled\341n\355 motivu}{section.4.4}% 102
-\BOOKMARK [2][-]{subsection.4.4.3}{Sequence alignment}{section.4.4}% 103
-\BOOKMARK [2][-]{subsection.4.4.4}{Genome rearrangement}{section.4.4}% 104
-\BOOKMARK [2][-]{subsection.4.4.5}{Predikce genu}{section.4.4}% 105
-\BOOKMARK [0][-]{chapter.5}{Neuronov\351 s\355te}{part.3}% 106
-\BOOKMARK [1][-]{section.5.1}{Neurofyziologick\351 minimum.}{chapter.5}% 107
-\BOOKMARK [2][-]{subsection.5.1.1}{Mozek}{section.5.1}% 108
-\BOOKMARK [2][-]{subsection.5.1.2}{Neuron}{section.5.1}% 109
-\BOOKMARK [2][-]{subsection.5.1.3}{Prenos sign\341lu}{section.5.1}% 110
-\BOOKMARK [2][-]{subsection.5.1.4}{Pamet}{section.5.1}% 111
-\BOOKMARK [1][-]{section.5.2}{Modely pro ucen\355 s ucitelem, algoritmus zpetn\351ho \235\355ren\355, strategie pro urychlen\355 ucen\355, regularizacn\355 techniky a generalizace.}{chapter.5}% 112
-\BOOKMARK [2][-]{subsection.5.2.1}{Modely pro ucen\355 s ucitelem}{section.5.2}% 113
-\BOOKMARK [2][-]{subsection.5.2.2}{Algoritmus zpetn\351ho \235\355ren\355 \(Backpropagation\)}{section.5.2}% 114
-\BOOKMARK [2][-]{subsection.5.2.3}{Strategie pro urychlen\355 ucen\355}{section.5.2}% 115
-\BOOKMARK [1][-]{section.5.3}{Asociativn\355 pameti, Hebbovsk\351 ucen\355 a hled\341n\355 suboptim\341ln\355ch re\235en\355, stochastick\351 modely.}{chapter.5}% 116
-\BOOKMARK [2][-]{subsection.5.3.1}{Asociativn\355 pameti}{section.5.3}% 117
-\BOOKMARK [2][-]{subsection.5.3.2}{Hebbovsk\351 ucen\355 a hled\341n\355 suboptim\341ln\355ch re\235en\355}{section.5.3}% 118
-\BOOKMARK [2][-]{subsection.5.3.3}{Stochastick\351 modely}{section.5.3}% 119
-\BOOKMARK [1][-]{section.5.4}{Umel\351 neuronov\351 s\355te zalo\236en\351 na principu ucen\355 bez ucitele.}{chapter.5}% 120
-\BOOKMARK [2][-]{subsection.5.4.1}{Kompeticn\355 ucen\355}{section.5.4}% 121
-\BOOKMARK [2][-]{subsection.5.4.2}{PCA \(Principal Component Analysis\)}{section.5.4}% 122
-\BOOKMARK [2][-]{subsection.5.4.3}{Kohonenovy mapy}{section.5.4}% 123
-\BOOKMARK [2][-]{subsection.5.4.4}{Ucen\355 s ucitelem}{section.5.4}% 124
-\BOOKMARK [1][-]{section.5.5}{Modul\341rn\355, hierarchick\351 a hybridn\355 modely neuronov\375ch s\355t\355.}{chapter.5}% 125
-\BOOKMARK [2][-]{subsection.5.5.1}{Modul\341rn\355 s\355te}{section.5.5}% 126
-\BOOKMARK [2][-]{subsection.5.5.2}{Hybridn\355 s\355te}{section.5.5}% 127
-\BOOKMARK [2][-]{subsection.5.5.3}{V\355cevrstv\351 Kohonenovy mapy}{section.5.5}% 128
-\BOOKMARK [1][-]{section.5.6}{Genetick\351 algoritmy a jejich vyu\236it\355 pri ucen\355 umel\375ch neuronov\375ch s\355t\355.}{chapter.5}% 129
+\BOOKMARK [2][-]{subsection.4.1.1}{Teoretick\351 aspekty strojov\351ho ucen\355}{section.4.1}% 90
+\BOOKMARK [2][-]{subsection.4.1.2}{Ucen\355 s ucitelem}{section.4.1}% 91
+\BOOKMARK [2][-]{subsection.4.1.3}{Ucen\355 bez ucitele}{section.4.1}% 92
+\BOOKMARK [2][-]{subsection.4.1.4}{Pravdepodobnostn\355 pr\355stupy}{section.4.1}% 93
+\BOOKMARK [2][-]{subsection.4.1.5}{Prohled\341v\341n\355 prostoru verz\355}{section.4.1}% 94
+\BOOKMARK [1][-]{section.4.2}{Evolucn\355 algoritmy; z\341kladn\355 pojmy a teoretick\351 poznatky, hypot\351za o stavebn\355ch bloc\355ch, koevoluce, aplikace evolucn\355ch algoritmu.}{chapter.4}% 95
+\BOOKMARK [1][-]{section.4.3}{Strojov\351 ucen\355 v poc\355tacov\351 lingvistice a algoritmy pro statistick\375 parsing.}{chapter.4}% 96
+\BOOKMARK [2][-]{subsection.4.3.1}{Z\341klady teorie informace}{section.4.3}% 97
+\BOOKMARK [2][-]{subsection.4.3.2}{Modelov\341n\355 jazyka, za\235umen\375 kan\341l}{section.4.3}% 98
+\BOOKMARK [2][-]{subsection.4.3.3}{Vyhlazov\341n\355 jazykov\351ho modelu}{section.4.3}% 99
+\BOOKMARK [2][-]{subsection.4.3.4}{Tr\355dy slov}{section.4.3}% 100
+\BOOKMARK [2][-]{subsection.4.3.5}{Markovovy modely}{section.4.3}% 101
+\BOOKMARK [2][-]{subsection.4.3.6}{Tagging}{section.4.3}% 102
+\BOOKMARK [2][-]{subsection.4.3.7}{Statistick\375 parsing}{section.4.3}% 103
+\BOOKMARK [2][-]{subsection.4.3.8}{Statistick\375 strojov\375 preklad}{section.4.3}% 104
+\BOOKMARK [1][-]{section.4.4}{Pravdepodobnostn\355 algoritmy pro anal\375zu biologick\375ch sekvenc\355; hled\341v\341n\355 motivu v DNA, strategie pro detekci genu a predikci struktury proteinu.}{chapter.4}% 105
+\BOOKMARK [2][-]{subsection.4.4.1}{Restrikcn\355 mapov\341n\355}{section.4.4}% 106
+\BOOKMARK [2][-]{subsection.4.4.2}{Hled\341n\355 motivu}{section.4.4}% 107
+\BOOKMARK [2][-]{subsection.4.4.3}{Sequence alignment}{section.4.4}% 108
+\BOOKMARK [2][-]{subsection.4.4.4}{Genome rearrangement}{section.4.4}% 109
+\BOOKMARK [2][-]{subsection.4.4.5}{Predikce genu}{section.4.4}% 110
+\BOOKMARK [0][-]{chapter.5}{Neuronov\351 s\355te}{part.3}% 111
+\BOOKMARK [1][-]{section.5.1}{Neurofyziologick\351 minimum.}{chapter.5}% 112
+\BOOKMARK [2][-]{subsection.5.1.1}{Mozek}{section.5.1}% 113
+\BOOKMARK [2][-]{subsection.5.1.2}{Neuron}{section.5.1}% 114
+\BOOKMARK [2][-]{subsection.5.1.3}{Prenos sign\341lu}{section.5.1}% 115
+\BOOKMARK [2][-]{subsection.5.1.4}{Pamet}{section.5.1}% 116
+\BOOKMARK [1][-]{section.5.2}{Modely pro ucen\355 s ucitelem, algoritmus zpetn\351ho \235\355ren\355, strategie pro urychlen\355 ucen\355, regularizacn\355 techniky a generalizace.}{chapter.5}% 117
+\BOOKMARK [2][-]{subsection.5.2.1}{Modely pro ucen\355 s ucitelem}{section.5.2}% 118
+\BOOKMARK [2][-]{subsection.5.2.2}{Algoritmus zpetn\351ho \235\355ren\355 \(Backpropagation\)}{section.5.2}% 119
+\BOOKMARK [2][-]{subsection.5.2.3}{Strategie pro urychlen\355 ucen\355}{section.5.2}% 120
+\BOOKMARK [1][-]{section.5.3}{Asociativn\355 pameti, Hebbovsk\351 ucen\355 a hled\341n\355 suboptim\341ln\355ch re\235en\355, stochastick\351 modely.}{chapter.5}% 121
+\BOOKMARK [2][-]{subsection.5.3.1}{Asociativn\355 pameti}{section.5.3}% 122
+\BOOKMARK [2][-]{subsection.5.3.2}{Hebbovsk\351 ucen\355 a hled\341n\355 suboptim\341ln\355ch re\235en\355}{section.5.3}% 123
+\BOOKMARK [2][-]{subsection.5.3.3}{Stochastick\351 modely}{section.5.3}% 124
+\BOOKMARK [1][-]{section.5.4}{Umel\351 neuronov\351 s\355te zalo\236en\351 na principu ucen\355 bez ucitele.}{chapter.5}% 125
+\BOOKMARK [2][-]{subsection.5.4.1}{Kompeticn\355 ucen\355}{section.5.4}% 126
+\BOOKMARK [2][-]{subsection.5.4.2}{PCA \(Principal Component Analysis\)}{section.5.4}% 127
+\BOOKMARK [2][-]{subsection.5.4.3}{Kohonenovy mapy}{section.5.4}% 128
+\BOOKMARK [2][-]{subsection.5.4.4}{Ucen\355 s ucitelem}{section.5.4}% 129
+\BOOKMARK [1][-]{section.5.5}{Modul\341rn\355, hierarchick\351 a hybridn\355 modely neuronov\375ch s\355t\355.}{chapter.5}% 130
+\BOOKMARK [2][-]{subsection.5.5.1}{Modul\341rn\355 s\355te}{section.5.5}% 131
+\BOOKMARK [2][-]{subsection.5.5.2}{Hybridn\355 s\355te}{section.5.5}% 132
+\BOOKMARK [2][-]{subsection.5.5.3}{V\355cevrstv\351 Kohonenovy mapy}{section.5.5}% 133
+\BOOKMARK [1][-]{section.5.6}{Genetick\351 algoritmy a jejich vyu\236it\355 pri ucen\355 umel\375ch neuronov\375ch s\355t\355.}{chapter.5}% 134

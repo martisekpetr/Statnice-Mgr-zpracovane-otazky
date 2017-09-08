@@ -367,12 +367,54 @@ $\mathcal{U}$ popíšeme jako 3-páskový, protože je to technicky jednodušš�
 
 
 \section{Rekurzivní a rekurzivně spočetné množiny.}
+Rekurzivní a rekurzivně spočetné množiny se formálně definují pomocí rekurzivních funkcí. Následuje tedy posloupnost definic, které nás k nim dovedou.
+
 \subsection{Formální definice}
+Všechny funkce v následujících sekcích jsou $\N^n \mapsto \N$.
 
+\subsubsection{Základní funkce}
+\begin{enumerate}[label=\Roman*.]
+	\item \textit{konstantní nulová funkce:} $o(x) = 0$
+	\item \textit{funkce následníka:} $s(x) = x + 1$
+	\item \textit{projekce:} $I_n^j(x_1, x_2, \dots, x_n) = x_j$ (vrací hodnotu $j$-t=ho parametru)
+\end{enumerate}
 
+\subsubsection{Operátory}
+\begin{enumerate}[label=\Roman*.]
+	\item \textit{substituce:} Operátor $S_n^m$ přiřadí funkci $m$ proměnných $f$ a funkcím $n$ proměnných $g_1, g_2, \dots, g_m$ funkci $n$ proměnných $h$, pro níž platí 
+	$$h(x_1,x_2,\dots x_n) \simeq f(g_1(x_1,x_2,\dots x_n), \dots, g_m(x_1,x_2,\dots x_n))$$
+	
+	V programování odpovídá využívání funkcí a procedur v těle programu.
+	
+	\item \textit{primitivní rekurze:} Operátor $R_n(f,g)$ přiřadí funkci $n-1$ proměnných $f$ a funkci $n+1$ proměnných $g$ funkci $n$ proměnných $h$, pro níž platí
+	$$
+	h(x_1,x_2,\dots x_n) \simeq
+	\begin{dcases}
+	f(x_2,\dots x_n) &\quad x_1 = 0 \\
+	g(x_1 - 1, h(x_1 - 1,x_2,\dots x_n), x_2,\dots x_n) & x_1 > 0 \\
+	\end{dcases}
+	$$
+	
+	Odpovídá \textbf{for} cyklu. Proměnná $x_1$ slouží jako čítač.
+	
+	\item \textit{minimalizace:} Operátor $M_n(f)$ přiřadí funkci $n+1$ proměnných $f$ funkci $n$ proměnných $h$, pro níž platí
+	$$h(x_1,x_2,\dots x_n) \simeq \min\{y\ |\ f(x_1,x_2,\dots x_n,y){\downarrow}=0 \wedge (\forall z \leq y)[f(x_1,x_2,\dots x_n,z){\downarrow}]\}$$
+	
+	Odpovídá \textbf{while} cyklu.
+\end{enumerate}
 
+\subsubsection{Rekurzivní funkce}
+\textbf{Primitivně rekurzivní funkce (PRF)} jsou funkce, které vzniknou odvozením ze základních funkcí pomocí operátorů \textit{substituce} a \textit{primitivní rekurze} (tj. je to nejmenší třída funkcí obsahující základní funkce a uzavřená na dvě uvedené operace). Každá PRF je všude definovaná (=totální) (protože for cykly vždy konvergují).
+
+\textbf{Částečně rekurzivní funkce (ČRF)} jsou funkce, které vzniknou odvozením ze základních funkcí pomocí operátorů \textit{substituce}, \textit{primitivní rekurze} a \textit{minimalizace}.
+
+\textbf{Obecně rekurzivní funkce (ORF)} je ČRF, která je všude definovaná.
+
+\subsubsection{Rekurzivní predikáty a množiny}
 \textbf{Predikát} (nebo \textbf{relace}) je množina n-tic $R \subseteq \N^n, n \geq 1$. Fakt, že
 $(x_1, \dots, x_n) \in \R$ budeme též označovat pomocí $R(x_1, \dots, x_n)$. 
+
+\textbf{Množina} je \textit{unární} predikát, tj. $R \subseteq \N$. 
 
 \textbf{Charakteristickou funkcí} predikátu $R$ je funkce $\lambda_R(x_1, \dots, x_n)$, pro kterou platí, že
 $$
@@ -383,23 +425,34 @@ $$
 \end{dcases*}
 $$
 	
-\textbf{Množina} je \textit{unární} predikát, tj. $R \subseteq \N$.
+\textbf{Primitivně rekurzivní predikát (PRP} je takový predikát, jehož charakteristická funkce je PRP.
 
-Predikát (nebo relace) $\R \subseteq \N^n, n \geq 1$ je \textbf{primitivně} (resp. \textbf{obecně}) \textbf{rekurzivní predikát (PRP, ORP)}, pokud je jeho charakteristická funkce primitivně (resp. obecně)
-rekurzivní. Obecně rekurzivním predikátům a relacím budeme též říkat \textbf{rekurzivní}.
+\textbf{Obecně rekurzivní predikát (ORP)}, též pouze \textbf{rekurzivní predikát} je takový predikát, jehož charakteristická funkce je ORP.
 
-Predikát (nebo relace) $\R \subseteq \N^n, n \geq 1$ je \textbf{rekurzivně spočetný (RSP)}, pokud existuje funkce $n$ proměnných $f_R$, pro kterou platí, že
+\textbf{Rekurzivně spočetný predikát (RSP)} je takový predikát, pro který existuje funkce $n$ proměnných $f_R$, pro kterou platí, že
 $$(\forall(x_1, \dots, x_n) \in \N^n) \left[f_R(x_1, \dots, x_n){\downarrow}\ \Leftrightarrow R(x_1, \dots, x_n)\right]$$
 to jest, hodnota funkce $f_R$ je pro danou $n$-tici definovaná právě když je na ní predikát $R$ splněný.
-Hodnota funkce v tomto případě není důležitá. Takové funkci budeme také říkat \textit{částečná charakteristická funkce.}
+Hodnota funkce v tomto případě není důležitá. Takové funkci budeme také říkat \textit{částečná charakteristická funkce.} Tj. RSP je definičním oborem nějaké ČRF.
 
-Unární rekurzivní (resp. rekurzivně spočetný) predikát $A \subseteq N$ budeme též nazývat \textbf{rekurzivní množinou} (resp. \textbf{rekurzivně spočetnou množinou}).
+Speciálně tedy: \textbf{Rekurzivní} resp. \textbf{rekurzivně spočetná množina} je \textit{unární} rekurzivní (resp. rekurzivně spočetný) predikát.
+
+\subsubsection{Ekvivalence TS a ČRF}
+Rekurzivní a rekurzivně spočetné predikáty a množiny jsou ve skutečnosti jen nové názvy pro
+nám již známé rekurzivní a rekurzivně spočetné jazyky, vzhledem k tomu, že jsme popsali bijekci
+mezi binárními řetězci a kladnými čísly, odpovídají si vzájemně množiny čísel s jazyky jako
+množinami řetězců. 
+
+K tomu, že pojmy rekurzivní jazyk a rekurzivní množina jsou ekvivalentní, však musíme samozřejmě ukázat, že ČRF a TS jsou stejně silné výpočetní modely. 
 
 
 Množiny jsou ekvivalentní jazykům, protože TS je stejně silný výpošetní model jako ČRF (částečně rekurzivní funkce), pomocí kterých jsou rek. a rek. spoč. množiny definovány.
 
 
-
+Z ekvivalence TS a ČRF tedy plyne, že 
+\begin{itemize}
+	\item (algoritmicky) vyčíslitelné funkce = turingovsky vyčíslitelné funkce = ČRF
+	\item totální (algoritmicky) vyčíslitelné funkce = totální turingovsky vyčíslitelné funkce = ORF
+\end{itemize}
 
 
 
@@ -3628,6 +3681,1010 @@ $$F''_{LRU} \leq \frac{n_{LRU}}{n_{LRU} - n_{OPT}}F''_{OPT} + n_{OPT}$$
 \part{Strojové učení}
 \chapter{Strojové učení a jeho aplikace}
 \section{Strojové učení; prohledávání prostoru verzí, učení s učitelem a bez učitele, pravděpodobnostní přístupy, teoretické aspekty strojového učení.}
+\subsection{Teoretické aspekty strojového učení}
+
+\subsubsection{Základní pojmy}
+\begin{itemize}
+	\item cílová veličina $Y$ -- kvantitativní nebo kategoriální
+	\item příznaky (features) $X$ 
+	\item předpokládáme, že v datech existuje vztah $f$, pro nějž $Y = f(X) + \epsilon$. Chceme sestrojit model $\hat{f}$, který co nejlépe aproximuje $f$. 
+	\item modely
+	\begin{itemize}
+		\item parametrické (např. lin. regrese) 
+		\item neparametrické modely (např. $k$-NN)
+	\end{itemize}
+	
+	\item učení
+	\begin{itemize}
+		\item s učitelem (supervised) -- máme cílovou veličinu, kterou se snažíme aproximovat
+		\item bez učitele (unsupervised) -- popis dat, klastrování
+	\end{itemize}
+	
+	\item data rozdělíme na
+	\begin{itemize}
+		\item trénovací
+		\item testovací
+		\item (validační) -- pro doladění parametrů (např. volba stupně polynomu)
+	\end{itemize}
+	Používá se poměr 2/3 : 1/3 (bez validační množiny), nebo 1/2 : 1/4 : 1/4 (s validační).
+	
+	\textbf{Stratifikovaný výběr:} data rozdělíme tak, aby v každé části byl zachován poměr tříd.
+	\item úspěšnost klasifikace:
+	\bigskip
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			správná třída \textbackslash klasifikace & + & - \\ \hline
+			+ & TP (true positive) & FN (false negative) \\ \hline
+			- & FP (false positive) & TN (true negative) \\ \hline
+		\end{tabular}
+	\end{table}
+	\bigskip
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			celková správnost & accuracy & $Acc = \frac{TP + TN}{TP + TN + FP + FN}$ \\ \hline
+			chyba & error & $Err = \frac{FP + FN}{TP + TN + FP + FN}$ \\ \hline
+			přesnost & precision & $Prec = \frac{TP}{TP + FP}$ \\ \hline
+			úplnost, sensitiva & recall, sensitivity & $Rec = \frac{TP}{TP + FN}$ \\ \hline
+			specificita & specificity & $Spec = \frac{TN}{TN + FP}$ \\ \hline
+		\end{tabular}
+	\end{table}
+	
+	
+\end{itemize}
+
+\subsubsection{Chyba}
+Očekávaná hodnota:
+$$E(Y-\hat{Y})^2 = E[f(X) + \epsilon - \hat{f}(X)]^2$$
+
+\begin{itemize}		
+	\item reducibilní chyba ($[f(X) - \hat{f}(X)]^2$ -- špatně naučený model
+	\item ireducibilní chyba($Var(\epsilon)$)-- vliv neměřených veličin, náhody, šumu v datech 
+\end{itemize}
+
+\paragraph{Míry chyby pro regresi}
+\begin{itemize}
+	\item \textbf{kvadratická} $L(Y, \hat{f}(X)) = (Y - \hat{f}(X))^2 $
+	\item \textbf{absolutní} $L(Y, \hat{f}(X)) = |Y - \hat{f}(X)| $	
+\end{itemize}
+\paragraph{Míry chyby pro klasifikaci}
+Cílovou veličinu označujeme většinou $G$ (místo $Y$), model predikuje buď jednu konkrétní třídu, nebo pravděpodobnostní vektor různých tříd $p_k(X) = P(G=k|X)$.
+\begin{itemize}
+	\item \textbf{0-1 chyba} $L(G,\hat{G}(X)) = I(G \neq \hat{G}(X))$
+	\item \textbf{log-likelihood} $L(G,\hat{p}(X)) = -2\sum_{k=1}^{K}I(G=k)\cdot \log \hat{p}_k(X) = -2\log \hat{p}_G(X)$
+\end{itemize}
+
+\textbf{Trénovací chyba} na trénovacích datech velikosti $N$ je 
+$$\overline{err} = \frac{1}{N}\sum_{i=1}^{N}L(y_i, \hat{f}(x_i))$$
+
+\textbf{Chyba generalizace} je očekávaná chyba na nezávislých testovacích datech $(X,Y)$
+$$Err = E[L(Y,\hat{f}(X))]$$
+
+Odhad chyby generalizace na testovacích datech $S = (X,Y)$:
+$$\overline{Err} = \frac{1}{T}\sum_{i=1}^{T}L(y_i, \hat{f}(x_i))$$
+resp.
+$$\overline{Err} = \frac{1}{T}\sum_{i=1}^{T}L(g_i, \hat{p}(x_i))$$
+
+\subsubsection{Přeučení, bias-variance trade-off}
+Přeučení na trénovacích datech $\to$ zvýšení chyby na testovacích.
+
+Jiné vyjádření chyby:
+$$E(Y - \hat{X})^2 = Var(\hat{X}) + [Bias(\hat{f}(X))]^2 + Var(\epsilon)$$
+
+\textbf{Bias:} chybné předpoklady učícího algoritmu, zjednodušení reálného světa. Např. použití lineární regrese pro nelineární data má velký Bias ($\to$ underfitting)
+
+\textbf{Variance:} jak moc se $\hat{f}$ změní pro jiná trénovací data. Pokud je moc velká, znamená to, že model kromě relevantních vztahů modeluje i šum v datech ($\to$ přeučení).
+
+Vztah: čím flexibilnější model, tím nižší bias, ale vyšší variance.
+
+\subsubsection{Prokletí dimenzionality}
+\url{http://www.visiondummy.com/2014/04/curse-dimensionality-affect-classification/}
+\uv{Nejbližší sousedé jsou při velké dimenzi hodně daleko.}
+
+Zvyšování počtu příznaků (tedy dimenzionality $X$) vede k exponenciálnímu snížení hustoty vzorků ve vstupním prostoru. 
+
+Problém: přeučení -- při dostatečně velké dimenzi lze vždycky najít dělící nadrovinu.
+
+Problém: chceme získat dostatek trénovacích dat, abychom pokryli řekněme 20\,\% rozsahu každého příznaku. Pro 1D stačí 20\,\% dostupných dat, pro 2D už potřebujeme 45\,\%, pro 3D 58\,\%.
+
+\subsubsection{Krosvalidace}
+Používá se typicky v případě nedostatku dat, kdy nelze vyčlenit testovací množinu. Případně pro stabilnější odhad chyby.
+
+Data se rozdělí na $k$ částí (folds), jedna část se použíje pro testování, ostatní pro učení. Opakujeme s každou částí, získáme $k$ testů, jejich výsledky zprůměrujeme. Ze zkušenosti se používá $k = 5$ nebo $k = 10$. 
+
+Celý proces se často opakuje pro různá dělení (aby se ošetřila možnost nešťastného dělení), častá je \uv{$10 \times 10$fold crossvalidation}
+
+Kritika: odhady chyby nejsou nezávislé.
+
+\subsubsection{LOOCV (Leave-one-out cross-validation)}
+Jeden vzorek dáme stranou, naučíme model, poté otestujeme na odloženém vzorku. Zprůměrujeme chybu. Vlastně ekvivalentní $N$-fold CV, tj. každý vzorek ve vlastním foldu. 
+
+Výhody: velká trénovací množina, učení netřeba opakovat (dělení je jednoznačné).
+
+Nevýhody: výpočetně náročné, může selhat (např. dvě třídy, data 50 na 50 -- chyba je 100\,\%!)
+
+\subsubsection{Bootstrap}
+Máme $N$ vzorků, z nich vybereme \textit{s opakováním} $N$ vzorků do trénovací množiny (tj. některé tam budou víckrát, některé vůbec). Vzorky, které nebyly vybrány, použijeme jako testovací množiny (pravděpodobnost nevybrání = $(1-\frac{1}{N})^N \approx e^{-1} =0.368$).
+
+Provedeme mnoho bootstrap výběrů a celkovou chybu spočteme jako 
+$$\overline{Err}^{(1)} = \frac{1}{N}\sum_{i=1}^{N}\frac{1}{|C^{-i}|}\sum_{b\in C^{-i}} L(y_i, \hat{f}^{b}(x_i))$$
+kde $C^{-1}$ je množina bootstrap výběrů nebosahujících vzorek $i$.
+
+Takto formulovaná chyba je pesimistická, neboť učíme na $N$ datech, která ale reálně pocházejí pouze z 0.632$N$ dat, proto korekce přičtením chyby na trénovacích datech:
+
+$$\overline{Err}^{(0.632)} = 0.632\cdot \overline{Err}^{(1)} + 0.368 \cdot \overline{err}$$
+
+Tato chyba zase ale může podhodnotit v případě přeučených dat, proto 
+
+$$\overline{Err}^{(0.632+)} = \hat{w}\cdot \overline{Err}^{(1)} + (1-\hat{w})\cdot \overline{err}$$
+kde
+$$w = \frac{0.632}{1 - 0.368\cdot\hat{R}}
+\quad \text{kde}\quad 
+\hat{R} = \frac{\overline{Err}^{(1)} - \overline{err}}{\hat{\gamma} - \overline{err}}
+\quad \text{kde}\quad 
+\hat{\gamma} = \frac{1}{N^2}\sum_{i=1}^{N}\sum_{j=1}^{N}L(y_i,\hat{f}(x_j))
+$$
+
+
+regularizace: p >> n
+* subset selection
+* shrinkage (ridge, lasso)
+* dimension reduction (PCA, PCR, PLS)
+
+
+\subsection{Učení s učitelem}
+\subsubsection{Lineární regrese}
+Předpokládáme lineární vztah, tj. $Y \approx \beta_0 + \beta_1 X$. Náš model bude tedy $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$. 
+
+Odhadneme $\hat{\beta}_0, \hat{\beta}_1$ z dat: 
+\begin{itemize}
+	\item definujeme \textbf{residuum} vzorku jako $y_i - \hat{y}_i = y_i - (\hat\beta_0 + \hat\beta_1x_i)$
+	\item \textbf{RSS (residual sum of squares)} = $e_1^2 + e_2^2 + \dots + e_n^2$
+	\item RSS chceme minimalizovat (=MSE, minimal square error), takže zderivujeme a položíme rovno 0. Dostaneme
+	$$\hat\beta_1 = \frac{\sum_{i=1}^{n}(x_i-\overline{x})(y_i - \overline{y})}{\sum_{i=1}^{n}(x_i-\overline{x})^2}
+	\qquad
+	\hat\beta_0 = \overline{y} - \hat\beta_1\overline{x}$$
+	\item ve skutečnosti: $Y =\beta_0 + \beta_1 X + \epsilon$, kde $\epsilon$ je chyba modelu, vliv jiných proměnných, šum,...	
+\end{itemize}
+
+\paragraph{Přesnost odhadu koeficientů}
+Značení: $\beta_1, \beta_0$ jsou reálné koeficienty, $\hat{\beta}_1, \hat{\beta}_0$ jsou odhady získané pomocí MSE.
+
+Standardní chyba:
+$$
+SE(\hat{\beta}_1)^2 = \frac{\delta^2}{\sum_{i=1}^{n}(x_i - \overline{x})}
+\qquad
+SE(\hat{\beta}_0)^2 = \delta^2 \left[\frac{1}{n} + \frac{\overline{x}^2}{\sum_{i=1}^{n}(x_i - \overline{x})} \right]$$
+
+kde $\delta^2 = Var(\epsilon)$, taktéž označován jako RSE (standard residual error). Odhaduje se jako $RSE = \sqrt{RSS/(n-2}$.
+
+\subparagraph{Intervaly věrohodnosti:} na 95\,\% leží $\beta_1$ v intervalu $[\hat{\beta}_1 - 2\cdot SE(\hat{\beta}_1), \hat{\beta}_1 + 2\cdot SE(\hat{\beta}_1)]$, analogicky $\beta_0$.
+
+\subparagraph{Testování hypotézy nezávislosti}
+Nulová hypotéza $H_0: \beta_1 = 0$ (žádná závislost $Y$ na $X$).
+
+Alternativní hypotéza $H_1: \beta_1 \neq 0$ (existuje závislost $Y$ na $X$).
+
+Používá se \textbf{t-statistika}: $t = \frac{\hat\beta_1 - 0}{SE(\hat\beta_1)}$. Porovnáním s tabelovaným t-rozložením pro $(n-2)$ stupňů volnosti získáme \textbf{p-value}, pokud je $< 0.05$, zamítáme nulovou hypotézu.
+
+\paragraph{Správnost modelu}
+Chceme-li ohodnotit, jak dobře model odpovídá datům, můžeme použít
+\begin{itemize}
+	\item $RSE = \sqrt{RSS / (n-2)}$ Tato míra však závisí na datech, těžko se porovnává pro různá data.
+	
+	\item $R^2 = \frac{TSS - RSS}{TSS}$, kde $RSS = \sum_{i=1}^{n}(y_i - \hat{y}_i)^2$ a $TSS = \sum_{i=1}^{n}(y_i - \overline{y})^2$ (total sum of squares). Hodnota TSS vyjadřuje rozptyl v Y, RSS je rozptyl, který zůstal \uv{nevysvětlen} regresí; TSS - RSS je pak rozptyl v Y, který \uv{vysvětluje} regrese. $R^2$ tedy vyjadřuje \textbf{kolik procent rozptylu v $Y$ lze vysvětlit pomocí $X$}.
+\end{itemize}
+\paragraph{Vícerozměrná lineární regrese}
+Vícerozměrná lineární funkce, tj. $Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \dots + \beta_px_p + \epsilon$. Náš model bude tedy $\hat{y} = \hat{\beta}_0 + \sum_{i=1}^{n}X_i\hat{\beta}_i$. Rozšíříme li vektory $x$ na $x = \langle1, x_1, x_2,\dots\rangle$, můžeme psát maticově:
+$$\hat{y} = X\beta$$
+
+Pro odhad parametrů $\beta$ použijeme opět RSS:
+$$RSS(\beta) = \sum_{i=1}^{N}(y_i - x_i^T\beta)^2 = (y-X\beta)^T(y-X\beta)$$
+Derivací podle $\beta$ dostaneme $X^T(y-X\beta) = 0$. Pro regulární matice vyjde $\hat{\beta} = (X^TX)^{-1}X^Ty$, pro singulární zkoušíme ubrat závislé sloupce.
+		
+
+\paragraph{Další varianty}
+\begin{itemize}
+\item \textbf{kvalitativní proměnné (prediktory):} Používáme \uv{dummy} proměnné, pro 0/1 stačí 1 dummy, pro $k$ tříd je třeba $k-1$ dummy proměnných.
+
+\item \textbf{nelineární modely} Polynomiální, exponenciální, logaritmické, součiny prediktorů
+\end{itemize}
+
+\paragraph{Problémy}
+\begin{itemize}
+	\item \textbf{korelovaná rezidua:} např. u časových řad mívají sousedé často podobnou chybu (směr, velikost), což může vést k celkovému podhodnocení chyby.
+	
+	\item \textbf{nekonstantní rozptyl reziduí:} např. s rostoucím $x$ roste rozptyl. Řešením je logaritmická transformace vstupu nebo použití vážených nejmenších čtverců.
+	
+	\item \textbf{outliers (odehlá pozorování):} Chyba v datech (odstranit) nebo v modelu (chybějící prediktor)? Většinou moc nepohne s přímkou, ale vede ke zkreslení chyby, p-hodnoty,... 
+	
+	\item \textbf{high leverage point:} Vzdálený bod, nezvyklé $x_i$, může silně ovlivnit přímku. Při vícerozměrné regresi není lehké odhalit, pomůže \textit{leverage statistics}.
+	
+	\item \textbf{kolinearita}
+\end{itemize}
+
+\subsubsection{Lineární metody pro klasifikaci (logistická regrese, LDA, QDA)}
+  \begin{itemize}
+	\item klasifikace: kvalitativní cílová proměnná $G$, předpověz správnou $G_k \in G$ nebo $p_k = P(G=G_k | X)$
+	\item LINEÁRNÍ metody = hranice mezi třídami je linární
+	\item NE lineární regrese:
+	\begin{itemize}
+		\item číselné kódování je špatně (není přirozené pořadí, škála; jiná pořadí mohou dát jiné výsledky)
+		\item pro bin. G by šlo, ale logistická je lepší (žádné negativní pravděpodobnosti)
+		\item masking = nějaká třída je skryta ostatními, nikdy nedominuje
+	\end{itemize}
+	\end{itemize}
+	\paragraph{Logistická regrese}
+	Předpokládáme binární klasifikaci, tj. dvě třídy 0 a 1. Chceme modelovat vztah mezi $p_k(X) = P(G=1 | X)$ a $X$. Tj. chceme fci, jejíž hodnoty jsou vždy mezi 0 a 1 (což lin. není). Použijeme \textbf{logistickou funkci}:
+	$$p(X) = P(G=1 | X) = \frac{\exp(\beta_0 + \beta_1X)}{1 + \exp(\beta_0 + \beta_1 X)}$$
+	
+	resp. od ní odvozenou \textbf{logit funkci}
+	$$\log\frac{p(X)}{1 - p(X)} = \beta_0 + \beta_1 X$$
+	Levá strana této rovnice se nazývá \textit{logit} nebo \textit{log-odds} (protože $p(X)/(1-p(X))$ se nazývá \textit{\uv{šance} = odds}). 
+	
+	\subparagraph{Učení koeficientů}
+	Pro naučení parametrů modelu $\beta$ se používá \textit{maximalizace věrohodnosti}, kde optimalizovaná funkce má tvar $$l(\beta_0,\beta_1) = \prod_{i : y_i = 1} p(x_i) \cdot \prod_{i : y_i = 0} (1-p(x_i))$$
+	
+	Kvalitativní prediktory lze řešit dummy proměnnými stejně jako u lin. regrese.
+
+	\subparagraph{Více rozměrná logistická regrese}
+	Více prediktorů:
+	$$p(X) = \frac{\exp(\beta_0 + \beta_1X_1 + \dots + \beta_pX_p)}{1 + \exp(\beta_0 + \beta_1 X_ + \dots + \beta_pX_p)}$$
+	
+	Více cílových tříd: existuje, spíše se ale používá LDA.
+
+	\paragraph{LDA (Linear Discriminant Analysis)}
+	\begin{itemize}
+		\item use of bayes theorem
+		\item předpoklad normálního rozložení X
+		\begin{itemize} 
+			\item každá třída vlastní mean, ale společná kovarianční matice (kovariance mezi prediktory) $\to$ stejně tvarované elipsy
+		\end{itemize}
+		\item aproximuje bayesovský klasifikátor (=ideální klasifikátor při znalosti tříd)
+		\item různá cena chyby -\textgreater{} posun hranice z 0.5 třeba na 0.2
+		\item ROC křivka
+	\end{itemize}
+	\paragraph{QDA (Quadratic Discriminant Analysis)}
+	\begin{itemize}
+		\item každá třída svou kovarianční matici $\to$ různé elipsy
+		\item mnohem více parametrů, které je třeba odhadnout z dat 
+		\item kvadratická hranice
+	\end{itemize}
+	
+	\paragraph{Srovnání (kNN, logistická regrese, LDA, QDA)}
+	\begin{itemize}	
+		\item LDA, QDA \dots předpoklad norm. rozložení
+		\item logist, LDA \dots lin. rozh. hranice
+		\item kNN \dots vhodné pro libovolně nelineární hranici
+	\end{itemize}
+
+
+\subsubsection{Rozhodovací stromy}
+Rozhodovací strom pro daný cílový atribut $G$ je kořenový strom tvořený z 
+\begin{itemize}
+	\item \textit{kořene a vnitřních listů označených atributem}, ze kterého vede jedna hrana pro každou možnou hodnotu tohoto atributu (případně interval pro spojité predikáty)
+	\item \textit{listů označených předpokládanou hodnotou cílového atributu G} za předpokladu, že ostatní atributy nabývají hodnot daných uzly na cestě od kořene do tohoto listu
+\end{itemize}
+
+\textbf{Základní algoritmus (obecně):}
+\begin{enumerate}
+	\item vyber atribut, vytvoř uzel a rozděl data podle hodnoty atributu (pro regresi: nový dělicí bod intervalu)
+	\item pro každou hodnotu vytvoř podstrom z dat s odpovídající hodnotou
+	\item pokud data obsahují jen jednu hodnotu $G$ nebo pokud došly atributy k dělení, \textit{vytvoř list s hodnotou nejčetnější cílové třídy}
+\end{enumerate}
+
+Stromy mohou být
+\begin{itemize}
+	\item \textbf{regresní} -- list obsahuje průměr hodnot cílové veličiny v regionu daném atributy ($\to$ schodovitý graf). Jako míru chyby lze použít RSS.
+	
+	\item \textbf{klasifikační} -- list obsahuje najčetnější třídu v regionu daném atributy. Jako míru chyby lze použít:
+	\begin{itemize}
+		\item \textbf{classification error rate}: pro každý region $R_m$ (jehož vypočtenou třídu označíme jako $k(m)$) spočti
+		$$\frac{1}{|R_m|} \sum_{i \in R_m} I(y_i \neq k(m)) = 1 - p_{m,k(m)}$$
+		kde $p_{m,k(m)}$ označuje procento vzorků v regionu $R_m$ patřících do třídy $k(m)$.
+		
+		\item \textbf{gini index}: 
+		$$\sum_{k \in K} p_{m,k} \cdot (1 - p_{m,k})$$
+		Vyjadřuje \uv{region purity}. Čím jednoznačnější klasifikace v regionu, tím nižší gini index. Nejvyšší je pro uniformní rozdělení tříd.
+		
+		\item \textbf{cross-entropy}: 
+		$$\sum_{k \in K} p_{m,k}\cdot \log_2 p_{m,k}$$
+		Podobný efekt jako gini.
+	\end{itemize}
+\end{itemize}
+
+Regresní stromy se vytváří podobně, jen místo rozštěpení na všechny možné hodnoty kvalitativního atributu se kvantitativní atribut rozdělí nějakým dělicím bodem na 2 intervaly. Podle téhož atributu je pak možno řezat i opakovaně. 
+
+\paragraph{Volba atributu pro rozštěpení}
+Atribut pro rozštěpení v každé iteraci algoritmu vybíráme podle \textbf{informačního zisku}:
+$$Gain(data, X_j) = E_G(data) - \sum_{x_j \in X_j} \frac{|data_{X_j = x_j}|}{|data|}E_G(data_{X_j = x_j}) $$
+kde $X_j$ je atribut (pro nějž zisk počítáme), $x_j$ je nějaká hodnota tohoto atributu, $data_{X_j = x_j}$ je podmnožina dat, v nichž má atribut $X_j$ hodnotu $x_j$; a $E_G$ je entropie definovaná jako
+$$E_G(data) = \sum_{g \in G} - \frac{|data_{G=g}|}{|data|}\cdot \log_2 \frac{|data_{G=g}|}{|data|} = \sum_{i=1}^{|G|} - p_i\cdot log_2p_i$$
+kde $g$ je hodnota (třída) cílové veličiny $G$.
+
+Pro kvantitativní atributy je potřeba vyzkoušet všechny možné řezy intervalu a vybrat ten, který minimalizuje entropii.
+
+\paragraph{Algoritmus ID3}
+Formalizovaný postup, který jsme doposud popsali:
+\bigskip
+\begin{algorithm}[H]
+	\caption{ID3}
+	\begin{algorithmic}[1]
+		\Function{ID3}{$data,G,X$}
+			\State vytvoř kořen \textit{root}
+			\If{všechna $data$ stejné $g\in G$}
+				\State označ kořen $g$
+				\State \textbf{return}
+			\EndIf
+			\If{$X = \emptyset$}
+				\State označ kořen nejčastější $g$ v data
+				\State \textbf{return}
+			\EndIf
+			\State $X_j \gets$ atribut z $X$ s maximálním $Gain(data,X)$
+			\State označ \textit{root} atributem $X_j$
+			\For{$x_j$ \textbf{in} $X_j$}
+				\State přidej větev pod root
+				\State $data_{X_j = x_j} \gets$ podmonžina $data$, kde $X_j = x_j$
+				\If{$data_{X_j = x_j} = \emptyset$}
+					\State přidej list označený nejčastější $g$ v data
+					\State \textbf{return}	
+				\EndIf
+				\State přidej podstrem ID3($data_{X_j=x_j}, G, X \setminus {X_j}$)
+			\EndFor
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}	
+
+\paragraph{Prořezávání}
+U rozhodovacích stromů je velké riziko přeučení, chceme tedy strom nějak zmenšit. Jednou možností je už při konstrukci zaříznout rekurzi, pokud je Gain příliš malý -- to ovšem může být krátkozraké (slabý split může později vést k silnému). V praxi je lepší postavit velký strom a ten pak \textbf{prořezat}.
+
+\subparagraph{Reduced error pruning}
+Vyčleníme z dat stranou \textit{validační množinu} (případně použijeme krosvalidaci), poté slučujeme listy stromu, dokud se snižuje chyba na validační množině.
+
+\subparagraph{Cost complexity pruning}
+Přidáme do výpočtu chyby člen penalizující velikost stromu:
+$$C(T) = \sum_{leaf \in T} err(leaf) + \alpha|T|$$ 
+kde $err(leaf)$ je nějaká z chyb popsaných výše (gini, entropie). Jak volit $\alpha$? Pomocí krosvalidace, konkrétně: pro každé $\alpha$ uděláme kopii $T$ a přořežeme ji tak, abychom minimalizovali
+$$C_\alpha(T) = \sum_{leaf \in T} err(leaf) + \alpha|T|$$ 
+pro dané $\alpha$. Takto získáme sadu stromů \uv{indexovaných} parametrem $\alpha$. Z nich vybereme nejlepší pomocí krosvalidace.
+
+\subparagraph{CART}
+Vytvořím posloupnost stromů postupným slučováním dvou listů (vždy těch, které nejméně zvýší chybu), až mám jen kořen. Z této posloupnosti vyberu nejlepší pomocí krosvalidace.
+
+\paragraph{Chybějící hodnoty atributů}
+Řešení:
+\begin{itemize}
+\item Ignorovat instanci? chybějící atribut nemusí být důležitý, není důvod ignorovat.	
+\item Nebo naopak může chybět a není to náhoda -- pak vytvoříme novou hodnotu \uv{missing}
+\item Možno rozdělit instanci na kousky s různými hodnotami, váženými podle pravděpodobnosti hodnoty na dané úrovni stromu.
+\end{itemize}
+
+
+\subsubsection{Kombinace modelů (learning ensembles)}
+Idea: naučíme více modelů, pak jejich predikce zprůměrujeme / vybereme nejčastější klasifikaci. Obecný princip, ale často užívaný s rozhodovacími stromy. Ty totiž trpí na vysokou variance, kterou agregace naopak úspěšně snižuje ($\delta^2 \to \delta^2 / N)$. 
+
+
+
+\paragraph{Bagging (bootstrap aggregating)}
+Abych mohli vytrénovat mnoho různých modelů, potřebujeme mnoho trénovacích množin. Ty získáme technikou \textit{bootstrap} (tj. z $N$ dat vybereme \textit{s opakováním} $N$ vzorků, na těch natrénujeme model). V případě regresních stromů pak predikci tvoří průměr predikcí jednotlivých stromů, v případě klasifikace vezmeme nejčastěji predikovanou třídu (v případě \uv{soft} klasifikace vážený vektor pravděpodobností).
+
+Užité rozhodovací stromy \textit{nejsou prořezané}. Čím víc stromů, tím lépe (nehrozí overfitting), stačí zastavit jakmile se chyba ustálí (používá se cca 100 - 1000 stromů, záleží na problému).
+
+\subparagraph{OOB (Out Of Bag) error estimation}
+Pro odhad chyby bagged modelu nepotřebujeme krosvalidaci, protože bootstrapping přirozeně vytváří vhodná \uv{testovací data}. Pro každý model totiž použijeme jen cca $0.638\cdot N$ původních dat, zbytek jsou tzv. \textit{out-of-the-bag observations} = data nepoužitá v daném modelu. To znamená, že libovolný $i$-tý prvek jej cca $B/3$ modelů nepoužívá pro učení ($B$ = celkový počet stromů v ansámblu) -- na těchto modelech tedy můžeme testovat, jak dobře zvládnou $i$-tý prvek klasifikovat.
+
+Celková průmerná chyba se tedy spočte jako průměr chyb pro predikci jednotlivých prvků, které vypočteme na stromech, v nichž nebyl prvek použit při učení. Typ chyby záleží na úloze (MSE pro regresi; 0-1 chyba nebo log-likelihood pro klasifikaci).
+
+\paragraph{Random forest}
+Funguje stejně jako bagging, s jediným rozdílem. Vždy během splitování uzlů se uvažuje pouze \textbf{náhodně zvolená podmnožina $p$ atributů velikosti $m \sim \sqrt{p}$}. To napomáhá dekorelaci stromů a zabraňuje tomu, aby byl jeden silný prediktor vybrán do kořene každého stromu.
+
+Pro $m = p$ je to totéž, jako bagging.
+
+\paragraph{Stacking}
+Dvouúrovňová architektura: na vyšší úrovni je jeden (většinou jednoduchý) učící algoritmus (např. lineární), který kombinuje predikce modelů na nižší úrovni (např. stromů). Je žádoucí, aby model na nižší úrovni predikoval nejen třídu, ale i míru důvěry ve svou predikci.
+
+Jako míru chyby lze použít modifikované \textit{one-leave-out} a váhy jednotlivým modelům přiřadit tak, abychom minimalizovali
+$$\hat{\vec{w}} = \arg\min_\vec{w} \sum_{i=1}^{N}\left(y_i - \sum_{m=1}^{M} w_m \hat{f}_m^{-i}(x_i) \right)^2$$
+kde $\hat{f}^{-i}_m$ je predikce $m$-tého modelu naučeného s vynecháním $i$-tého příkladu. Váhy $\vec{w}$ je lépe mít nezáporné a normalizované.
+
+Celková predikce je tedy $\sum_{m=1}^{N} \hat{w}_m \hat{f}_m(x)$.
+
+\paragraph{Bumping}
+Bootstrap, ale místo agregace jen vybere nejlepší model (nejmenší chyba).
+
+\paragraph{Boosting}
+Stromy stavěny \emph{iterativně}, na základě chyb předchozího stromu. Nepoužívá bootstrap sampling. Fituje strom nikoliv na $y_i$, ale na \textbf{$r_i$ = residua} z předchozí iterace (pro regresi; pro klasifikaci: vážená data, špatně zařazeným zvýšíme váhu).
+
+\textbf{Parametry:}
+\begin{itemize}
+\item $d$ = velikost stromů (počet listů) - může být docela malé (i 1)
+\item $lambda$ = shrinkage parametr - zpomaluje učení (0.001 - 0.001)
+\item $B$ = počet stromů (\textbf{hrozí přeučení!! }ale jen pomalu, když vůbec
+\end{itemize}
+
+\textbf{Algoritmy:}
+\subparagraph{AdaBoost}
+Nejpopulárnější boosting algoritmus. Je však citlivý na šum a outliers. Varianta \textit{Discrete AdaBoost (M1)} vrací diskrétní třídu (\uv{hard} calssification):
+\bigskip
+\begin{algorithm}[H]
+	\caption{AdaBoost.M1}
+	\begin{algorithmic}[1]
+		\State $w_i \gets 1/N \quad \forall i = 1,2, \dots N$ \Comment{váhy trénovacích instancí}
+		\For{$m = 1 \dots M$}
+			\State nauč klasifikátor $G_m(x)$ na datech vážených $w_i$
+			\State spočti chybu 
+			$$err_m = \frac{\sum_{i=1}^{N} w_i\cdot I(y_i \neq G_m(x_i))}{\sum_{i=1}^{N} w_i}$$
+			\If{$err_m = 0 \vee err_m \geq 0.5$}
+				\State \textbf{return}
+			\EndIf
+			\State $\alpha_m \gets \log\frac{1 - err_m}{err_m}$
+			\State $w_i \gets w_i \cdot \exp(\alpha_m \cdot I(y_i \neq G_m(x_i))),\quad \forall i = 1,2,\dots,N$ \Comment{aktualizace vah}
+			\State (normalizace vah)
+		\EndFor
+		\State \textbf{return} $G(x) = sign\left[\sum_{m=1}^{M} \alpha_m G_m(x)\right]$
+	\end{algorithmic}
+\end{algorithm}		
+
+\subparagraph{Real AdaBoost}
+\uv{Soft} classification, tj. vrací pravděpodobnosti tříd.
+		
+\subparagraph{Boosting pro regresní stromy}
+Používá se \textit{shrinkage parameter $\lambda$} a horní limit na velikost stromu $d$:
+\bigskip
+\begin{algorithm}[H]
+	\caption{Boosting pro regresní stromy}
+	\begin{algorithmic}[1]
+		\State $\hat{f}(x) \gets 0$
+		\State $r_i = y_i \quad \forall i = 1,2,\dots,N$ \Comment{rezidua}
+		\For{$b = 1 \dots M$}
+			\State nauč strom $\hat{f}^b$ s $d$ řezy na datech $(X, r)$
+			\State aktualizuj $\hat{f}$ přidáním vážené verze tohoto nového stromu
+			$$\hat{f}(x) \gets \hat{f}(x) + \lambda\hat{f}^b(x)$$
+			\State aktualizuj rezidua
+			$$r_i \gets r_i - \lambda\hat{f}^b(x_i)$$
+		\EndFor
+		\State \textbf{return} $\hat{f}(x) =\sum_{b=1}^{B} \lambda \hat{f}^b(x)$
+	\end{algorithmic}
+\end{algorithm}		
+
+
+\subsubsection{SVM}
+\textbf{Support Vector Machines} jsou binární klasifikátory fungující na principu hledání dělící nadroviny. 
+
+\paragraph{Dělicí nadrovina}
+\textbf{Dělicí nadrovina} je tvaru
+$$\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots \beta_N x_N = 0
+\qquad\text{nebo vektorově}\qquad
+\beta_0 + \vec{\beta}^T \vec{x} = 0$$
+pro níž platí, že 
+\begin{align*}
+\beta_0 + \beta^T \vec{x} > 0 \quad \text{pokud $\vec{x} \in X^+$} \\
+\beta_0 + \beta^T \vec{x} < 0 \quad \text{pokud $\vec{x} \in X^-$} 
+\end{align*}
+Máme-li trénovací data (X,Y), kde $y_i \in \{-1,1\}$ kóduje dvě cílové kategorie, pak lze psát sjednoceně
+$$y_i(\beta_0 + \beta^T \vec{x}) > 0$$
+
+Dělicí nadrovinu hledají i jiné modely, např. perceptron, logistická regrese či LDA. Pokud jsou pozitivní a negativní vzorky lineárně separabilní, pak tato nadrovina vždy existuje -- dokonce jich existuje nekonečně mnoho. Ostatní modely najdou \textit{nějakou} dělící nadrovinu, SVM však najde \textbf{optimální dělicí nadrovinu}, tj. s největším \textit{marginem}. 
+
+\paragraph{Maximal margin classifier}
+Orientovaná vzdálenost bodu $\vec{x}$ k nadrovině se spočte jako
+$$\frac{1}{||\beta||}(\beta^T\vec{x} + \beta_0)$$
+Protože $\beta\cdot\vec{x}$ promítne $\vec{x}$ na vektor $\beta$, který je kolmý na dělicí nadrovinu. Díky normalizaci $\frac{1}{||\beta||}$ získáme přesně kolmou vzdálenost $\vec{x}$ od nadroviny.
+
+Formálně tedy hledáme 
+$$\max\limits_{\beta,\beta_0} M
+\qquad\text{za předpokladu}\qquad
+\frac{1}{||\beta||}y_i(x_i^T\beta + \beta_0) \geq M$$
+
+pro všechny vzorky $(x_i, y_i)$. Tj. že všechny body jsou od nadroviny dále než je velikost marginu $M$. 
+
+Platí-li podmínka pro $\beta,\beta_0$, platí i pro jejich kladné násobky (protože normalizujeme), můžeme proto zvolit $||\beta|| = \frac{1}{M}$ \textit{(Intuitivně: $\beta$ je vektor kolmý na dělicí nadrovinu, jeho velikost není pro určení nadroviny důležitá. Pro měření vzdálenosti bodu od nadroviny jej stejně normalizujeme. Takže velikost si můžeme zvolit zcela libovolně.)} Pak se podmínka změní na 
+$$y_i(x_i^T\beta + \beta_0) \geq 1$$
+a maximalizaci můžeme změnit na minimalizaci tvaru
+$$\min\limits_{\beta,\beta_0} ||\beta||$$
+nám se však bude hodit ještě jiný tvar, a to
+$$\min\limits_{\beta,\beta_0} \frac{1}{2}||\beta||^2$$
+Tyto dva optimalizační problémy jsou ekvivalentní (protože jen přenásobíme konstantou a umocníme absolutní hodnotu).
+
+Dostali jsme konvexní optimalizační problém, který můžeme řešit pomocí \textit{Lagrangeových multiplikátorů}. Řešením je tedy sedlový bod funkcionálu
+$$L_P = \min_{\beta,\beta_0}\left(\frac{1}{2}||\beta||^2 - \sum_{i=1}^{N} \alpha_i [y_i(\vec{x}_i^T\beta + \beta_0)-1]\right)$$ 
+kde $\alpha_i$ jsou Lagrangeovy multiplikátory.
+
+Položíme-li derivace podle $\beta$ a podle $\beta_0$ rovno nule, dostaneme
+$$\beta = \sum_{i=1}^{N} \alpha_i y_i \vec{x}_i$$
+$$0 = \sum_{i=1}^{N} \alpha_i y_i$$
+Dosazením do $L_P$ dostaneme tzv. \textit{Wolfeho duální formu:}
+$$L_D = \sum_{i=1}^{N}\alpha_i - \frac{1}{2}\sum_{i=1}^{N}\sum_{k=1}^{N}\alpha_i \alpha_k y_i y_k \vec{x}_i^T \vec{x}_k$$
+kterou maximalizujeme za podmínek $\alpha_i \geq0$. Na to už lze použít nějaký standardní software pro optimalizaci.
+
+Optimální řešení musí splňovat tzv. Kuhn-Tuckerovy podmínky (obecně nutné, ale nikoliv postačující):
+$$\alpha_i [y_i(\vec{x}^T\beta + \beta_0)-1] = 0$$
+pro každé $i$. To implikuje, že pokud $\alpha_i > 0$, je nutně $\vec{x}_i$ přesně na hranici marginu (tzv. \textbf{support vector}). Body za hranicí mají $\alpha_i = 0$.
+
+Klasifikace pak probíhá pomocí 
+$$G(\vec{x}) = sign(\vec{x^T \beta + \beta_0})$$
+kde $\beta = \sum_{i=1}^{N}\alpha_i y_i x_i$ a $\beta_0 = y_i - \beta x_i$ pro libovolný support vector $x_i$. Všimneme si, že pro výpočet $\beta$ jsou pouze některé členy sumy nenulové -- právě ty odpovídající support vektorům.
+
+\paragraph{Support Vector Classifier}
+Zobecnění pro neseparabilní případ (\uv{soft margin} classifier). Postupujeme podobně, avšak povolíme vzorky uvnitř marginu či dokonce na špatné straně dělící nadroviny -- ty budeme penalizovat. 
+
+Budeme tedy hledat
+$$\min\limits_{\beta,\beta_0} \frac{1}{2}||\beta||^2 + \gamma \sum_{i=1}^{N}\xi_i
+\qquad\text{za předpokladu}\qquad
+y_i(x_i^T\beta + \beta_0) \geq (1 - \xi_i)$$
+kde $\xi_i \geq 0$ jsou \textbf{\uv{slack variables}} (relaxační proměnné). Ty značí vzdálenost vzorku od hranice jeho třídy, pokud je na špatné straně. Pokud je $\xi_i = 0$, je vzorek na správné straně (nebo na hranici), pokud je $\xi_i > 0$, je na špatné straně okraje, pokud je $\xi_i > 1$, je dokonce na špatné straně nadroviny. Parametr $\gamma$ kontroluje, nakolik může být porušen margin a volí se typicky pomocí krosvalidace.
+
+Řešíme opět pomocí Lagrangeových multiplikátorů:
+$$L_P = \min_{\beta,\beta_0}\left(\frac{1}{2}||\beta||^2 + \gamma\sum_{i=1}^{N}\xi_i  - \sum_{i=1}^{N} \alpha_i [y_i(\vec{x}_i^T\beta + \beta_0)- (1 - \xi_i )] - \sum_{i=1}^{N}\mu_i\xi_i\right)$$ 
+Duální forma vyjde stejně jako pro separabilní případ, přibudou podmínky $0 \leq  \alpha_i \leq \gamma$.
+
+\paragraph{Support Vector Machine (SVM)}
+SVM přidávájí navíc oproti SVC ještě možnost nelineární transformace vstupního prostoru do příznakového prostoru (typicky vyšší dimenze) prostřednictvím tzv. \textbf{kernel} funkcí. Chceme tedy zobrazení $\Phi : X \mapsto F$. To může být však velmi výpočetně náročné. SVM využívají trik: v duální formulaci problému potebujeme (jak pro konstrukci, tak pro klasifikaci) \textit{vždy pouze skalární součin dvou vektorů}, tj. $\vec{x} \cdot \vec{z}$, resp. zobrazených vektorů $\Phi(\vec{x}) \cdot \Phi(\vec{z})$. Budou nám tedy stačit funkce počítající pro dva vektory tento součin v novém prostoru, tzv. \textbf{kernel funkce}:
+$$K_\Phi(\vec{x},\vec{z}) = \Phi(\vec{x})\cdot\Phi(\vec{z})$$
+Předpokládáme tedy, že kernel funkce je jednodušší pro výpočet než spočíst dvě mapování do nového prostoru a poté skalární součin.
+Obvyklé kernel funkce:
+\begin{itemize}
+	\item \textbf{polynomiální:} $K(\vec{x},\vec{z}) = (\vec{x}\cdot\vec{z} + t)^d$
+	\item \textbf{Gaussovská:} $K(\vec{x},\vec{z}) = \exp(-\frac{||\vec{x} - \vec{z}||^2}{2d})$
+	\item \textbf{sigmoidální:} $K(\vec{x},\vec{z}) = \tanh(k(\vec{x}\cdot\vec{z})-d)$
+	Pro tento kernel lze ukázat ekvivalenci s dvouvrstvou neuronovou sítí.
+\end{itemize}
+
+\paragraph{Závěrečné poznámky}
+SVM pracuje se spojitými hodnotami, kvalitativní proměnné je třeba převést. 
+
+SVM jsou binární model, pro klasifikaci do více tříd je nutná speciální strategie (one-against-rest).
+
+SVM vždy najde unikátní globální řešení.
+
+
+\subsection{Učení bez učitele}
+\subsubsection{Shlukování (klastrování)}
+\paragraph{$k$-means}
+Zvolíme počet klastrů $k$, poté zvolíme $k$ bodů jako počáteční středy klastrů. 
+
+Dokud se mění přiřazení bodů ke klastrům:
+\begin{enumerate}
+	\item přiřaď každý bod k nejbližšímu klastru
+	\item přepočítej středy = průměr bodů v klastrech
+\end{enumerate}
+Algoritmus typicky zkonverguje k lokálnímu optimu, proto se provádí několik běhů a vezme se nejlepší.
+
+\subparagraph{Metrika vzdáleností}
+Vzdálenost prvků $d(x_i, x_j)$ je typicky aplikačně závislá, silně na ní závisí výsledek. Lze definovat explicitně maticí nebo definovat metriku pro každý atribut a poté spočíst celkovou vzdálenost jako (vážený) součet vzdáleností v atributech. S normalizací příznaků opatrně, mohou zmizet přirozené klastry.
+
+\subparagraph{Počet klastrů}
+Většinou není dán, třeba nějak zvolit. Chceme minimalizovat součet vzdáleností uvnitř klastrů, tj.
+
+$$W(C) = \frac{1}{2} \sum_{k=1}^{K} \sum_{i \in C_k} \sum_{j \in C_k}  d(x_i, x_j)$$
+to ale klesá s rostoucím $K$ i pro rovnoměrně rozložená data, tzn. minimum nastane pro každý prvek ve vlastním klastru. Zkusíme tedy místo toho najít $K$, při němž dojde ke \textit{zpomalení klesání}, tj
+$\{W_k - W_{k+1} |\ k < k^* \} \gg \{W_{k} - W_{k+1}\ |\ k \geq k* \}$
+což je docela dobře fungující heuristika. Lze také použít \textit{\uv{gap} statistiku}, která porovnává $\log W_k$ s křivkou získanou pro uniformně rozložená data (přes obdélník obsahující data). Optimální K $\sim$ největší \uv{gap} mezi křivkami (expected curve - observed curve). 
+
+\paragraph{$k$-medoids}
+Namísto means vezmi vzorek z klastru minimalizující součet vzdáleností uvnitř klastru (=medoid). Tato metoda je časově náročnější než k-means (kvadratický čas), nicméně nabízí větší flexibility ve volbě metriky.
+
+\paragraph{Hierarchical clustering}
+Postupně shlukujeme data až do jediného klastru, přitom vytváříme \textit{dendrogram}, tj. historii slučování v podobě stromu příbuznosti. Nemusíme tedy určovat $K$, oproti tomu ale musíme umět interpretovat výsledný dendrogram, např. se rozhodnout pro nějakou úroveň, podle které data rozdělíme pro naši aplikaci. Pozor na interpretaci v horizontálním směru (dendrogram lze zrotovat jako zavěšený mobil).
+
+\subparagraph{Metody}
+\begin{itemize}
+	\item \textbf{odspoda (bottom-up}) Na začátku každý vzorek ve svém klastru. Sloučuje dva klastry s minimální vzdáleností (maximal similarity) dokud nemáme 1 klastr. Možnosti měření vzdálenosti/podobnosti mezi klastry (=\textit{linkage}):
+	\begin{itemize}
+		\item \textbf{single linkage}: Vzdálenost mezi nejbližšími body.
+		\item \textbf{complete linkage}: Vzdálenost mezi nejvzdálenějšími body.
+		\item \textbf{average linkage}: Průměr vzdáleností mezi všemi dvojicemi bodů mezi klastry.
+		\item \textbf{centroid linkage}: Spočti centroidy klastrů, poté vzdálenost mezi nimi.
+	\end{itemize}
+	
+	\item \textbf{shora (top-down)}	Oddělím nejvzdálenější prvek, z něj vytvořím nový klastr. Přeliju ze starého do nového klastru ty prvky, co jsou blíž. Pro další dělení vyberu klastr s největším \uv{průměrem} (vzdálenost nejvzdálenějších).
+
+\end{itemize}
+
+\paragraph{Shlukování -- závěrečné poznámky}
+Problémy: volba dissimilarity measure, linkage, K, \dots (typicky ad hoc). Outliers, noise (vše musí být v nějaké třídě) -- lze použít \textit{soft $k$-means} (pravděpodobnost příslušnosti k třídě).
+
+\subsubsection{Asociační pravidla}
+Pozorování $X$ sdružená pravděpodobnost $P(X)$. Chceme místa hustého výskytu dat. 
+
+\textbf{Asociační pravidla} mají za cíl najít v datech nejčastěji se vyskytující kombinace hodnot proměnných $X$. Nejčastěji uvažujeme binární data ($X_j in \{0, 1\}$). Často označováno jako \textbf{analýza nákupního koše}. 
+
+Chceme najít $L$ souřadnic a hodnoty $v_1, \dots, v_L$ tak, že $P(v_l)$ je pro každou hodnotu velká. Na to však máme málo dat, proto místo hodnot hledáme \textbf{oblasti} (intervaly / výčet hodnot), resp. pouze průniky oblastí přes různé souřadnice.
+
+Další zjednodušení: 
+\begin{itemize}
+	\item pouze dva typy podmnožin $X_j$: jedna hodnota nebo vše (sloupec nebo buňka)
+	\item četnost kombinace v datech musí být vyšší než práh $t$
+	\item kategoriální data převedu na binární (dummy variables)
+\end{itemize}
+
+\paragraph{APRIORI algoritmus}
+\begin{itemize}
+	\item vezmi jednoprvkové množiny, spočti četnosti
+	\item vyřad všechny s četností $< t$
+	\item for $i = 2,3,\dots$
+	\begin{itemize} 						
+		\item vytvoř $i$-tice z předchozích (k $(i-1)$-tici připoj prvek)
+		\item spočti četnosti
+		\item vyřaď $< t$
+	\end{itemize}
+	\item iteruj dokud není prázdný seznam
+\end{itemize}
+
+APRIORI je vhodný i pro velmi velká data. Vyhýbá se prokletí dimenzionality tím že 
+\begin{itemize}
+\item jen málo kombinací překročí práh
+\item podmnožina četné kombinace je také četná
+\item max $d$ průchodů daty kde $d$ = délka nejdelší četné kombinace
+\end{itemize}
+
+Z každé četné množiny K nalezené APRIORI algoritmem můžeme vytvořit seznam asociačních pravidel, tj. implikací $A \Rightarrow B$, kde $A,B$ jsou disjunktní a $A \cup B = K$. 
+
+Vlastnosti pravidel:
+\begin{itemize}
+\item \textbf{support} (podpora) $T(A\Rightarrow B)$: četnost $A \wedge B$ (četnost K)
+\item \textbf{confidence} (přesnost) $C(A\Rightarrow B) = \frac{T(A\Rightarrow B)}{T(A)}$: odhad $P(B|A)$
+\item \textbf{lift} (zdvih) $L(A\Rightarrow B) = \frac{C(A\Rightarrow B)}{T(B)}$: odhad $\frac{P(A \wedge B)}{P(A)P(B)}$
+\end{itemize}
+
+Cíl: získat pravidla s velkou podporou a přesností. Zpravidla volíme práh četnosti $t$ a přesnosti $c$.
+
+Konverze itemsetu $K$ na pravidla není výpočetně náročné.
+
+\subsubsection{Bez učitele jako s učitelem}
+Máme data $x_1,\dots x_N$, těm přidělíme třídu 1. Rovnoměrně vygenerujeme náhodná data (stejný počet) v oblastí obsahující $x_1,\dots x_N$, těm přidělíme třídu 0. Učíme se rozlišit třídy na základě X.
+
+
+\subsection{Pravděpodobnostní přístupy}
+Chceme modely pracující s nejistotou -- pravděpodobnostní (stochastické) modely. Jak takové modely učit? Tj. jak vyplnit tabulky podmíněných pravděpodobností?
+
+\subparagraph{Příklad s bonbóny}
+Bonbóny 2 typů $c$ (cherry) a $l$ (lime), balení s různě namixovanými bonbóny. Otevřeli jsme nějaké balení (nevíme jaké), otveřeli nějaké bonbony. Otázka: jaká bude další příchuť?
+
+Formálně: 
+\begin{itemize}
+	\item náhodná proměnná $H$ = \textbf{hypotéza} (typ balení, např.: $h_1$: 100\,\% cherry, $h_2$: 75\,\% cherry, 25\,\% lime atd.)
+	\item \textbf{vstupní data $D$} (otevřené bonbony)
+\end{itemize}
+
+\subsubsection{Bayesovské učení}
+Spočteme pravděpodobnost \textit{každé} hypotézy, předpověď uděláme podle \textit{všech} hypotéz a jejich pravděpodobností.
+
+Pravděpodobnosti hypotéz (Bayesovo pravidlo):
+\begin{align*}
+	P(h_i|d) &= \frac{P(d|h_i)\cdot P(h_i)}{P(d)}\\
+	P(h_i|d) &= \alpha P(d|h_i)\cdot P(h_i)\\
+\end{align*}
+
+Předpověď:
+$$P(X|d) = \sum_{i} P(X|d,h_i)\cdot P(h_i|d) = \sum_{i} P(X|h_i)\cdot P(h_i|d)$$
+za předpokladu podmíněné nezávislosti starých a nových pozorování ($\sim$ velká balení).
+
+Předpověď je tedy váženým průměrem předpovědí jednotlivých hypotéz.
+
+Bayesovská předpověď po určité době souhlasí s pravdivou hypotézou (posteriorní pravděpodobnosti nepravdivých hypotéz se blíží 0). 
+
+Bayesovská předpověď je optimální nezávisle na velikosti dat (každá jiná předpověď bude správná méně často).
+
+Prostor hypotéz je ale často velmi velký (až nekonečný). Proto se používají aproximace.
+
+\subsubsection{MAP (Maximum Aposteriori Hypothesis)}
+Častá aproximace Bayesovského učení. Namísto váženého průměru všech hypotéz se uvažuje pouze jediná, \textit{nejlepší hypotéza} a předpověď se pak dělá podle ní:
+$$P(X|d) = P(X|h_{MAP})$$
+kde 
+$$h_{MAP} = \arg\max_i P(h_i|d) = \arg\max_i P(d|h_i)\cdot P(h_i)$$
+(normalizační konstantu $\alpha$ můžeme ignorovat, je pro všechny stejná (=\uv{golden rule of statistics})).
+
+Hledání MAP hypotézy znamená řešení optimalizačního problému, což je snazší než dlouhé součty (integrály) u Bayesovského učení.
+
+\subsubsection{MDL (Minimal Description Length)}
+V podstatě pouze jiná formulace MAP: 
+$$h_{MAP} = \arg\max_i P(d|h_i)\cdot P(h_i)$$
+$$h_{MAP} = \arg\min_i (-\log_2P(d|h_i)-\log_2 P(h_i))$$
+
+Tj. preference hypotéz s malým binárním zakódováním. MAP to dělá implicitně, MDL je pouze explicitní přeformulování. Také lze říci, že MAP/MDL vybírá hypotézu, která maximalizuje kompresi dat.
+
+
+\subsubsection{ML (Maximum Likelihood)}
+Jiné zjednodušení Bayesovského učení, kdy uvažujeme \textit{stejné apriorní pravděpodobnosti všech hypotéz}. Stejně jako u MAP nás zajímá pouze nejpravděpodobnější hypotéza, tentokrát podle ještě jednoduššího vzorce:
+
+$$h_{ML} = \arg\max_i P(d|h_i)$$
+
+Dobrá aproximace pro hodně dat (data časem převáží nad apriorním rozdělením hypotéz); pro malý počet příkladů problém.
+
+\paragraph{Učení parametrů}
+Neznáme parametry modelu, tj. apriorní pravděpodobnosti hypotéz ani rozložení pravděpodobností pro jednotlivé hypotézy. Odhadneme je z dat.
+
+V našem příkladě má každá hypotéza jediný parametr, tj. procento $c$ (cherry) bonbonů ($l$ (lime) dopočítáme). Prostor hypotéz je tedy $h_\theta$, kde $\theta \in \langle 0,1 \rangle$. Apriorní pravděpodobnost všech hypotéz je stejná ($\to$ ML model). Pro danou hypotézu $h_\theta$ je pravděpodobnost dané posloupnosti $c$ cherry bonbonů a $l$ plněných bonbonů rovna
+$$P(d|h_\theta) = \theta^c \cdot (1-\theta)^l$$
+Chceme nalézt maximum přes $\theta$. Trik: zlogaritmujeme (dostaneme log-likelihood), zderivujeme a položíme rovno 0:
+
+$$L(d|h_\theta) = c\cdot \log_2\theta + l\cdot\log_2(1-\theta) = 0$$
+
+$$\frac{\partial L(d|h_\theta)}{\partial \theta} = \frac{c}{\theta} - \frac{l}{1-\theta}
+\qquad \Rightarrow \qquad
+\theta = \frac{c}{c+l}$$
+
+Pro více parametrů je postup stejný, jen o něco pracnější.
+
+
+\subsubsection{Naivní bayesovský klasifikátor}
+Klasifikátor fungující na principu Bayesova pravidla. Z trénovacích dat odhadneme $p(h_i)$ i $p(e|h_i)$, kde $e$ je nějaký atribut (příznak). \textit{Pro více atributů předpokládáme, že jsou nezávislé} (proto \uv{naivní} klasifikátor) \textit{a odhady provádíme pro každý zvlášť}. Predikujeme podle $p(h_i|e)$. 
+
+
+\subsubsection{EM (Expectation Maximization)}
+Problém \textbf{skrytých} proměnných, tj. proměnné v modelu, které nejsou součástí přímo pozorovatelných dat. Např. lékařské záznamy obsahují symptomy, diagnózu, léčbu a výsledek léčby, ale málokdy lze přímo pozorovat nemoc samotnou. Přesto však chceme tyto proměnné v modelu mít, neboť bez nich by byl příliš komplikovaný (např. mapovat přímo symptomy $\to$ léčba je složitější (mnohem více parametrů), než mapovat symptomy $\to$ nemoc $\to$ léčba). 
+
+Jak se naučit podmíněné distribuce skryté proměnné, když v příkladech nejsou její hodnoty? Trik: můžeme \textit{předstírat}, že hodnoty parametrů známe -- potom jsme schopni spočítat očekávané hodnoty skrytých proměnných, čímž data doplníme na úplný model (E-step, expectation). Poté upravíme hodnoty parametrů, abychom
+zvýšili věrohodnost modelu (M-step, maximization). Celý proces iterujeme.
+
+\textbf{Příklad (mixture of gaussians):} Vytváříme model pro výšku lidí v populaci. Výšky následují normální rozdělení, avšak muži jsou v průměru vyšší než ženy, výsledný model tedy bude odpovídat směsi dvou gaussovských rozdělení:
+$$\mathcal{N}(\mu_1, \sigma_1) + \mathcal{N}(\mu_2, \sigma_2)$$ 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{img/mixture_gaussians.png}
+\end{figure}
+
+V tomto případě máme \textit{pozorovnaná data} $x_1, \dots, x_n$ a \textit{skryté proměnné} $z_1, \dots, z_n$ určující, ke které komponentě data náleží (tj. muž/žena). Lze samozřejmě sestavit model pouze na základě $X$, ten však bude poměrně složitý. Pokud přidáme skrytou proměnou $Z$, výrazně se tím model zjednoduší. Proměnná $Z$ nabývá hodnot 1 (muž) nebo 2 (žena), přičemž
+$$X_i|(Z_i = 1) \sim \mathcal{N}(\mu_1,\sigma_1) \qquad\text{a}\qquad X_i|(Z_i = 2) \sim \mathcal{N}(\mu_2,\sigma_2)$$
+Tedy $X_i$ se řídí rozdělením $\mathcal{N}(\mu_1,\sigma_1)$, pokud je $Z_i = 1$; a rozdělením $\mathcal{N}(\mu_2,\sigma_2)$ pokud je $Z_i = 2$. Označíme
+$$P(Z_i = 1) = \tau_1 = \tau \qquad \text{a}\qquad P(Z_i = 1) = \tau_2 = (1-\tau)$$
+
+Parametry modelu jsou tedy 
+$$\theta = (\tau,\mu_1,\sigma_1,\mu_2,\mu_2)$$
+a pravděpodobnostní rozložení proměnné $X$ lze vyjádřit jako
+$$g_X = \tau\cdot \varphi_{\mu_1,\sigma_1} + (1 - \tau)\varphi_{\mu_2,\sigma_2}$$
+
+kde $\varphi_{\mu,\sigma}$ je hustota pravděpodobnosti $\mathcal{N}(\mu,\sigma)$, tj. normálního rozdělení se střední hodnotou $\mu$ a odchylkou $\sigma$.
+
+\textit{(Pozn.: Kdybychom neuvažovali $Z$ a modelovali data pomocí jediného normálního rozdělení, byly by parametry modelu pouze $\theta = (\mu,\sigma)$, které bychom mohli odhadnout jednoduše např. pomocí ML. Což by bylo jednodušší, ale hůře by to vystihovalo data.)}
+
+Budeme chtít minimalizovat chybu modelu, tzn. maximalizovat věrohodnost modelu (resp. jeho parametrů) pro daná data. Připomenutí: \textit{pravděpodobnost (probability)} je pravděpodobnost dat na základě modelu, \textit{věrohodnost (likelihood)} je pravděpodobnost modelu (jeho parametrů) na základě dat. Platí ekvivalence
+$$\mathcal{L}(\theta;X) = P(X|\theta)$$
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{img/likelihood.png}
+\end{figure}
+
+My však nemáme $P(X|\theta)$, nýbrž $P(X,Z|\theta)$ (to byl náš původní trik -- přidat proměnnou, abychom si zjednodušili model). Použijeme tedy marginální pravděpodobnosti
+$$\mathcal{L}(\theta;X) = P(X|\theta) = \sum_{Z}P(X,Z|\theta)$$
+
+V praxi se používá \textit{log-likelihood}, tj. $l(\theta;X) = \log \mathcal{L}(\theta;X) = \log P(X|\theta)$, v našem případě tedy maximalizujeme:
+\begin{align*}
+l(\theta;X) &= \log\sum_{Z}P(X,Z|\theta) = \sum_{i=1}^{N} \log\sum_{j=1}^{2}P(Z_i=j)\cdot\varphi_{\mu_j,\sigma_j}(x_i)\\
+&=\sum_{i=1}^{N} \log[\tau\cdot \varphi_{\mu_1,\sigma_1}(x_i) + (1 - \tau)\varphi_{\mu_2,\sigma_2}(x_i)]\\
+\end{align*}
+
+Přímá maximalizace této sumy je však výpočetně náročná, proto EM používá trik: tipneme si $\theta$ (na začátku náhodně), pomocí něj odhadneme $Z$. Pomocí $X$ a odhadnutého $Z$ pak spočteme lepší odhad $\theta$.
+
+Formálně se jedná o dva kroky
+\begin{enumerate}
+	\item \textbf{Expectation:} Na základě aktuálních parametrů $\theta$ a pozorovaných dat $X$ odhadni $Z$. Poté spočti \textit{očekávanou hodnotu} log-likelihood funkce (tj. váženou odhadem dané hodnoty $Z$):
+	$$Q(\theta|\theta^{(t)}) = E_{Z|X,\theta^{(t)}} [\log L(\theta;X,Z)]$$
+	\item \textbf{Maximization:} Najdi nové hodnoty $\theta$ maximalizující likelihood -- v tuhle chvíli \uv{známe} $Z$ (odhadnuté v předchozím kroku), takže tato maximalizace je jednoduchá:
+	$$\theta^{(t+1)} = \arg\max_\theta Q(\theta|\theta^{(t)})$$
+\end{enumerate}
+
+Pro náš příklad směsi gaussovských rozdělení:
+\bigskip
+\begin{algorithm}[H]
+	\caption{EM pro směs 2 gaussovských rozdělení}
+	\begin{algorithmic}[1]
+		\State $\theta = (\mu_1,\sigma_1,\mu_2,\sigma_2,\tau) \gets$ náhodná inicializace
+		\While{\textbf{not} converged}
+		\State \textbf{Expectation step:} Spočti
+		$$\gamma_i = \frac{\tau\varphi_{\mu_1,\sigma_1(x_i)}}{\tau\varphi_{\mu_1,\sigma_1(x_i)} 
+			+ (1-\tau)\varphi_{\mu_2,\sigma_2(x_i)}}$$
+		\Comment{$\gamma_i$ je pravděpodobnost, že $z_i = 1$ v daném kroku, tj. pro aktuální parametry $\theta$. Máme tedy odhad $Z$, můžeme pokračovat k maximalizaci.}t
+		
+		\State \textbf{Maximization step:} Uprav parametry modelu $\theta$ na základě spočtených odhadů $Z$:
+		$$
+		\mu_1 = \frac{\sum_{i=1}^{N}\gamma_i x_i}{\sum_{i=1}^{N}\gamma_i},\qquad
+		\sigma^2_1 = \frac{\sum_{i=1}^{N}\gamma_i (x_i - \mu_1)^2}{\sum_{i=1}^{N}\gamma_i}
+		$$
+		$$
+		\mu_2 = \frac{\sum_{i=1}^{N}(1-\gamma_i) x_i}{\sum_{i=1}^{N}(1-\gamma_i)},\qquad
+		\sigma^2_2 = \frac{\sum_{i=1}^{N}(1-\gamma_i)(x_i - \mu_2)^2}{\sum_{i=1}^{N}(1-\gamma_i)}
+		$$
+		$$\tau = \sum_{i=1}^{N}\frac{\gamma_i}{N}$$
+		\EndWhile
+	\end{algorithmic}
+\end{algorithm}		
+
+\bigskip
+Obecně lze celý EM algoritmus zapsat jediným nesrozumitelným vzorcem:
+$$\theta^{(t+1)} = \arg\max_\theta\sum_{data}\sum_{z \in Z} P(Z = z | data,\theta^{(t)}) \cdot \log P(data, Z = z |\theta)$$
+
+
+\subsection{Prohledávání prostoru verzí}
+\subsubsection{Znalosti v učení}
+Umíme se učit funkce vstup $\to$ výstup. Jedinou dodatečnou znalost, kterou jsme využili, byl tvar hypotézy (např. lineární funkce), resp. prostor hypotéz (např. polynomiální funkce). Můžeme využít již získané znalosti o světě (background knowledge)? 
+
+Znalosti budeme nejčastěji vyjadřovat v predikátové logice prvního řádu.
+Metody:
+\begin{itemize}
+\item metoda nejlepší současné hypotézy
+\item prostor verzí
+\item induktivní logické programování
+\end{itemize}
+
+\subsubsection{Logická formulace učení}
+Příklady (vzorky, data) i hypotézy budou logické formule. 
+\begin{itemize}
+\item \textbf{atributy} budou reprezentovány unárními predikáty (např. Alternate(X1) $\wedge$ $\lnot$Bar(X1) $\wedge$ $\lnot$Fri/Sat(X1) $\wedge$ Hungry(X1)\dots)
+
+\item \textbf{klasifikace} vzorku (tj. cílová třída) bude také vyjádřena tzv. cílovým predikátem (např. WillWait(X1) nebo $\lnot$WillWait(X1))
+
+\item \textbf{hypotéza} bude mít základní tvar 
+$$\forall x\ Goal(x) \Leftrightarrow C_j(x)$$
+kde $C_j$ je tzv. \textit{extenze hypotézy}.
+
+Příklad: 
+\begin{align*}
+\forall r\ WillWait(r) &\Leftrightarrow Patrons(r,Some)\\
+&\vee (Patrons(r,Full) \wedge Hungry(r) \wedge Type(r,French))\\
+&\vee (Patrons(r,Full) \wedge Hungry(r) \wedge Type(r,Thai) \wedge Fri/Sat(r))\\
+&\vee (Patrons(r,Full) \wedge Hungry(r) \wedge Type(r,Burger))\\
+\end{align*}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{img/logic_learning.png}
+\end{figure}
+
+\end{itemize}
+
+\subsubsection{Prostor hypotéz}
+\textbf{Prostor hypotéz} je množina všech hypotéz. Učící algoritmus přepokládá, že nějaká hypotéza je správná, tj. platí: $h_1 \vee h_2 \vee \dots \vee h_n$. 
+
+Dva typy nekonzistence (pro binární klasifikaci) \textbf{falešně negativní} (hypotéza tvrdí, že příklad je negativní, ale ve skutečnosti je pozitivní) \textbf{falešně pozitivní} (naopak).
+
+\subsubsection{Metody}
+\paragraph{Metoda nejlepší současné hypotézy}
+Udržujeme jednu hypotézu (current-best hypothesis) a podle příkladů ji upravujeme:
+\begin{itemize}
+\item příklad je s hypotézou konzistentní konzistentní $\to$ hypotézu \textbf{neměníme}
+\item falešně negativní $\to$ hypotézu \textbf{zobecníme}
+
+Pokud je hypotéza $h_1$ \textit{zobecněním} hypotézy $h_2$, potom platí $\forall x \ C_2(x) \Rightarrow C_1(x)$.
+
+Hypotéza je typicky konjunkcí predikátů $\to$ zobecnění uděláme \textit{\uv{vypuštěním} podmínek} nebo \textit{přidáním disjunkce}.
+
+\item falešně pozitivní $\to$ hypotézu \textbf{specializujeme}
+
+Specializaci uděláme \textit{přidáním podmínek} nebo \textit{vypuštěním nějaké disjunkce}.
+\end{itemize}
+
+
+\subparagraph{Vlastnosti}
+Po každé modifikaci hypotézy je potřeba \textbf{kontrolovat všechny předchozí příklady} (pouze modifikace, které jsou s nimi konzistentní, jsou povolené).
+
+Při prohledávání často dochází k množství návratů (backtracking).
+
+Prapůvodce problémů – příliš silný závazek: algoritmus musí v každém kroku vybrat jednu konkrétní hypotézu i když k tomu nemá dostatek informací. Řešením může být metoda nejmenších závazků.
+
+\paragraph{Prostor verzí}
+Prostor hypotéz lze reprezentovat disjunkcí $h_1 \vee h_2 \vee \dots \vee h_n$. Pokud je nějaká hypotéza nekonzistentní s příkladem, vyřadíme ji z disjunkce. Mezi zbylými hypotézami v disjunkci pořád zůstává ta správná (pokud existuje).
+
+Obecně \textbf{prostor verzí (version space)} je množina možných hypotéz, které jsou konzistentní s dosud zpracovanými příklady.
+
+Algoritmus \textit{eliminace kandidátů} postupně zmenšuje prostor verzí. Algoritmus je \textit{inkrementální}, tj. po přidání příkladu není potřeba kontrolovat předchozí příklady.
+
+\subparagraph{Reprezentace}
+Jak reprezentovat velkou (potenciálně nekonečnou) disjunkci? Pokud máme k dispozici uspořádání hypotéz (a to máme pomocí zobecnění/specializace), můžeme prostor verzí
+reprezentovat \textit{dolní a horní mezí}.
+
+\begin{itemize}
+\item $G$ = \textbf{nejobecnější hypotézy} konzistentní s dosavadními příklady (žádná jiná konzistentní hypotéza není obecnější). Na začátku obashuje pouze $True$.
+
+\item $S$ = \textbf{nejspecifičtější hypotézy} konzistentní s dosavadními příklady (žádná konzistentní hypotéza není specifičtější). Na začátku obsahuje pouze $False$.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{img/version_space.png}
+	\includegraphics[width=0.40\textwidth]{img/version_space2.png}
+\end{figure}
+Všechny hypotézy mezi S a G jsou konzistentní s příklady a žádné jiné konzistentní nejsou. 
+
+Po přidání nového příkladu upravíme množiny $G$ a $S$ takto:
+\begin{itemize}
+\item příklad je falešně pozitivní pro $S_i$ $\to$ vyřadíme $S_i$ z množiny $S$
+\item příklad je falešně negativní pro $S_i$ $\to$ nahradíme $S_i$ v množině $S$ všemi přímými zobecněními
+\item příklad je falešně pozitivní pro $G_i$ $\to$ nahradíme $G_i$ v množině $G$ všemi přímými specializacemi
+\item příklad je falešně negativní pro $G_i$ $\to$ vyřadíme $G_i$ z množiny $G$
+\end{itemize}
+
+Algoritmus eliminace kandidátů končí pokud:
+\begin{itemize}
+\item zůstala jediná hypotéza
+\item rostor hypotéz zkolaboval (množina $G$ nebo $S$ je prázdná)
+\item jsme vyčerpali všechny příklady. Prostor verzí potom reprezentuje disjunkci. Pokud zbylé hypotézy klasifikují různě, můžeme vybrat majoritní odpověď
+\end{itemize}
+
+\subparagraph{Vlastnosti}
+Šum v datech nebo chybějící hodnoty atributů způsobují kolaps prostoru verzí. Zatím nebylo nalezeno obecně fungující řešení. 
+
+Pokud povolíme \textit{neomezené} disjunkce, tak $S$ bude disjunkce popisů pozitivních příkladů $G$ bude negace disjunkce popisů negativních příkladů. Můžeme omezit tvar disjunkce nebo použijeme hierarchii zobecnění predikátů.
+
+\paragraph{Induktivní logické programování (ILP)}
+Kombinuje induktivní učící metody s logickou reprezentací (logickými programy). Na rozdíl od technik založených na atributech ILP umí dobře pracovat \textbf{s relacemi}.
+
+V principu se jedná o řešení problému: hledání \textit{hypotézy} použitím známých znalostí (\textit{Background}) z příkladů popsaných \textit{Descriptions} a \textit{Classifications}, tž.
+$$\text{Background} \wedge \text{Hypothesis} \wedge \text{Descriptions} |= \text{Classifications}$$
+
+Dvě hlavní metody učení:
+\begin{itemize}
+\item postup shora-dolů (systém FOIL)
+\item inverzní rezoluce (systém PROGOL)	
+\end{itemize}
+
+\subparagraph{ILP problém}
+$$\text{Background} \wedge \text{Hypothesis} \wedge \text{Descriptions}\ {|}= \text{Classifications}$$
+
+Příklady (\textit{Descriptions}) jsou typicky popsány Prologovskými fakty, např
+\begin{itemize}
+\item Father(Philip,Charles), Father(Philip, Anne), …
+\item Mother(Mum,Margaret), Mother(Mum, Elizabeth), …
+\item Married(Diana, Charles), Married(Elizabeth, Philip), …
+\item Male(Philip), Male(Charles), …
+\item Female(Beatrice), Female(Margaret),…
+\end{itemize}
+
+Podobně známá klasifikace (\textit{Classification}) je dána fakty:
+\begin{itemize}
+\item Grandparent(Mum,Charles), Gradparent(Elizabeth, Beatrice), …
+\item $\lnot$Gradparent(Mum,Harry), $\lnot$Grandparent(Spencer,Peter), …
+\end{itemize}
+
+Možná hypotéza (\textit{Hypothesis}):
+\begin{align*}
+Grandparent(x,y) &\Leftrightarrow [\exists z\ Mother(x,z) \wedge Mother(z,y)]\\
+&[\exists z Mother(x,z) \wedge Father(z,y)] \\
+&[\exists z Father(x,z) \wedge Mother(z,y)] \\
+&[\exists z Father(x,z) \wedge Father(z,y)] \\
+\end{align*}
+
+Použijeme-li znalost (\textit{Background})
+$$Parent(x,y) \Leftrightarrow Mother(x,y) \vee Father(x,y)$$
+
+potom můžeme hypotézu zjednodušit:
+$$Grandparent(x,y) \Leftrightarrow [\exists z\ Parent(x,z) \wedge Parent(z,y)]$$
+
+\subparagraph{Metoda shora-dolů}
+Začneme klauzulí s prázdným tělem
+$$Grandfather(x,y) \gets $$
+
+Klasifikuje všechny příklady jako pozitivní, takže ji postupně budeme specializovat
+přidáním literálu do těla klauzule
+\begin{align*}
+Grandfather(x,y) \gets Father(x,y) \\
+Grandfather(x,y) \gets Parent(x,z) \\
+Grandfather(x,y) \gets Father(x,z) \\
+\dots \\
+\end{align*}
+Vybereme tu specializaci, která klasifikuje nejvíce pozitivních a negativních příkladů.
+
+Pokračujeme ve specializaci
+$$Grandfather(x,y) \gets Father(x,z) \wedge Parent(z,y)$$
+
+pokud nemáme k dispozici znalost $Parent$, můžeme získat více klauzulí
+\begin{align*}
+Grandfather(x,y) \gets Father(x,z) \wedge Father(z,y) \\
+Grandfather(x,y) \gets Father(x,z) \wedge Mother(z,y) \\
+\end{align*}
+Každá klauzule pokrývá některé pozitivní příklady a žádný negativní příklad.
+
+Literály se vybírají ze známých predikátů, rovnosti/nerovnosti a aritmetických porovnání. Musí obsahovat proměnnou, která už v klauzuli je. Můžeme použít znalost typů (číslo, osoba,\dots). Volba literálu se dělá na základě \textit{informačního zisku}.
+
+\subparagraph{Inverzní rezoluce}
+$$\text{Background} \wedge \text{Hypothesis} \wedge \text{Descriptions}\ {|}= \text{Classifications}$$
+
+Obecná rezoluce tedy musí dokázat Classifications z Background, Hypothesis, Descriptions. Můžeme jít v rezoluci obráceně a hledat Hypothesis, kterou k důkazu potřebujeme, tj. z rezolventy C hledáme C1 a C2 (máme-li C2, hledáme jen C1).
+
 
 \section{Evoluční algoritmy; základní pojmy a teoretické poznatky, hypotéza o stavebních blocích, koevoluce, aplikace evolučních algoritmů.}
 Skip.
@@ -5539,6 +6596,18 @@ Síť se skládá ze vstupní, skryté (Kohonenovské) a výstupní (Grossbergov
 Původně navrženy pro aproximaci spojitého zobrazení $f$ a jeho inverze $f^{-1}$ pomocí dvou symetrických sekcí.
 
 Skrytá vrstva je typicky Kohonenvská mřížka, výstupem je jediný lineární asociátor (v případě mapování $f : \R^n \to \R$). Váhy mezi skrytou vrstvou a výstupním neuronem se upravují učením s učitelem.
+
+\bigskip
+\begin{algorithm}[H]
+	\caption{Kohonenovské učení}
+	\begin{algorithmic}[1]
+		\State $\forall i,j,k : w_{ij}, z_{k} \gets$ náhodně inicializované váhy
+		\State $\vec{x} \gets X$ \Comment{předložen nový trénovací vzor}
+		\State $c \gets \arg\min_k\sqrt{\sum_{i} (x_i(t) - w_{ik}(t))^2}$ \Comment{vybrán neuron s nejmenší euklidovskou vzdáleností k předloženému vzoru}
+		\State aktualizujeme váhy vstupní váhy neuronu $c$ a neuronů v okolí $c$ podle principů Kohonenovského učení
+		\State aktualizujeme váhy mezi $c$ a výstupními neurony:$$z$$ 
+	\end{algorithmic}
+\end{algorithm}	
 
 Trénování probíhá ve 2 fázích:
 \begin{enumerate}

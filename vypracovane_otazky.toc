@@ -17,273 +17,364 @@
 \contentsline {subsection}{\numberline {1.1.4}Univerz\IeC {\'a}ln\IeC {\'\i } Turing\IeC {\r u}v stroj}{10}{subsection.1.1.4}
 \contentsline {section}{\numberline {1.2}Rekurzivn\IeC {\'\i } a rekurzivn\IeC {\v e} spo\IeC {\v c}etn\IeC {\'e} mno\IeC {\v z}iny.}{10}{section.1.2}
 \contentsline {subsection}{\numberline {1.2.1}Form\IeC {\'a}ln\IeC {\'\i } definice}{10}{subsection.1.2.1}
-\contentsline {section}{\numberline {1.3}Algoritmicky nerozhodnuteln\IeC {\'e} probl\IeC {\'e}my (halting problem).}{10}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}(\IeC {\v C}\IeC {\'a}ste\IeC {\v c}n\IeC {\v e}) rozhodnuteln\IeC {\'y} jazyk}{11}{subsection.1.3.1}
-\contentsline {subsubsection}{\numberline {1.3.1.1}Z\IeC {\'a}kladn\IeC {\'\i } vlastnosti rozhodnuteln\IeC {\'y}ch jazyk\IeC {\r u}}{11}{subsubsection.1.3.1.1}
-\contentsline {subsection}{\numberline {1.3.2}Nerozhodnuteln\IeC {\'e} jazyky}{11}{subsection.1.3.2}
-\contentsline {subsection}{\numberline {1.3.3}Vlastnosti \IeC {\v c}\IeC {\'a}ste\IeC {\v c}n\IeC {\v e} rozhodnuteln\IeC {\'y}ch jazyk\IeC {\r u}}{12}{subsection.1.3.3}
-\contentsline {subsection}{\numberline {1.3.4}Enumer\IeC {\'a}tory}{13}{subsection.1.3.4}
-\contentsline {subsection}{\numberline {1.3.5}P\IeC {\v r}evoditelnost, \IeC {\'u}pln\IeC {\'e} jazyky}{13}{subsection.1.3.5}
-\contentsline {subsection}{\numberline {1.3.6}Riceova v\IeC {\v e}ta}{14}{subsection.1.3.6}
-\contentsline {section}{\numberline {1.4}Nedeterministick\IeC {\'y} v\IeC {\'y}po\IeC {\v c}etn\IeC {\'\i } model.}{15}{section.1.4}
-\contentsline {subsection}{\numberline {1.4.1}\IeC {\v C}asov\IeC {\'a} a prostorov\IeC {\'a} slo\IeC {\v z}itost NTS}{15}{subsection.1.4.1}
-\contentsline {section}{\numberline {1.5}Z\IeC {\'a}kladn\IeC {\'\i } t\IeC {\v r}\IeC {\'\i }dy slo\IeC {\v z}itosti a jejich vztahy.}{15}{section.1.5}
-\contentsline {subsection}{\numberline {1.5.1}Z\IeC {\'a}kladn\IeC {\'\i } t\IeC {\v r}\IeC {\'\i }dy slo\IeC {\v z}itosti}{16}{subsection.1.5.1}
-\contentsline {subsubsection}{\numberline {1.5.1.1}Z\IeC {\'a}kladn\IeC {\'\i } deterministick\IeC {\'e} t\IeC {\v r}\IeC {\'\i }dy slo\IeC {\v z}itosti}{16}{subsubsection.1.5.1.1}
-\contentsline {subsubsection}{\numberline {1.5.1.2}V\IeC {\'y}zna\IeC {\v c}n\IeC {\'e} deterministick\IeC {\'e} t\IeC {\v r}\IeC {\'\i }dy slo\IeC {\v z}itosti}{16}{subsubsection.1.5.1.2}
-\contentsline {subsubsection}{\numberline {1.5.1.3}T\IeC {\v r}\IeC {\'\i }da NP}{16}{subsubsection.1.5.1.3}
-\contentsline {subsubsection}{\numberline {1.5.1.4}Modely TS s men\IeC {\v s}\IeC {\'\i }m ne\IeC {\v z} line\IeC {\'a}rn\IeC {\'\i }m prostorem}{17}{subsubsection.1.5.1.4}
-\contentsline {subsubsection}{\numberline {1.5.1.5}P\IeC {\v r}ehled v\IeC {\v s}ech zm\IeC {\'\i }n\IeC {\v e}n\IeC {\'y}ch t\IeC {\v r}\IeC {\'\i }d jazyk\IeC {\r u}}{18}{subsubsection.1.5.1.5}
-\contentsline {subsection}{\numberline {1.5.2}Vztahy mezi t\IeC {\v r}\IeC {\'\i }dami}{18}{subsection.1.5.2}
-\contentsline {section}{\numberline {1.6}V\IeC {\v e}ty o hierarchii.}{20}{section.1.6}
-\contentsline {subsection}{\numberline {1.6.1}V\IeC {\v e}ta o deterministick\IeC {\'e} prostorov\IeC {\'e} hierarchii}{20}{subsection.1.6.1}
-\contentsline {subsection}{\numberline {1.6.2}V\IeC {\v e}ta o \IeC {\v c}asov\IeC {\'e} prostorov\IeC {\'e} hierarchii}{21}{subsection.1.6.2}
-\contentsline {section}{\numberline {1.7}\IeC {\'U}pln\IeC {\'e} probl\IeC {\'e}my pro t\IeC {\v r}\IeC {\'\i }du NP, Cook-Levinova v\IeC {\v e}ta.}{22}{section.1.7}
-\contentsline {subsection}{\numberline {1.7.1}Polynomi\IeC {\'a}ln\IeC {\'\i } p\IeC {\v r}evoditelnost, NP-\IeC {\'u}plnost}{22}{subsection.1.7.1}
-\contentsline {subsection}{\numberline {1.7.2}Cook-Levinova v\IeC {\v e}ta}{22}{subsection.1.7.2}
-\contentsline {subsection}{\numberline {1.7.3}Dal\IeC {\v s}\IeC {\'\i } NP-\IeC {\'u}pln\IeC {\'e} probl\IeC {\'e}my}{26}{subsection.1.7.3}
-\contentsline {subsubsection}{\numberline {1.7.3.1}SAT -- Splnitelnost formule v KNF}{26}{subsubsection.1.7.3.1}
-\contentsline {subsubsection}{\numberline {1.7.3.2}3SAT -- Splnitelnost formule ve 3KNF}{27}{subsubsection.1.7.3.2}
-\contentsline {subsubsection}{\numberline {1.7.3.3}VP -- Vrcholov\IeC {\'e} pokryt\IeC {\'\i }}{27}{subsubsection.1.7.3.3}
-\contentsline {subsubsection}{\numberline {1.7.3.4}HK -- Hamiltonovsk\IeC {\'a} kru\IeC {\v z}nice}{28}{subsubsection.1.7.3.4}
-\contentsline {subsubsection}{\numberline {1.7.3.5}3DM -- Trojrozm\IeC {\v e}rn\IeC {\'e} p\IeC {\'a}rov\IeC {\'a}n\IeC {\'\i }}{29}{subsubsection.1.7.3.5}
-\contentsline {subsubsection}{\numberline {1.7.3.6}LOUP -- Loupe\IeC {\v z}n\IeC {\'\i }ci}{29}{subsubsection.1.7.3.6}
-\contentsline {subsubsection}{\numberline {1.7.3.7}Dal\IeC {\v s}\IeC {\'\i }}{29}{subsubsection.1.7.3.7}
-\contentsline {section}{\numberline {1.8}Pseudopolynomi\IeC {\'a}ln\IeC {\'\i } algoritmy, siln\IeC {\'a} NP-\IeC {\'u}plnost.}{30}{section.1.8}
-\contentsline {subsection}{\numberline {1.8.1}Pseudopolynomi\IeC {\'a}ln\IeC {\'\i } algoritmy}{30}{subsection.1.8.1}
-\contentsline {subsubsection}{\numberline {1.8.1.1}P\IeC {\v r}\IeC {\'\i }klad: Batoh}{30}{subsubsection.1.8.1.1}
-\contentsline {subsection}{\numberline {1.8.2}Siln\IeC {\'a} NP-\IeC {\'u}plnost}{31}{subsection.1.8.2}
-\contentsline {section}{\numberline {1.9}Aproxima\IeC {\v c}n\IeC {\'\i } algoritmy a sch\IeC {\'e}mata.}{32}{section.1.9}
-\contentsline {subsection}{\numberline {1.9.1}Optimaliza\IeC {\v c}n\IeC {\'\i } \IeC {\'u}loha}{32}{subsection.1.9.1}
-\contentsline {subsection}{\numberline {1.9.2}Aproxima\IeC {\v c}n\IeC {\'\i } algoritmus}{33}{subsection.1.9.2}
-\contentsline {subsubsection}{\numberline {1.9.2.1}P\IeC {\v r}\IeC {\'\i }klad: Bin Packing}{33}{subsubsection.1.9.2.1}
-\contentsline {subsection}{\numberline {1.9.3}Aproxima\IeC {\v c}n\IeC {\'\i } sch\IeC {\'e}mata}{35}{subsection.1.9.3}
-\contentsline {subsubsection}{\numberline {1.9.3.1}\IeC {\'U}pln\IeC {\v e} polynomi\IeC {\'a}ln\IeC {\'\i } aproxima\IeC {\v c}n\IeC {\'\i } sch\IeC {\'e}ma pro Batoh}{35}{subsubsection.1.9.3.1}
-\contentsline {subsubsection}{\numberline {1.9.3.2}Aproxima\IeC {\v c}n\IeC {\'\i } sch\IeC {\'e}mata a NP-\IeC {\'u}plnost}{38}{subsubsection.1.9.3.2}
-\contentsline {subsection}{\numberline {1.9.4}Neaproximovatelnost}{38}{subsection.1.9.4}
-\contentsline {chapter}{\numberline {2}Datov\IeC {\'e} struktury}{40}{chapter.2}
-\contentsline {section}{\numberline {2.1}Vyhled\IeC {\'a}vac\IeC {\'\i } stromy ((a,b)-stromy, Splay stromy).}{40}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Bin\IeC {\'a}rn\IeC {\'\i } vyhled\IeC {\'a}vac\IeC {\'\i } strom (BVS)}{40}{subsection.2.1.1}
-\contentsline {subsubsection}{\numberline {2.1.1.1}Operace}{40}{subsubsection.2.1.1.1}
-\contentsline {subsection}{\numberline {2.1.2}(a,b)-stromy}{40}{subsection.2.1.2}
-\contentsline {subsubsection}{\numberline {2.1.2.1}Operace}{41}{subsubsection.2.1.2.1}
-\contentsline {subsubsection}{\numberline {2.1.2.2}Paraleln\IeC {\'\i } verze}{41}{subsubsection.2.1.2.2}
-\contentsline {subsubsection}{\numberline {2.1.2.3}Amortizovan\IeC {\'a} anal\IeC {\'y}za}{41}{subsubsection.2.1.2.3}
-\contentsline {subsubsection}{\numberline {2.1.2.4}A-sort}{42}{subsubsection.2.1.2.4}
-\contentsline {subsubsection}{\numberline {2.1.2.5}B-stromy}{42}{subsubsection.2.1.2.5}
-\contentsline {subsection}{\numberline {2.1.3}\IeC {\v C}erveno-\IeC {\v c}ern\IeC {\'e} stromy}{43}{subsection.2.1.3}
-\contentsline {subsubsection}{\numberline {2.1.3.1}Operace INSERT(x)}{43}{subsubsection.2.1.3.1}
-\contentsline {subsubsection}{\numberline {2.1.3.2}Operace DELETE(x)}{44}{subsubsection.2.1.3.2}
-\contentsline {subsection}{\numberline {2.1.4}Splay stromy}{44}{subsection.2.1.4}
-\contentsline {subsubsection}{\numberline {2.1.4.1}Operace SPLAY(x)}{44}{subsubsection.2.1.4.1}
-\contentsline {subsubsection}{\numberline {2.1.4.2}Operace FIND(x)}{45}{subsubsection.2.1.4.2}
-\contentsline {subsubsection}{\numberline {2.1.4.3}Operace INSERT(x)}{45}{subsubsection.2.1.4.3}
-\contentsline {subsubsection}{\numberline {2.1.4.4}Operace DELETE(x)}{45}{subsubsection.2.1.4.4}
-\contentsline {subsubsection}{\numberline {2.1.4.5}Amortizovan\IeC {\'a} anal\IeC {\'y}za}{45}{subsubsection.2.1.4.5}
-\contentsline {subsection}{\numberline {2.1.5}AVL stromy}{47}{subsection.2.1.5}
-\contentsline {section}{\numberline {2.2}Haldy (regul\IeC {\'a}rn\IeC {\'\i }, binomi\IeC {\'a}ln\IeC {\'\i }).}{48}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Regul\IeC {\'e}rn\IeC {\'\i } halda}{48}{subsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.1.1}Reprezentace}{48}{subsubsection.2.2.1.1}
-\contentsline {subsubsection}{\numberline {2.2.1.2}Operace}{48}{subsubsection.2.2.1.2}
-\contentsline {subsection}{\numberline {2.2.2}Binomi\IeC {\'a}ln\IeC {\'\i } halda}{49}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Fibonacciho halda}{50}{subsection.2.2.3}
-\contentsline {subsubsection}{\numberline {2.2.3.1}Implementace}{50}{subsubsection.2.2.3.1}
-\contentsline {subsubsection}{\numberline {2.2.3.2}Operace DECREASE-KEY(v, k)}{50}{subsubsection.2.2.3.2}
-\contentsline {subsubsection}{\numberline {2.2.3.3}Anal\IeC {\'y}za DELETE-MIN}{51}{subsubsection.2.2.3.3}
-\contentsline {subsection}{\numberline {2.2.4}Dal\IeC {\v s}\IeC {\'\i } haldy}{51}{subsection.2.2.4}
-\contentsline {subsubsection}{\numberline {2.2.4.1}Pairing heap}{51}{subsubsection.2.2.4.1}
-\contentsline {subsubsection}{\numberline {2.2.4.2}Brodal heap, strict Fibonacci heap}{51}{subsubsection.2.2.4.2}
-\contentsline {section}{\numberline {2.3}Ha\IeC {\v s}ov\IeC {\'a}n\IeC {\'\i }, \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } koliz\IeC {\'\i }, univerz\IeC {\'a}ln\IeC {\'\i } ha\IeC {\v s}ov\IeC {\'a}n\IeC {\'\i }, v\IeC {\'y}b\IeC {\v e}r ha\IeC {\v s}ovac\IeC {\'\i } funkce.}{51}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Z\IeC {\'a}kladn\IeC {\'\i } pojmy}{51}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}\IeC {\v R}e\IeC {\v s}en\IeC {\'\i } koliz\IeC {\'\i }}{52}{subsection.2.3.2}
-\contentsline {subsubsection}{\numberline {2.3.2.1}Hashov\IeC {\'a}n\IeC {\'\i } se separovan\IeC {\'y}mi \IeC {\v r}et\IeC {\v e}zci}{52}{subsubsection.2.3.2.1}
-\contentsline {paragraph}{\numberline {2.3.2.1.1}O\IeC {\v c}ek\IeC {\'a}van\IeC {\'a} pr\IeC {\r u}m\IeC {\v e}rn\IeC {\'a} d\IeC {\'e}lka \IeC {\v r}et\IeC {\v e}zc\IeC {\r u}}{52}{paragraph.2.3.2.1.1}
-\contentsline {paragraph}{\numberline {2.3.2.1.2}O\IeC {\v c}ek\IeC {\'a}van\IeC {\'y} po\IeC {\v c}et test\IeC {\r u} (= porovn\IeC {\'a}n\IeC {\'\i }) p\IeC {\v r}i hled\IeC {\'a}n\IeC {\'\i }}{53}{paragraph.2.3.2.1.2}
-\contentsline {subsubsection}{\numberline {2.3.2.2}Hashov\IeC {\'a}n\IeC {\'\i } s p\IeC {\v r}em\IeC {\'\i }s\IeC {\v t}ov\IeC {\'a}n\IeC {\'\i }m/p\IeC {\v r}esuny}{53}{subsubsection.2.3.2.2}
-\contentsline {subsubsection}{\numberline {2.3.2.3}Hashov\IeC {\'a}n\IeC {\'\i } se dv\IeC {\v e}ma ukazateli}{53}{subsubsection.2.3.2.3}
-\contentsline {subsubsection}{\numberline {2.3.2.4}Sr\IeC {\r u}staj\IeC {\'\i }c\IeC {\'\i } (coalesced) hashov\IeC {\'a}n\IeC {\'\i }}{53}{subsubsection.2.3.2.4}
-\contentsline {paragraph}{\numberline {2.3.2.4.1}Bez pomocn\IeC {\'e} pam\IeC {\v e}ti -- LISCH a EISCH}{54}{paragraph.2.3.2.4.1}
-\contentsline {paragraph}{\numberline {2.3.2.4.2}S pomocnou pam\IeC {\v e}t\IeC {\'\i } -- LICH, VICH, EICH}{54}{paragraph.2.3.2.4.2}
-\contentsline {subsubsection}{\numberline {2.3.2.5}Line\IeC {\'a}rn\IeC {\'\i } p\IeC {\v r}id\IeC {\'a}v\IeC {\'a}n\IeC {\'\i }}{54}{subsubsection.2.3.2.5}
-\contentsline {subsubsection}{\numberline {2.3.2.6}Dvojit\IeC {\'e} hashov\IeC {\'a}n\IeC {\'\i }}{55}{subsubsection.2.3.2.6}
-\contentsline {paragraph}{\numberline {2.3.2.6.1}O\IeC {\v c}ek\IeC {\'a}van\IeC {\'y} po\IeC {\v c}et test\IeC {\r u}}{55}{paragraph.2.3.2.6.1}
-\contentsline {subsubsection}{\numberline {2.3.2.7}Kuka\IeC {\v c}\IeC {\v c}\IeC {\'\i } ha\IeC {\v s}ov\IeC {\'a}n\IeC {\'\i }}{55}{subsubsection.2.3.2.7}
-\contentsline {paragraph}{\numberline {2.3.2.7.1}Anal\IeC {\'y}za}{56}{paragraph.2.3.2.7.1}
-\contentsline {subsubsection}{\numberline {2.3.2.8}Srovn\IeC {\'a}n\IeC {\'\i }}{57}{subsubsection.2.3.2.8}
-\contentsline {subsubsection}{\numberline {2.3.2.9}Implementa\IeC {\v c}n\IeC {\'\i } dodatky}{57}{subsubsection.2.3.2.9}
-\contentsline {subsubsection}{\numberline {2.3.2.10}P\IeC {\v r}eha\IeC {\v s}ov\IeC {\'a}n\IeC {\'\i }}{57}{subsubsection.2.3.2.10}
-\contentsline {subsection}{\numberline {2.3.3}Univerz\IeC {\'a}ln\IeC {\'\i } hashov\IeC {\'a}n\IeC {\'\i }}{57}{subsection.2.3.3}
-\contentsline {paragraph}{\numberline {2.3.3.0.1}Existence c-univerz\IeC {\'a}ln\IeC {\'\i }ch syst\IeC {\'e}m\IeC {\r u}}{58}{paragraph.2.3.3.0.1}
-\contentsline {paragraph}{\numberline {2.3.3.0.2}Vlastnosti}{58}{paragraph.2.3.3.0.2}
-\contentsline {paragraph}{\numberline {2.3.3.0.3}Doln\IeC {\'\i } odhady velikosti univ. syst\IeC {\'e}m\IeC {\r u}}{59}{paragraph.2.3.3.0.3}
-\contentsline {paragraph}{\numberline {2.3.3.0.4}Doln\IeC {\'\i } odhad c}{59}{paragraph.2.3.3.0.4}
-\contentsline {subsection}{\numberline {2.3.4}Perfektn\IeC {\'\i } hashov\IeC {\'a}n\IeC {\'\i }}{59}{subsection.2.3.4}
-\contentsline {paragraph}{\numberline {2.3.4.0.1}Definice}{59}{paragraph.2.3.4.0.1}
-\contentsline {subsubsection}{\numberline {2.3.4.1}Odhady velikosti}{59}{subsubsection.2.3.4.1}
-\contentsline {subsubsection}{\numberline {2.3.4.2}Existence}{60}{subsubsection.2.3.4.2}
-\contentsline {subsubsection}{\numberline {2.3.4.3}Konstrukce funkce}{60}{subsubsection.2.3.4.3}
-\contentsline {paragraph}{\numberline {2.3.4.3.1}Men\IeC {\v s}\IeC {\'\i } tabulka}{60}{paragraph.2.3.4.3.1}
-\contentsline {paragraph}{\numberline {2.3.4.3.2}``Mal\IeC {\'a}'' funkce}{61}{paragraph.2.3.4.3.2}
-\contentsline {section}{\numberline {2.4}Anal\IeC {\'y}za nejhor\IeC {\v s}\IeC {\'\i }ho, amortizovan\IeC {\'e}ho a o\IeC {\v c}ek\IeC {\'a}van\IeC {\'e}ho chov\IeC {\'a}n\IeC {\'\i } datov\IeC {\'y}ch struktur.}{61}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Asymptotick\IeC {\'a} notace}{62}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Prostorov\IeC {\'a} (pam\IeC {\v e}\IeC {\v t}ov\IeC {\'a}) slo\IeC {\v z}itost reprezentovan\IeC {\'e} struktury}{62}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}\IeC {\v C}asov\IeC {\'a} slo\IeC {\v z}itost operac\IeC {\'\i } na datov\IeC {\'e} struktu\IeC {\v r}e}{62}{subsection.2.4.3}
-\contentsline {subsubsection}{\numberline {2.4.3.1}\IeC {\v C}asov\IeC {\'a} slo\IeC {\v z}itost v nejlep\IeC {\v s}\IeC {\'\i }m p\IeC {\v r}\IeC {\'\i }pad\IeC {\v e}}{62}{subsubsection.2.4.3.1}
-\contentsline {subsubsection}{\numberline {2.4.3.2}\IeC {\v C}asov\IeC {\'a} slo\IeC {\v z}itost v nejhor\IeC {\v s}\IeC {\'\i }m p\IeC {\v r}\IeC {\'\i }pad\IeC {\v e}}{62}{subsubsection.2.4.3.2}
-\contentsline {subsubsection}{\numberline {2.4.3.3}O\IeC {\v c}ek\IeC {\'a}van\IeC {\'a} \IeC {\v c}asov\IeC {\'a} slo\IeC {\v z}itost}{62}{subsubsection.2.4.3.3}
-\contentsline {subsubsection}{\numberline {2.4.3.4}Amortizovan\IeC {\'a} slo\IeC {\v z}itost}{63}{subsubsection.2.4.3.4}
-\contentsline {section}{\numberline {2.5}Chov\IeC {\'a}n\IeC {\'\i } a anal\IeC {\'y}za datov\IeC {\'y}ch struktur na syst\IeC {\'e}mech s pam\IeC {\v e}\IeC {\v t}ovou hierarchi\IeC {\'\i }.}{65}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Pam\IeC {\v e}\IeC {\v t}ov\IeC {\'a} hierarchie}{65}{subsection.2.5.1}
-\contentsline {subsubsection}{\numberline {2.5.1.1}Zjednodu\IeC {\v s}en\IeC {\'y} model pam\IeC {\v e}ti}{65}{subsubsection.2.5.1.1}
-\contentsline {subsection}{\numberline {2.5.2}Cache-aware a cache-oblivious algoritmy}{66}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Cache-aware a cache-oblivious datov\IeC {\'e} struktury}{68}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}Strategie pro spr\IeC {\'a}vu cache}{69}{subsection.2.5.4}
-\contentsline {part}{II\hspace {1em}Inteligentn\IeC {\'\i } agenti}{70}{part.2}
-\contentsline {chapter}{\numberline {3}P\IeC {\v r}\IeC {\'\i }rodou inspirovan\IeC {\'e} po\IeC {\v c}\IeC {\'\i }t\IeC {\'a}n\IeC {\'\i }}{71}{chapter.3}
-\contentsline {section}{\numberline {3.1}Genetick\IeC {\'e} algoritmy, genetick\IeC {\'e} a evolu\IeC {\v c}n\IeC {\'\i } programov\IeC {\'a}n\IeC {\'\i }.}{71}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Evolu\IeC {\v c}n\IeC {\'\i } algoritmy}{71}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Genetick\IeC {\'e} algoritmy (GA)}{72}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Genetick\IeC {\'e} programov\IeC {\'a}n\IeC {\'\i } (GP)}{72}{subsection.3.1.3}
-\contentsline {subsection}{\numberline {3.1.4}Evolu\IeC {\v c}n\IeC {\'\i } programov\IeC {\'a}n\IeC {\'\i } (EP)}{72}{subsection.3.1.4}
-\contentsline {subsubsection}{\numberline {3.1.4.1}EP vs. GA}{73}{subsubsection.3.1.4.1}
-\contentsline {subsubsection}{\numberline {3.1.4.2}EP vs. ES}{73}{subsubsection.3.1.4.2}
-\contentsline {subsubsection}{\numberline {3.1.4.3}V\IeC {\'y}znam k\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{73}{subsubsection.3.1.4.3}
-\contentsline {section}{\numberline {3.2}Teorie sch\IeC {\'e}mat, pravd\IeC {\v e}podobnostn\IeC {\'\i } modely jednoduch\IeC {\'e}ho genetick\IeC {\'e}ho algoritmu.}{73}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Sch\IeC {\'e}mata}{73}{subsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.1.1}D\IeC {\r u}sledky VoS}{75}{subsubsection.3.2.1.1}
-\contentsline {subsection}{\numberline {3.2.2}Pravd\IeC {\v e}podobnostn\IeC {\'\i } modely}{75}{subsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.2.1}Je\IeC {\v s}t\IeC {\v e} jednodu\IeC {\v s}\IeC {\v s}\IeC {\'\i } jednoduch\IeC {\'y} GA (JJJGA)}{75}{subsubsection.3.2.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2.2}Anal\IeC {\'y}za}{75}{subsubsection.3.2.2.2}
-\contentsline {subsubsection}{\numberline {3.2.2.3}Kone\IeC {\v c}n\IeC {\'e} populace}{76}{subsubsection.3.2.2.3}
-\contentsline {section}{\numberline {3.3}Evolu\IeC {\v c}n\IeC {\'\i } strategie, diferenci\IeC {\'a}ln\IeC {\'\i } evoluce, koevoluce, otev\IeC {\v r}en\IeC {\'a} evoluce.}{76}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Evolu\IeC {\v c}n\IeC {\'\i } strategie}{76}{subsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.1.1}Notace}{76}{subsubsection.3.3.1.1}
-\contentsline {subsubsection}{\numberline {3.3.1.2}Varianty}{77}{subsubsection.3.3.1.2}
-\contentsline {subsubsection}{\numberline {3.3.1.3}K\IeC {\'o}dov\IeC {\'a}n\IeC {\'\i }, genetick\IeC {\'e} oper\IeC {\'a}tory}{77}{subsubsection.3.3.1.3}
-\contentsline {subsubsection}{\numberline {3.3.1.4}CMA-ES}{77}{subsubsection.3.3.1.4}
-\contentsline {subsection}{\numberline {3.3.2}Diferenci\IeC {\'a}ln\IeC {\'\i } evoluce}{78}{subsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.2.1}Mutace}{78}{subsubsection.3.3.2.1}
-\contentsline {subsubsection}{\numberline {3.3.2.2}K\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{78}{subsubsection.3.3.2.2}
-\contentsline {subsubsection}{\numberline {3.3.2.3}Selekce}{78}{subsubsection.3.3.2.3}
-\contentsline {subsection}{\numberline {3.3.3}Koevoluce}{78}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}Otev\IeC {\v r}en\IeC {\'a} evoluce}{78}{subsection.3.3.4}
-\contentsline {section}{\numberline {3.4}Rojov\IeC {\'e} optimaliza\IeC {\v c}n\IeC {\'\i } algoritmy.}{79}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Optimalizace hejnem \IeC {\v c}\IeC {\'a}stic}{79}{subsection.3.4.1}
-\contentsline {subsubsection}{\numberline {3.4.1.1}Algorimus}{79}{subsubsection.3.4.1.1}
-\contentsline {subsection}{\numberline {3.4.2}Dal\IeC {\v s}\IeC {\'\i } rojov\IeC {\'e} optimaliza\IeC {\v c}n\IeC {\'\i } algoritmy}{79}{subsection.3.4.2}
-\contentsline {subsubsection}{\numberline {3.4.2.1}Ant Colony Optimization (ACO)}{80}{subsubsection.3.4.2.1}
-\contentsline {section}{\numberline {3.5}Memetick\IeC {\'e} algoritmy, hill climbing, simulovan\IeC {\'e} \IeC {\v z}\IeC {\'\i }h\IeC {\'a}n\IeC {\'\i }.}{80}{section.3.5}
-\contentsline {subsubsection}{\numberline {3.5.0.1}Algoritmus}{80}{subsubsection.3.5.0.1}
-\contentsline {subsubsection}{\numberline {3.5.0.2}Existuj\IeC {\'\i } dva p\IeC {\v r}\IeC {\'\i }stupy, co d\IeC {\v e}lat s v\IeC {\'y}sledkem:}{81}{subsubsection.3.5.0.2}
-\contentsline {subsubsection}{\numberline {3.5.0.3}Hill climbing}{81}{subsubsection.3.5.0.3}
-\contentsline {subsubsection}{\numberline {3.5.0.4}Simulovan\IeC {\'e} \IeC {\v z}\IeC {\'\i }h\IeC {\'a}n\IeC {\'\i }}{81}{subsubsection.3.5.0.4}
-\contentsline {subsubsection}{\numberline {3.5.0.5}Algoritmus}{81}{subsubsection.3.5.0.5}
-\contentsline {section}{\numberline {3.6}Aplikace evolu\IeC {\v c}n\IeC {\'\i }ch algoritm\IeC {\r u} (evoluce expertn\IeC {\'\i }ch syst\IeC {\'e}mu, neuroevoluce, \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } kombinatorick\IeC {\'y}ch \IeC {\'u}loh, v\IeC {\'\i }cekriteri\IeC {\'a}ln\IeC {\'\i } optimalizace).}{81}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Evoluce expertn\IeC {\'\i }ch syst\IeC {\'e}m\IeC {\r u}}{81}{subsection.3.6.1}
-\contentsline {subsubsection}{\numberline {3.6.1.1}Pittsburghsk\IeC {\'y} p\IeC {\v r}\IeC {\'\i }stup}{82}{subsubsection.3.6.1.1}
-\contentsline {subsubsection}{\numberline {3.6.1.2}Michigansk\IeC {\'y} p\IeC {\v r}\IeC {\'\i }stup}{82}{subsubsection.3.6.1.2}
-\contentsline {subsection}{\numberline {3.6.2}Neuroevoluce}{83}{subsection.3.6.2}
-\contentsline {subsubsection}{\numberline {3.6.2.1}U\IeC {\v c}en\IeC {\'\i } vah}{83}{subsubsection.3.6.2.1}
-\contentsline {subsubsection}{\numberline {3.6.2.2}U\IeC {\v c}en\IeC {\'\i } struktury}{83}{subsubsection.3.6.2.2}
-\contentsline {subsubsection}{\numberline {3.6.2.3}Evoluce \IeC {\v c}\IeC {\'a}ste\IeC {\v c}n\IeC {\'y}ch s\IeC {\'\i }t\IeC {\'\i }}{84}{subsubsection.3.6.2.3}
-\contentsline {subsubsection}{\numberline {3.6.2.4}NEAT (Neuroevolution of Augmenting Topologies)}{84}{subsubsection.3.6.2.4}
-\contentsline {subsubsection}{\numberline {3.6.2.5}HyperNEAT (Hyper-cube NEAT)}{85}{subsubsection.3.6.2.5}
-\contentsline {subsection}{\numberline {3.6.3}\IeC {\v R}e\IeC {\v s}en\IeC {\'\i } kombinatorick\IeC {\'y}ch \IeC {\'u}loh}{86}{subsection.3.6.3}
-\contentsline {subsubsection}{\numberline {3.6.3.1}Batoh (0-1 knapsack problem)}{86}{subsubsection.3.6.3.1}
-\contentsline {subsubsection}{\numberline {3.6.3.2}Probl\IeC {\'e}m obchodn\IeC {\'\i }ho cestuj\IeC {\'\i }c\IeC {\'\i }ho (TSP -- travelling salesman problem)}{86}{subsubsection.3.6.3.2}
-\contentsline {subsection}{\numberline {3.6.4}V\IeC {\'\i }cekriteri\IeC {\'a}ln\IeC {\'\i } optimalizace (MOEA -- Multi-objective EA)}{89}{subsection.3.6.4}
-\contentsline {subsubsection}{\numberline {3.6.4.1}Algoritmy}{89}{subsubsection.3.6.4.1}
-\contentsline {subsubsection}{\numberline {3.6.4.2}Porovn\IeC {\'a}n\IeC {\'\i } algoritm\IeC {\r u}}{90}{subsubsection.3.6.4.2}
-\contentsline {part}{III\hspace {1em}Strojov\IeC {\'e} u\IeC {\v c}en\IeC {\'\i }}{92}{part.3}
-\contentsline {chapter}{\numberline {4}Strojov\IeC {\'e} u\IeC {\v c}en\IeC {\'\i } a jeho aplikace}{93}{chapter.4}
-\contentsline {section}{\numberline {4.1}Strojov\IeC {\'e} u\IeC {\v c}en\IeC {\'\i }; prohled\IeC {\'a}v\IeC {\'a}n\IeC {\'\i } prostoru verz\IeC {\'\i }, u\IeC {\v c}en\IeC {\'\i } s u\IeC {\v c}itelem a bez u\IeC {\v c}itele, pravd\IeC {\v e}podobnostn\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }stupy, teoretick\IeC {\'e} aspekty strojov\IeC {\'e}ho u\IeC {\v c}en\IeC {\'\i }.}{93}{section.4.1}
-\contentsline {section}{\numberline {4.2}Evolu\IeC {\v c}n\IeC {\'\i } algoritmy; z\IeC {\'a}kladn\IeC {\'\i } pojmy a teoretick\IeC {\'e} poznatky, hypot\IeC {\'e}za o stavebn\IeC {\'\i }ch bloc\IeC {\'\i }ch, koevoluce, aplikace evolu\IeC {\v c}n\IeC {\'\i }ch algoritm\IeC {\r u}.}{93}{section.4.2}
-\contentsline {section}{\numberline {4.3}Strojov\IeC {\'e} u\IeC {\v c}en\IeC {\'\i } v po\IeC {\v c}\IeC {\'\i }ta\IeC {\v c}ov\IeC {\'e} lingvistice a algoritmy pro statistick\IeC {\'y} parsing.}{93}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Z\IeC {\'a}klady teorie informace}{94}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Modelov\IeC {\'a}n\IeC {\'\i } jazyka, za\IeC {\v s}um\IeC {\v e}n\IeC {\'y} kan\IeC {\'a}l}{94}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Vyhlazov\IeC {\'a}n\IeC {\'\i } jazykov\IeC {\'e}ho modelu}{96}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}T\IeC {\v r}\IeC {\'\i }dy slov}{97}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Markovovy modely}{97}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Tagging}{99}{subsection.4.3.6}
-\contentsline {subsection}{\numberline {4.3.7}Statistick\IeC {\'y} parsing}{101}{subsection.4.3.7}
-\contentsline {subsection}{\numberline {4.3.8}Statistick\IeC {\'y} strojov\IeC {\'y} p\IeC {\v r}eklad}{101}{subsection.4.3.8}
-\contentsline {subsubsection}{\numberline {4.3.8.1}Model ATG (Analysis, Translation, Generation)}{102}{subsubsection.4.3.8.1}
-\contentsline {section}{\numberline {4.4}Pravd\IeC {\v e}podobnostn\IeC {\'\i } algoritmy pro anal\IeC {\'y}zu biologick\IeC {\'y}ch sekvenc\IeC {\'\i }; hled\IeC {\'a}v\IeC {\'a}n\IeC {\'\i } motiv\IeC {\r u} v DNA, strategie pro detekci gen\IeC {\r u} a predikci struktury protein\IeC {\r u}.}{103}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Restrik\IeC {\v c}n\IeC {\'\i } mapov\IeC {\'a}n\IeC {\'\i }}{103}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Hled\IeC {\'a}n\IeC {\'\i } motiv\IeC {\r u}}{105}{subsection.4.4.2}
-\contentsline {subsubsection}{\numberline {4.4.2.1}Dv\IeC {\v e} ekvivalentn\IeC {\'\i } formulace probl\IeC {\'e}mu}{106}{subsubsection.4.4.2.1}
-\contentsline {subsubsection}{\numberline {4.4.2.2}Algoritmy}{106}{subsubsection.4.4.2.2}
-\contentsline {subsection}{\numberline {4.4.3}Sequence alignment}{106}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Genome rearrangement}{106}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.4.5}Predikce gen\IeC {\r u}}{107}{subsection.4.4.5}
-\contentsline {chapter}{\numberline {5}Neuronov\IeC {\'e} s\IeC {\'\i }t\IeC {\v e}}{108}{chapter.5}
-\contentsline {section}{\numberline {5.1}Neurofyziologick\IeC {\'e} minimum.}{108}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Mozek}{108}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Neuron}{108}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}P\IeC {\v r}enos sign\IeC {\'a}lu}{109}{subsection.5.1.3}
-\contentsline {subsubsection}{\numberline {5.1.3.1}Klidov\IeC {\'y} potenci\IeC {\'a}l}{109}{subsubsection.5.1.3.1}
-\contentsline {subsubsection}{\numberline {5.1.3.2}Ak\IeC {\v c}n\IeC {\'\i } potenci\IeC {\'a}l}{110}{subsubsection.5.1.3.2}
-\contentsline {subsection}{\numberline {5.1.4}Pam\IeC {\v e}\IeC {\v t}}{110}{subsection.5.1.4}
-\contentsline {section}{\numberline {5.2}Modely pro u\IeC {\v c}en\IeC {\'\i } s u\IeC {\v c}itelem, algoritmus zp\IeC {\v e}tn\IeC {\'e}ho \IeC {\v s}\IeC {\'\i }\IeC {\v r}en\IeC {\'\i }, strategie pro urychlen\IeC {\'\i } u\IeC {\v c}en\IeC {\'\i }, regulariza\IeC {\v c}n\IeC {\'\i } techniky a generalizace.}{111}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Modely pro u\IeC {\v c}en\IeC {\'\i } s u\IeC {\v c}itelem}{111}{subsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.1.1}Form\IeC {\'a}ln\IeC {\'\i } neuron}{111}{subsubsection.5.2.1.1}
-\contentsline {subsubsection}{\numberline {5.2.1.2}Perceptron}{111}{subsubsection.5.2.1.2}
-\contentsline {subsubsection}{\numberline {5.2.1.3}Neuronov\IeC {\'a} s\IeC {\'\i }\IeC {\v t}}{113}{subsubsection.5.2.1.3}
-\contentsline {subsection}{\numberline {5.2.2}Algoritmus zp\IeC {\v e}tn\IeC {\'e}ho \IeC {\v s}\IeC {\'\i }\IeC {\v r}en\IeC {\'\i } (Backpropagation)}{113}{subsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.2.1}Adapta\IeC {\v c}n\IeC {\'\i } pravidla}{114}{subsubsection.5.2.2.1}
-\contentsline {paragraph}{\numberline {5.2.2.1.1}Aktualizace synaptick\IeC {\'y}ch vah pro v\IeC {\'y}stupn\IeC {\'\i } vrstvu:}{114}{paragraph.5.2.2.1.1}
-\contentsline {paragraph}{\numberline {5.2.2.1.2}Aktualizace synaptick\IeC {\'y}ch vah pro skryt\IeC {\'e} vrstvy:}{115}{paragraph.5.2.2.1.2}
-\contentsline {subsection}{\numberline {5.2.3}Strategie pro urychlen\IeC {\'\i } u\IeC {\v c}en\IeC {\'\i }}{116}{subsection.5.2.3}
-\contentsline {subsubsection}{\numberline {5.2.3.1}Volba po\IeC {\v c}\IeC {\'a}te\IeC {\v c}n\IeC {\'\i }ch vah}{116}{subsubsection.5.2.3.1}
-\contentsline {subsubsection}{\numberline {5.2.3.2}Moment u\IeC {\v c}en\IeC {\'\i }}{117}{subsubsection.5.2.3.2}
-\contentsline {subsubsection}{\numberline {5.2.3.3}Adaptivn\IeC {\'\i } parametr u\IeC {\v c}en\IeC {\'\i }}{117}{subsubsection.5.2.3.3}
-\contentsline {subsubsection}{\numberline {5.2.3.4}Algoritmy 2. \IeC {\v r}\IeC {\'a}du}{118}{subsubsection.5.2.3.4}
-\contentsline {subsubsection}{\numberline {5.2.3.5}Relaxa\IeC {\v c}n\IeC {\'\i } metody}{119}{subsubsection.5.2.3.5}
-\contentsline {subsubsection}{\numberline {5.2.3.6}P\IeC {\v r}edzpracov\IeC {\'a}n\IeC {\'\i } tr\IeC {\'e}novac\IeC {\'\i } mno\IeC {\v z}iny}{120}{subsubsection.5.2.3.6}
-\contentsline {section}{\numberline {5.3}Asociativn\IeC {\'\i } pam\IeC {\v e}ti, Hebbovsk\IeC {\'e} u\IeC {\v c}en\IeC {\'\i } a hled\IeC {\'a}n\IeC {\'\i } suboptim\IeC {\'a}ln\IeC {\'\i }ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }, stochastick\IeC {\'e} modely.}{120}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Asociativn\IeC {\'\i } pam\IeC {\v e}ti}{120}{subsection.5.3.1}
-\contentsline {subsubsection}{\numberline {5.3.1.1}Struktura asociativn\IeC {\'\i }ch pam\IeC {\v e}t\IeC {\'\i }}{120}{subsubsection.5.3.1.1}
-\contentsline {subsubsection}{\numberline {5.3.1.2}Rekurentn\IeC {\'\i } asociativn\IeC {\'\i } s\IeC {\'\i }\IeC {\v t}}{120}{subsubsection.5.3.1.2}
-\contentsline {subsubsection}{\numberline {5.3.1.3}Vlastn\IeC {\'\i } automaty (eigenvector automata)}{121}{subsubsection.5.3.1.3}
-\contentsline {subsection}{\numberline {5.3.2}Hebbovsk\IeC {\'e} u\IeC {\v c}en\IeC {\'\i } a hled\IeC {\'a}n\IeC {\'\i } suboptim\IeC {\'a}ln\IeC {\'\i }ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{121}{subsection.5.3.2}
-\contentsline {subsubsection}{\numberline {5.3.2.1}Hebbovsk\IeC {\'e} u\IeC {\v c}en\IeC {\'\i }}{121}{subsubsection.5.3.2.1}
-\contentsline {subsubsection}{\numberline {5.3.2.2}Geometrick\IeC {\'a} interpretace Hebbovsk\IeC {\'e}ho u\IeC {\v c}en\IeC {\'\i }}{123}{subsubsection.5.3.2.2}
-\contentsline {subsubsection}{\numberline {5.3.2.3}Probl\IeC {\'e}m kapacity s\IeC {\'\i }t\IeC {\v e}}{123}{subsubsection.5.3.2.3}
-\contentsline {subsubsection}{\numberline {5.3.2.4}Pseudoinverzn\IeC {\'\i } matice}{123}{subsubsection.5.3.2.4}
-\contentsline {subsubsection}{\numberline {5.3.2.5}BAM (Bidirectional Associative Memory)}{124}{subsubsection.5.3.2.5}
-\contentsline {subsubsection}{\numberline {5.3.2.6}Energetick\IeC {\'a} funkce BAM}{125}{subsubsection.5.3.2.6}
-\contentsline {subsubsection}{\numberline {5.3.2.7}Asynchronn\IeC {\'\i } s\IeC {\'\i }t\IeC {\v e} BAM}{125}{subsubsection.5.3.2.7}
-\contentsline {subsubsection}{\numberline {5.3.2.8}Hopfield\IeC {\r u}v model}{126}{subsubsection.5.3.2.8}
-\contentsline {subsubsection}{\numberline {5.3.2.9}Energetick\IeC {\'a} funkce Hopfieldovy s\IeC {\'\i }t\IeC {\v e}}{127}{subsubsection.5.3.2.9}
-\contentsline {subsubsection}{\numberline {5.3.2.10}Perceptronov\IeC {\'e} u\IeC {\v c}en\IeC {\'\i } pro Hopfield\IeC {\r u}v model}{129}{subsubsection.5.3.2.10}
-\contentsline {subsubsection}{\numberline {5.3.2.11}Hled\IeC {\'a}n\IeC {\'\i } suboptim\IeC {\'a}ln\IeC {\'\i }ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } (\IeC {\v r}e\IeC {\v s}en\IeC {\'\i } NP-\IeC {\'u}pln\IeC {\'y}ch probl\IeC {\'e}m\IeC {\r u} pomoc\IeC {\'\i } Hopfieldovy s\IeC {\'\i }t\IeC {\v e})}{129}{subsubsection.5.3.2.11}
-\contentsline {subsection}{\numberline {5.3.3}Stochastick\IeC {\'e} modely}{130}{subsection.5.3.3}
-\contentsline {subsubsection}{\numberline {5.3.3.1}Simulovan\IeC {\'e} \IeC {\v z}\IeC {\'\i }h\IeC {\'a}n\IeC {\'\i }}{130}{subsubsection.5.3.3.1}
-\contentsline {subsubsection}{\numberline {5.3.3.2}Boltzmann\IeC {\r u}v stroj}{131}{subsubsection.5.3.3.2}
-\contentsline {section}{\numberline {5.4}Um\IeC {\v e}l\IeC {\'e} neuronov\IeC {\'e} s\IeC {\'\i }t\IeC {\v e} zalo\IeC {\v z}en\IeC {\'e} na principu u\IeC {\v c}en\IeC {\'\i } bez u\IeC {\v c}itele.}{131}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Kompeti\IeC {\v c}n\IeC {\'\i } u\IeC {\v c}en\IeC {\'\i }}{131}{subsection.5.4.1}
-\contentsline {subsubsection}{\numberline {5.4.1.1}Klasick\IeC {\'e} shlukovac\IeC {\'\i } metody}{132}{subsubsection.5.4.1.1}
-\contentsline {subsubsection}{\numberline {5.4.1.2}Konvergence kompeti\IeC {\v c}n\IeC {\'\i }ho u\IeC {\v c}en\IeC {\'\i }}{132}{subsubsection.5.4.1.2}
-\contentsline {paragraph}{\numberline {5.4.1.2.1}Stabilita \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{132}{paragraph.5.4.1.2.1}
-\contentsline {subsection}{\numberline {5.4.2}PCA (Principal Component Analysis)}{133}{subsection.5.4.2}
-\contentsline {subsubsection}{\numberline {5.4.2.1}Oj\IeC {\r u}v algoritmus u\IeC {\v c}en\IeC {\'\i }}{133}{subsubsection.5.4.2.1}
-\contentsline {subsubsection}{\numberline {5.4.2.2}Konvergence Ojova algoritmu u\IeC {\v c}en\IeC {\'\i }}{134}{subsubsection.5.4.2.2}
-\contentsline {subsubsection}{\numberline {5.4.2.3}Multiple PC}{135}{subsubsection.5.4.2.3}
-\contentsline {subsection}{\numberline {5.4.3}Kohonenovy mapy}{135}{subsection.5.4.3}
-\contentsline {subsubsection}{\numberline {5.4.3.1}Algoritmus u\IeC {\v c}en\IeC {\'\i } (1D)}{135}{subsubsection.5.4.3.1}
-\contentsline {subsubsection}{\numberline {5.4.3.2}Konvergence}{136}{subsubsection.5.4.3.2}
-\contentsline {paragraph}{\numberline {5.4.3.2.1}Jednorozm\IeC {\v e}rn\IeC {\'y} p\IeC {\v r}\IeC {\'\i }pad}{137}{paragraph.5.4.3.2.1}
-\contentsline {paragraph}{\numberline {5.4.3.2.2}Dvourozm\IeC {\v e}rn\IeC {\'y} p\IeC {\v r}\IeC {\'\i }pad}{138}{paragraph.5.4.3.2.2}
-\contentsline {subsubsection}{\numberline {5.4.3.3}Probl\IeC {\'e}my}{138}{subsubsection.5.4.3.3}
-\contentsline {subsection}{\numberline {5.4.4}U\IeC {\v c}en\IeC {\'\i } s u\IeC {\v c}itelem}{138}{subsection.5.4.4}
-\contentsline {section}{\numberline {5.5}Modul\IeC {\'a}rn\IeC {\'\i }, hierarchick\IeC {\'e} a hybridn\IeC {\'\i } modely neuronov\IeC {\'y}ch s\IeC {\'\i }t\IeC {\'\i }.}{139}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}Modul\IeC {\'a}rn\IeC {\'\i } s\IeC {\'\i }t\IeC {\v e}}{139}{subsection.5.5.1}
-\contentsline {subsubsection}{\numberline {5.5.1.1}Kask\IeC {\'a}dov\IeC {\'a} korelace}{139}{subsubsection.5.5.1.1}
-\contentsline {subsubsection}{\numberline {5.5.1.2}Optim\IeC {\'a}ln\IeC {\'\i } moduly a mixture of experts}{140}{subsubsection.5.5.1.2}
-\contentsline {subsection}{\numberline {5.5.2}Hybridn\IeC {\'\i } s\IeC {\'\i }t\IeC {\v e}}{140}{subsection.5.5.2}
-\contentsline {subsubsection}{\numberline {5.5.2.1}ART (Adaptive Resonance Theory)}{140}{subsubsection.5.5.2.1}
-\contentsline {subsubsection}{\numberline {5.5.2.2}S\IeC {\'\i }t\IeC {\v e} se vst\IeC {\v r}\IeC {\'\i }cn\IeC {\'y}m \IeC {\v s}\IeC {\'\i }\IeC {\v r}en\IeC {\'\i }m (counterpropagation networks)}{140}{subsubsection.5.5.2.2}
-\contentsline {subsubsection}{\numberline {5.5.2.3}Spline networks}{141}{subsubsection.5.5.2.3}
-\contentsline {subsubsection}{\numberline {5.5.2.4}RBF (Radial Basis Functions)}{141}{subsubsection.5.5.2.4}
-\contentsline {subsection}{\numberline {5.5.3}V\IeC {\'\i }cevrstv\IeC {\'e} Kohonenovy mapy}{142}{subsection.5.5.3}
-\contentsline {section}{\numberline {5.6}Genetick\IeC {\'e} algoritmy a jejich vyu\IeC {\v z}it\IeC {\'\i } p\IeC {\v r}i u\IeC {\v c}en\IeC {\'\i } um\IeC {\v e}l\IeC {\'y}ch neuronov\IeC {\'y}ch s\IeC {\'\i }t\IeC {\'\i }.}{142}{section.5.6}
+\contentsline {subsubsection}{\numberline {1.2.1.1}Z\IeC {\'a}kladn\IeC {\'\i } funkce}{10}{subsubsection.1.2.1.1}
+\contentsline {subsubsection}{\numberline {1.2.1.2}Oper\IeC {\'a}tory}{10}{subsubsection.1.2.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1.3}Rekurzivn\IeC {\'\i } funkce}{11}{subsubsection.1.2.1.3}
+\contentsline {subsubsection}{\numberline {1.2.1.4}Rekurzivn\IeC {\'\i } predik\IeC {\'a}ty a mno\IeC {\v z}iny}{11}{subsubsection.1.2.1.4}
+\contentsline {subsubsection}{\numberline {1.2.1.5}Ekvivalence TS a \IeC {\v C}RF}{11}{subsubsection.1.2.1.5}
+\contentsline {section}{\numberline {1.3}Algoritmicky nerozhodnuteln\IeC {\'e} probl\IeC {\'e}my (halting problem).}{11}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}(\IeC {\v C}\IeC {\'a}ste\IeC {\v c}n\IeC {\v e}) rozhodnuteln\IeC {\'y} jazyk}{12}{subsection.1.3.1}
+\contentsline {subsubsection}{\numberline {1.3.1.1}Z\IeC {\'a}kladn\IeC {\'\i } vlastnosti rozhodnuteln\IeC {\'y}ch jazyk\IeC {\r u}}{12}{subsubsection.1.3.1.1}
+\contentsline {subsection}{\numberline {1.3.2}Nerozhodnuteln\IeC {\'e} jazyky}{12}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Vlastnosti \IeC {\v c}\IeC {\'a}ste\IeC {\v c}n\IeC {\v e} rozhodnuteln\IeC {\'y}ch jazyk\IeC {\r u}}{13}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Enumer\IeC {\'a}tory}{14}{subsection.1.3.4}
+\contentsline {subsection}{\numberline {1.3.5}P\IeC {\v r}evoditelnost, \IeC {\'u}pln\IeC {\'e} jazyky}{14}{subsection.1.3.5}
+\contentsline {subsection}{\numberline {1.3.6}Riceova v\IeC {\v e}ta}{15}{subsection.1.3.6}
+\contentsline {section}{\numberline {1.4}Nedeterministick\IeC {\'y} v\IeC {\'y}po\IeC {\v c}etn\IeC {\'\i } model.}{16}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}\IeC {\v C}asov\IeC {\'a} a prostorov\IeC {\'a} slo\IeC {\v z}itost NTS}{16}{subsection.1.4.1}
+\contentsline {section}{\numberline {1.5}Z\IeC {\'a}kladn\IeC {\'\i } t\IeC {\v r}\IeC {\'\i }dy slo\IeC {\v z}itosti a jejich vztahy.}{16}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}Z\IeC {\'a}kladn\IeC {\'\i } t\IeC {\v r}\IeC {\'\i }dy slo\IeC {\v z}itosti}{17}{subsection.1.5.1}
+\contentsline {subsubsection}{\numberline {1.5.1.1}Z\IeC {\'a}kladn\IeC {\'\i } deterministick\IeC {\'e} t\IeC {\v r}\IeC {\'\i }dy slo\IeC {\v z}itosti}{17}{subsubsection.1.5.1.1}
+\contentsline {subsubsection}{\numberline {1.5.1.2}V\IeC {\'y}zna\IeC {\v c}n\IeC {\'e} deterministick\IeC {\'e} t\IeC {\v r}\IeC {\'\i }dy slo\IeC {\v z}itosti}{17}{subsubsection.1.5.1.2}
+\contentsline {subsubsection}{\numberline {1.5.1.3}T\IeC {\v r}\IeC {\'\i }da NP}{17}{subsubsection.1.5.1.3}
+\contentsline {subsubsection}{\numberline {1.5.1.4}Modely TS s men\IeC {\v s}\IeC {\'\i }m ne\IeC {\v z} line\IeC {\'a}rn\IeC {\'\i }m prostorem}{18}{subsubsection.1.5.1.4}
+\contentsline {subsubsection}{\numberline {1.5.1.5}P\IeC {\v r}ehled v\IeC {\v s}ech zm\IeC {\'\i }n\IeC {\v e}n\IeC {\'y}ch t\IeC {\v r}\IeC {\'\i }d jazyk\IeC {\r u}}{19}{subsubsection.1.5.1.5}
+\contentsline {subsection}{\numberline {1.5.2}Vztahy mezi t\IeC {\v r}\IeC {\'\i }dami}{19}{subsection.1.5.2}
+\contentsline {section}{\numberline {1.6}V\IeC {\v e}ty o hierarchii.}{21}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}V\IeC {\v e}ta o deterministick\IeC {\'e} prostorov\IeC {\'e} hierarchii}{21}{subsection.1.6.1}
+\contentsline {subsection}{\numberline {1.6.2}V\IeC {\v e}ta o \IeC {\v c}asov\IeC {\'e} prostorov\IeC {\'e} hierarchii}{22}{subsection.1.6.2}
+\contentsline {section}{\numberline {1.7}\IeC {\'U}pln\IeC {\'e} probl\IeC {\'e}my pro t\IeC {\v r}\IeC {\'\i }du NP, Cook-Levinova v\IeC {\v e}ta.}{23}{section.1.7}
+\contentsline {subsection}{\numberline {1.7.1}Polynomi\IeC {\'a}ln\IeC {\'\i } p\IeC {\v r}evoditelnost, NP-\IeC {\'u}plnost}{23}{subsection.1.7.1}
+\contentsline {subsection}{\numberline {1.7.2}Cook-Levinova v\IeC {\v e}ta}{23}{subsection.1.7.2}
+\contentsline {subsection}{\numberline {1.7.3}Dal\IeC {\v s}\IeC {\'\i } NP-\IeC {\'u}pln\IeC {\'e} probl\IeC {\'e}my}{27}{subsection.1.7.3}
+\contentsline {subsubsection}{\numberline {1.7.3.1}SAT -- Splnitelnost formule v KNF}{27}{subsubsection.1.7.3.1}
+\contentsline {subsubsection}{\numberline {1.7.3.2}3SAT -- Splnitelnost formule ve 3KNF}{28}{subsubsection.1.7.3.2}
+\contentsline {subsubsection}{\numberline {1.7.3.3}VP -- Vrcholov\IeC {\'e} pokryt\IeC {\'\i }}{28}{subsubsection.1.7.3.3}
+\contentsline {subsubsection}{\numberline {1.7.3.4}HK -- Hamiltonovsk\IeC {\'a} kru\IeC {\v z}nice}{29}{subsubsection.1.7.3.4}
+\contentsline {subsubsection}{\numberline {1.7.3.5}3DM -- Trojrozm\IeC {\v e}rn\IeC {\'e} p\IeC {\'a}rov\IeC {\'a}n\IeC {\'\i }}{30}{subsubsection.1.7.3.5}
+\contentsline {subsubsection}{\numberline {1.7.3.6}LOUP -- Loupe\IeC {\v z}n\IeC {\'\i }ci}{30}{subsubsection.1.7.3.6}
+\contentsline {subsubsection}{\numberline {1.7.3.7}Dal\IeC {\v s}\IeC {\'\i }}{30}{subsubsection.1.7.3.7}
+\contentsline {section}{\numberline {1.8}Pseudopolynomi\IeC {\'a}ln\IeC {\'\i } algoritmy, siln\IeC {\'a} NP-\IeC {\'u}plnost.}{31}{section.1.8}
+\contentsline {subsection}{\numberline {1.8.1}Pseudopolynomi\IeC {\'a}ln\IeC {\'\i } algoritmy}{31}{subsection.1.8.1}
+\contentsline {subsubsection}{\numberline {1.8.1.1}P\IeC {\v r}\IeC {\'\i }klad: Batoh}{31}{subsubsection.1.8.1.1}
+\contentsline {subsection}{\numberline {1.8.2}Siln\IeC {\'a} NP-\IeC {\'u}plnost}{32}{subsection.1.8.2}
+\contentsline {section}{\numberline {1.9}Aproxima\IeC {\v c}n\IeC {\'\i } algoritmy a sch\IeC {\'e}mata.}{33}{section.1.9}
+\contentsline {subsection}{\numberline {1.9.1}Optimaliza\IeC {\v c}n\IeC {\'\i } \IeC {\'u}loha}{33}{subsection.1.9.1}
+\contentsline {subsection}{\numberline {1.9.2}Aproxima\IeC {\v c}n\IeC {\'\i } algoritmus}{34}{subsection.1.9.2}
+\contentsline {subsubsection}{\numberline {1.9.2.1}P\IeC {\v r}\IeC {\'\i }klad: Bin Packing}{34}{subsubsection.1.9.2.1}
+\contentsline {subsection}{\numberline {1.9.3}Aproxima\IeC {\v c}n\IeC {\'\i } sch\IeC {\'e}mata}{36}{subsection.1.9.3}
+\contentsline {subsubsection}{\numberline {1.9.3.1}\IeC {\'U}pln\IeC {\v e} polynomi\IeC {\'a}ln\IeC {\'\i } aproxima\IeC {\v c}n\IeC {\'\i } sch\IeC {\'e}ma pro Batoh}{36}{subsubsection.1.9.3.1}
+\contentsline {subsubsection}{\numberline {1.9.3.2}Aproxima\IeC {\v c}n\IeC {\'\i } sch\IeC {\'e}mata a NP-\IeC {\'u}plnost}{39}{subsubsection.1.9.3.2}
+\contentsline {subsection}{\numberline {1.9.4}Neaproximovatelnost}{39}{subsection.1.9.4}
+\contentsline {chapter}{\numberline {2}Datov\IeC {\'e} struktury}{41}{chapter.2}
+\contentsline {section}{\numberline {2.1}Vyhled\IeC {\'a}vac\IeC {\'\i } stromy ((a,b)-stromy, Splay stromy).}{41}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Bin\IeC {\'a}rn\IeC {\'\i } vyhled\IeC {\'a}vac\IeC {\'\i } strom (BVS)}{41}{subsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.1.1}Operace}{41}{subsubsection.2.1.1.1}
+\contentsline {subsection}{\numberline {2.1.2}(a,b)-stromy}{41}{subsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.2.1}Operace}{42}{subsubsection.2.1.2.1}
+\contentsline {subsubsection}{\numberline {2.1.2.2}Paraleln\IeC {\'\i } verze}{42}{subsubsection.2.1.2.2}
+\contentsline {subsubsection}{\numberline {2.1.2.3}Amortizovan\IeC {\'a} anal\IeC {\'y}za}{42}{subsubsection.2.1.2.3}
+\contentsline {subsubsection}{\numberline {2.1.2.4}A-sort}{43}{subsubsection.2.1.2.4}
+\contentsline {subsubsection}{\numberline {2.1.2.5}B-stromy}{43}{subsubsection.2.1.2.5}
+\contentsline {subsection}{\numberline {2.1.3}\IeC {\v C}erveno-\IeC {\v c}ern\IeC {\'e} stromy}{44}{subsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.1.3.1}Operace INSERT(x)}{44}{subsubsection.2.1.3.1}
+\contentsline {subsubsection}{\numberline {2.1.3.2}Operace DELETE(x)}{45}{subsubsection.2.1.3.2}
+\contentsline {subsection}{\numberline {2.1.4}Splay stromy}{45}{subsection.2.1.4}
+\contentsline {subsubsection}{\numberline {2.1.4.1}Operace SPLAY(x)}{45}{subsubsection.2.1.4.1}
+\contentsline {subsubsection}{\numberline {2.1.4.2}Operace FIND(x)}{46}{subsubsection.2.1.4.2}
+\contentsline {subsubsection}{\numberline {2.1.4.3}Operace INSERT(x)}{46}{subsubsection.2.1.4.3}
+\contentsline {subsubsection}{\numberline {2.1.4.4}Operace DELETE(x)}{46}{subsubsection.2.1.4.4}
+\contentsline {subsubsection}{\numberline {2.1.4.5}Amortizovan\IeC {\'a} anal\IeC {\'y}za}{46}{subsubsection.2.1.4.5}
+\contentsline {subsection}{\numberline {2.1.5}AVL stromy}{48}{subsection.2.1.5}
+\contentsline {section}{\numberline {2.2}Haldy (regul\IeC {\'a}rn\IeC {\'\i }, binomi\IeC {\'a}ln\IeC {\'\i }).}{49}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Regul\IeC {\'e}rn\IeC {\'\i } halda}{49}{subsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.1.1}Reprezentace}{49}{subsubsection.2.2.1.1}
+\contentsline {subsubsection}{\numberline {2.2.1.2}Operace}{49}{subsubsection.2.2.1.2}
+\contentsline {subsection}{\numberline {2.2.2}Binomi\IeC {\'a}ln\IeC {\'\i } halda}{50}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Fibonacciho halda}{51}{subsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.3.1}Implementace}{51}{subsubsection.2.2.3.1}
+\contentsline {subsubsection}{\numberline {2.2.3.2}Operace DECREASE-KEY(v, k)}{51}{subsubsection.2.2.3.2}
+\contentsline {subsubsection}{\numberline {2.2.3.3}Anal\IeC {\'y}za DELETE-MIN}{52}{subsubsection.2.2.3.3}
+\contentsline {subsection}{\numberline {2.2.4}Dal\IeC {\v s}\IeC {\'\i } haldy}{52}{subsection.2.2.4}
+\contentsline {subsubsection}{\numberline {2.2.4.1}Pairing heap}{52}{subsubsection.2.2.4.1}
+\contentsline {subsubsection}{\numberline {2.2.4.2}Brodal heap, strict Fibonacci heap}{52}{subsubsection.2.2.4.2}
+\contentsline {section}{\numberline {2.3}Ha\IeC {\v s}ov\IeC {\'a}n\IeC {\'\i }, \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } koliz\IeC {\'\i }, univerz\IeC {\'a}ln\IeC {\'\i } ha\IeC {\v s}ov\IeC {\'a}n\IeC {\'\i }, v\IeC {\'y}b\IeC {\v e}r ha\IeC {\v s}ovac\IeC {\'\i } funkce.}{52}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Z\IeC {\'a}kladn\IeC {\'\i } pojmy}{52}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}\IeC {\v R}e\IeC {\v s}en\IeC {\'\i } koliz\IeC {\'\i }}{53}{subsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.2.1}Hashov\IeC {\'a}n\IeC {\'\i } se separovan\IeC {\'y}mi \IeC {\v r}et\IeC {\v e}zci}{53}{subsubsection.2.3.2.1}
+\contentsline {paragraph}{\numberline {2.3.2.1.1}O\IeC {\v c}ek\IeC {\'a}van\IeC {\'a} pr\IeC {\r u}m\IeC {\v e}rn\IeC {\'a} d\IeC {\'e}lka \IeC {\v r}et\IeC {\v e}zc\IeC {\r u}}{53}{paragraph.2.3.2.1.1}
+\contentsline {paragraph}{\numberline {2.3.2.1.2}O\IeC {\v c}ek\IeC {\'a}van\IeC {\'y} po\IeC {\v c}et test\IeC {\r u} (= porovn\IeC {\'a}n\IeC {\'\i }) p\IeC {\v r}i hled\IeC {\'a}n\IeC {\'\i }}{54}{paragraph.2.3.2.1.2}
+\contentsline {subsubsection}{\numberline {2.3.2.2}Hashov\IeC {\'a}n\IeC {\'\i } s p\IeC {\v r}em\IeC {\'\i }s\IeC {\v t}ov\IeC {\'a}n\IeC {\'\i }m/p\IeC {\v r}esuny}{54}{subsubsection.2.3.2.2}
+\contentsline {subsubsection}{\numberline {2.3.2.3}Hashov\IeC {\'a}n\IeC {\'\i } se dv\IeC {\v e}ma ukazateli}{54}{subsubsection.2.3.2.3}
+\contentsline {subsubsection}{\numberline {2.3.2.4}Sr\IeC {\r u}staj\IeC {\'\i }c\IeC {\'\i } (coalesced) hashov\IeC {\'a}n\IeC {\'\i }}{54}{subsubsection.2.3.2.4}
+\contentsline {paragraph}{\numberline {2.3.2.4.1}Bez pomocn\IeC {\'e} pam\IeC {\v e}ti -- LISCH a EISCH}{55}{paragraph.2.3.2.4.1}
+\contentsline {paragraph}{\numberline {2.3.2.4.2}S pomocnou pam\IeC {\v e}t\IeC {\'\i } -- LICH, VICH, EICH}{55}{paragraph.2.3.2.4.2}
+\contentsline {subsubsection}{\numberline {2.3.2.5}Line\IeC {\'a}rn\IeC {\'\i } p\IeC {\v r}id\IeC {\'a}v\IeC {\'a}n\IeC {\'\i }}{55}{subsubsection.2.3.2.5}
+\contentsline {subsubsection}{\numberline {2.3.2.6}Dvojit\IeC {\'e} hashov\IeC {\'a}n\IeC {\'\i }}{56}{subsubsection.2.3.2.6}
+\contentsline {paragraph}{\numberline {2.3.2.6.1}O\IeC {\v c}ek\IeC {\'a}van\IeC {\'y} po\IeC {\v c}et test\IeC {\r u}}{56}{paragraph.2.3.2.6.1}
+\contentsline {subsubsection}{\numberline {2.3.2.7}Kuka\IeC {\v c}\IeC {\v c}\IeC {\'\i } ha\IeC {\v s}ov\IeC {\'a}n\IeC {\'\i }}{56}{subsubsection.2.3.2.7}
+\contentsline {paragraph}{\numberline {2.3.2.7.1}Anal\IeC {\'y}za}{57}{paragraph.2.3.2.7.1}
+\contentsline {subsubsection}{\numberline {2.3.2.8}Srovn\IeC {\'a}n\IeC {\'\i }}{58}{subsubsection.2.3.2.8}
+\contentsline {subsubsection}{\numberline {2.3.2.9}Implementa\IeC {\v c}n\IeC {\'\i } dodatky}{58}{subsubsection.2.3.2.9}
+\contentsline {subsubsection}{\numberline {2.3.2.10}P\IeC {\v r}eha\IeC {\v s}ov\IeC {\'a}n\IeC {\'\i }}{58}{subsubsection.2.3.2.10}
+\contentsline {subsection}{\numberline {2.3.3}Univerz\IeC {\'a}ln\IeC {\'\i } hashov\IeC {\'a}n\IeC {\'\i }}{58}{subsection.2.3.3}
+\contentsline {paragraph}{\numberline {2.3.3.0.1}Existence c-univerz\IeC {\'a}ln\IeC {\'\i }ch syst\IeC {\'e}m\IeC {\r u}}{59}{paragraph.2.3.3.0.1}
+\contentsline {paragraph}{\numberline {2.3.3.0.2}Vlastnosti}{59}{paragraph.2.3.3.0.2}
+\contentsline {paragraph}{\numberline {2.3.3.0.3}Doln\IeC {\'\i } odhady velikosti univ. syst\IeC {\'e}m\IeC {\r u}}{60}{paragraph.2.3.3.0.3}
+\contentsline {paragraph}{\numberline {2.3.3.0.4}Doln\IeC {\'\i } odhad c}{60}{paragraph.2.3.3.0.4}
+\contentsline {subsection}{\numberline {2.3.4}Perfektn\IeC {\'\i } hashov\IeC {\'a}n\IeC {\'\i }}{60}{subsection.2.3.4}
+\contentsline {paragraph}{\numberline {2.3.4.0.1}Definice}{60}{paragraph.2.3.4.0.1}
+\contentsline {subsubsection}{\numberline {2.3.4.1}Odhady velikosti}{60}{subsubsection.2.3.4.1}
+\contentsline {subsubsection}{\numberline {2.3.4.2}Existence}{61}{subsubsection.2.3.4.2}
+\contentsline {subsubsection}{\numberline {2.3.4.3}Konstrukce funkce}{61}{subsubsection.2.3.4.3}
+\contentsline {paragraph}{\numberline {2.3.4.3.1}Men\IeC {\v s}\IeC {\'\i } tabulka}{61}{paragraph.2.3.4.3.1}
+\contentsline {paragraph}{\numberline {2.3.4.3.2}``Mal\IeC {\'a}'' funkce}{62}{paragraph.2.3.4.3.2}
+\contentsline {section}{\numberline {2.4}Anal\IeC {\'y}za nejhor\IeC {\v s}\IeC {\'\i }ho, amortizovan\IeC {\'e}ho a o\IeC {\v c}ek\IeC {\'a}van\IeC {\'e}ho chov\IeC {\'a}n\IeC {\'\i } datov\IeC {\'y}ch struktur.}{62}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Asymptotick\IeC {\'a} notace}{63}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Prostorov\IeC {\'a} (pam\IeC {\v e}\IeC {\v t}ov\IeC {\'a}) slo\IeC {\v z}itost reprezentovan\IeC {\'e} struktury}{63}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}\IeC {\v C}asov\IeC {\'a} slo\IeC {\v z}itost operac\IeC {\'\i } na datov\IeC {\'e} struktu\IeC {\v r}e}{63}{subsection.2.4.3}
+\contentsline {subsubsection}{\numberline {2.4.3.1}\IeC {\v C}asov\IeC {\'a} slo\IeC {\v z}itost v nejlep\IeC {\v s}\IeC {\'\i }m p\IeC {\v r}\IeC {\'\i }pad\IeC {\v e}}{63}{subsubsection.2.4.3.1}
+\contentsline {subsubsection}{\numberline {2.4.3.2}\IeC {\v C}asov\IeC {\'a} slo\IeC {\v z}itost v nejhor\IeC {\v s}\IeC {\'\i }m p\IeC {\v r}\IeC {\'\i }pad\IeC {\v e}}{63}{subsubsection.2.4.3.2}
+\contentsline {subsubsection}{\numberline {2.4.3.3}O\IeC {\v c}ek\IeC {\'a}van\IeC {\'a} \IeC {\v c}asov\IeC {\'a} slo\IeC {\v z}itost}{63}{subsubsection.2.4.3.3}
+\contentsline {subsubsection}{\numberline {2.4.3.4}Amortizovan\IeC {\'a} slo\IeC {\v z}itost}{64}{subsubsection.2.4.3.4}
+\contentsline {section}{\numberline {2.5}Chov\IeC {\'a}n\IeC {\'\i } a anal\IeC {\'y}za datov\IeC {\'y}ch struktur na syst\IeC {\'e}mech s pam\IeC {\v e}\IeC {\v t}ovou hierarchi\IeC {\'\i }.}{66}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Pam\IeC {\v e}\IeC {\v t}ov\IeC {\'a} hierarchie}{66}{subsection.2.5.1}
+\contentsline {subsubsection}{\numberline {2.5.1.1}Zjednodu\IeC {\v s}en\IeC {\'y} model pam\IeC {\v e}ti}{66}{subsubsection.2.5.1.1}
+\contentsline {subsection}{\numberline {2.5.2}Cache-aware a cache-oblivious algoritmy}{67}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Cache-aware a cache-oblivious datov\IeC {\'e} struktury}{69}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}Strategie pro spr\IeC {\'a}vu cache}{70}{subsection.2.5.4}
+\contentsline {part}{II\hspace {1em}Inteligentn\IeC {\'\i } agenti}{71}{part.2}
+\contentsline {chapter}{\numberline {3}P\IeC {\v r}\IeC {\'\i }rodou inspirovan\IeC {\'e} po\IeC {\v c}\IeC {\'\i }t\IeC {\'a}n\IeC {\'\i }}{72}{chapter.3}
+\contentsline {section}{\numberline {3.1}Genetick\IeC {\'e} algoritmy, genetick\IeC {\'e} a evolu\IeC {\v c}n\IeC {\'\i } programov\IeC {\'a}n\IeC {\'\i }.}{72}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Evolu\IeC {\v c}n\IeC {\'\i } algoritmy}{72}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Genetick\IeC {\'e} algoritmy (GA)}{73}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Genetick\IeC {\'e} programov\IeC {\'a}n\IeC {\'\i } (GP)}{73}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Evolu\IeC {\v c}n\IeC {\'\i } programov\IeC {\'a}n\IeC {\'\i } (EP)}{73}{subsection.3.1.4}
+\contentsline {subsubsection}{\numberline {3.1.4.1}EP vs. GA}{74}{subsubsection.3.1.4.1}
+\contentsline {subsubsection}{\numberline {3.1.4.2}EP vs. ES}{74}{subsubsection.3.1.4.2}
+\contentsline {subsubsection}{\numberline {3.1.4.3}V\IeC {\'y}znam k\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{74}{subsubsection.3.1.4.3}
+\contentsline {section}{\numberline {3.2}Teorie sch\IeC {\'e}mat, pravd\IeC {\v e}podobnostn\IeC {\'\i } modely jednoduch\IeC {\'e}ho genetick\IeC {\'e}ho algoritmu.}{74}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Sch\IeC {\'e}mata}{74}{subsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.1.1}D\IeC {\r u}sledky VoS}{76}{subsubsection.3.2.1.1}
+\contentsline {subsection}{\numberline {3.2.2}Pravd\IeC {\v e}podobnostn\IeC {\'\i } modely}{76}{subsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2.1}Je\IeC {\v s}t\IeC {\v e} jednodu\IeC {\v s}\IeC {\v s}\IeC {\'\i } jednoduch\IeC {\'y} GA (JJJGA)}{76}{subsubsection.3.2.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2.2}Anal\IeC {\'y}za}{76}{subsubsection.3.2.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2.3}Kone\IeC {\v c}n\IeC {\'e} populace}{77}{subsubsection.3.2.2.3}
+\contentsline {section}{\numberline {3.3}Evolu\IeC {\v c}n\IeC {\'\i } strategie, diferenci\IeC {\'a}ln\IeC {\'\i } evoluce, koevoluce, otev\IeC {\v r}en\IeC {\'a} evoluce.}{77}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Evolu\IeC {\v c}n\IeC {\'\i } strategie}{77}{subsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.1.1}Notace}{77}{subsubsection.3.3.1.1}
+\contentsline {subsubsection}{\numberline {3.3.1.2}Varianty}{78}{subsubsection.3.3.1.2}
+\contentsline {subsubsection}{\numberline {3.3.1.3}K\IeC {\'o}dov\IeC {\'a}n\IeC {\'\i }, genetick\IeC {\'e} oper\IeC {\'a}tory}{78}{subsubsection.3.3.1.3}
+\contentsline {subsubsection}{\numberline {3.3.1.4}CMA-ES}{78}{subsubsection.3.3.1.4}
+\contentsline {subsection}{\numberline {3.3.2}Diferenci\IeC {\'a}ln\IeC {\'\i } evoluce}{79}{subsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.2.1}Mutace}{79}{subsubsection.3.3.2.1}
+\contentsline {subsubsection}{\numberline {3.3.2.2}K\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{79}{subsubsection.3.3.2.2}
+\contentsline {subsubsection}{\numberline {3.3.2.3}Selekce}{79}{subsubsection.3.3.2.3}
+\contentsline {subsection}{\numberline {3.3.3}Koevoluce}{79}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Otev\IeC {\v r}en\IeC {\'a} evoluce}{79}{subsection.3.3.4}
+\contentsline {section}{\numberline {3.4}Rojov\IeC {\'e} optimaliza\IeC {\v c}n\IeC {\'\i } algoritmy.}{80}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Optimalizace hejnem \IeC {\v c}\IeC {\'a}stic}{80}{subsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.1.1}Algorimus}{80}{subsubsection.3.4.1.1}
+\contentsline {subsection}{\numberline {3.4.2}Dal\IeC {\v s}\IeC {\'\i } rojov\IeC {\'e} optimaliza\IeC {\v c}n\IeC {\'\i } algoritmy}{80}{subsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.2.1}Ant Colony Optimization (ACO)}{81}{subsubsection.3.4.2.1}
+\contentsline {section}{\numberline {3.5}Memetick\IeC {\'e} algoritmy, hill climbing, simulovan\IeC {\'e} \IeC {\v z}\IeC {\'\i }h\IeC {\'a}n\IeC {\'\i }.}{81}{section.3.5}
+\contentsline {subsubsection}{\numberline {3.5.0.1}Algoritmus}{81}{subsubsection.3.5.0.1}
+\contentsline {subsubsection}{\numberline {3.5.0.2}Existuj\IeC {\'\i } dva p\IeC {\v r}\IeC {\'\i }stupy, co d\IeC {\v e}lat s v\IeC {\'y}sledkem:}{82}{subsubsection.3.5.0.2}
+\contentsline {subsubsection}{\numberline {3.5.0.3}Hill climbing}{82}{subsubsection.3.5.0.3}
+\contentsline {subsubsection}{\numberline {3.5.0.4}Simulovan\IeC {\'e} \IeC {\v z}\IeC {\'\i }h\IeC {\'a}n\IeC {\'\i }}{82}{subsubsection.3.5.0.4}
+\contentsline {subsubsection}{\numberline {3.5.0.5}Algoritmus}{82}{subsubsection.3.5.0.5}
+\contentsline {section}{\numberline {3.6}Aplikace evolu\IeC {\v c}n\IeC {\'\i }ch algoritm\IeC {\r u} (evoluce expertn\IeC {\'\i }ch syst\IeC {\'e}mu, neuroevoluce, \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } kombinatorick\IeC {\'y}ch \IeC {\'u}loh, v\IeC {\'\i }cekriteri\IeC {\'a}ln\IeC {\'\i } optimalizace).}{82}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Evoluce expertn\IeC {\'\i }ch syst\IeC {\'e}m\IeC {\r u}}{82}{subsection.3.6.1}
+\contentsline {subsubsection}{\numberline {3.6.1.1}Pittsburghsk\IeC {\'y} p\IeC {\v r}\IeC {\'\i }stup}{83}{subsubsection.3.6.1.1}
+\contentsline {subsubsection}{\numberline {3.6.1.2}Michigansk\IeC {\'y} p\IeC {\v r}\IeC {\'\i }stup}{83}{subsubsection.3.6.1.2}
+\contentsline {subsection}{\numberline {3.6.2}Neuroevoluce}{84}{subsection.3.6.2}
+\contentsline {subsubsection}{\numberline {3.6.2.1}U\IeC {\v c}en\IeC {\'\i } vah}{84}{subsubsection.3.6.2.1}
+\contentsline {subsubsection}{\numberline {3.6.2.2}U\IeC {\v c}en\IeC {\'\i } struktury}{84}{subsubsection.3.6.2.2}
+\contentsline {subsubsection}{\numberline {3.6.2.3}Evoluce \IeC {\v c}\IeC {\'a}ste\IeC {\v c}n\IeC {\'y}ch s\IeC {\'\i }t\IeC {\'\i }}{85}{subsubsection.3.6.2.3}
+\contentsline {subsubsection}{\numberline {3.6.2.4}NEAT (Neuroevolution of Augmenting Topologies)}{85}{subsubsection.3.6.2.4}
+\contentsline {subsubsection}{\numberline {3.6.2.5}HyperNEAT (Hyper-cube NEAT)}{86}{subsubsection.3.6.2.5}
+\contentsline {subsection}{\numberline {3.6.3}\IeC {\v R}e\IeC {\v s}en\IeC {\'\i } kombinatorick\IeC {\'y}ch \IeC {\'u}loh}{87}{subsection.3.6.3}
+\contentsline {subsubsection}{\numberline {3.6.3.1}Batoh (0-1 knapsack problem)}{87}{subsubsection.3.6.3.1}
+\contentsline {subsubsection}{\numberline {3.6.3.2}Probl\IeC {\'e}m obchodn\IeC {\'\i }ho cestuj\IeC {\'\i }c\IeC {\'\i }ho (TSP -- travelling salesman problem)}{87}{subsubsection.3.6.3.2}
+\contentsline {subsection}{\numberline {3.6.4}V\IeC {\'\i }cekriteri\IeC {\'a}ln\IeC {\'\i } optimalizace (MOEA -- Multi-objective EA)}{90}{subsection.3.6.4}
+\contentsline {subsubsection}{\numberline {3.6.4.1}Algoritmy}{90}{subsubsection.3.6.4.1}
+\contentsline {subsubsection}{\numberline {3.6.4.2}Porovn\IeC {\'a}n\IeC {\'\i } algoritm\IeC {\r u}}{91}{subsubsection.3.6.4.2}
+\contentsline {part}{III\hspace {1em}Strojov\IeC {\'e} u\IeC {\v c}en\IeC {\'\i }}{93}{part.3}
+\contentsline {chapter}{\numberline {4}Strojov\IeC {\'e} u\IeC {\v c}en\IeC {\'\i } a jeho aplikace}{94}{chapter.4}
+\contentsline {section}{\numberline {4.1}Strojov\IeC {\'e} u\IeC {\v c}en\IeC {\'\i }; prohled\IeC {\'a}v\IeC {\'a}n\IeC {\'\i } prostoru verz\IeC {\'\i }, u\IeC {\v c}en\IeC {\'\i } s u\IeC {\v c}itelem a bez u\IeC {\v c}itele, pravd\IeC {\v e}podobnostn\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }stupy, teoretick\IeC {\'e} aspekty strojov\IeC {\'e}ho u\IeC {\v c}en\IeC {\'\i }.}{94}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Teoretick\IeC {\'e} aspekty strojov\IeC {\'e}ho u\IeC {\v c}en\IeC {\'\i }}{94}{subsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.1.1}Z\IeC {\'a}kladn\IeC {\'\i } pojmy}{94}{subsubsection.4.1.1.1}
+\contentsline {subsubsection}{\numberline {4.1.1.2}Chyba}{94}{subsubsection.4.1.1.2}
+\contentsline {paragraph}{\numberline {4.1.1.2.1}M\IeC {\'\i }ry chyby pro regresi}{95}{paragraph.4.1.1.2.1}
+\contentsline {paragraph}{\numberline {4.1.1.2.2}M\IeC {\'\i }ry chyby pro klasifikaci}{95}{paragraph.4.1.1.2.2}
+\contentsline {subsubsection}{\numberline {4.1.1.3}P\IeC {\v r}eu\IeC {\v c}en\IeC {\'\i }, bias-variance trade-off}{95}{subsubsection.4.1.1.3}
+\contentsline {subsubsection}{\numberline {4.1.1.4}Proklet\IeC {\'\i } dimenzionality}{95}{subsubsection.4.1.1.4}
+\contentsline {subsubsection}{\numberline {4.1.1.5}Krosvalidace}{96}{subsubsection.4.1.1.5}
+\contentsline {subsubsection}{\numberline {4.1.1.6}LOOCV (Leave-one-out cross-validation)}{96}{subsubsection.4.1.1.6}
+\contentsline {subsubsection}{\numberline {4.1.1.7}Bootstrap}{96}{subsubsection.4.1.1.7}
+\contentsline {subsection}{\numberline {4.1.2}U\IeC {\v c}en\IeC {\'\i } s u\IeC {\v c}itelem}{96}{subsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.2.1}Line\IeC {\'a}rn\IeC {\'\i } regrese}{96}{subsubsection.4.1.2.1}
+\contentsline {paragraph}{\numberline {4.1.2.1.1}P\IeC {\v r}esnost odhadu koeficient\IeC {\r u}}{97}{paragraph.4.1.2.1.1}
+\contentsline {subparagraph}{Intervaly v\IeC {\v e}rohodnosti:}{97}{paragraph.4.1.2.1.1}
+\contentsline {subparagraph}{Testov\IeC {\'a}n\IeC {\'\i } hypot\IeC {\'e}zy nez\IeC {\'a}vislosti}{97}{paragraph.4.1.2.1.1}
+\contentsline {paragraph}{\numberline {4.1.2.1.2}Spr\IeC {\'a}vnost modelu}{97}{paragraph.4.1.2.1.2}
+\contentsline {paragraph}{\numberline {4.1.2.1.3}V\IeC {\'\i }cerozm\IeC {\v e}rn\IeC {\'a} line\IeC {\'a}rn\IeC {\'\i } regrese}{97}{paragraph.4.1.2.1.3}
+\contentsline {paragraph}{\numberline {4.1.2.1.4}Dal\IeC {\v s}\IeC {\'\i } varianty}{97}{paragraph.4.1.2.1.4}
+\contentsline {paragraph}{\numberline {4.1.2.1.5}Probl\IeC {\'e}my}{98}{paragraph.4.1.2.1.5}
+\contentsline {subsubsection}{\numberline {4.1.2.2}Line\IeC {\'a}rn\IeC {\'\i } metody pro klasifikaci (logistick\IeC {\'a} regrese, LDA, QDA)}{98}{subsubsection.4.1.2.2}
+\contentsline {paragraph}{\numberline {4.1.2.2.1}Logistick\IeC {\'a} regrese}{98}{paragraph.4.1.2.2.1}
+\contentsline {subparagraph}{U\IeC {\v c}en\IeC {\'\i } koeficient\IeC {\r u}}{98}{paragraph.4.1.2.2.1}
+\contentsline {subparagraph}{V\IeC {\'\i }ce rozm\IeC {\v e}rn\IeC {\'a} logistick\IeC {\'a} regrese}{98}{paragraph.4.1.2.2.1}
+\contentsline {paragraph}{\numberline {4.1.2.2.2}LDA (Linear Discriminant Analysis)}{99}{paragraph.4.1.2.2.2}
+\contentsline {paragraph}{\numberline {4.1.2.2.3}QDA (Quadratic Discriminant Analysis)}{99}{paragraph.4.1.2.2.3}
+\contentsline {paragraph}{\numberline {4.1.2.2.4}Srovn\IeC {\'a}n\IeC {\'\i } (kNN, logistick\IeC {\'a} regrese, LDA, QDA)}{99}{paragraph.4.1.2.2.4}
+\contentsline {subsubsection}{\numberline {4.1.2.3}Rozhodovac\IeC {\'\i } stromy}{99}{subsubsection.4.1.2.3}
+\contentsline {paragraph}{\numberline {4.1.2.3.1}Volba atributu pro roz\IeC {\v s}t\IeC {\v e}pen\IeC {\'\i }}{100}{paragraph.4.1.2.3.1}
+\contentsline {paragraph}{\numberline {4.1.2.3.2}Algoritmus ID3}{100}{paragraph.4.1.2.3.2}
+\contentsline {paragraph}{\numberline {4.1.2.3.3}Pro\IeC {\v r}ez\IeC {\'a}v\IeC {\'a}n\IeC {\'\i }}{100}{paragraph.4.1.2.3.3}
+\contentsline {subparagraph}{Reduced error pruning}{101}{paragraph.4.1.2.3.3}
+\contentsline {subparagraph}{Cost complexity pruning}{101}{paragraph.4.1.2.3.3}
+\contentsline {subparagraph}{CART}{101}{paragraph.4.1.2.3.3}
+\contentsline {paragraph}{\numberline {4.1.2.3.4}Chyb\IeC {\v e}j\IeC {\'\i }c\IeC {\'\i } hodnoty atribut\IeC {\r u}}{101}{paragraph.4.1.2.3.4}
+\contentsline {subsubsection}{\numberline {4.1.2.4}Kombinace model\IeC {\r u} (learning ensembles)}{101}{subsubsection.4.1.2.4}
+\contentsline {paragraph}{\numberline {4.1.2.4.1}Bagging (bootstrap aggregating)}{101}{paragraph.4.1.2.4.1}
+\contentsline {subparagraph}{OOB (Out Of Bag) error estimation}{101}{paragraph.4.1.2.4.1}
+\contentsline {paragraph}{\numberline {4.1.2.4.2}Random forest}{102}{paragraph.4.1.2.4.2}
+\contentsline {paragraph}{\numberline {4.1.2.4.3}Stacking}{102}{paragraph.4.1.2.4.3}
+\contentsline {paragraph}{\numberline {4.1.2.4.4}Bumping}{102}{paragraph.4.1.2.4.4}
+\contentsline {paragraph}{\numberline {4.1.2.4.5}Boosting}{102}{paragraph.4.1.2.4.5}
+\contentsline {subparagraph}{AdaBoost}{102}{paragraph.4.1.2.4.5}
+\contentsline {subparagraph}{Real AdaBoost}{103}{algorithm.6}
+\contentsline {subparagraph}{Boosting pro regresn\IeC {\'\i } stromy}{103}{algorithm.6}
+\contentsline {subsubsection}{\numberline {4.1.2.5}SVM}{103}{subsubsection.4.1.2.5}
+\contentsline {paragraph}{\numberline {4.1.2.5.1}D\IeC {\v e}lic\IeC {\'\i } nadrovina}{103}{paragraph.4.1.2.5.1}
+\contentsline {paragraph}{\numberline {4.1.2.5.2}Maximal margin classifier}{103}{paragraph.4.1.2.5.2}
+\contentsline {paragraph}{\numberline {4.1.2.5.3}Support Vector Classifier}{105}{paragraph.4.1.2.5.3}
+\contentsline {paragraph}{\numberline {4.1.2.5.4}Support Vector Machine (SVM)}{105}{paragraph.4.1.2.5.4}
+\contentsline {paragraph}{\numberline {4.1.2.5.5}Z\IeC {\'a}v\IeC {\v e}re\IeC {\v c}n\IeC {\'e} pozn\IeC {\'a}mky}{105}{paragraph.4.1.2.5.5}
+\contentsline {subsection}{\numberline {4.1.3}U\IeC {\v c}en\IeC {\'\i } bez u\IeC {\v c}itele}{105}{subsection.4.1.3}
+\contentsline {subsubsection}{\numberline {4.1.3.1}Shlukov\IeC {\'a}n\IeC {\'\i } (klastrov\IeC {\'a}n\IeC {\'\i })}{105}{subsubsection.4.1.3.1}
+\contentsline {paragraph}{\numberline {4.1.3.1.1}$k$-means}{105}{paragraph.4.1.3.1.1}
+\contentsline {subparagraph}{Metrika vzd\IeC {\'a}lenost\IeC {\'\i }}{106}{Item.141}
+\contentsline {subparagraph}{Po\IeC {\v c}et klastr\IeC {\r u}}{106}{Item.141}
+\contentsline {paragraph}{\numberline {4.1.3.1.2}$k$-medoids}{106}{paragraph.4.1.3.1.2}
+\contentsline {paragraph}{\numberline {4.1.3.1.3}Hierarchical clustering}{106}{paragraph.4.1.3.1.3}
+\contentsline {subparagraph}{Metody}{106}{paragraph.4.1.3.1.3}
+\contentsline {paragraph}{\numberline {4.1.3.1.4}Shlukov\IeC {\'a}n\IeC {\'\i } -- z\IeC {\'a}v\IeC {\v e}re\IeC {\v c}n\IeC {\'e} pozn\IeC {\'a}mky}{106}{paragraph.4.1.3.1.4}
+\contentsline {subsubsection}{\numberline {4.1.3.2}PCA}{107}{subsubsection.4.1.3.2}
+\contentsline {subsubsection}{\numberline {4.1.3.3}Asocia\IeC {\v c}n\IeC {\'\i } pravidla}{107}{subsubsection.4.1.3.3}
+\contentsline {paragraph}{\numberline {4.1.3.3.1}APRIORI algoritmus}{107}{paragraph.4.1.3.3.1}
+\contentsline {subsubsection}{\numberline {4.1.3.4}Bez u\IeC {\v c}itele jako s u\IeC {\v c}itelem}{107}{subsubsection.4.1.3.4}
+\contentsline {subsection}{\numberline {4.1.4}Pravd\IeC {\v e}podobnostn\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }stupy}{107}{subsection.4.1.4}
+\contentsline {subparagraph}{P\IeC {\v r}\IeC {\'\i }klad s bonb\IeC {\'o}ny}{108}{subsection.4.1.4}
+\contentsline {subsubsection}{\numberline {4.1.4.1}Bayesovsk\IeC {\'e} u\IeC {\v c}en\IeC {\'\i }}{108}{subsubsection.4.1.4.1}
+\contentsline {subsubsection}{\numberline {4.1.4.2}MAP (Maximum Aposteriori Hypothesis)}{108}{subsubsection.4.1.4.2}
+\contentsline {subsubsection}{\numberline {4.1.4.3}MDL (Minimal Description Length)}{108}{subsubsection.4.1.4.3}
+\contentsline {subsubsection}{\numberline {4.1.4.4}ML (Maximum Likelihood)}{109}{subsubsection.4.1.4.4}
+\contentsline {paragraph}{\numberline {4.1.4.4.1}U\IeC {\v c}en\IeC {\'\i } parametr\IeC {\r u}}{109}{paragraph.4.1.4.4.1}
+\contentsline {subsubsection}{\numberline {4.1.4.5}Naivn\IeC {\'\i } bayesovsk\IeC {\'y} klasifik\IeC {\'a}tor}{109}{subsubsection.4.1.4.5}
+\contentsline {subsubsection}{\numberline {4.1.4.6}EM (Expectation Maximization)}{109}{subsubsection.4.1.4.6}
+\contentsline {subsection}{\numberline {4.1.5}Prohled\IeC {\'a}v\IeC {\'a}n\IeC {\'\i } prostoru verz\IeC {\'\i }}{112}{subsection.4.1.5}
+\contentsline {subsubsection}{\numberline {4.1.5.1}Znalosti v u\IeC {\v c}en\IeC {\'\i }}{112}{subsubsection.4.1.5.1}
+\contentsline {subsubsection}{\numberline {4.1.5.2}Logick\IeC {\'a} formulace u\IeC {\v c}en\IeC {\'\i }}{112}{subsubsection.4.1.5.2}
+\contentsline {subsubsection}{\numberline {4.1.5.3}Prostor hypot\IeC {\'e}z}{112}{subsubsection.4.1.5.3}
+\contentsline {subsubsection}{\numberline {4.1.5.4}Metody}{113}{subsubsection.4.1.5.4}
+\contentsline {paragraph}{\numberline {4.1.5.4.1}Metoda nejlep\IeC {\v s}\IeC {\'\i } sou\IeC {\v c}asn\IeC {\'e} hypot\IeC {\'e}zy}{113}{paragraph.4.1.5.4.1}
+\contentsline {subparagraph}{Vlastnosti}{113}{paragraph.4.1.5.4.1}
+\contentsline {paragraph}{\numberline {4.1.5.4.2}Prostor verz\IeC {\'\i }}{113}{paragraph.4.1.5.4.2}
+\contentsline {subparagraph}{Reprezentace}{113}{paragraph.4.1.5.4.2}
+\contentsline {subparagraph}{Vlastnosti}{114}{figure.caption.47}
+\contentsline {paragraph}{\numberline {4.1.5.4.3}Induktivn\IeC {\'\i } logick\IeC {\'e} programov\IeC {\'a}n\IeC {\'\i } (ILP)}{114}{paragraph.4.1.5.4.3}
+\contentsline {subparagraph}{ILP probl\IeC {\'e}m}{114}{paragraph.4.1.5.4.3}
+\contentsline {subparagraph}{Metoda shora-dol\IeC {\r u}}{115}{paragraph.4.1.5.4.3}
+\contentsline {subparagraph}{Inverzn\IeC {\'\i } rezoluce}{115}{paragraph.4.1.5.4.3}
+\contentsline {section}{\numberline {4.2}Evolu\IeC {\v c}n\IeC {\'\i } algoritmy; z\IeC {\'a}kladn\IeC {\'\i } pojmy a teoretick\IeC {\'e} poznatky, hypot\IeC {\'e}za o stavebn\IeC {\'\i }ch bloc\IeC {\'\i }ch, koevoluce, aplikace evolu\IeC {\v c}n\IeC {\'\i }ch algoritm\IeC {\r u}.}{116}{section.4.2}
+\contentsline {section}{\numberline {4.3}Strojov\IeC {\'e} u\IeC {\v c}en\IeC {\'\i } v po\IeC {\v c}\IeC {\'\i }ta\IeC {\v c}ov\IeC {\'e} lingvistice a algoritmy pro statistick\IeC {\'y} parsing.}{116}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Z\IeC {\'a}klady teorie informace}{116}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Modelov\IeC {\'a}n\IeC {\'\i } jazyka, za\IeC {\v s}um\IeC {\v e}n\IeC {\'y} kan\IeC {\'a}l}{117}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Vyhlazov\IeC {\'a}n\IeC {\'\i } jazykov\IeC {\'e}ho modelu}{118}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}T\IeC {\v r}\IeC {\'\i }dy slov}{119}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Markovovy modely}{120}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Tagging}{122}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.7}Statistick\IeC {\'y} parsing}{123}{subsection.4.3.7}
+\contentsline {subsection}{\numberline {4.3.8}Statistick\IeC {\'y} strojov\IeC {\'y} p\IeC {\v r}eklad}{123}{subsection.4.3.8}
+\contentsline {subsubsection}{\numberline {4.3.8.1}Model ATG (Analysis, Translation, Generation)}{125}{subsubsection.4.3.8.1}
+\contentsline {section}{\numberline {4.4}Pravd\IeC {\v e}podobnostn\IeC {\'\i } algoritmy pro anal\IeC {\'y}zu biologick\IeC {\'y}ch sekvenc\IeC {\'\i }; hled\IeC {\'a}v\IeC {\'a}n\IeC {\'\i } motiv\IeC {\r u} v DNA, strategie pro detekci gen\IeC {\r u} a predikci struktury protein\IeC {\r u}.}{125}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Restrik\IeC {\v c}n\IeC {\'\i } mapov\IeC {\'a}n\IeC {\'\i }}{126}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Hled\IeC {\'a}n\IeC {\'\i } motiv\IeC {\r u}}{128}{subsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.2.1}Dv\IeC {\v e} ekvivalentn\IeC {\'\i } formulace probl\IeC {\'e}mu}{129}{subsubsection.4.4.2.1}
+\contentsline {subsubsection}{\numberline {4.4.2.2}Algoritmy}{129}{subsubsection.4.4.2.2}
+\contentsline {subsection}{\numberline {4.4.3}Sequence alignment}{129}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Genome rearrangement}{129}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Predikce gen\IeC {\r u}}{130}{subsection.4.4.5}
+\contentsline {chapter}{\numberline {5}Neuronov\IeC {\'e} s\IeC {\'\i }t\IeC {\v e}}{131}{chapter.5}
+\contentsline {section}{\numberline {5.1}Neurofyziologick\IeC {\'e} minimum.}{131}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Mozek}{131}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Neuron}{131}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}P\IeC {\v r}enos sign\IeC {\'a}lu}{132}{subsection.5.1.3}
+\contentsline {subsubsection}{\numberline {5.1.3.1}Klidov\IeC {\'y} potenci\IeC {\'a}l}{132}{subsubsection.5.1.3.1}
+\contentsline {subsubsection}{\numberline {5.1.3.2}Ak\IeC {\v c}n\IeC {\'\i } potenci\IeC {\'a}l}{133}{subsubsection.5.1.3.2}
+\contentsline {subsection}{\numberline {5.1.4}Pam\IeC {\v e}\IeC {\v t}}{133}{subsection.5.1.4}
+\contentsline {section}{\numberline {5.2}Modely pro u\IeC {\v c}en\IeC {\'\i } s u\IeC {\v c}itelem, algoritmus zp\IeC {\v e}tn\IeC {\'e}ho \IeC {\v s}\IeC {\'\i }\IeC {\v r}en\IeC {\'\i }, strategie pro urychlen\IeC {\'\i } u\IeC {\v c}en\IeC {\'\i }, regulariza\IeC {\v c}n\IeC {\'\i } techniky a generalizace.}{134}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Modely pro u\IeC {\v c}en\IeC {\'\i } s u\IeC {\v c}itelem}{134}{subsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.1.1}Form\IeC {\'a}ln\IeC {\'\i } neuron}{134}{subsubsection.5.2.1.1}
+\contentsline {subsubsection}{\numberline {5.2.1.2}Perceptron}{134}{subsubsection.5.2.1.2}
+\contentsline {subsubsection}{\numberline {5.2.1.3}Neuronov\IeC {\'a} s\IeC {\'\i }\IeC {\v t}}{136}{subsubsection.5.2.1.3}
+\contentsline {subsection}{\numberline {5.2.2}Algoritmus zp\IeC {\v e}tn\IeC {\'e}ho \IeC {\v s}\IeC {\'\i }\IeC {\v r}en\IeC {\'\i } (Backpropagation)}{136}{subsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.2.1}Adapta\IeC {\v c}n\IeC {\'\i } pravidla}{137}{subsubsection.5.2.2.1}
+\contentsline {paragraph}{\numberline {5.2.2.1.1}Aktualizace synaptick\IeC {\'y}ch vah pro v\IeC {\'y}stupn\IeC {\'\i } vrstvu:}{137}{paragraph.5.2.2.1.1}
+\contentsline {paragraph}{\numberline {5.2.2.1.2}Aktualizace synaptick\IeC {\'y}ch vah pro skryt\IeC {\'e} vrstvy:}{138}{paragraph.5.2.2.1.2}
+\contentsline {subsection}{\numberline {5.2.3}Strategie pro urychlen\IeC {\'\i } u\IeC {\v c}en\IeC {\'\i }}{139}{subsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.3.1}Volba po\IeC {\v c}\IeC {\'a}te\IeC {\v c}n\IeC {\'\i }ch vah}{139}{subsubsection.5.2.3.1}
+\contentsline {subsubsection}{\numberline {5.2.3.2}Moment u\IeC {\v c}en\IeC {\'\i }}{140}{subsubsection.5.2.3.2}
+\contentsline {subsubsection}{\numberline {5.2.3.3}Adaptivn\IeC {\'\i } parametr u\IeC {\v c}en\IeC {\'\i }}{140}{subsubsection.5.2.3.3}
+\contentsline {subsubsection}{\numberline {5.2.3.4}Algoritmy 2. \IeC {\v r}\IeC {\'a}du}{141}{subsubsection.5.2.3.4}
+\contentsline {subsubsection}{\numberline {5.2.3.5}Relaxa\IeC {\v c}n\IeC {\'\i } metody}{142}{subsubsection.5.2.3.5}
+\contentsline {subsubsection}{\numberline {5.2.3.6}P\IeC {\v r}edzpracov\IeC {\'a}n\IeC {\'\i } tr\IeC {\'e}novac\IeC {\'\i } mno\IeC {\v z}iny}{143}{subsubsection.5.2.3.6}
+\contentsline {section}{\numberline {5.3}Asociativn\IeC {\'\i } pam\IeC {\v e}ti, Hebbovsk\IeC {\'e} u\IeC {\v c}en\IeC {\'\i } a hled\IeC {\'a}n\IeC {\'\i } suboptim\IeC {\'a}ln\IeC {\'\i }ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }, stochastick\IeC {\'e} modely.}{143}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Asociativn\IeC {\'\i } pam\IeC {\v e}ti}{143}{subsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.1.1}Struktura asociativn\IeC {\'\i }ch pam\IeC {\v e}t\IeC {\'\i }}{143}{subsubsection.5.3.1.1}
+\contentsline {subsubsection}{\numberline {5.3.1.2}Rekurentn\IeC {\'\i } asociativn\IeC {\'\i } s\IeC {\'\i }\IeC {\v t}}{143}{subsubsection.5.3.1.2}
+\contentsline {subsubsection}{\numberline {5.3.1.3}Vlastn\IeC {\'\i } automaty (eigenvector automata)}{144}{subsubsection.5.3.1.3}
+\contentsline {subsection}{\numberline {5.3.2}Hebbovsk\IeC {\'e} u\IeC {\v c}en\IeC {\'\i } a hled\IeC {\'a}n\IeC {\'\i } suboptim\IeC {\'a}ln\IeC {\'\i }ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{144}{subsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.2.1}Hebbovsk\IeC {\'e} u\IeC {\v c}en\IeC {\'\i }}{144}{subsubsection.5.3.2.1}
+\contentsline {subsubsection}{\numberline {5.3.2.2}Geometrick\IeC {\'a} interpretace Hebbovsk\IeC {\'e}ho u\IeC {\v c}en\IeC {\'\i }}{146}{subsubsection.5.3.2.2}
+\contentsline {subsubsection}{\numberline {5.3.2.3}Probl\IeC {\'e}m kapacity s\IeC {\'\i }t\IeC {\v e}}{146}{subsubsection.5.3.2.3}
+\contentsline {subsubsection}{\numberline {5.3.2.4}Pseudoinverzn\IeC {\'\i } matice}{146}{subsubsection.5.3.2.4}
+\contentsline {subsubsection}{\numberline {5.3.2.5}BAM (Bidirectional Associative Memory)}{147}{subsubsection.5.3.2.5}
+\contentsline {subsubsection}{\numberline {5.3.2.6}Energetick\IeC {\'a} funkce BAM}{148}{subsubsection.5.3.2.6}
+\contentsline {subsubsection}{\numberline {5.3.2.7}Asynchronn\IeC {\'\i } s\IeC {\'\i }t\IeC {\v e} BAM}{148}{subsubsection.5.3.2.7}
+\contentsline {subsubsection}{\numberline {5.3.2.8}Hopfield\IeC {\r u}v model}{149}{subsubsection.5.3.2.8}
+\contentsline {subsubsection}{\numberline {5.3.2.9}Energetick\IeC {\'a} funkce Hopfieldovy s\IeC {\'\i }t\IeC {\v e}}{150}{subsubsection.5.3.2.9}
+\contentsline {subsubsection}{\numberline {5.3.2.10}Perceptronov\IeC {\'e} u\IeC {\v c}en\IeC {\'\i } pro Hopfield\IeC {\r u}v model}{152}{subsubsection.5.3.2.10}
+\contentsline {subsubsection}{\numberline {5.3.2.11}Hled\IeC {\'a}n\IeC {\'\i } suboptim\IeC {\'a}ln\IeC {\'\i }ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } (\IeC {\v r}e\IeC {\v s}en\IeC {\'\i } NP-\IeC {\'u}pln\IeC {\'y}ch probl\IeC {\'e}m\IeC {\r u} pomoc\IeC {\'\i } Hopfieldovy s\IeC {\'\i }t\IeC {\v e})}{152}{subsubsection.5.3.2.11}
+\contentsline {subsection}{\numberline {5.3.3}Stochastick\IeC {\'e} modely}{153}{subsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.3.1}Simulovan\IeC {\'e} \IeC {\v z}\IeC {\'\i }h\IeC {\'a}n\IeC {\'\i }}{153}{subsubsection.5.3.3.1}
+\contentsline {subsubsection}{\numberline {5.3.3.2}Boltzmann\IeC {\r u}v stroj}{154}{subsubsection.5.3.3.2}
+\contentsline {section}{\numberline {5.4}Um\IeC {\v e}l\IeC {\'e} neuronov\IeC {\'e} s\IeC {\'\i }t\IeC {\v e} zalo\IeC {\v z}en\IeC {\'e} na principu u\IeC {\v c}en\IeC {\'\i } bez u\IeC {\v c}itele.}{154}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Kompeti\IeC {\v c}n\IeC {\'\i } u\IeC {\v c}en\IeC {\'\i }}{154}{subsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.1.1}Klasick\IeC {\'e} shlukovac\IeC {\'\i } metody}{155}{subsubsection.5.4.1.1}
+\contentsline {subsubsection}{\numberline {5.4.1.2}Konvergence kompeti\IeC {\v c}n\IeC {\'\i }ho u\IeC {\v c}en\IeC {\'\i }}{155}{subsubsection.5.4.1.2}
+\contentsline {paragraph}{\numberline {5.4.1.2.1}Stabilita \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{155}{paragraph.5.4.1.2.1}
+\contentsline {subsection}{\numberline {5.4.2}PCA (Principal Component Analysis)}{156}{subsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.2.1}Oj\IeC {\r u}v algoritmus u\IeC {\v c}en\IeC {\'\i }}{156}{subsubsection.5.4.2.1}
+\contentsline {subsubsection}{\numberline {5.4.2.2}Konvergence Ojova algoritmu u\IeC {\v c}en\IeC {\'\i }}{157}{subsubsection.5.4.2.2}
+\contentsline {subsubsection}{\numberline {5.4.2.3}Multiple PC}{158}{subsubsection.5.4.2.3}
+\contentsline {subsection}{\numberline {5.4.3}Kohonenovy mapy}{158}{subsection.5.4.3}
+\contentsline {subsubsection}{\numberline {5.4.3.1}Algoritmus u\IeC {\v c}en\IeC {\'\i } (1D)}{158}{subsubsection.5.4.3.1}
+\contentsline {subsubsection}{\numberline {5.4.3.2}Konvergence}{159}{subsubsection.5.4.3.2}
+\contentsline {paragraph}{\numberline {5.4.3.2.1}Jednorozm\IeC {\v e}rn\IeC {\'y} p\IeC {\v r}\IeC {\'\i }pad}{160}{paragraph.5.4.3.2.1}
+\contentsline {paragraph}{\numberline {5.4.3.2.2}Dvourozm\IeC {\v e}rn\IeC {\'y} p\IeC {\v r}\IeC {\'\i }pad}{161}{paragraph.5.4.3.2.2}
+\contentsline {subsubsection}{\numberline {5.4.3.3}Probl\IeC {\'e}my}{161}{subsubsection.5.4.3.3}
+\contentsline {subsection}{\numberline {5.4.4}U\IeC {\v c}en\IeC {\'\i } s u\IeC {\v c}itelem}{161}{subsection.5.4.4}
+\contentsline {section}{\numberline {5.5}Modul\IeC {\'a}rn\IeC {\'\i }, hierarchick\IeC {\'e} a hybridn\IeC {\'\i } modely neuronov\IeC {\'y}ch s\IeC {\'\i }t\IeC {\'\i }.}{162}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Modul\IeC {\'a}rn\IeC {\'\i } s\IeC {\'\i }t\IeC {\v e}}{162}{subsection.5.5.1}
+\contentsline {subsubsection}{\numberline {5.5.1.1}Kask\IeC {\'a}dov\IeC {\'a} korelace}{162}{subsubsection.5.5.1.1}
+\contentsline {subsubsection}{\numberline {5.5.1.2}Optim\IeC {\'a}ln\IeC {\'\i } moduly a mixture of experts}{163}{subsubsection.5.5.1.2}
+\contentsline {subsection}{\numberline {5.5.2}Hybridn\IeC {\'\i } s\IeC {\'\i }t\IeC {\v e}}{163}{subsection.5.5.2}
+\contentsline {subsubsection}{\numberline {5.5.2.1}ART (Adaptive Resonance Theory)}{163}{subsubsection.5.5.2.1}
+\contentsline {subsubsection}{\numberline {5.5.2.2}S\IeC {\'\i }t\IeC {\v e} se vst\IeC {\v r}\IeC {\'\i }cn\IeC {\'y}m \IeC {\v s}\IeC {\'\i }\IeC {\v r}en\IeC {\'\i }m (counterpropagation networks)}{163}{subsubsection.5.5.2.2}
+\contentsline {subsubsection}{\numberline {5.5.2.3}Spline networks}{164}{subsubsection.5.5.2.3}
+\contentsline {subsubsection}{\numberline {5.5.2.4}RBF (Radial Basis Functions)}{164}{subsubsection.5.5.2.4}
+\contentsline {subsection}{\numberline {5.5.3}V\IeC {\'\i }cevrstv\IeC {\'e} Kohonenovy mapy}{165}{subsection.5.5.3}
+\contentsline {section}{\numberline {5.6}Genetick\IeC {\'e} algoritmy a jejich vyu\IeC {\v z}it\IeC {\'\i } p\IeC {\v r}i u\IeC {\v c}en\IeC {\'\i } um\IeC {\v e}l\IeC {\'y}ch neuronov\IeC {\'y}ch s\IeC {\'\i }t\IeC {\'\i }.}{165}{section.5.6}
