@@ -1486,7 +1486,38 @@ Převodem ze SAT.
 Převodem ze 3DM.
 
 \subsubsection{Další}
-Klika, Nezávislá množina, Orientovaná HK, Hamiltonovská cesta z $s$ do $t$, Hamiltonovská cesta, Obchodní cestující, Batoh, Rozvrhování, Dominující množina, Hitting set, Čtyřlistá kostra, Největší společný podgraf, Množinové pokrytí.
+\begin{itemize}
+\item \textbf{Klika:} Převodem z VP: Má $G=(V,E)$ VP velikosti $k$? $\to$ Má $\overline{G}(V,\overline{E})$ kliku velikosti $|V| - k$?
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{img/vertex_clique.png}
+\end{figure}
+
+\item \textbf{Nezávislá množina:} Duální problém ke Klice.
+\item \textbf{Orientovaná HK:} Triviálně převodem z HK: Neorientovaný graf převedeme na orientovaný zdvojením hran.
+\item \textbf{Hamiltonovská cesta z $s$ do $t$:} Triviálně převodem z HK: Existuje v $G$ HK $\to$ Existuje v $G$ HC z $v_0$ do $v_0$ pro libovolný vrchol $v_0 \in V$.
+\item \textbf{Hamiltonovská cesta:} Převodem z HK: zvolíme libovolný vrchol $v_0$, přidáme do grafu vrcholu $u, u', w$ a hrany $(u,u'), (w,v_0)$ a $(u,v)$ pro každý vrchol $v$ sousedící s $v_0$. Každá HC musí začínat hranou $(u,u')$ a končit hranou $(w,v_0)$.
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{img/hkhc.png}
+\end{figure}
+
+\item \textbf{Obchodní cestující:} Převodem z HC: Původní $G$ doplníme na kompletní graf $G'$, nově přidané hrany mají cenu 1, původní hrany mají cenu 0. Existuje HC $\to$ existuje řešení TSP s cenou 0?
+\item \textbf{Batoh:} Převodem z Loupežníků. Nastavíme $c(a) = v(a) = s(a)$, $B = \sum_{a\in A} s(a)/2$.
+\item \textbf{Rozvrhování:} Převodem z Batohu nebo Loupežníků.
+\item \textbf{Dominující množina:} Graf $G=(V,E)$, existuje $S \subseteq V, |S| \leq k$ taková, že každý vrchol z $V$ buď je v $S$ nebo má v $S$ souseda.
+
+Převodem z VP: pro každou hranu $(u,v)$ přidáme vrchol $w_{u,v}$, ten spojíme hranou s $u$ i s $v$ (kdyby byl vybrán do dominující množiny, lze jej bez zhoršení výsledku nahradit $u$ nebo $v$).
+\item \textbf{Hitting set:} Množina $S$ a množina $C$ podmnožin množiny $S$. Existuje $S'\subseteq S, |S'| \leq k$ taková, že $S'$ obsahuje nejméně jeden prvek z každé množiny v $C$?
+
+Převod z VP: $S = V, C = \{\{u,v\}\ |\ (u,v)\in E\}$. 
+\item \textbf{Čtyřlistá kostra:} Převodem z HC(s,t). Vrcholům $s$ a $t$ přidáme \uv{uši}.
+\item \textbf{Největší společný podgraf:} Převodem z Kliky: Graf $G$ má kliku velikosti $k$ $\to$ $G$ a $K_k$ mají společný graf velikosti $k$.
+\item \textbf{Množinové pokrytí:} Máme $S = S_1, S_2, \dots S_n$ podmnožiny $U$, existuje podmnožina $S$ taková, že sjednocení $S_i$ v této podmnožine je $U$? 
+
+Převod z VP: Má $G=(V,E)$ VP velikosti $k$? $\to$ Má $U = E, \forall i \in V : S_i = \{\text{hrany incidentní $i$}\}$  množinové pokrytí velikosti $k$?
+\end{itemize}
+
 
 \section{Pseudopolynomiální algoritmy, silná NP-úplnost.}
 I mezi různými NP-úplnými problémy a úlohami může být co do složitosti jejich řešitelnosti rozdíl. 
@@ -2414,8 +2445,6 @@ Pokud provedeme $\Theta(n\log n)$ úspěšných vyhledávacích operací, pak am
 \begin{theorem}[sequential access theorem]
 Pokud vyhledáme všech $n$ prvků ve splay stromě ve vzestupném pořadí, bude amortizovaná cena jedné operace $O(1)$.
 \end{theorem}
-
-%TODO splay - statická optimalita, entropie
 
 
 \subsection{AVL stromy}
@@ -3679,8 +3708,6 @@ Základní myšlenka je doplnit dynamický strom $T$ \uv{prázdnými} uzly na st
 
 Vyhledávání: $O(\log_B N)$, range query: $O(\log_B N + 	\frac{K}{B})$, update $O(\log_B N + \frac{\log^2N}{B})$.
 
-
-%TODO další cache oblivious struktury, merge a funnel sort
 
 \subsection{Strategie pro správu cache}
 \begin{description}
