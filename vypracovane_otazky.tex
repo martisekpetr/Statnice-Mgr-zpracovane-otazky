@@ -2289,7 +2289,7 @@ Vždy se mění pouze rank zúčastnených vrcholů $x$, $p$ (parent) a $g$ (gra
 							  &\geq \log_2\left(\frac{s'(x)}{\frac{s'(x)}{2}}\right) + \log_2\left(\frac{s'(x)}{\frac{s'(x)}{2}}\right)\\
 							  & = 1 + 1 = 2
 	\end{align*}
-	Druhá nerovnost je dána díky $s'(x) \geq s(x) + s'(g)$ (viz obrázek) a protože díky vlastnostem logaritmu je nejnižší možná hodnota dosažena právě při volbě $s(x) = s'(g) = \frac{s'(x)}{2}$ %TODO zigzig_logaritmus
+	Druhá nerovnost je dána díky $s'(x) \geq s(x) + s'(g)$ (viz obrázek) a protože díky vlastnostem logaritmu je nejnižší možná hodnota dosažena právě při volbě $s(x) = s'(g) = \frac{s'(x)}{2}$ (TODO lépe vysvětlit)
 
 	Aplikujeme-li toto pozorování na předchozí nerovnici, dostaneme	
     \begin{align*}
@@ -2337,6 +2337,30 @@ Díky předchozí větě a odhadu $\forall x : r(x) \leq \log_2(n)$ máme amorti
 
 Operace FIND, INSERT i DELETE lze provést tak, že sestávají z operace SPLAY a poté již jen několika akcí složitosti $O(1)$.
 \end{proof}
+
+To znamená, že pro $m \gg n$ (což bývá pravda) je složitost posloupnosti operací $O(m\log n)$, tj. amortizovaně $O(\log n)$ na operaci. 
+
+Splay stromy si vedou dokonce ještě lépe, pokud je ditribuce operací nevyvážená.	
+
+\begin{theorem}[entropy bound]
+V \textit{optimálním} binárním vyhledávacím stromě, kde k prvku $x_i$ je přistupováno s pravděpodobností $p_i$, je očekávaná cena úspěšné vyhledávací operace 
+$$\Theta(H) = \Theta\left(\sum_{i=1}^{n}-p_i \log p_i \right)$$
+\end{theorem}
+Tento vzorec odpovídá entropii rozdělení $p_i$. Pro uniformní přístupy vyjde $\log n$.
+
+\begin{theorem}[static optimality]
+Nechť $x_1, x_2, \dots, x_n$ je množina klíčů uložených ve splay stromě. Provedeme-li posloupnost vyhledávacích operací, v nichž každý klíč je vyhledáván aspoň jednou a každá operace je úspěšná, pak amortizovaná cena jedné operace je $O(1+H)$, kde $H$ je entropie pravděpodobnostního rozdělení přístupů. Cena $m$ vyhledávacích operací je $O(m+mH)$.
+\end{theorem}
+Tj. splay stromy jsou jen o konstantu horší, než optimální (tj. offline zkonstruované) stromy.
+
+
+\subparagraph{Další zajímavé vlastnosti splay stromů}
+\begin{theorem}[working set theorem]
+Pokud provedeme $\Theta(n\log n)$ úspěšných vyhledávacích operací, pak amortizovaná cena jedné operace je $O(1+\log t)$, kde $t$ je počet operací od předchozího přístupu k danému prvku.
+\end{theorem}
+\begin{theorem}[sequential access theorem]
+Pokud vyhledáme všech $n$ prvků ve splay stromě ve vzestupném pořadí, bude amortizovaná cena jedné operace $O(1)$.
+\end{theorem}
 
 %TODO splay - statická optimalita, entropie
 

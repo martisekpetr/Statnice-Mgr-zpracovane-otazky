@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.9.5)  8 SEP 2017 10:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.9.5)  8 SEP 2017 11:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1206,7 +1206,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (41.18744pt too wide) in paragraph at lines 201--201
+Overfull \hbox (41.18744pt too wide) in paragraph at lines 202--202
  [][] [][]\OT1/cmr/m/n/10.95 Strojov^^Se u^^Tcen^^S^^P; pro-hled^^Sav^^San^^S^^
 P pro-storu verz^^S^^P, u^^Tcen^^S^^P s u^^Tcitelem a bez u^^Tcitele, pravd^^Te
 podobnostn^^S^^P 
@@ -1814,74 +1814,73 @@ File: img/zig.png Graphic file (type png)
 Package pdftex.def Info: img/zig.png used on input line 2222.
 (pdftex.def)             Requested size: 209.40541pt x 70.0pt.
  [45 <./img/zigzag.png> <./img/zig.png>] [46] [47]
-<img/heap.png, id=1180, 371.3875pt x 93.34875pt>
+<img/heap.png, id=1183, 371.3875pt x 93.34875pt>
 File: img/heap.png Graphic file (type png)
  <use img/heap.png>
-Package pdftex.def Info: img/heap.png used on input line 2382.
+Package pdftex.def Info: img/heap.png used on input line 2406.
 (pdftex.def)             Requested size: 222.83421pt x 56.00967pt.
- [48 <./img/heap.png>] <img/binomial_heaps.png, id=1189, 342.8007pt x 257.5221p
+ [48 <./img/heap.png>] <img/binomial_heaps.png, id=1192, 342.8007pt x 257.5221p
 t>
 File: img/binomial_heaps.png Graphic file (type png)
 
 <use img/binomial_heaps.png>
-Package pdftex.def Info: img/binomial_heaps.png used on input line 2444.
+Package pdftex.def Info: img/binomial_heaps.png used on input line 2468.
 (pdftex.def)             Requested size: 239.95885pt x 180.26424pt.
- [49 <./img/binomial_heaps.png>]
-Overfull \hbox (11.09244pt too wide) in paragraph at lines 2522--2523
+ [49 <./img/binomial_heaps.png>] [50]
+Overfull \hbox (11.09244pt too wide) in paragraph at lines 2546--2547
 [][]\OT1/cmr/m/n/10.95 Casov^^Sa slo^^Tzitost amor-ti-zo-van^^Te $\OML/cmm/m/it
 /10.95 O\OT1/cmr/m/n/10.95 (1)$ (i p^^Tresto^^Tze m^^Wu^^Tze na-stat kask^^Sada
  ^^Trez^^Wu). Uk^^Sa^^Tzeme po-tenci^^Salovou
  []
 
-[50]
+[51]
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 2580.
+(hyperref)                removing `\textasciicaron' on input line 2604.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 2580.
+(hyperref)                removing `\textasciicaron' on input line 2604.
 
 
-Overfull \hbox (3.11652pt too wide) in paragraph at lines 2585--2586
+Overfull \hbox (3.11652pt too wide) in paragraph at lines 2609--2610
 []\OT1/cmr/m/n/10.95 Z^^Sakladn^^S^^P mo-ti-vac^^S^^P pro ha-shov^^San^^S^^P je
  \OT1/cmr/m/it/10.95 slovn^^S^^Pkov^^Sy probl^^Sem\OT1/cmr/m/n/10.95 , kdy m^^S
 ame za ^^Sukol re-pre-zen-to-vat mno^^Tzinu
  []
 
-[51]
 
 Package hyperref Warning: Composite letter `\textasciicaron+R'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 2609.
+(hyperref)                removing `\textasciicaron' on input line 2633.
 
 [52] [53]
-Overfull \hbox (17.38521pt too wide) in paragraph at lines 2710--2711
+Overfull \hbox (17.38521pt too wide) in paragraph at lines 2734--2735
 []\OT1/cmr/m/n/10.95 Algoritmy \OT1/cmr/bx/n/10.95 DE-LETE \OT1/cmr/m/n/10.95 n
 ejsou zn^^Samy, krom^^Te pri-mi-tivn^^S^^Pch. Probl^^Semem je u nich za-chov^^S
 an^^S^^P n^^Sahodn^^Seho
  []
 
-
-Overfull \hbox (2.60735pt too wide) in paragraph at lines 2755--2756
+[54]
+Overfull \hbox (2.60735pt too wide) in paragraph at lines 2779--2780
 []\OT1/cmr/m/it/10.95 Dvojit^^Se ha-shov^^San^^S^^P \OT1/cmr/m/n/10.95 je vy-le
 p^^Tsen^^S^^P p^^Tredchoz^^S^^P me-tody tak, aby ne-vzni-kaly shluky. V^^Syb^^T
 er n^^Sasleduj^^S^^Pc^^S^^Pho
  []
 
-[54]
+[55]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 2796.
- [55] [56pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.caption.15}) has been already used, duplicate ignored
+put line 2820.
+ [56pdfTeX warning (ext4): destination with the same identifier (name{figure.ca
+ption.15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.2885 
+l.2886 
        ] [57] [58] [59] [60]
-Overfull \hbox (4.442pt too wide) in paragraph at lines 3202--3210
+Overfull \hbox (4.442pt too wide) in paragraph at lines 3226--3234
 []\OT1/cmr/m/n/10.95 Deterministick^^Se na-le-zen^^S^^P trv^^Sa $\OML/cmm/m/it/
 10.95 O\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n[] [] n [] N\OT1/cmr/m/n/10.95 
 )$ (test per-fekt-nosti ka^^Tzd^^Seho syst^^Semu je $\OML/cmm/m/it/10.95 O\OT1/
@@ -1891,59 +1890,59 @@ cmr/m/n/10.95 (\OML/cmm/m/it/10.95 n [] n\OT1/cmr/m/n/10.95 )$).
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3240.
+(hyperref)                removing `\textasciicaron' on input line 3264.
 
 [61]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3274.
+(hyperref)                removing `\textasciicaron' on input line 3298.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+t'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3274.
+(hyperref)                removing `\textasciicaron' on input line 3298.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+C'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3278.
+(hyperref)                removing `\textasciicaron' on input line 3302.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3278.
+(hyperref)                removing `\textasciicaron' on input line 3302.
 
-
-Overfull \hbox (12.34453pt too wide) in paragraph at lines 3296--3299
+[62]
+Overfull \hbox (12.34453pt too wide) in paragraph at lines 3320--3323
 []\OT1/cmr/m/n/10.95 Je to vlastn^^Te v^^Sa^^Tzen^^Sy pr^^Wum^^Ter -- slo^^Tzit
 ost ka^^Tzd^^Seho p^^Tr^^S^^Ppadu vstupn^^S^^Pch dat n^^Sasob^^S^^Pme pravd^^Te
 podobnost^^S^^P
  []
 
 
-Overfull \hbox (2.58067pt too wide) in paragraph at lines 3301--3302
+Overfull \hbox (2.58067pt too wide) in paragraph at lines 3325--3326
 []\OT1/cmr/m/n/10.95 Mnoho probl^^Sem^^Wu se ^^Tspatnou slo^^Tzitost^^S^^P nej-
 hor^^Ts^^S^^Pho p^^Tr^^S^^Ppadu se cho-vaj^^S^^P dob^^Tre pro pr^^Wum^^Tern^^Se
  p^^Tr^^S^^Ppady.
  []
 
-[62]
-Overfull \hbox (14.7561pt too wide) in paragraph at lines 3321--3321
+
+Overfull \hbox (14.7561pt too wide) in paragraph at lines 3345--3345
 []\OT1/cmr/bx/n/10.95 Agregovan^^Sa anal^^Syza: \OT1/cmr/m/n/10.95 Po-sledn^^S^
 ^P bit se zm^^Ten^^S^^P p^^Tri ka^^Tzd^^Se ope-raci, tj. $\OML/cmm/m/it/10.95 k
 $\OT1/cmr/m/n/10.95 -kr^^Sat. p^^Tredposledn^^S^^P
  []
 
 [63]
-Overfull \hbox (31.56207pt too wide) in paragraph at lines 3347--3349
+Overfull \hbox (31.56207pt too wide) in paragraph at lines 3371--3373
 \OT1/cmr/m/n/10.95 prvk^^Wu. P^^Tredpokl^^Sad^^Same-li $\OML/cmm/m/it/10.95 O\O
 T1/cmr/m/n/10.95 (1)$ na zkop^^S^^Prov^^San^^S^^P jed-noho prvku, pak dost^^Sav
 ^^Same po^^Tzadovanou
  []
 
-
-Overfull \hbox (12.77191pt too wide) in paragraph at lines 3385--3385
+[64]
+Overfull \hbox (12.77191pt too wide) in paragraph at lines 3409--3409
 |[]\OT1/cmr/bx/n/14.4 Chov^^San^^S^^P a anal^^Syza da-tov^^Sych struk-tur na sy
 st^^Semech s pam^^Tet[]ovou
  []
@@ -1951,95 +1950,87 @@ st^^Semech s pam^^Tet[]ovou
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3385.
+(hyperref)                removing `\textasciicaron' on input line 3409.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+t'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3385.
+(hyperref)                removing `\textasciicaron' on input line 3409.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3386.
+(hyperref)                removing `\textasciicaron' on input line 3410.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+t'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3386.
+(hyperref)                removing `\textasciicaron' on input line 3410.
 
-<img/memory.png, id=1319, 380.8629pt x 206.6922pt>
+<img/memory.png, id=1329, 380.8629pt x 206.6922pt>
 File: img/memory.png Graphic file (type png)
  <use img/memory.png>
-Package pdftex.def Info: img/memory.png used on input line 3390.
+Package pdftex.def Info: img/memory.png used on input line 3414.
 (pdftex.def)             Requested size: 380.86195pt x 206.69168pt.
 
-[64] <img/memory_simple.png, id=1326, 215.3646pt x 193.9245pt>
+<img/memory_simple.png, id=1330, 215.3646pt x 193.9245pt>
 File: img/memory_simple.png Graphic file (type png)
 
 <use img/memory_simple.png>
-Package pdftex.def Info: img/memory_simple.png used on input line 3412.
+Package pdftex.def Info: img/memory_simple.png used on input line 3436.
 (pdftex.def)             Requested size: 186.8051pt x 168.2099pt.
-
-Underfull \hbox (badness 2393) in paragraph at lines 3418--3419
+ [65 <./img/memory.png>]
+Underfull \hbox (badness 2393) in paragraph at lines 3442--3443
 []\OT1/cmr/m/n/10.95 Procesor m^^Wu^^Tze p^^Tristupovat pouze k dat^^Wum
  []
 
 
-Underfull \hbox (badness 4582) in paragraph at lines 3418--3419
+Underfull \hbox (badness 4582) in paragraph at lines 3442--3443
 \OT1/cmr/m/n/10.95 v cache. Pam^^Tet[] je pln^^Te aso-ci-a-tivn^^S^^P, p^^Tri^^
 Tcem^^Tz
  []
 
-[65 <./img/memory.png> <./img/memory_simple.png>]
-<img/cache_array.png, id=1335, 414.8298pt x 117.3183pt>
+<img/cache_array.png, id=1338, 414.8298pt x 117.3183pt>
 File: img/cache_array.png Graphic file (type png)
 
 <use img/cache_array.png>
-Package pdftex.def Info: img/cache_array.png used on input line 3435.
+Package pdftex.def Info: img/cache_array.png used on input line 3459.
 (pdftex.def)             Requested size: 248.8998pt x 70.39151pt.
 
-<img/cache_heap.png, id=1336, 456.2646pt x 82.1469pt>
+<img/cache_heap.png, id=1339, 456.2646pt x 82.1469pt>
 File: img/cache_heap.png Graphic file (type png)
  <use img/cache_heap.png>
-Package pdftex.def Info: img/cache_heap.png used on input line 3445.
+Package pdftex.def Info: img/cache_heap.png used on input line 3469.
 (pdftex.def)             Requested size: 365.01218pt x 65.71759pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[66 <./img/cache_array.png> <./img/cache_heap.png>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+[66 <./img/memory_simple.png> <./img/cache_array.png> <./img/cache_heap.png>]
 [67pdfTeX warning (ext4): destination with the same identifier (name{figure.cap
 tion.22}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.3567 \item \textbf
-                    {Klasický binární strom (pomocí ukazatelů)}: co uze...
+l.3542 			$$
+            \left(\frac{n}{n_i} \right)^2 \cdot 4n_i \leq \frac{8n^2}{n_i} =...
 pdfTeX warning (ext4): destination with the same identifier (name{figure.captio
 n.23}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.3567 \item \textbf
-                    {Klasický binární strom (pomocí ukazatelů)}: co uze...
-] <img/vanemdeboas.png, id=1354, 447.1104pt x 173.6889pt>
+l.3542 			$$
+            \left(\frac{n}{n_i} \right)^2 \cdot 4n_i \leq \frac{8n^2}{n_i} =...
+] <img/vanemdeboas.png, id=1358, 447.1104pt x 173.6889pt>
 File: img/vanemdeboas.png Graphic file (type png)
 
 <use img/vanemdeboas.png>
-Package pdftex.def Info: img/vanemdeboas.png used on input line 3578.
+Package pdftex.def Info: img/vanemdeboas.png used on input line 3602.
 (pdftex.def)             Requested size: 447.1093pt x 173.68848pt.
  [68pdfTeX warning (ext4): destination with the same identifier (name{figure.ca
 ption.24}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.3588 	\item[FIFO:]
-                     Z cache smažeme stránku, která je ze všech stránek...
- <./img/vanemdeboas.png>] [69] [70
+l.3604 
+       ] [69 <./img/vanemdeboas.png>] [70] [71
 
 ]
 \openout2 = `inteligentni_agenti/prirodou_inspirovane_pocitani.aux'.
@@ -2067,15 +2058,15 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 3.
 
-<img/ea.png, id=1371, 433.62pt x 269.50688pt>
+<img/ea.png, id=1379, 433.62pt x 269.50688pt>
 File: img/ea.png Graphic file (type png)
  <use img/ea.png>
 Package pdftex.def Info: img/ea.png used on input line 26.
 (pdftex.def)             Requested size: 373.61734pt x 232.22374pt.
- [71
+ [72
 
 
- <./img/ea.png>] <img/gp.png, id=1384, 299.1175pt x 319.1925pt>
+ <./img/ea.png>] <img/gp.png, id=1392, 299.1175pt x 319.1925pt>
 File: img/gp.png Graphic file (type png)
  <use img/gp.png>
 Package pdftex.def Info: img/gp.png used on input line 38.
@@ -2092,19 +2083,19 @@ Overfull \hbox (17.03358pt too wide) in paragraph at lines 51--52
 -laci jsou kone^^Tcn^^Se au-to-maty, t^^Tem jsou p^^Tredkl^^Sad^^Sany
  []
 
-[72 <./img/gp.png>]
+[73 <./img/gp.png>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 78.
 
-[73] [74]
+[74] [75]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 143.
 
-[75]
+[76]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
@@ -2120,7 +2111,7 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 194.
 
-[76] <img/ES_varianty_k.jpg, id=1421, 288.8391pt x 99.9735pt>
+[77] <img/ES_varianty_k.jpg, id=1429, 288.8391pt x 99.9735pt>
 File: img/ES_varianty_k.jpg Graphic file (type jpg)
 
 <use img/ES_varianty_k.jpg>
@@ -2144,20 +2135,20 @@ Overfull \hbox (5.86993pt too wide) in paragraph at lines 256--257
 -ment^^Saln^^Te ak-tu-a-li-zuje po ka^^Tzd^^Sem kroku me-to-dou maximum-
  []
 
-<img/de_scheme.png, id=1422, 201.1515pt x 45.2892pt>
+<img/de_scheme.png, id=1430, 201.1515pt x 45.2892pt>
 File: img/de_scheme.png Graphic file (type png)
  <use img/de_scheme.png>
 Package pdftex.def Info: img/de_scheme.png used on input line 262.
 (pdftex.def)             Requested size: 326.91249pt x 73.6134pt.
 
-[77 <./img/ES_varianty_k.jpg>] [78 <./img/de_scheme.png>]
-<img/ciao.png, id=1449, 1282.7925pt x 505.13719pt>
+[78 <./img/ES_varianty_k.jpg>] [79 <./img/de_scheme.png>]
+<img/ciao.png, id=1459, 1282.7925pt x 505.13719pt>
 File: img/ciao.png Graphic file (type png)
  <use img/ciao.png>
 Package pdftex.def Info: img/ciao.png used on input line 298.
 (pdftex.def)             Requested size: 186.8051pt x 73.55518pt.
 
-<img/mistrovstvi.png, id=1450, 1268.48906pt x 353.06906pt>
+<img/mistrovstvi.png, id=1460, 1268.48906pt x 353.06906pt>
 File: img/mistrovstvi.png Graphic file (type png)
 
 <use img/mistrovstvi.png>
@@ -2169,7 +2160,7 @@ Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 335.
 
-[79 <./img/ciao.png (PNG copy)> <./img/mistrovstvi.png (PNG copy)>]
+[80 <./img/ciao.png (PNG copy)> <./img/mistrovstvi.png (PNG copy)>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
@@ -2190,12 +2181,12 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 386.
 
-[80]
+[81]
 Overfull \hbox (17.0pt too wide) in paragraph at lines 427--442
 []$[]$ 
  []
 
-[81]
+[82]
 Overfull \hbox (2.84943pt too wide) in paragraph at lines 461--462
  []\OT1/cmr/m/n/10.95 First cho-ide HC vezme prvn^^S^^Pho lep^^Ts^^S^^Pho sou-
  []
@@ -2206,7 +2197,7 @@ Overfull \hbox (5.58488pt too wide) in paragraph at lines 463--464
 c^^Saste^^Tcn^^Te
  []
 
-<img/simulated_annealing.png, id=1500, 55.407pt x 42.1575pt>
+<img/simulated_annealing.png, id=1508, 55.407pt x 42.1575pt>
 File: img/simulated_annealing.png Graphic file (type png)
 
 <use img/simulated_annealing.png>
@@ -2243,8 +2234,8 @@ Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textring' on input line 504.
 
-[82 <./img/simulated_annealing.png>]
-<img/classification_instance.png, id=1519, 643.40375pt x 305.14pt>
+[83 <./img/simulated_annealing.png>]
+<img/classification_instance.png, id=1527, 643.40375pt x 305.14pt>
 File: img/classification_instance.png Graphic file (type png)
 
 <use img/classification_instance.png>
@@ -2262,64 +2253,64 @@ Underfull \hbox (badness 1137) in paragraph at lines 511--512
 \OT1/cmr/m/n/10.95 pev-nou struk-turu da-nou konkr^^Setn^^S^^P probl^^Semovou
  []
 
-[83 <./img/classification_instance.png>]
+[84 <./img/classification_instance.png>]
 Overfull \hbox (6.96227pt too wide) in paragraph at lines 550--551
 []\OT1/cmr/m/n/10.95 tahle s^^S^^Pla se rozd^^Tel^^S^^P rov-nom^^Tern^^Te mezi 
 pra-vi-dla, kter^^Sa \OT1/cmr/m/it/10.95 mi-nule \OT1/cmr/m/n/10.95 od-pov^^Ted
 ^^Tela spr^^Savn^^Te, zmen^^Tsen^^Sa
  []
 
-[84] <img/sane_esp.png, id=1533, 606.265pt x 494.84875pt>
+[85] <img/sane_esp.png, id=1542, 606.265pt x 494.84875pt>
 File: img/sane_esp.png Graphic file (type png)
 
 <use img/sane_esp.png>
 Package pdftex.def Info: img/sane_esp.png used on input line 586.
 (pdftex.def)             Requested size: 233.50995pt x 190.59663pt.
- <img/neat.png, id=1534, 1240.635pt x 657.45625pt>
+ <img/neat.png, id=1543, 1240.635pt x 657.45625pt>
 File: img/neat.png Graphic file (type png)
 
 <use img/neat.png>
 Package pdftex.def Info: img/neat.png used on input line 606.
 (pdftex.def)             Requested size: 467.0199pt x 247.4885pt.
- [85 <./img/sane_esp.png>]
-<img/hyperneat.png, id=1546, 345.4506pt x 190.311pt>
+ [86 <./img/sane_esp.png>]
+<img/hyperneat.png, id=1554, 345.4506pt x 190.311pt>
 File: img/hyperneat.png Graphic file (type png)
  <use img/hyperneat.png>
 Package pdftex.def Info: img/hyperneat.png used on input line 618.
 (pdftex.def)             Requested size: 345.44975pt x 190.31052pt.
 
-[86 <./img/neat.png> <./img/hyperneat.png>]
+[87 <./img/neat.png> <./img/hyperneat.png>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+R'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 627.
 
-<img/pmx.png, id=1557, 612.2875pt x 395.4775pt>
+<img/pmx.png, id=1565, 612.2875pt x 395.4775pt>
 File: img/pmx.png Graphic file (type png)
  <use img/pmx.png>
 Package pdftex.def Info: img/pmx.png used on input line 673.
 (pdftex.def)             Requested size: 280.21478pt x 180.99254pt.
- [87]
-<img/ox.png, id=1565, 614.295pt x 387.4475pt>
+ [88]
+<img/ox.png, id=1574, 614.295pt x 387.4475pt>
 File: img/ox.png Graphic file (type png)
  <use img/ox.png>
 Package pdftex.def Info: img/ox.png used on input line 682.
 (pdftex.def)             Requested size: 280.21478pt x 176.73819pt.
 
-<img/cx.png, id=1566, 590.205pt x 371.3875pt>
+<img/cx.png, id=1575, 590.205pt x 371.3875pt>
 File: img/cx.png Graphic file (type png)
  <use img/cx.png>
 Package pdftex.def Info: img/cx.png used on input line 691.
 (pdftex.def)             Requested size: 280.21478pt x 176.32588pt.
- [88 <./img/pmx.png> <./img/ox.png>] <img/er.png, id=1575, 572.1375pt x 350.308
+ [89 <./img/pmx.png> <./img/ox.png>] <img/er.png, id=1583, 572.1375pt x 350.308
 75pt>
 File: img/er.png Graphic file (type png)
 
 <use img/er.png>
 Package pdftex.def Info: img/er.png used on input line 702.
 (pdftex.def)             Requested size: 280.21478pt x 171.5726pt.
- [89 <./img/cx.png> <./img/er.png>]
-<img/pareto.png, id=1581, 642.4pt x 481.8pt>
+ [90 <./img/cx.png> <./img/er.png>]
+<img/pareto.png, id=1589, 642.4pt x 481.8pt>
 File: img/pareto.png Graphic file (type png)
  <use img/pareto.png>
 Package pdftex.def Info: img/pareto.png used on input line 740.
@@ -2330,25 +2321,25 @@ Underfull \hbox (badness 1910) in paragraph at lines 749--750
 0.95 (Pare-tova fronta,
  []
 
-[90 <./img/pareto.png>] <img/igd.png, id=1589, 238.8925pt x 195.73125pt>
+[91 <./img/pareto.png>] <img/igd.png, id=1598, 238.8925pt x 195.73125pt>
 File: img/igd.png Graphic file (type png)
 
 <use img/igd.png>
 Package pdftex.def Info: img/igd.png used on input line 802.
 (pdftex.def)             Requested size: 186.8051pt x 153.05502pt.
- <img/hypervolume.png, id=1590, 853.1875pt x 962.59625pt>
+ <img/hypervolume.png, id=1599, 853.1875pt x 962.59625pt>
 File: img/hypervolume.png Graphic file (type png)
 
 <use img/hypervolume.png>
 Package pdftex.def Info: img/hypervolume.png used on input line 808.
 (pdftex.def)             Requested size: 163.45981pt x 184.42274pt.
- [91 <./img/igd.png>]) [92 <./img/hypervolume.png>]
+ [92 <./img/igd.png>]) [93 <./img/hypervolume.png>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3628.
+(hyperref)                removing `\textasciicaron' on input line 3652.
 
-[93
+[94
 
 
 ]
@@ -2356,75 +2347,75 @@ Kapitola 4.
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3629.
+(hyperref)                removing `\textasciicaron' on input line 3653.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3630.
+(hyperref)                removing `\textasciicaron' on input line 3654.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3630.
+(hyperref)                removing `\textasciicaron' on input line 3654.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3630.
+(hyperref)                removing `\textasciicaron' on input line 3654.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3630.
+(hyperref)                removing `\textasciicaron' on input line 3654.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3630.
+(hyperref)                removing `\textasciicaron' on input line 3654.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3630.
+(hyperref)                removing `\textasciicaron' on input line 3654.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3630.
+(hyperref)                removing `\textasciicaron' on input line 3654.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3632.
+(hyperref)                removing `\textasciicaron' on input line 3656.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3632.
+(hyperref)                removing `\textasciicaron' on input line 3656.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 3632.
+(hyperref)                removing `\textring' on input line 3656.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3635.
+(hyperref)                removing `\textasciicaron' on input line 3659.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3635.
+(hyperref)                removing `\textasciicaron' on input line 3659.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3635.
+(hyperref)                removing `\textasciicaron' on input line 3659.
 
 
-Overfull \hbox (27.14897pt too wide) in paragraph at lines 3645--3646
+Overfull \hbox (27.14897pt too wide) in paragraph at lines 3669--3670
 []\OT1/cmr/m/n/10.95 Budovan^^Se mo-dely jsou ty-picky \OT1/cmr/bx/n/10.95 ro-b
 ustn^^S^^P \OT1/cmr/m/n/10.95 v^^Wu^^Tci nov^^Sym \OT1/cmr/bx/n/10.95 nezn^^Sam
 ^^Sem^^Sym dat^^Wum \OT1/cmr/m/n/10.95 a \OT1/cmr/bx/n/10.95 za^^Tsum^^Ten^^Sem
@@ -2432,17 +2423,17 @@ u
  []
 
 
-Overfull \hbox (7.43462pt too wide) in paragraph at lines 3655--3656
+Overfull \hbox (7.43462pt too wide) in paragraph at lines 3679--3680
 []\OT1/cmr/m/n/10.95 Necht[] $\OML/cmm/m/it/10.95 p[]x$ \OT1/cmr/m/n/10.95 je p
 ravd^^Tepodobnostn^^S^^P rozd^^Telen^^S^^P n^^Sahodn^^Se prom^^Tenn^^Se $\OML/c
 mm/m/it/10.95 X$ \OT1/cmr/m/n/10.95 a ne-cht[] $
 $ je mno^^Tzina z^^Sakladn^^S^^Pch
  []
 
-[94
+[95
 
 ]
-Overfull \hbox (7.07811pt too wide) in paragraph at lines 3670--3672
+Overfull \hbox (7.07811pt too wide) in paragraph at lines 3694--3696
 \OT1/cmr/m/n/10.95 Cross-entropie slou^^Tz^^S^^P ni-ko-liv k ohod-no-cen^^S^^P 
 ^^Tci po-rovn^^San^^S^^P po-zo-ro-van^^Sych dat, ale k \OT1/cmr/bx/n/10.95 po-r
 ovn^^San^^S^^P r^^Wuzn^^Sych
@@ -2451,16 +2442,16 @@ ovn^^San^^S^^P r^^Wuzn^^Sych
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3678.
+(hyperref)                removing `\textasciicaron' on input line 3702.
 
-<img/noisy_channel.png, id=1612, 342.5598pt x 79.2561pt>
+<img/noisy_channel.png, id=1620, 342.5598pt x 79.2561pt>
 File: img/noisy_channel.png Graphic file (type png)
 
 <use img/noisy_channel.png>
-Package pdftex.def Info: img/noisy_channel.png used on input line 3683.
+Package pdftex.def Info: img/noisy_channel.png used on input line 3707.
 (pdftex.def)             Requested size: 342.55894pt x 79.2559pt.
- [95]
-Overfull \hbox (20.87688pt too wide) in paragraph at lines 3700--3701
+ [96]
+Overfull \hbox (20.87688pt too wide) in paragraph at lines 3724--3725
 \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 w[]; w[]; [] w[]\OT1/cmr/m/n/10.95 )$ p
 ^^Tri^^Trad^^S^^P pravd^^Tepodobnost $\OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 (
 \OML/cmm/m/it/10.95 W\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 p\OT1/cmr/m/n/1
@@ -2469,77 +2460,77 @@ e jed-nodu^^Tse p^^Treformulovat
  []
 
 
-Overfull \hbox (11.07864pt too wide) in paragraph at lines 3730--3731
+Overfull \hbox (11.07864pt too wide) in paragraph at lines 3754--3755
 \OT1/cmr/m/n/10.95 tace konc^^Wu v^^Tet, ...), a to stra-tegi^^S^^P \OT1/cmr/bx
 /n/10.95 Ma-xi-mum Li-ke-li-hood Es-ti-mate (MLE) \OT1/cmr/m/n/10.95 (ma-xim^^S
 aln^^Te v^^Terohodn^^Sy
  []
 
-[96 <./img/noisy_channel.png>] [97]
+[97 <./img/noisy_channel.png>] [98]
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3766.
+(hyperref)                removing `\textasciicaron' on input line 3790.
 
 
-Overfull \hbox (19.05092pt too wide) in paragraph at lines 3771--3772
+Overfull \hbox (19.05092pt too wide) in paragraph at lines 3795--3796
 []\OT1/cmr/m/n/10.95 Pokud v^^Tsak se-skup^^S^^Pme slova s po-dobn^^Sym v^^Syzn
 amem do spole^^Tcn^^Se t^^Tr^^S^^Pdy, tj. \OT1/cmr/m/it/10.95 (sim-ple, short)(
 homework,
  []
 
-[98] <img/hmm.png, id=1637, 395.076pt x 186.4566pt>
+[99] <img/hmm.png, id=1645, 395.076pt x 186.4566pt>
 File: img/hmm.png Graphic file (type png)
  <use img/hmm.png>
-Package pdftex.def Info: img/hmm.png used on input line 3815.
+Package pdftex.def Info: img/hmm.png used on input line 3839.
 (pdftex.def)             Requested size: 395.07503pt x 186.45615pt.
 
-<img/trellis.png, id=1639, 398.6895pt x 195.8517pt>
+<img/trellis.png, id=1647, 398.6895pt x 195.8517pt>
 File: img/trellis.png Graphic file (type png)
  <use img/trellis.png>
-Package pdftex.def Info: img/trellis.png used on input line 3841.
+Package pdftex.def Info: img/trellis.png used on input line 3865.
 (pdftex.def)             Requested size: 398.68852pt x 195.85121pt.
 
-[99 <./img/hmm.png>] <img/viterbi.png, id=1650, 337.9827pt x 185.7339pt>
+[100 <./img/hmm.png>] <img/viterbi.png, id=1658, 337.9827pt x 185.7339pt>
 File: img/viterbi.png Graphic file (type png)
 
 <use img/viterbi.png>
-Package pdftex.def Info: img/viterbi.png used on input line 3858.
+Package pdftex.def Info: img/viterbi.png used on input line 3882.
 (pdftex.def)             Requested size: 337.98187pt x 185.73344pt.
- <img/czechtag.png, id=1651, 240.4182pt x 91.7829pt>
+ <img/czechtag.png, id=1659, 240.4182pt x 91.7829pt>
 File: img/czechtag.png Graphic file (type png)
 
 <use img/czechtag.png>
-Package pdftex.def Info: img/czechtag.png used on input line 3875.
+Package pdftex.def Info: img/czechtag.png used on input line 3899.
 (pdftex.def)             Requested size: 240.4176pt x 91.78267pt.
- [100 <./img/trellis.png> <./img/viterbi.png>]
-<img/tag1.png, id=1658, 179.7114pt x 80.9424pt>
+ [101 <./img/trellis.png> <./img/viterbi.png>]
+<img/tag1.png, id=1666, 179.7114pt x 80.9424pt>
 File: img/tag1.png Graphic file (type png)
  <use img/tag1.png>
-Package pdftex.def Info: img/tag1.png used on input line 3886.
+Package pdftex.def Info: img/tag1.png used on input line 3910.
 (pdftex.def)             Requested size: 179.71094pt x 80.9422pt.
 
-<img/tag_automat.png, id=1659, 318.4698pt x 156.8259pt>
+<img/tag_automat.png, id=1667, 318.4698pt x 156.8259pt>
 File: img/tag_automat.png Graphic file (type png)
 
 <use img/tag_automat.png>
-Package pdftex.def Info: img/tag_automat.png used on input line 3899.
+Package pdftex.def Info: img/tag_automat.png used on input line 3923.
 (pdftex.def)             Requested size: 318.46901pt x 156.8255pt.
- [101 <./img/czechtag.png> <./img/tag1.png> <./img/tag_automat.png>]
+ [102 <./img/czechtag.png> <./img/tag1.png> <./img/tag_automat.png>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 3926.
+(hyperref)                removing `\textasciicaron' on input line 3950.
 
-<img/translation_alignment.png, id=1673, 239.4546pt x 117.5592pt>
+<img/translation_alignment.png, id=1681, 239.4546pt x 117.5592pt>
 File: img/translation_alignment.png Graphic file (type png)
 
 <use img/translation_alignment.png>
-Package pdftex.def Info: img/translation_alignment.png used on input line 3941.
+Package pdftex.def Info: img/translation_alignment.png used on input line 3965.
 
 (pdftex.def)             Requested size: 239.45401pt x 117.5589pt.
- [102 <./img/translation_alignment.png>]
-Overfull \hbox (4.12016pt too wide) in paragraph at lines 4003--4004
+ [103 <./img/translation_alignment.png>]
+Overfull \hbox (4.12016pt too wide) in paragraph at lines 4027--4028
 \OT1/cmr/m/n/10.95 kter^^Sy pra-cuje p^^Tr^^S^^Pmo na t^^Techto p^^Tr^^S^^Ppono
 v^^Sych slo-vech, tj. $\OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/1
 0.95 kolem \OMS/cmsy/m/n/10.95 ^^@ \OT1/cmr/m/n/10.95 1\OMS/cmsy/m/n/10.95 j []
@@ -2547,65 +2538,65 @@ v^^Sych slo-vech, tj. $\OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/1
 /it/10.95 kolem \OMS/cmsy/m/n/10.95 ^^@
  []
 
-[103]
+[104]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4026.
+(hyperref)                removing `\textasciicaron' on input line 4050.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 4026.
+(hyperref)                removing `\textring' on input line 4050.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 4026.
+(hyperref)                removing `\textring' on input line 4050.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 4026.
+(hyperref)                removing `\textring' on input line 4050.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4036.
+(hyperref)                removing `\textasciicaron' on input line 4060.
 
 
-Overfull \hbox (29.34366pt too wide) in paragraph at lines 4048--4049
+Overfull \hbox (29.34366pt too wide) in paragraph at lines 4072--4073
 []\OT1/cmr/bx/n/10.95 Probl^^Sem re-strik^^Tcn^^S^^Pho ma-pov^^San^^S^^P \OT1/c
 mr/m/n/10.95 je de-fi-nov^^San takto: m^^Same (ex-pe-ri-ment^^Saln^^Te z^^S^^Ps
 kanou) podmno^^Tzinu
  []
 
-<img/ddp.png, id=1696, 317.7471pt x 234.6366pt>
+<img/ddp.png, id=1704, 317.7471pt x 234.6366pt>
 File: img/ddp.png Graphic file (type png)
  <use img/ddp.png>
-Package pdftex.def Info: img/ddp.png used on input line 4062.
+Package pdftex.def Info: img/ddp.png used on input line 4086.
 (pdftex.def)             Requested size: 317.7463pt x 234.63602pt.
- [104]
-<img/pdp.png, id=1705, 313.6518pt x 218.2554pt>
+ [105]
+<img/pdp.png, id=1713, 313.6518pt x 218.2554pt>
 File: img/pdp.png Graphic file (type png)
  <use img/pdp.png>
-Package pdftex.def Info: img/pdp.png used on input line 4072.
+Package pdftex.def Info: img/pdp.png used on input line 4096.
 (pdftex.def)             Requested size: 313.65102pt x 218.25485pt.
- [105 <./img/ddp.png> <./img/pdp.png>] <img/spdp1.png, id=1713, 219.9417pt x 27
+ [106 <./img/ddp.png> <./img/pdp.png>] <img/spdp1.png, id=1721, 219.9417pt x 27
 .9444pt>
 File: img/spdp1.png Graphic file (type png)
 
 <use img/spdp1.png>
-Package pdftex.def Info: img/spdp1.png used on input line 4123.
+Package pdftex.def Info: img/spdp1.png used on input line 4147.
 (pdftex.def)             Requested size: 219.94115pt x 27.9443pt.
- <img/spdp2.png, id=1714, 219.9417pt x 73.7154pt>
+ <img/spdp2.png, id=1722, 219.9417pt x 73.7154pt>
 File: img/spdp2.png Graphic file (type png)
 
 <use img/spdp2.png>
-Package pdftex.def Info: img/spdp2.png used on input line 4125.
+Package pdftex.def Info: img/spdp2.png used on input line 4149.
 (pdftex.def)             Requested size: 219.94115pt x 73.7152pt.
 
-Overfull \hbox (20.72852pt too wide) in paragraph at lines 4131--4132
+Overfull \hbox (20.72852pt too wide) in paragraph at lines 4155--4156
 []\OT1/cmr/bx/n/10.95 Algoritmus: \OT1/cmr/m/n/10.95 Ka^^Tzd^^Sy kom-ple-ment^^
 Sarn^^S^^P p^^Sar lze pou^^Tz^^S^^Pt jako $(\OML/cmm/m/it/10.95 ^^M[]; ^^M[]\OT
 1/cmr/m/n/10.95 )$ nebo jako $(\OML/cmm/m/it/10.95 ^^M[]; ^^M[]\OT1/cmr/m/n/10.
@@ -2615,115 +2606,115 @@ Sarn^^S^^P p^^Sar lze pou^^Tz^^S^^Pt jako $(\OML/cmm/m/it/10.95 ^^M[]; ^^M[]\OT
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 4136.
+(hyperref)                removing `\textring' on input line 4160.
 
-[106 <./img/spdp1.png> <./img/spdp2.png>]
-<img/dna_profile.png, id=1734, 190.5519pt x 192.2382pt>
+[107 <./img/spdp1.png> <./img/spdp2.png>]
+<img/dna_profile.png, id=1742, 190.5519pt x 192.2382pt>
 File: img/dna_profile.png Graphic file (type png)
 
 <use img/dna_profile.png>
-Package pdftex.def Info: img/dna_profile.png used on input line 4146.
+Package pdftex.def Info: img/dna_profile.png used on input line 4170.
 (pdftex.def)             Requested size: 186.8051pt x 188.46254pt.
 
-Underfull \hbox (badness 2302) in paragraph at lines 4147--4147
+Underfull \hbox (badness 2302) in paragraph at lines 4171--4171
 []\OT1/cmr/m/n/10.95 Obr^^Sazek 4.7: |Sk^^Sore pro tento pro-fil je
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4147--4147
+Underfull \hbox (badness 10000) in paragraph at lines 4171--4171
 \OT1/cmr/m/n/10.95 3+4+4+5+3+4+3+4 = 20. Tot^^Saln^^S^^P
  []
 
 
-Overfull \hbox (7.1976pt too wide) in paragraph at lines 4155--4156
+Overfull \hbox (7.1976pt too wide) in paragraph at lines 4179--4180
 []\OT1/cmr/bx/n/10.95 Sk^^Sore \OT1/cmr/m/n/10.95 je sou^^Tcet po^^Tct^^Wu v^^S
 yskyt^^Wu t^^Techto nej^^Tcast^^Tej^^Ts^^S^^Pch
  []
 
 
-Underfull \hbox (badness 4726) in paragraph at lines 4157--4158
+Underfull \hbox (badness 4726) in paragraph at lines 4181--4182
 []\OT1/cmr/bx/n/10.95 Tot^^Saln^^S^^P vzd^^Salenost $\OML/cmm/m/it/10.95 l$\OT1
 /cmr/m/n/10.95 -mer^^Wu za^^Tc^^S^^Pnaj^^S^^Pch na
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 4157--4158
+Underfull \hbox (badness 1275) in paragraph at lines 4181--4182
 \OT1/cmr/m/n/10.95 dan^^Sych star-tovn^^S^^Pch po-zic^^S^^Pch dan^^Sych sek-ven
 c^^S^^P je
  []
 
-<img/genome_rearr.png, id=1735, 430.7292pt x 106.9596pt>
+<img/genome_rearr.png, id=1743, 430.7292pt x 106.9596pt>
 File: img/genome_rearr.png Graphic file (type png)
 
 <use img/genome_rearr.png>
-Package pdftex.def Info: img/genome_rearr.png used on input line 4191.
+Package pdftex.def Info: img/genome_rearr.png used on input line 4215.
 (pdftex.def)             Requested size: 430.72815pt x 106.95932pt.
- [107 <./img/dna_profile.png>]
-<img/genome_rearr2.png, id=1743, 856.1586pt x 165.7392pt>
+ [108 <./img/dna_profile.png>]
+<img/genome_rearr2.png, id=1751, 856.1586pt x 165.7392pt>
 File: img/genome_rearr2.png Graphic file (type png)
 
 <use img/genome_rearr2.png>
-Package pdftex.def Info: img/genome_rearr2.png used on input line 4198.
+Package pdftex.def Info: img/genome_rearr2.png used on input line 4222.
 (pdftex.def)             Requested size: 467.0199pt x 90.40572pt.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 4212.
+(hyperref)                removing `\textring' on input line 4236.
 
-[108 <./img/genome_rearr.png> <./img/genome_rearr2.png>]
+[109 <./img/genome_rearr.png> <./img/genome_rearr2.png>]
 Kapitola 5.
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4220.
+(hyperref)                removing `\textasciicaron' on input line 4244.
 
-<img/mozek.png, id=1750, 1023.825pt x 794.97pt>
+<img/mozek.png, id=1759, 1023.825pt x 794.97pt>
 File: img/mozek.png Graphic file (type png)
  <use img/mozek.png>
-Package pdftex.def Info: img/mozek.png used on input line 4228.
+Package pdftex.def Info: img/mozek.png used on input line 4252.
 (pdftex.def)             Requested size: 467.0199pt x 362.62169pt.
 
-Overfull \hbox (17.0pt too wide) in paragraph at lines 4228--4229
+Overfull \hbox (17.0pt too wide) in paragraph at lines 4252--4253
 [][] 
  []
 
-[109
+[110
 
- <./img/mozek.png>] <img/neuron.png, id=1756, 385.44pt x 200.4288pt>
+ <./img/mozek.png>] <img/neuron.png, id=1764, 385.44pt x 200.4288pt>
 File: img/neuron.png Graphic file (type png)
 
 <use img/neuron.png>
-Package pdftex.def Info: img/neuron.png used on input line 4245.
+Package pdftex.def Info: img/neuron.png used on input line 4269.
 (pdftex.def)             Requested size: 326.91249pt x 169.99216pt.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4249.
+(hyperref)                removing `\textasciicaron' on input line 4273.
 
 
-Overfull \hbox (0.10823pt too wide) in paragraph at lines 4250--4251
+Overfull \hbox (0.10823pt too wide) in paragraph at lines 4274--4275
 []\OT1/cmr/m/n/10.95 Obal neu-ronu tvo^^Tr^^S^^P \OT1/cmr/m/it/10.95 membr^^San
 a\OT1/cmr/m/n/10.95 , kter^^Sa se skl^^Sad^^Sa ze dvou vrs-tev mo-le-kul \OT1/c
 mr/bx/n/10.95 fos-fo-li-pid^^Wu\OT1/cmr/m/n/10.95 . V membr^^San^^Te
  []
 
-<img/resting_potential.png, id=1757, 795.97375pt x 505.89pt>
+<img/resting_potential.png, id=1765, 795.97375pt x 505.89pt>
 File: img/resting_potential.png Graphic file (type png)
 
 <use img/resting_potential.png>
-Package pdftex.def Info: img/resting_potential.png used on input line 4257.
+Package pdftex.def Info: img/resting_potential.png used on input line 4281.
 (pdftex.def)             Requested size: 326.91249pt x 207.77132pt.
- [110 <./img/neuron.png>]
-<img/action_potential.png, id=1765, 466.74374pt x 308.15125pt>
+ [111 <./img/neuron.png>]
+<img/action_potential.png, id=1773, 466.74374pt x 308.15125pt>
 File: img/action_potential.png Graphic file (type png)
 
 <use img/action_potential.png>
-Package pdftex.def Info: img/action_potential.png used on input line 4265.
+Package pdftex.def Info: img/action_potential.png used on input line 4289.
 (pdftex.def)             Requested size: 326.91249pt x 215.84074pt.
 
-Overfull \hbox (1.80005pt too wide) in paragraph at lines 4262--4266
+Overfull \hbox (1.80005pt too wide) in paragraph at lines 4286--4290
 \OT1/cmr/m/n/10.95 doch^^Saz^^S^^P k je-jich au-to-ma-tick^^Semu uzav^^Tren^^S^
 ^P/otev^^Tren^^S^^P. T^^S^^Pm je umo^^Tzn^^Teno ge-ne-rov^^San^^S^^P ak^^Tcn^^S
 ^^Pho po-tenci^^Salu.
@@ -2732,92 +2723,92 @@ Overfull \hbox (1.80005pt too wide) in paragraph at lines 4262--4266
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4268.
+(hyperref)                removing `\textasciicaron' on input line 4292.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+t'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4268.
+(hyperref)                removing `\textasciicaron' on input line 4292.
 
 
-Overfull \hbox (0.686pt too wide) in paragraph at lines 4272--4273
+Overfull \hbox (0.686pt too wide) in paragraph at lines 4296--4297
 []\OT1/cmr/m/n/10.95 Zalo^^Tzen na cyk-lick^^Sem ob^^Tehu vzruch^^Wu v neu-ro-n
 ov^^Sych
  []
 
 
-Overfull \hbox (13.08047pt too wide) in paragraph at lines 4273--4274
+Overfull \hbox (13.08047pt too wide) in paragraph at lines 4297--4298
 []\OT1/cmr/m/n/10.95 Zalo^^Tzen na zm^^Ten^^Sach []vah neu-ron^^Wu\. Zm^^Tena v
 ^^Sahov^^Sych
  []
 
 
-Overfull \hbox (6.53279pt too wide) in paragraph at lines 4273--4274
+Overfull \hbox (6.53279pt too wide) in paragraph at lines 4297--4298
 \OT1/cmr/m/n/10.95 koe-fi-ci-ent^^Wu v sy-na-psi je vy-vol^^Sana mno-hon^^Sasob
 n^^Sym p^^Wusoben^^S^^Pm t^^Seho^^Tz sign^^Salu na p^^Tr^^S^^Pslu^^Tsn^^Sych
  []
 
 
-Overfull \hbox (12.19113pt too wide) in paragraph at lines 4274--4275
+Overfull \hbox (12.19113pt too wide) in paragraph at lines 4298--4299
 []\OT1/cmr/m/n/10.95 Spo^^Tc^^S^^Pv^^Sa v kop^^S^^Prov^^San^^S^^P in-for-mac^^S
 ^^P ze st^^Tredn^^Tedob^^Se pam^^Teti
  []
 
 
-Overfull \hbox (1.12709pt too wide) in paragraph at lines 4274--4275
+Overfull \hbox (1.12709pt too wide) in paragraph at lines 4298--4299
 \OT1/cmr/m/n/10.95 do b^^S^^Plkovin, kter^^Se jsou uv-nit^^Tr neu-ron^^Wu { hla
 vn^^Te v je-jich j^^Sadrech. N^^Tekter^^Se takto uchov^^Savan^^Se
  []
 
-[111 <./img/resting_potential.png> <./img/action_potential.png>]
+[112 <./img/resting_potential.png> <./img/action_potential.png>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4278.
+(hyperref)                removing `\textasciicaron' on input line 4302.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4278.
+(hyperref)                removing `\textasciicaron' on input line 4302.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4278.
+(hyperref)                removing `\textasciicaron' on input line 4302.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4278.
+(hyperref)                removing `\textasciicaron' on input line 4302.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4278.
+(hyperref)                removing `\textasciicaron' on input line 4302.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4278.
+(hyperref)                removing `\textasciicaron' on input line 4302.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4280.
+(hyperref)                removing `\textasciicaron' on input line 4304.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4280.
+(hyperref)                removing `\textasciicaron' on input line 4304.
 
-<img/activation_functions.png, id=1774, 574.145pt x 430.60875pt>
+<img/activation_functions.png, id=1782, 574.145pt x 430.60875pt>
 File: img/activation_functions.png Graphic file (type png)
 
 <use img/activation_functions.png>
-Package pdftex.def Info: img/activation_functions.png used on input line 4286.
+Package pdftex.def Info: img/activation_functions.png used on input line 4310.
 (pdftex.def)             Requested size: 401.89876pt x 301.42406pt.
- [112 <./img/activation_functions.png>]
-Overfull \hbox (2.03377pt too wide) in paragraph at lines 4308--4309
+ [113 <./img/activation_functions.png>]
+Overfull \hbox (2.03377pt too wide) in paragraph at lines 4332--4333
 []\OT1/cmr/m/n/10.95 Jednoduch^^Sy per-ceptron ve skute^^Tcnosti re-a-li-zuje \
 OT1/cmr/bx/n/10.95 d^^Tel^^S^^Pc^^S^^P nadro-vinu\OT1/cmr/m/n/10.95 , jej^^S^^P
 ^^Tz po-loha je d^^Sana v^^Sahov^^Sym
@@ -2825,46 +2816,46 @@ OT1/cmr/bx/n/10.95 d^^Tel^^S^^Pc^^S^^P nadro-vinu\OT1/cmr/m/n/10.95 , jej^^S^^P
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <3.83247> not available
-(Font)              size <5> substituted on input line 4314.
+(Font)              size <5> substituted on input line 4338.
 
-[113]
+[114]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4408.
+(hyperref)                removing `\textasciicaron' on input line 4432.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4408.
+(hyperref)                removing `\textasciicaron' on input line 4432.
 
-[114] [115]
-Overfull \hbox (17.74997pt too wide) in paragraph at lines 4486--4521
+[115] [116]
+Overfull \hbox (17.74997pt too wide) in paragraph at lines 4510--4545
 [] 
  []
 
-[116]
+[117]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4522.
+(hyperref)                removing `\textasciicaron' on input line 4546.
 
 
-Overfull \hbox (6.07988pt too wide) in paragraph at lines 4523--4524
+Overfull \hbox (6.07988pt too wide) in paragraph at lines 4547--4548
 []\OT1/cmr/m/n/10.95 Popsan^^Sy stan-dardn^^S^^P mo-del zp^^Tetn^^Seho u^^Tcen^
 ^S^^P je pom^^Tern^^Te jed-no-duch^^Sy, d^^Sav^^Sa pom^^Tern^^Te dobr^^Se v^^Sy
 sledky,
  []
 
-[117]
-Overfull \hbox (1.79698pt too wide) in paragraph at lines 4535--4537
+[118]
+Overfull \hbox (1.79698pt too wide) in paragraph at lines 4559--4561
 \OT1/cmr/m/n/10.95 kde po-sledn^^S^^P rov-nost plyne z vz^^Sajemn^^Se nez^^Savi
 slosti pro v^^Tsechna $\OML/cmm/m/it/10.95 j$\OT1/cmr/m/n/10.95 . Nyn^^S^^P p^^
 Tredpokl^^Sadejme, ^^Tze tr^^Senovac^^S^^P
  []
 
-[118] [119]
-Overfull \hbox (5.28462pt too wide) in paragraph at lines 4702--4702
+[119] [120]
+Overfull \hbox (5.28462pt too wide) in paragraph at lines 4726--4726
 |[]\OT1/cmr/bx/n/14.4 Asociativn^^S^^P pam^^Teti, He-b-bovsk^^Se u^^Tcen^^S^^P 
 a hled^^San^^S^^P subop-tim^^Saln^^S^^Pch
  []
@@ -2872,63 +2863,63 @@ a hled^^San^^S^^P subop-tim^^Saln^^S^^Pch
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4702.
+(hyperref)                removing `\textasciicaron' on input line 4726.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4702.
+(hyperref)                removing `\textasciicaron' on input line 4726.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4702.
+(hyperref)                removing `\textasciicaron' on input line 4726.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4703.
+(hyperref)                removing `\textasciicaron' on input line 4727.
 
-[120] <img/nn_asoc_hetero.png, id=1851, 206.6922pt x 77.088pt>
+[121] <img/nn_asoc_hetero.png, id=1860, 206.6922pt x 77.088pt>
 File: img/nn_asoc_hetero.png Graphic file (type png)
 
 <use img/nn_asoc_hetero.png>
-Package pdftex.def Info: img/nn_asoc_hetero.png used on input line 4715.
+Package pdftex.def Info: img/nn_asoc_hetero.png used on input line 4739.
 (pdftex.def)             Requested size: 206.69168pt x 77.0878pt.
 
-<img/nn_asoc_auto.png, id=1852, 203.8014pt x 75.1608pt>
+<img/nn_asoc_auto.png, id=1861, 203.8014pt x 75.1608pt>
 File: img/nn_asoc_auto.png Graphic file (type png)
 
 <use img/nn_asoc_auto.png>
-Package pdftex.def Info: img/nn_asoc_auto.png used on input line 4724.
+Package pdftex.def Info: img/nn_asoc_auto.png used on input line 4748.
 (pdftex.def)             Requested size: 203.80089pt x 75.1606pt.
 
-<img/nn_asoc_class.png, id=1853, 248.127pt x 76.1244pt>
+<img/nn_asoc_class.png, id=1862, 248.127pt x 76.1244pt>
 File: img/nn_asoc_class.png Graphic file (type png)
 
 <use img/nn_asoc_class.png>
-Package pdftex.def Info: img/nn_asoc_class.png used on input line 4730.
+Package pdftex.def Info: img/nn_asoc_class.png used on input line 4754.
 (pdftex.def)             Requested size: 248.12637pt x 76.1242pt.
- [121 <./img/nn_asoc_hetero.png> <./img/nn_asoc_auto.png> <./img/nn_asoc_class.
+ [122 <./img/nn_asoc_hetero.png> <./img/nn_asoc_auto.png> <./img/nn_asoc_class.
 png>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4764.
+(hyperref)                removing `\textasciicaron' on input line 4788.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 4764.
+(hyperref)                removing `\textasciicaron' on input line 4788.
 
-<img/hebb_rule.png, id=1864, 372.4314pt x 151.2852pt>
+<img/hebb_rule.png, id=1872, 372.4314pt x 151.2852pt>
 File: img/hebb_rule.png Graphic file (type png)
  <use img/hebb_rule.png>
-Package pdftex.def Info: img/hebb_rule.png used on input line 4771.
+Package pdftex.def Info: img/hebb_rule.png used on input line 4795.
 (pdftex.def)             Requested size: 223.46056pt x 90.7718pt.
 
-[122]
-Overfull \hbox (8.04312pt too wide) in paragraph at lines 4784--4785
+[123]
+Overfull \hbox (8.04312pt too wide) in paragraph at lines 4808--4809
 \OT1/cmr/m/n/10.95 uva^^Tzme $\OML/cmm/m/it/10.95 m$ $n$\OT1/cmr/m/n/10.95 -roz
 m^^Tern^^Sych vek-tor^^Wu $\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/10.95 ; \OT1/cm
 r/bx/n/10.95 x[]\OML/cmm/m/it/10.95 ; [] \OT1/cmr/bx/n/10.95 x[]$\OT1/cmr/m/n/1
@@ -2937,7 +2928,7 @@ r/bx/n/10.95 x[]\OML/cmm/m/it/10.95 ; [] \OT1/cmr/bx/n/10.95 x[]$\OT1/cmr/m/n/1
  []
 
 
-Overfull \hbox (0.61047pt too wide) in paragraph at lines 4784--4785
+Overfull \hbox (0.61047pt too wide) in paragraph at lines 4808--4809
 \OT1/cmr/m/n/10.95 vek-tor^^Wu $\OT1/cmr/bx/n/10.95 y[]\OML/cmm/m/it/10.95 ; \O
 T1/cmr/bx/n/10.95 y[]\OML/cmm/m/it/10.95 ; [] \OT1/cmr/bx/n/10.95 y[]$\OT1/cmr/
 m/n/10.95 . Pro ka^^Tzd^^Sy p^^Sar $[]\OML/cmm/m/it/10.95 ; []$ \OT1/cmr/m/n/10
@@ -2946,87 +2937,87 @@ mr/bx/n/10.95 W[] \OT1/cmr/m/n/10.95 = [\OML/cmm/m/it/10.95 x[]y[]\OT1/cmr/m/n/
 10.95 ][]$
  []
 
-[123 <./img/hebb_rule.png>]
-Overfull \hbox (10.95033pt too wide) in paragraph at lines 4816--4817
+[124 <./img/hebb_rule.png>]
+Overfull \hbox (10.95033pt too wide) in paragraph at lines 4840--4841
 []\OT1/cmr/m/n/10.95 Hebbovsk^^Se u^^Tcen^^S^^P fun-guje dob^^Tre, po-kud jsou 
 ulo^^Tzen^^Se vzory t^^Sem^^Te^^Tr or-to-gon^^Saln^^S^^P, co^^Tz pro $\OML/cmm/
 m/it/10.95 m$ \OT1/cmr/m/n/10.95 n^^Sahodn^^Sych
  []
 
-[124] <img/pseudoinverse.png, id=1888, 331.9602pt x 189.8292pt>
+[125] <img/pseudoinverse.png, id=1896, 331.9602pt x 189.8292pt>
 File: img/pseudoinverse.png Graphic file (type png)
 
 <use img/pseudoinverse.png>
-Package pdftex.def Info: img/pseudoinverse.png used on input line 4849.
+Package pdftex.def Info: img/pseudoinverse.png used on input line 4873.
 (pdftex.def)             Requested size: 331.95938pt x 189.82872pt.
- <img/bam.png, id=1889, 235.6002pt x 190.7928pt>
+ <img/bam.png, id=1897, 235.6002pt x 190.7928pt>
 File: img/bam.png Graphic file (type png)
 
 <use img/bam.png>
-Package pdftex.def Info: img/bam.png used on input line 4857.
+Package pdftex.def Info: img/bam.png used on input line 4881.
 (pdftex.def)             Requested size: 186.8051pt x 151.28069pt.
- [125 <./img/pseudoinverse.png> <./img/bam.png>] [126]
-[127] <img/hopfield.png, id=1913, 396.5214pt x 251.4996pt>
+ [126 <./img/pseudoinverse.png> <./img/bam.png>] [127]
+[128] <img/hopfield.png, id=1922, 396.5214pt x 251.4996pt>
 File: img/hopfield.png Graphic file (type png)
 
 <use img/hopfield.png>
-Package pdftex.def Info: img/hopfield.png used on input line 5010.
+Package pdftex.def Info: img/hopfield.png used on input line 5034.
 (pdftex.def)             Requested size: 467.0199pt x 296.22585pt.
- [128] [129 <./img/hopfield.png>]
+ [129] [130 <./img/hopfield.png>]
 
 pdfTeX warning: pdflatex (file ./img/multiflop.pdf): PDF inclusion: found PDF v
 ersion <1.7>, but at most version <1.5> allowed
-<img/multiflop.pdf, id=1927, 318.4698pt x 136.8312pt>
+<img/multiflop.pdf, id=1935, 318.4698pt x 136.8312pt>
 File: img/multiflop.pdf Graphic file (type pdf)
  <use img/multiflop.pdf>
-Package pdftex.def Info: img/multiflop.pdf used on input line 5073.
+Package pdftex.def Info: img/multiflop.pdf used on input line 5097.
 (pdftex.def)             Requested size: 191.08334pt x 82.09933pt.
 
-[130 <./img/multiflop.pdf>] [131]
+[131 <./img/multiflop.pdf>] [132]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5154.
+(hyperref)                removing `\textasciicaron' on input line 5178.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5154.
+(hyperref)                removing `\textasciicaron' on input line 5178.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5154.
+(hyperref)                removing `\textasciicaron' on input line 5178.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5154.
+(hyperref)                removing `\textasciicaron' on input line 5178.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5159.
+(hyperref)                removing `\textasciicaron' on input line 5183.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5159.
+(hyperref)                removing `\textasciicaron' on input line 5183.
 
-<img/nn_competitive.png, id=1944, 176.8206pt x 208.1376pt>
+<img/nn_competitive.png, id=1952, 176.8206pt x 208.1376pt>
 File: img/nn_competitive.png Graphic file (type png)
 
 <use img/nn_competitive.png>
-Package pdftex.def Info: img/nn_competitive.png used on input line 5161.
+Package pdftex.def Info: img/nn_competitive.png used on input line 5185.
 (pdftex.def)             Requested size: 177.46983pt x 208.90883pt.
 
-Underfull \hbox (badness 2261) in paragraph at lines 5167--5168
+Underfull \hbox (badness 2261) in paragraph at lines 5191--5192
 []\OT1/cmr/m/n/10.95 Mezi neu-rony exis-tuj^^S^^P []la-ter^^Saln^^S^^P spoje\, 
 po-moc^^S^^P
  []
 
-[132 <./img/nn_competitive.png>] [133]
-Overfull \hbox (13.02606pt too wide) in paragraph at lines 5241--5242
+[133 <./img/nn_competitive.png>] [134]
+Overfull \hbox (13.02606pt too wide) in paragraph at lines 5265--5266
 []\OT1/cmr/m/n/10.95 M^^Same d^^Sanu mno^^Tzinu $\OML/cmm/m/it/10.95 m$ $n$\OT1
 /cmr/m/n/10.95 -rozm^^Tern^^Sych vek-tor^^Wu $\OMS/cmsy/m/n/10.95 f\OT1/cmr/bx/
 n/10.95 x[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/10.95 ; [
@@ -3034,163 +3025,163 @@ n/10.95 x[]\OML/cmm/m/it/10.95 ; \OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/10.95 ; [
 m/it/10.95 Prvn^^S^^Pm nejd^^Wule^^Tzitej^^Ts^^S^^Pm p^^Tr^^S^^Pznakem
  []
 
-<img/pca.png, id=1958, 295.1025pt x 135.1449pt>
+<img/pca.png, id=1966, 295.1025pt x 135.1449pt>
 File: img/pca.png Graphic file (type png)
  <use img/pca.png>
-Package pdftex.def Info: img/pca.png used on input line 5251.
+Package pdftex.def Info: img/pca.png used on input line 5275.
 (pdftex.def)             Requested size: 295.10176pt x 135.14456pt.
 
-<img/lin_asoc.png, id=1959, 458.1918pt x 218.2554pt>
+<img/lin_asoc.png, id=1967, 458.1918pt x 218.2554pt>
 File: img/lin_asoc.png Graphic file (type png)
  <use img/lin_asoc.png>
-Package pdftex.def Info: img/lin_asoc.png used on input line 5257.
+Package pdftex.def Info: img/lin_asoc.png used on input line 5281.
 (pdftex.def)             Requested size: 140.10739pt x 66.7393pt.
 
-[134 <./img/pca.png>]
-Underfull \hbox (badness 5667) in paragraph at lines 5259--5260
+[135 <./img/pca.png>]
+Underfull \hbox (badness 5667) in paragraph at lines 5283--5284
 [][]\OT1/cmr/m/n/10.95 Algoritmus pro v^^Sypo^^Tcet 1. PC po-moc^^S^^P \OT1/cmr
 /m/it/10.95 line^^Sarn^^S^^Pch
  []
 
-<img/oja2.png, id=1966, 447.5922pt x 185.2521pt>
+<img/oja2.png, id=1974, 447.5922pt x 185.2521pt>
 File: img/oja2.png Graphic file (type png)
  <use img/oja2.png>
-Package pdftex.def Info: img/oja2.png used on input line 5313.
+Package pdftex.def Info: img/oja2.png used on input line 5337.
 (pdftex.def)             Requested size: 313.3124pt x 129.67558pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[135 <./img/lin_asoc.png>] <img/multipca.png, id=1977, 233.9139pt x 236.082pt>
+[136 <./img/lin_asoc.png>] <img/multipca.png, id=1985, 233.9139pt x 236.082pt>
 File: img/multipca.png Graphic file (type png)
 
 <use img/multipca.png>
-Package pdftex.def Info: img/multipca.png used on input line 5326.
+Package pdftex.def Info: img/multipca.png used on input line 5350.
 (pdftex.def)             Requested size: 233.91331pt x 236.0814pt.
- <img/kohonen1d.png, id=1978, 456.9873pt x 197.538pt>
+ <img/kohonen1d.png, id=1986, 456.9873pt x 197.538pt>
 File: img/kohonen1d.png Graphic file (type png)
 
 <use img/kohonen1d.png>
-Package pdftex.def Info: img/kohonen1d.png used on input line 5341.
+Package pdftex.def Info: img/kohonen1d.png used on input line 5365.
 (pdftex.def)             Requested size: 319.88893pt x 138.27565pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[136 <./img/oja2.png> <./img/multipca.png>]
-<img/kohonen_triangle.png, id=1987, 246.9225pt x 213.4374pt>
+[137 <./img/oja2.png> <./img/multipca.png>]
+<img/kohonen_triangle.png, id=1995, 246.9225pt x 213.4374pt>
 File: img/kohonen_triangle.png Graphic file (type png)
 
 <use img/kohonen_triangle.png>
-Package pdftex.def Info: img/kohonen_triangle.png used on input line 5378.
+Package pdftex.def Info: img/kohonen_triangle.png used on input line 5402.
 (pdftex.def)             Requested size: 172.84456pt x 149.40514pt.
 
-<img/kohonen_square.png, id=1988, 241.6227pt x 241.1409pt>
+<img/kohonen_square.png, id=1996, 241.6227pt x 241.1409pt>
 File: img/kohonen_square.png Graphic file (type png)
 
 <use img/kohonen_square.png>
-Package pdftex.def Info: img/kohonen_square.png used on input line 5384.
+Package pdftex.def Info: img/kohonen_square.png used on input line 5408.
 (pdftex.def)             Requested size: 241.6221pt x 241.1403pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[137 <./img/kohonen1d.png> <./img/kohonen_triangle.png>]
-<img/kohonen_konv1.png, id=1998, 359.1819pt x 102.3825pt>
+[138 <./img/kohonen1d.png> <./img/kohonen_triangle.png>]
+<img/kohonen_konv1.png, id=2006, 359.1819pt x 102.3825pt>
 File: img/kohonen_konv1.png Graphic file (type png)
 
 <use img/kohonen_konv1.png>
-Package pdftex.def Info: img/kohonen_konv1.png used on input line 5397.
+Package pdftex.def Info: img/kohonen_konv1.png used on input line 5421.
 (pdftex.def)             Requested size: 179.5905pt x 51.19112pt.
 
-<img/kohonen_konv2.png, id=1999, 359.1819pt x 102.3825pt>
+<img/kohonen_konv2.png, id=2007, 359.1819pt x 102.3825pt>
 File: img/kohonen_konv2.png Graphic file (type png)
 
 <use img/kohonen_konv2.png>
-Package pdftex.def Info: img/kohonen_konv2.png used on input line 5416.
+Package pdftex.def Info: img/kohonen_konv2.png used on input line 5440.
 (pdftex.def)             Requested size: 323.26071pt x 92.14339pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[138 <./img/kohonen_square.png> <./img/kohonen_konv1.png>]
-<img/kohonen_knot.png, id=2009, 425.6703pt x 197.7789pt>
+[139 <./img/kohonen_square.png> <./img/kohonen_konv1.png>]
+<img/kohonen_knot.png, id=2018, 425.6703pt x 197.7789pt>
 File: img/kohonen_knot.png Graphic file (type png)
 
 <use img/kohonen_knot.png>
-Package pdftex.def Info: img/kohonen_knot.png used on input line 5434.
+Package pdftex.def Info: img/kohonen_knot.png used on input line 5458.
 (pdftex.def)             Requested size: 297.96716pt x 138.44427pt.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5441.
+(hyperref)                removing `\textasciicaron' on input line 5465.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5441.
+(hyperref)                removing `\textasciicaron' on input line 5465.
 
-[139 <./img/kohonen_konv2.png> <./img/kohonen_knot.png>]
+[140 <./img/kohonen_konv2.png> <./img/kohonen_knot.png>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5480.
+(hyperref)                removing `\textasciicaron' on input line 5504.
 
-<img/cascade.png, id=2018, 326.9013pt x 215.1237pt>
+<img/cascade.png, id=2026, 326.9013pt x 215.1237pt>
 File: img/cascade.png Graphic file (type png)
  <use img/cascade.png>
-Package pdftex.def Info: img/cascade.png used on input line 5488.
+Package pdftex.def Info: img/cascade.png used on input line 5512.
 (pdftex.def)             Requested size: 326.9005pt x 215.12317pt.
 
-[140]
+[141]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5498.
+(hyperref)                removing `\textasciicaron' on input line 5522.
 
-[141 <./img/cascade.png>] <img/rbf_1.png, id=2033, 352.6776pt x 194.1654pt>
+[142 <./img/cascade.png>] <img/rbf_1.png, id=2041, 352.6776pt x 194.1654pt>
 File: img/rbf_1.png Graphic file (type png)
 
 <use img/rbf_1.png>
-Package pdftex.def Info: img/rbf_1.png used on input line 5573.
+Package pdftex.def Info: img/rbf_1.png used on input line 5597.
 (pdftex.def)             Requested size: 246.87262pt x 135.91484pt.
- [142 <./img/rbf_1.png>]
+ [143 <./img/rbf_1.png>]
 
-Package caption Warning: \label without proper reference on input line 5592.
+Package caption Warning: \label without proper reference on input line 5616.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `rbf_gauss' on page 143 undefined on input line 5588.
+LaTeX Warning: Reference `rbf_gauss' on page 144 undefined on input line 5612.
 
-<img/rbf_2.png, id=2045, 242.1045pt x 194.1654pt>
+<img/rbf_2.png, id=2054, 242.1045pt x 194.1654pt>
 File: img/rbf_2.png Graphic file (type png)
  <use img/rbf_2.png>
-Package pdftex.def Info: img/rbf_2.png used on input line 5591.
+Package pdftex.def Info: img/rbf_2.png used on input line 5615.
 (pdftex.def)             Requested size: 169.47198pt x 135.91484pt.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5599.
+(hyperref)                removing `\textasciicaron' on input line 5623.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5599.
+(hyperref)                removing `\textasciicaron' on input line 5623.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 5599.
+(hyperref)                removing `\textasciicaron' on input line 5623.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5603.
-[143 <./img/rbf_2.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5603.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5627.
+[144 <./img/rbf_2.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5627.
  (./vypracovane_otazky.aux
 (./inteligentni_agenti/prirodou_inspirovane_pocitani.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5603.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5603.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5627.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5627.
 
 Package rerunfilecheck Info: File `vypracovane_otazky.out' has not changed.
 (rerunfilecheck)             Checksum: 6E6BF4313C44AF6A11EE7E901F5697AE;11913.
@@ -3205,13 +3196,13 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5603.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5627.
  ) 
 Here is how much of TeX's memory you used:
- 21543 strings out of 493013
- 360627 string characters out of 6135683
+ 21553 strings out of 493013
+ 360780 string characters out of 6135683
  447503 words of memory out of 5000000
- 23876 multiletter control sequences out of 15000+600000
+ 23881 multiletter control sequences out of 15000+600000
  23144 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,20n,42p,10406b,1404s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -3245,10 +3236,10 @@ i9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/s
 hare/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on vypracovane_otazky.pdf (143 pages, 6918823 bytes).
+Output written on vypracovane_otazky.pdf (144 pages, 6921591 bytes).
 PDF statistics:
- 2322 PDF objects out of 2487 (max. 8388607)
- 2026 compressed objects within 21 object streams
- 886 named destinations out of 1000 (max. 500000)
+ 2331 PDF objects out of 2487 (max. 8388607)
+ 2034 compressed objects within 21 object streams
+ 891 named destinations out of 1000 (max. 500000)
  1473 words of extra memory for PDF output out of 10000 (max. 10000000)
 
