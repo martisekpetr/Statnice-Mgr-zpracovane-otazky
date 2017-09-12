@@ -199,7 +199,7 @@ Paměť pro data se skládá z neomezené posloupnosti registrů $r_i, i \in \ma
 	
 	
 	\item Obsah registru $r_i$ budeme označovat pomocí $[r_i]$.
-	\item Nepřímá adresace (tj. obsahem jiného registru) pomocí $[[r_i]] = [r_{[r_j]}]$. 
+	\item Nepřímá adresace (tj. obsahem jiného registru) pomocí $[[r_i]] = [r_{[r_i]}]$. 
 	\item Přiřazení hodnoty $c$ do registru $r_i$ označíme $r_i \leftarrow c$
 \end{itemize}
 
@@ -367,7 +367,9 @@ $$L_\mathcal{U} = L(\mathcal{U}) = \{\langle M, x \rangle | x \in L(M)\}$$
 $\mathcal{U}$ popíšeme jako 3-páskový, protože je to technicky jednodušší. První páska obsahuje vstup $\mathcal{U}$, tedy kód $\langle M, x \rangle$. Na druhé pásce je uložen obsah pracovní pásky $M$. Symboly $X_i$ jsou zapsány jako $(i)_B$ v blocích téže délky oddělených znakem $|$. Třetí páska obsahuje číslo aktuálního stavu $q_i$ stroje $M$.
 
 
-\section{Rekurzivní a rekurzivně spočetné množiny.}
+\section{Rekurzivní a rekurzivně spočetné množiny. (TODO)}
+\textit{Nekompletní. Ale další roky prý už bude otázka změněna na Rekurzivní jazyky, takže cajk.}
+
 Rekurzivní a rekurzivně spočetné množiny se formálně definují pomocí rekurzivních funkcí. Následuje tedy posloupnost definic, které nás k nim dovedou.
 
 \subsection{Formální definice}
@@ -437,6 +439,24 @@ Hodnota funkce v tomto případě není důležitá. Takové funkci budeme také
 
 Speciálně tedy: \textbf{Rekurzivní} resp. \textbf{rekurzivně spočetná množina} je \textit{unární} rekurzivní (resp. rekurzivně spočetný) predikát.
 
+\subsubsection{Vlastnosti PRF, ORF, ČRF}
+Následující platí pro PRF i ORF stejně (a často i ČRF)
+
+\begin{theorem}[konečný součet a součin]
+Je-li $f$ PRF dvou proměnných (pro jednoduchost), potom i funkce $g(z, x) = \sum_{y<z} f(y, x)$ (přičemž $g(0, x) = 0$) a $h(z, x) = \prod_{y<z} f(y, x)$ (přičemž $h(0, x) = 1$) jsou PRF.
+\end{theorem}
+\begin{proof}
+For cyklus.
+\end{proof}
+
+podmíněný příkaz
+omezené kvantifikátory
+logické spojky
+konečná konjunkce a disjunkce
+omezená minimalizace
+
+
+
 \subsubsection{Ekvivalence TS a ČRF}
 Rekurzivní a rekurzivně spočetné predikáty a množiny jsou ve skutečnosti jen nové názvy pro
 nám již známé rekurzivní a rekurzivně spočetné jazyky, vzhledem k tomu, že jsme popsali bijekci
@@ -445,20 +465,24 @@ množinami řetězců.
 
 K tomu, že pojmy rekurzivní jazyk a rekurzivní množina jsou ekvivalentní, však musíme samozřejmě ukázat, že ČRF a TS jsou stejně silné výpočetní modely. 
 
-
 Množiny jsou ekvivalentní jazykům, protože TS je stejně silný výpošetní model jako ČRF (částečně rekurzivní funkce), pomocí kterých jsou rek. a rek. spoč. množiny definovány.
 
-
 Z ekvivalence TS a ČRF tedy plyne, že 
+
+číslování ČRF, $\phi^{(n)}_e$
+
+Kleeneho věta
+
+univerzální funkce
 \begin{itemize}
 	\item (algoritmicky) vyčíslitelné funkce = turingovsky vyčíslitelné funkce = ČRF
 	\item totální (algoritmicky) vyčíslitelné funkce = totální turingovsky vyčíslitelné funkce = ORF
 \end{itemize}
 
 
+Rozhodnutelnost, nerozhodnutelnost, halting problém s důkazem, uzavřenost na doplněk
 
-
-
+ Postova věta, (ne)uzavřenost na operace, a pak ty vlastnost že RSM jsou oborem hodnot nějaké [rostoucí] ČRF. Doptal se mě na jiné matematické modely algoritmů, řekl jsem TS a ekvivalence RJ s RM a RSJ s RSM.
 
 
 
@@ -483,7 +507,7 @@ Pomocí $L_e$ označíme částečně rozhodnutelný jazyk přijímaný Turingov
 
 \subsubsection{Základní vlastnosti rozhodnutelných jazyků}
 \begin{theorem}
-Jsou-li $L_1$ a $L_2$ (částečně) rozhodnutelné jazyky, pak $L_1 \cup L_2$, 	$L_1 \cap L_2$, $L_1 \dot L_2$, $L_1^*$ jsou (částečně) rozhodnutelné jazyky.
+Jsou-li $L_1$ a $L_2$ (částečně) rozhodnutelné jazyky, pak $L_1 \cup L_2$, 	$L_1 \cap L_2$, $L_1 \cdot L_2$, $L_1^*$ jsou (částečně) rozhodnutelné jazyky.
 \end{theorem}
 \begin{proof} Nechť TS $M_1$ přijímá $L_1$ a TS $M_2$ přijímá $L_2$.
 \begin{enumerate}
@@ -702,6 +726,8 @@ Z Riceovy věty plyne, že následující jazyky nejsou rozhodnutelné:
 
 
 \section{Nedeterministický výpočetní model.}
+\textit{Podezřele malá otázka. Možná tu něco chybí.}
+
 \textbf{Nedeterministický Turingův stroj (NTS)} je pětice $M = (Q, \Sigma, \delta, q_0, F)$, kde $Q, \Sigma, q_0, F$ mají týž význam jako u \uv{obyčejného} deterministického Turingova stroje (DTS). Rozdíl oproti DTS je v přechodové funkci, nyní
 $$\delta : Q \times \Sigma \mapsto \mathcal{P}(Q \times \Sigma \times \{L, N, R\})$$
 Možné představy:
@@ -900,6 +926,7 @@ $$L \subseteq P \subseteq NP \subseteq PSPACE \subseteq NPSPACE \subseteq EXPTIM
 
 \end{proof}
 
+\subsubsection{Savičova věta}
 \begin{theorem}[Savičova]
 Pro každou funkci $f(n) \geq \log_2n$ vyčíslitelnou v prostoru $O(f(n))$ platí, že:
 	$$NSPACE(f(n)) \subseteq SPACE(f^2(n))$$
@@ -1801,7 +1828,7 @@ Pro libovolné $k$ existuje instance $I \in D_{BP}$, pro niž je $opt(I) \geq k$
 	Pro každou instanci $I \in D_{BP}$ platí, že $FFD(I) < \frac{11}{9} \cdot opt(I) + 4$.
 \end{theorem}
 \begin{theorem}
-	Pro libovolné $k$ existuje instance $I \in D_{BP}$, pro niž je $opt(I) \geq k$ a FF vytvoří pro I aspoň $\frac{11}{9}opt(I)$ košů.
+	Pro libovolné $k$ existuje instance $I \in D_{BP}$, pro niž je $opt(I) \geq k$ a FFD vytvoří pro I aspoň $\frac{11}{9}opt(I)$ košů.
 \end{theorem}
 \begin{proof}
 	Instance bude mít $U = \{u_1, u_2, \dots, u_{30k}\}$, s těmito prvky asociujeme váhy takto:
@@ -1870,7 +1897,7 @@ Hodnota $V$ se do odhadu složitosti dostala jako horní odhad potenciálních c
 Hodnota $t$ určuje zaokrouhlení a je samozřejmě zvolena tak, aby správně vyšel aproximační poměr a časová složitost algoritmu. Pokud si odmyslíme celé části, můžeme nahlédnout, že
 $$c[i] \approx \frac{v[i]}{2^t} \approx \frac{v[i]}{\frac{\varepsilon \cdot v[m]}{n}\cdot \frac{1}{2}} = \frac{2 \cdot n \cdot v[i]}{\varepsilon \cdot v[m]}$$
 
-Poměr mezi $v[i]$ a $v[m]$ určuje, kolik procent zabírá $v[i]$ vzhledem k $v[m]$. Základním cílem přepočtu je pochopitelně zmenšit hodnotu $v[m]$, odpovídajícím způsobem se proporcionálně musí zmenšit i $v[i]$. Dalším důležitým faktorem je podíl $\sfrac{\varepsilon}{n}$. To vychází z toho, že chcemeli celkově dosáhnout chyby $\varepsilon$, můžeme si na jednom prvku dovolit chybu $\sfrac{\varepsilon}{n}$. Ve výpočtu se uvažuje opačná hodnota podílu, protože chybu chceme dosáhnout v přepočtené hodnotě $c[i]$ a ne ve $v[i]$.
+Poměr mezi $v[i]$ a $v[m]$ určuje, kolik procent zabírá $v[i]$ vzhledem k $v[m]$. Základním cílem přepočtu je pochopitelně zmenšit hodnotu $v[m]$, odpovídajícím způsobem se proporcionálně musí zmenšit i $v[i]$. Dalším důležitým faktorem je podíl $\sfrac{\varepsilon}{n}$. To vychází z toho, že chceme-li celkově dosáhnout chyby $\varepsilon$, můžeme si na jednom prvku dovolit chybu $\sfrac{\varepsilon}{n}$. Ve výpočtu se uvažuje opačná hodnota podílu, protože chybu chceme dosáhnout v přepočtené hodnotě $c[i]$ a ne ve $v[i]$.
 
 \begin{theorem}
 Algoritmus $BatohAPX$ pracuje v čase $O(\frac{1}{\varepsilon}n^3)$. Pro libovolnou instanci $I = (s, v, B)$ úlohy Batoh a libovolné $\varepsilon > 0$ platí, že 
@@ -2125,6 +2152,8 @@ $$2a^{h-1} \leq \text{počet listů } T \leq b^h$$
 tedy pro libovolné $n$ má každý $(a, b)$ strom $T$ s $n$ listy hloubku $h = \Theta(\log n)$, přesněji
 $$\log_b n \leq d \leq 1 + \log_a n$$
 
+(Poznámka: change-of-base formula: $\log_a b = \frac{\log_d b}{\log_d a}$)
+
 Volba parametrů $a,b$ závisí na použití, např. (2,3) stromy nebo B-stromy, kde $a,b \approx $ velikost bloku na disku.
 
 \subsubsection{Operace}
@@ -2193,7 +2222,7 @@ Třídící algoritmus, který nejprve z prvků sestaví (a,b) strom a poté je 
 Při vkládání hledáme pozici pro aktuální klíč nikoliv od kořene, ale od předchozího vloženého uzlu (strom s \uv{prstem} -- ukazatelem na posledně použitý list). Zajímá nás počet kroků nutný k nalezení správného místa pro $x_{i+1}$:
 \begin{itemize}
 \item $x_{i+1} < x_i$: cesta nahoru maximálně $\log_a(|\{j\ |\ j\leq i; x_{i+1} < x_{j} \}|)$
-\item $x_{i+1} > x_i$: cesta nahoru maximálně $\log_a(|\{j\ |\ j\leq i; x_{i+1} < x_{j} \}|)$ (fakt to vyjde stejně)
+\item $x_{i+1} > x_i$: cesta nahoru maximálně $\log_a(|\{j\ |\ j\leq i; x_{i} < x_{j} \}|)$
 \end{itemize}
 
 \begin{figure}[H]
@@ -2204,7 +2233,7 @@ Při vkládání hledáme pozici pro aktuální klíč nikoliv od kořene, ale o
 Předpokládáme, že při vkládání vrcholů je časově nejnáročnější nalezení místa pro něj, tedy že štěpění při opakovaném vkládání vychází amortizovaně $O(1)$ na operaci.
 
 Celkový čas je tedy
-$$T \leq 2\cdot \sum\limits_{i=1}^{n} log_a(|\{j\ |\ j\leq i; x_{i+1} < x_{j} \}|) + O(n)$$
+$$T \leq 2\cdot \sum\limits_{i=1}^{n} log_a(|\{j\ |\ j\leq i; x_{i} < x_{j} \}|) + O(n)$$
 kde první člen odpovídá hledání míst pro vkládané prvky a druhý výpisu posloupnosti (předpokládáme listy propojené spojovým seznamem). To lze díky konkávnosti logaritmu upravit na
 \begin{align*}
 T &\leq 2\cdot n\cdot \log_a\left(\frac{\sum\limits_{i=1}^{n} |\{j\ |\ j\leq i; x_{i+1} < x_{j} \}|}{n}\right) + O(n)\\
@@ -3067,280 +3096,11 @@ pro všechna po dvou různá $x_1, \dots, x_k \in U$ a všechna $z_1,\dots, z_k 
 
 \textit{\textbf{V tomhle je bordel. Koucký používá k-univerzální záměnně s k-nezávislý, wiki taky, nicméně Fink a ještě nějaký jiný zdroj to má takhle.}}
 
-\paragraph{Existence c-univerzálních
-	systémů}\label{existence-c-univerzuxe1lnuxedch-systuxe9mux16f}
-
-Předpokládejme, že universum má tvar $U=\{0,1,\dots,N-1\}$ kde
-$N$ je nějaké prvočíslo a vezmeme funkce typu
-
-$$h_{a,b}(x)=((ax + b) \mod N)\mod m$$
-
-Jsou dobře použitelné, protože se dají počítat rychle. Protože $N$
-je prvočíslo, můžeme pracovat v $\mathbb{Z}_N$, coz je těleso.
-Rovnice $h_{a,b}(x)=h_{a,b}(y)$ je ekvivalentní s:
-
-$$\exists i\in\{0,\dots,m-1\} \wedge \exists r,s\in\{0,\dots,\lceil\frac{N}{m}\rceil -1\} : (ax + b \equiv i + rm) \mod N \wedge (ay+ b \equiv i + sm) \mod N $$
-
-Z Frobeniovy věty o jednoznačnosti řešení lineárních rovnic plyne, že
-pro každé $r,s,i$ existuje jen jedna dvojice $a,b$, které
-vyhovuje. Počet řešení soustavy je tedy omezený číslem
-$m\cdot\lceil\frac{N}{m}\rceil^2$ ($i$:  $m$
-hodnot, $r,s$:g $\lceil\frac{N}{m}\rceil$ hodnot pro daná
-$x,y$).
-
-Pak je systém $c$-univerzální pro
-$c = \left(\lceil\frac{N}{m}\rceil\right)^2 / \left(\frac{N}{m}\right)^2$
-a jeho velikost opdovídá $N^2$.
-
-\paragraph{Vlastnosti}\label{vlastnosti}
-
-Vyrobíme si pomocnou funkci
-
-$$\delta_i(x,y)= \begin{cases}1 \mbox{ pro } h_i(x)=h_i(y), x\neq y \\ 0 \mbox{ jinak }\end{cases}$$
-
-Chceme potom spočítat součet
-$\delta_i(x,S)=\sum_{y\in S}\delta_i(x,y)$. Z výsledku vidíme
-očekávanou délku řetězce pro libovolnou (jednu) množinu dat. Tohle pak
-sečtu přes všechny mé hash-funkce a z $c$-univerzality dostanu
-
-$$\sum_{i\in I}\delta_i(x,S)=\sum_{y\in S}\sum_{i\in I}\delta_i(x,y) \leq \sum_{y\in S,x\neq y} c\frac{|I|}{m} = \begin{cases} (|S|-1)c\frac{|I|}{m} & \mbox{ pro } x\in S \\ |S|c\frac{|I|}{m} & \mbox{ jinak }  \end{cases}$$
-
-Z toho dopočítám (podělením $|I|$) horní odhad očekávaného
-$\delta_i(x,S)$.
-
-Výsledek: očekávaný čas operací \textbf{MEMBER}, \textbf{INSERT} a
-\textbf{DELETE} v $c$-univerzálním hashování je
-$O(1+c\alpha)$ (kde faktor naplnění $\alpha=\frac{|S|}{m}$).
-Čas $n$ po sobě jdoucích operací na původně prázdné tabulce je
-$O(n(1+\frac{c}{2}\alpha))$. To není lepší hodnota než mají
-separované řetězce ($O(1+\alpha)$), ale u nich předpokládám
-rovnoměrné rozdělení dat.
-
-Výběr vhodné funkce není úplně jednoduchý, protože funkcí může celkem
-být např až $N^2$, tj. nelze ho provést jednoduchým zavoláním
-generátoru náhodných čísel, nýbrž např. náhodným vybráním každého bitu
-indexu funkce. Proto je výhodné najít co nejmenší $c$-univerzální
-systémy (viz
-\protect\hyperlink{Dolnuxed_odhady_velikosti_univerzuxe1lnuxedch_systuxe9mux16f}{dále}).
-
-\paragraph{Dolní odhady velikosti univ.
-	systémů}\label{dolnuxed-odhady-velikosti-univ.-systuxe9mux16f}
-
-Očíslujme hash-funkce z $I$ a induktivně definujme množiny
-$U_i$ jako největší podmnožiny $U_{i-1}$ takové, že
-$h_{i-1}(U_i)$ je jednoprvková. Platí
-$|U_i|\geq \lceil \frac{U_{i-1}}{m}\rceil$, tedy
-$|U_i|\geq\lceil\frac{N}{m^i}\rceil$ -- velikost těchto množin
-klesá s logaritmem a
-$|I|\geq \frac{m}{c}(\lceil\log_m N\rceil -1)$. Takže velikost
-univ. systému roste alespoň úměrně logaritmu velikosti univerza.
-
-\paragraph{Dolní odhad c}\label{dolnuxed-odhad-c}
-
-\emph{5-univerzální systém}: Zvolme $t\in\mathbb{N}$ a k němu
-vezměme $t$-té prvočíslo $p_t$ tak, že
-$t\ln p_t\geq m\ln N$. Definujme systém funkcí
-$H=\{g_{c,d,l}(x)|t<l\leq 2t, c, d\in\{0,1,\dots,p_{2t}-1\}\}$ kde
-$((c(x\mod p_l)+d)\mod p_{2t})\mod m$. Zřejmě
-$|H|=tp_{2t}^2$.
-
-Odhadem $|G = \{(c,d,l); h_{c,d,l}(x)=h_{c,d,l}(y)\}|$, když si
-množinu rozdělíme na
-$G_1 = \{(c,d,l)\in G; x\mod p_l \neq y\mod p_l\}$ a
-$G_2 =\{(c,d,l)\in G;x\mod p_l=y\mod p_l\}$, se dá dokázat, že
-systém je 5-univerzální, za dalších podmínek i 3.25-univerzální.
-
-\emph{Dolní odhad $c$}: Platí: $c>1-\frac{m}{N}$. Spočítáme
-$\sum_{h\in H}\sum_{x,y\in U}\delta_h(x,y)$ -- pro pevnou
-$h$ máme (z Cauchy-Schwarzovy nerovnosti,
-$u_{i,h}=|\{x\in U,h(x)=i\}|$):
-
-$$\sum_{x,y\in U}\delta_h(x,y)=\sum_{i=0}^{m-1}u_{i,h}(u_{i,h}-1)\geq \frac{(\sum_{i=0}^{m-1}u_{i,h})^2}{m}-N =\frac{N^2}{m}-N$$
-Tedy
-$\sum_{h\in H}\sum_{x,y\in U}\delta(x,y)\geq \frac{|H|N(N-m)}{m}$.
-Zároveň platí
-$\sum_{h\in H}\sum_{x,y\in U}\delta(x,y)\leq\sum_{x,y\in U}c\frac{|H|}{m}=N^2c\frac{|H|}{m}$,
-což mi dává výsledek.
+TODO nějaké příklady nejspíš. Nebo aspoň konstrukce z MIT slajdů (viz wiki).
 
 \subsection{Perfektní hashování}\label{perfektnuxed-hashovuxe1nuxed}
 
-Základní ideou \emph{perfektního hashování} je nalézt hash-funkci, která
-pro danou množinu $S$ nedělá žádné kolize, takže operace
-\textbf{MEMBER} bude velice rychlá. Potom je nevýhoda, že nelze
-přirozeným způsobem realizovat operaci \textbf{INSERT}, tj. v praxi se
-nesmí moc často vyskytovat.
-
-Tabulka by neměla být o mnoho větší než množina $S$ a funkce
-$h$ rychle spočitatelná a její realizace nezabírat moc paměti
-(tedy žádná zadávání tabulkou).
-
-\paragraph{Definice}\label{definice}
-
-\begin{itemize}
-	
-	\item
-	Hashovací funkce $h$ je perfektní pro množinu $S$, pokud
-	pro $\forall x,y\in S, x\neq y: h(x)\neq h(y)$
-	\item
-	Soubor funkcí $H:U\to \{0,\dots,m-1\}$ je
-	$(N,m,n)$\emph{-perfektní}, pokud $\forall S\subseteq U$
-	takové, že $|S|=n$ existuje $h\in H$ perfektní pro
-	$S$.
-\end{itemize}
-
-\subsubsection{Odhady velikosti}\label{odhady-velikosti}
-
-Každá funkce $h$ je perfektní pro
-$\sum\{\prod_{j=0}^{n-1}|h^{-1}(i_j)|;0\leq i_0<\dots<i_{n-1}<m\}$
-množin (sčítáme přes všechny množiny hashů $h(S)$ a pro každou z
-nich uvažujeme všechny možnosti, jak mohla vzniknout). Z
-Cauchy-Schwarzovy nerovnosti plyne, že tento výraz nabývá maxima, když
-$\forall i: |h^{-1}(i)|=\frac{N}{m}$. Každá funkce je tedy
-perfektní pro max. $\mathbf{}\binom{m}{n}(\frac{N}{m})^n$ množin.
-Z toho plyne:
-
-$$|H|\geq \frac{\mathbf{}\binom{N}{n}}{\mathbf{}\binom{m}{n}\left(\frac{N}{m}\right)^n}$$
-
-Jiný odhad lze provést jako u $c$-univ. systémů s očíslovanými
-funkcemi $|H|=\{h_1,\dots,h_t\}$. Používám induktivně definované
-množiny $U_i$, kde $U_0 = U$ a $U_i$ je největší
-podmnožina $U_{i-1}$, kde je zrovna funkce $h_i$ konstantní.
-Dostáváme $|U_i|\geq \frac{|U_{i-1}|}{m}$, tj.
-$|U_t| \geq \frac{N}{m^t}$, ale z perfektnosti plyne
-$|U_t|\leq 1$. Dostáváme $t\geq \frac{log N}{log m}$.
-
-\subsubsection{Existence}\label{existence}
-
-Reprezentujme soubor funkcí $H=\{h_1,\dots,h_t\}$ na univerzu
-velikosti $N$ pomocí matice $M(H)$ typu $N\times t$,
-takže $M(H)_{x,i}=h_i(x)$, tj. v jednom sloupci jsou výsledky
-jedné hashovací funkce pro všechny prvky univerza.
-
-Pak žádná funkce z $H$ není perfektní pro množinu
-$S\subset U$, když podmatice $M(H)$ tvořená řádky
-příslušejícími prvkům $S$ nemá prostý sloupec. Takových matic je
-maximálně (počet všech funkcí minus počet prostých, to celé krát
-libovolné doplnění na $N$ řádek):
-
-$$\left(m^n-\prod_{i=0}^{n-1}(m-i)\right)^t\cdot m^{(N-n)t}$$
-
-Podmnožin $U$ velikosti $n$ je pak
-$\mathbf{}\binom{N}{n}$, čímž vynásobeno mám počet matic
-neodpovídajících $(N,m,n)$-perfektnímu systému. Všech matic je
-$m^{Nt}$. Potom existuje $(N,m,n)$-perfektní systém, když:
-
-$$\mathbf{}\binom{N}{n} \left(m^n-\prod_{i=0}^{n-1}(m-i)\right)^t\cdot m^{(N-n)t} < m^{Nt}$$
-Příšernými kejklemi dostaneme podmínku existence
-$t\geq n(\ln N)e^{\frac{n^2}{m}}$.
-
-\subsubsection{Konstrukce funkce}\label{konstrukce-funkce}
-
-Chceme splnit rychlou spočitatelnost a paměťovou nenáročnost.
-Předpokládáme univerzum prvočíselné velikosti a funkce typu:
-
-$$h_k(x)=(kx\mod N)\mod m$$
-
-Označme $b_i^k=|\{x\in S; (kx\mod N)\mod m=i\}|$. Potom pokud
-$h_k(x)$ není perfektní, pak nějaké $b_i^k =2$ a mám
-$\sum_{i=0}^{m-1}(b_i^k)^2\geq n+2$.
-
-Odhadnu výraz
-$\sum_{k=1}^{N-1}((\sum_{i=0}^{m-1}(b_i^k)^2)-n) = \sum_{x\neq y\in S}\{k; 1\leq k<N, h_k(x)=h_k(y)\}$.
-Z vlastností modula mám takových $k$ pro daná $x,y$ nejvýše
-$2\lfloor\frac{N}{m}\rfloor =2\lfloor\frac{N-1}{m}\rfloor$.
-Dostávám tedy odhad $2(N-1)\frac{n(n-1)}{m}$ a z něj vidím, že
-existuje takové $k$, že
-$\sum_{i=0}^{m-1}(b_i^k)^2\leq \frac{2n(n-1)}{m}+n$, tedy pro
-tabulku velikosti $m > n(n-1)$ mám perfektní funkci.
-
-Dá se dokázat trochu slabší předpoklad, že
-$P(k;\sum_{i=0}^{m-1}(b_i^k)^2<\frac{3n(n-1)}{m}+n)\geq 1/4$,
-který je základem pravděpodobnostního algoritmu.
-
-Pak mám deterministický algoritmus, který pro $m=n(n-1)+1$ nalezne
-perfektní $h_k$ v čase $O(nN)$ a pravděpodobnostní, který
-pro $m=2n(n-1)$ najde perfektní $h_k$ v čase $O(n)$.
-Mám tedy konstrukci perfektní hash-funkce, ta ale nesplňuje požadavek na
-malou tabulku ($m=\Theta(n^2)$).
-
-\paragraph{Menší tabulka}\label{menux161uxed-tabulka}
-
-Zmenšíme-li velikost tabulky na $m = n$, bude výše uvedený algoritmus
-schopný nalézt funkci, pro kterou platí $\sum (b_i^k)^2 < 3n$
-($\sum (b_i^k)^2 < 4n$ v pravděpodobnostní variantě). Každou
-kolizi pak můžeme ``rozstrkat'' perfektní funkcí nad miniaturní tabulkou
-a celková velikost všech tabulek bude mnohem menší:
-
-\begin{itemize}
-	
-	\item
-	Vezmeme nalezenou funkci a najdeme všechny neprázdné množiny
-	$S_i=\{s\in S;h_k(s)=i\}$
-	\item
-	Pro jim odpovídající $c_i=|S_i|(|S_i|-1)+1$ (dvojnásobek v
-	pravděp. metodě) najdeme $k_i$ takové, že $h_{k_i}$ je
-	perfektní funkce pro $S_i$ do tabulky velikosti $c_i$.
-	\item
-	Definujme $d_i=\sum_{j=0}^{i-1}c_j$, potom pokud
-	$h_k(x)=l$, pak $g(x)=d_l+h_{kl}(x)$ je perfektní, její
-	hodnota spočitatelná v čase $O(1)$ a hashuje do tabulky
-	velikosti $O(3n)$ ($O(6n)$ s pravděp. případě), je
-	naleznutelná v čase $O(nN)$ ($O(n)$) a pro její uložení do
-	paměti jsou potřeba hodnoty $k$ a $k_i$, vyžadující
-	$O(n\log N)$ paměti.
-\end{itemize}
-
-Pro výpočet $g(x)$ potřebuji 2 násobení, 2 modulo a 1 sčítání (pro
-$d_i$ v paměti), tabulka má velikost
-$\sum c_i\leq\sum (b_i^k)^2<3n$. Taková funkce ale stále nesplňuje
-požadavek na málo paměti pro uložení.
-
-\paragraph{\texorpdfstring{``Malá''
-		funkce}{Malá funkce}}\label{maluxe1-funkce}
-
-Víme, že pro $m\in\mathbb{N}$ je počet prvočísel, která ho dělí
-$O(\frac{\log m}{\log\log m})$. Z toho úvahou o dělitelích čísla
-$D=\prod_{1\leq i<j\leq n}(s_j-s_i)\leq N^{n^2}$ na
-$n$-prvkové $S$ a vzorce hustoty prvočísel
-$p_t\leq 2t\ln t$ dostanu, že existuje $p$ o velikosti
-$O(\ln D)=O(n^2\ln N)$ takové, že $\phi_p(x)=x\mod p$ je
-perfektní pro $S$.
-
-Deterministické nalezení trvá $O(n^3\log n\log N)$ (test
-perfektnosti každého systému je $O(n\log n)$). Proto použijeme
-pravděpodobnostní algoritmus (mezi $4cn^2\ln N$ přir. čísly je
-aspoň $1/2$ prvočísel, která vyhovují): nejdřív najde prvočíslo a
-pak testuje perfektnost. Očekávaný počet testů je
-$O(\ln(4cn^2\ln N))$, celková složitost algoritmu je pak
-$O(n\log n(\log n+\log\log N))$. Najde zhruba až $2\times$
-větší prvočíslo než deterministický.
-
-Tuto funkci použijeme ke konstrukci výsledné hash-funkce:
-
-\begin{enumerate}
-	
-	\item
-	Nalezneme prvočíslo $q_0$, aby $\phi_{q_0}(x)=x\mod q_0$
-	byla perfektní pro $S$
-	\item
-	Položíme $S_1=\{\phi_{q_0}(s)|s\in S\}$, pak najdeme prvočíslo
-	$q_1\in \langle n(n-1)+1,2n(n-1)+2\rangle$
-	\item
-	K němu existuje $l\in \langle1,q_0-1\rangle$ takové, že
-	$h_l(x)=((lx\mod q_0)\mod q_1)$ je perfektní pro $S_1$
-	\item
-	Položíme $S_2=\{h_l(s)|s\in S_1\}$ a najdeme perfektní $g$
-	pro $S_2$ do tabulky s méně než $3n$ řádky (viz
-	\protect\hyperlink{Menux161uxed_tabulka}{výše}, počítá se ale do
-	univerza o velikosti $q_1$).
-	\item
-	Pak $f(x)=g(h_l(\phi_{q_0}(x)))$ je perfektní.
-\end{enumerate}
-
-Funkce $q_0$ je určena 1 číslem o velikosti $O(n^2\log N)$,
-$h_l$ 2 čísly o velikosti $O(n^2)$ a $O(q_0)$,
-$g$ je určená $n+1$ čísly o $O(q_1)$, tj. celkem
-zadání vyžaduje $O(n\log n+\log n+\log\log N)$ paměti.
+TODO
 
 
 
@@ -3909,6 +3669,18 @@ regularizace: p >> n
 * shrinkage (ridge, lasso)
 * dimension reduction (PCA, PCR, PLS)
 
+\subsubsection{PCA (Principal Component Analysis)}
+Statistická metoda pro redukci prostoru příznaků pomocí ortogonální transformace. Z původních potenciálně korelovaných příznaků získáme menší množství dekorelovaných příznaků, tzv. \textit{principal components}. První komponenta má největší možný rozptyl (tj. vysvětluje nejvíce rozdílů v datech), další jsou na ni kolmé a opět mají co největší rozptyl. Získáme dekorelovanou ortogonální bázi.
+
+Intuitivně: hledáme elipsoid obalující data. Osy elipsoidu jsou principal komponenty.
+
+Synonyma: PCA, Karhunen-Loeve transformace, Singular Value Decomposition, Eigenvalue Decomposition, factor analysis, \dots
+
+Výpočet 
+1. eigenvalue decomposition
+2. singular value decomposition
+
+
 
 \subsection{Učení s učitelem}
 \subsubsection{Lineární regrese}
@@ -4069,6 +3841,8 @@ Stromy mohou být
 		$$\sum_{k \in K} p_{m,k}\cdot \log_2 p_{m,k}$$
 		Podobný efekt jako gini.
 	\end{itemize}
+
+	\textit{Tohle je taky nějak blbě. Vomlelová říkala, že gini se používá spíš místo Gainu, ne jako míra chyby.}
 \end{itemize}
 
 Regresní stromy se vytváří podobně, jen místo rozštěpení na všechny možné hodnoty kvalitativního atributu se kvantitativní atribut rozdělí nějakým dělicím bodem na 2 intervaly. Podle téhož atributu je pak možno řezat i opakovaně. 
@@ -4116,8 +3890,11 @@ Formalizovaný postup, který jsme doposud popsali:
 \paragraph{Prořezávání}
 U rozhodovacích stromů je velké riziko přeučení, chceme tedy strom nějak zmenšit. Jednou možností je už při konstrukci zaříznout rekurzi, pokud je Gain příliš malý -- to ovšem může být krátkozraké (slabý split může později vést k silnému). V praxi je lepší postavit velký strom a ten pak \textbf{prořezat}.
 
+
 \subparagraph{Reduced error pruning}
 Vyčleníme z dat stranou \textit{validační množinu} (případně použijeme krosvalidaci), poté slučujeme listy stromu, dokud se snižuje chyba na validační množině.
+
+\textit{Následující jsou špatně. Prý je Cost complexity totéž co CART.}
 
 \subparagraph{Cost complexity pruning}
 Přidáme do výpočtu chyby člen penalizující velikost stromu:
@@ -4477,7 +4254,7 @@ V našem příkladě má každá hypotéza jediný parametr, tj. procento $c$ (c
 $$P(d|h_\theta) = \theta^c \cdot (1-\theta)^l$$
 Chceme nalézt maximum přes $\theta$. Trik: zlogaritmujeme (dostaneme log-likelihood), zderivujeme a položíme rovno 0:
 
-$$L(d|h_\theta) = c\cdot \log_2\theta + l\cdot\log_2(1-\theta) = 0$$
+$$L(d|h_\theta) = c\cdot \log_2\theta + l\cdot\log_2(1-\theta)$$
 
 $$\frac{\partial L(d|h_\theta)}{\partial \theta} = \frac{c}{\theta} - \frac{l}{1-\theta}
 \qquad \Rightarrow \qquad
@@ -4762,9 +4539,11 @@ Obecná rezoluce tedy musí dokázat Classifications z Background, Hypothesis, D
 
 
 \section{Evoluční algoritmy; základní pojmy a teoretické poznatky, hypotéza o stavebních blocích, koevoluce, aplikace evolučních algoritmů.}
-Skip.
+Viz \ref{ea}.
 
 \section{Strojové učení v počítačové lingvistice a algoritmy pro statistický parsing.}
+\textit{Nevím o tom, že by někdy padla otázka z tohohle okruhu. IMHO by v komisi musel být Hajič nebo Pecina, jinak to nemá kdo zkoušet.}
+
 Od 80. a 90. let se ve \textbf{zpracování přirozených jazyků (NLP, Natural Language Processing)} začaly silně uplatňovat metody strojového učení. Dříve se při úkolech spojených se zpracováním jazyků spoléhalo na ručně zakódovaná pravidla. Ta se nyní získávají pomocí \textbf{statistické inference} z velkých korpusů textů, ideálně získaných z reálných zdrojů (tj. ne umělé). 
 
 Mnoho metod strojového učení již bylo adaptováno pro NLP. Rozhodovací stromy generují systém rozhodovacích if-then pravidel, na která byla tehdy komunita zvyklá. Postupně se však na výsluní dostaly \textbf{statistické modely}, které pracují s pravděpodobnostmi, váhami na vstupních příznacích a s mírou nejistoty.
@@ -5000,6 +4779,8 @@ Výstup se v této nejobecnější verzi generuje \textit{na přechodových hran
 
 
 \subsection{Tagging}
+TODO \textit{(ale nejspíš už je to nad rámec)}.
+
 \textbf{Tagování} je proces, kdy se snažíme slovo rozložit na \textit{lemma} (=základní tvar slova) a \textbf{tag}, tj. \uv{slovníkovou značku}, která obsahuje mluvnické kategorie, jako například číslo, pád, rod, druh, čas apod. Různé korpusy a treebanky používají různé formáty, české jsou výrazně složitější.
 
 \begin{figure}[H]
@@ -5054,6 +4835,7 @@ Různé přístupy k tagování:
 \subsection{Statistický parsing}
 \textbf{Parsing (parsování)} je označení pro proces, kdy je pro vstupní větu, o níž předpokládáme, že byla vytvořena nějakou gramatikou, nalezena posloupnost pravidel této gramatiky, kterou byla věta nejpravděpodobněji vytvořena. Typicky se pro větou rovnou sestrojí \textit{parsovací strom}.
 
+TODO
 
 \subsection{Statistický strojový překlad}
 Klasickým přístupem je chápat strojový překlad jako problém \textbf{zašuměného kanálu}, kdy například při překladu z francouzštiny do angličtiny je nezkresleným vstupem anglická věta $E$ a \uv{zašuměným výstupem} je francouzská věta $F$. Naším cílem je pak nalézt nejpravděpodobnější původní řetězec, tj. nejpravděpodobnější překlad do EN. Formálně $P(E|F) = P(F|E)\cdot P(E) / P(F)$, nejpravděpodobnější překlad je 
@@ -5156,6 +4938,9 @@ Doposud jsme operovali na slovech (resp. slovních tvarech -- \textit{word forms
 
 
 \section{Pravděpodobnostní algoritmy pro analýzu biologických sekvencí; hledávání motivů v DNA, strategie pro detekci genů a predikci struktury proteinů.}
+
+\textit{Nevím o tom, že by někdy padla otázka z tohohle okruhu. IMHO by v komisi musel být Mráz, jinak to nemá kdo zkoušet.}
+
 \textbf{Bioinformatika} je vědní disciplína, která využívá výpočetní metody pro studium biologických dat (typicky velkého objemu), zejména dat molekulárně-biologických (tj. DNA a proteiny).
 
 \textbf{Typické úkoly:} vyhledávání subsekvencí v datech, srovnávání podobných sekvencí, analýza sekvencí, snaha předpovídat strukturu a funkci proteinů, vizualizace, dynamické modelování 
@@ -5305,15 +5090,15 @@ Zjevně platí,že \textbf{skóre} + \textbf{totální vzdálenost} = $l\cdot t$
 	\item[MedianStringSearch] Pro všechny možné řetězce délky $l$ (tj. AA\dots A, \dots, TTT\dots T) spočti totální vzdálenost k daným sekvencím, vrať minimum.
 	
 	Složitost $O(l\cdot t \cdot n \cdot 4^l)$, tj. o něco lepší.
+	
+	TODO dodělat (hlavně Gibbs a Projection)
 \end{description}
 
-%TODO motif finding
 
 
 
 \subsection{Sequence alignment}
-Sequence alignment; dotplot, scoring matrices (PAM, BLOSUm), pairwise and multiple alignment, Needleman wunsch , smith waterman, KBand
-(BLAST and FASTA heuristics)
+TODO (Sequence alignment; dotplot, scoring matrices (PAM, BLOSUm), pairwise and multiple alignment, Needleman wunsch , smith waterman, KBand)
 
 \subsection{Genome rearrangement}
 \textbf{Genom} je kompletní genetický materiál organismu. Může nás zajímat srovnání genomů v rámci druhu i napříč druhy.
@@ -5341,11 +5126,11 @@ $$\pi = \pi_1 \dots \pi_{i-1} \pi_{j} \pi_{j-1} \dots \pi_{i+1} \pi_{i} \pi_{j+1
 
 \textbf{Sorting by reversals problem:} Máme permutaci $\pi$, chceme nalézt nejkratší posloupnost reversalů $\rho_1,\dots \rho_t$, která transformuje $\pi$ na $(1 2 \dots n)$. Označíme $d(\pi) = \min t$ jako \textbf{reversal distance permutace $\pi$}.
 
-\subsection{Predikce genů}
-Gene prediction, codon preference, HMM, CG islands.
+TODO
 
-z ML in BI:
-2: unsupervised: density estimation, data visualisation
+\subsection{Predikce genů}
+TODO (Gene prediction, codon preference, HMM, CG islands).
+
 
 
 
@@ -5427,12 +5212,12 @@ y = f[\vec{w},\theta](\vec{x}) =
 0 	& \quad \text{jinak}\\
 \end{cases}
 $$
-Často se uvažuje tzv. \textbf{rozšířený váhový a vstupní vektor}, kde je navíc umělý vstup s konstantní hodnotou 1 a vahou $-\theta$, tj. $\overrightarrow{w_{ext}} = (w_1, w_2, \dots, w_n, -\theta)$, $\overrightarrow{x_{ext}} = (x_1, x_2, \dots, x_n, 1)$. Potom lze práh neuronu považovat za váhu speciálního vstupu a přenosovou funkci počítat jako 
+Často se uvažuje tzv. \textbf{rozšířený váhový a vstupní vektor}, kde je navíc umělý vstup s konstantní hodnotou 1 a vahou $-\theta$, tj. $\vec{w}_{ext} = (w_1, w_2, \dots, w_n, -\theta)$, $\vec{x}_{ext} = (x_1, x_2, \dots, x_n, 1)$. Potom lze práh neuronu považovat za váhu speciálního vstupu a přenosovou funkci počítat jako 
 
 $$
 y = f[\vec{w},\theta](\vec{x}) = 
 \begin{cases}
-1 	& \quad \overrightarrow{w_{ext}}\cdot\overrightarrow{x_{ext}} \geq 0\\
+1 	& \quad \vec{w}_{ext}\cdot\vec{x}_{ext} \geq 0\\
 0 	& \quad \text{jinak}\\
 \end{cases}
 $$
@@ -5772,7 +5557,7 @@ $$
 	$$
 	Tyto metody rychle konvergují, ale problémem bývá výpočet inverzní Hessovské matice.
 	
-	\item[pseudonewtonovské metody] Pracují se zjednodušenou aproximací Hessovské matice. V úvahu se berou pouze prvky na diagonále, tj. $\frac{E(\vec{w})}{\partial w_i^2}$, ostatní prvky matice jsou vynulovány. Váhy se pak adaptují podle
+	\item[pseudonewtonovské metody] Pracují se zjednodušenou aproximací Hessovské matice. V úvahu se berou pouze prvky na diagonále, tj. $\frac{\partial^2E(\vec{w})}{\partial w_i^2}$, ostatní prvky matice jsou vynulovány. Váhy se pak adaptují podle
 	$$
 	w_i^{(k+1)} = w_i^{(k)} - \frac{\nabla_i E(\vec{w})}{\frac{\partial^2 E(\vec{w})}{\partial w_i^2}} 
 	$$
@@ -5818,15 +5603,7 @@ $$
 \end{description}
 
 
-
-
-
-
-\subsubsection{Předzpracování trénovací množiny}
-
-
-
-
+TODO regularizace a generalizace
 
 
 
@@ -5940,7 +5717,7 @@ Obecně se jedná o neortogonální projekci.
 \subsubsection{Problém kapacity sítě}
 S rostoucím počtem uložených vzorů se jejich \textit{sféra vlivu} zmenšuje, a to poměrně rychle. Jedním s důvodů je i to, že spolu s vektorem $\vec{x}$ je implicitně \uv{uložen} i vektor $-\vec{x}$, což vede k \textit{nepravým stabilním stavům}.
 
-Může se dokonce stát, že dříve uložený vzor bude zapomenut, je-li crosstalk příliš velký. To je samozřejmě nežádoucí. Je proto třeba mít nějaký odhad na počet vzorů $m$, které lze \uv{bezpečně} uložit do autoasociativní sítě s váhovou maticí velikosti $n \times n$. Hodnotu $m$ označíme jako \textbf{maximální kapacitu sítě} a její hodnota ja přibližně\footnote{\textit{Odvození maximální kapacity lze nalézt ve slajdech nebo v Rojasovi. Základní myšlenka je vyjádřit crosstalk pro autoasociativní sítě a odhadnout pravděpodobnost, že nějaký člen bude větší než 1. Jedná se o binomiální rozdělení, které lze aproximovat normálním rozdělením a pak lze numericky dojít k výsledku $0.18n$.}}
+Může se dokonce stát, že dříve uložený vzor bude zapomenut, je-li crosstalk příliš velký. To je samozřejmě nežádoucí. Je proto třeba mít nějaký odhad na počet vzorů $m$, které lze \uv{bezpečně} uložit do autoasociativní sítě s váhovou maticí velikosti $n \times n$. Hodnotu $m$ označíme jako \textbf{maximální kapacitu sítě} a její hodnota je přibližně\footnote{\textit{Odvození maximální kapacity lze nalézt ve slajdech nebo v Rojasovi. Základní myšlenka je vyjádřit crosstalk pro autoasociativní sítě a odhadnout pravděpodobnost, že nějaký člen bude větší než 1. Jedná se o binomiální rozdělení, které lze aproximovat normálním rozdělením a pak lze numericky dojít k výsledku $0.18n$.}}
 $$m \sim 0.18n$$
 Tedy počet uložených vzorů by neměl přesáhnout $0.18n$ pro $n$-rozměrné vstupní vektory. Pro korelované vzory může dojít k problému i pro nižší hodnoty.
 
@@ -6215,6 +5992,8 @@ Nyní můžeme psát předchozí nerovnosti jako
 \text{Neuron n: } sgn(x_n)\vec{z}_n \vec{v} > 0\\	
 \end{align*}
 
+Což odpovídá lineární separaci $z_1,z_2,\dots z_n$. Pro $m$ vektoru $\vec{x}$ jde tedy o separaci $mn$ pomocných vektorů $z$. Pomocí perceptronového učení můžeme nalézt správný váhový vektor $\vec{v}$ (pokud separace existuje). Tento vektor kóduje váhovou matici a prahy odpovídající správnému řešení.
+
 \subsubsection{Hledání suboptimálních řešení (řešení NP-úplných problémů pomocí Hopfieldovy sítě)}
 Hopfieldovy sítě lze použít pro řešení těžkých optimalizačních úloh. Základní myšlenkou je přeformulovat úlohu tak, aby její analytický zápis byl isomorfní energetické funkci nějakého Hopfieldova modelu. Ten pak nalezne lokální minimum této funkce a tím i nějaké suboptimální řešení daného problému.
 
@@ -6269,7 +6048,9 @@ Hopfieldův model lze úspěšně použít k řešení optimalizačních problé
 \begin{itemize}
 	
 	
-	\item \textbf{spojitý model:} Rozšíření na reálné stavy a sigmoidální přenosovou funkci. Vede ke zvětšení počtu možných cest k řešení ve stavovém prostoru.
+	\item \textbf{spojitý model:} Rozšíření na reálné stavy a sigmoidální přenosovou funkci. Vede ke zvětšení počtu možných cest k řešení ve stavovém prostoru. 
+	
+	TODO možná rozepsat
 	
 	\item \textbf{zašumění sítě:} Principem je umožnit únik z lokálního optima zavedením šumu, který umožní aktualizaci sítě i za cenu zvýšení energetické funkce. Tyto stochastické modely probereme blíže.
 \end{itemize}
@@ -6608,42 +6389,50 @@ Rozvinutí planární mřížky může být problematické.
 Kohonenovy mapy lze učit i pomocí supervised learning. (\textit{Pozn.: Ačkoliv je tohle kapitola o učení bez učitele, je vhodné to u Kohonenových map zmínit.})
 
 Používá se LVQ (Learning Vector Quantization).
-\begin{description}
-	\item[LVQ1] Motivace: vektor $\vec{x}$ by měl patřit ke stejné třídě, jako nejbližší $\vec{w}_i$. 
+\subsubsection{LVQ1} 
+Motivace: vektor $\vec{x}$ by měl patřit ke stejné třídě, jako nejbližší $\vec{w}_i$. 
+
+Nechť $c = \arg \min_{i}\{||\vec{x} - \vec{w}_i||\}$ je index $\vec{w}_i$ ležícího nejblíže k $\vec{x}$ (tj. $c$ je \uv{vítězný neuron}). Váhy se pak adaptují podle:
+\begin{align*}
+	\vec{w}_c(t+1) &= 
+	\begin{dcases*}
+	\vec{w}_c(t) + \alpha(t)(\vec{x}(t) - \vec{w}_c(t)) & jestliže $\vec{x}$ a $\vec{w}_c$ jsou klasifikovány stejně \\
+	\vec{w}_c(t) - \alpha(t)(\vec{x}(t) - \vec{w}_c(t)) & jestliže $\vec{x}$ a $\vec{w}_c$ jsou klasifikovány jinak \\
+	\end{dcases*}	\\
+	\vec{w}_i(t+1) &= \vec{w}_i(t)\qquad \text{ pro $i \neq c$}\\
+\end{align*}
+kde $0 < \alpha(t) < 1$ je učící parametr.
+
+\subsubsection{LVQ2.1} Motivace: Adaptace dvou nejbližších sousedů $\vec{x}$ současně. Jeden z nich musí patřit ke správné třídě, druhý k nesprávné. Navíc musí být $\vec{x}$ z okolí dělicí nadplochy mezi $\vec{w}_i$ a $\vec{w}_j$ ($\sim$ z \uv{okénka}).
 	
-	Nechť $c = \arg \min_{i}\{||\vec{x} - \vec{w}_i||\}$ je index $\vec{w}_i$ ležícího nejblíže k $\vec{x}$ (tj. $c$ je \uv{vítězný neuron}). Váhy se pak adaptují podle:
-	\begin{align*}
-		\vec{w}_c(t+1) &= 
-		\begin{dcases*}
-		\vec{w}_c(t) + \alpha(t)(\vec{x}(t) - \vec{w}_c(t)) & jestliže $\vec{x}$ a $\vec{w}_c$ jsou klasifikovány stejně \\
-		\vec{w}_c(t) - \alpha(t)(\vec{x}(t) - \vec{w}_c(t)) & jestliže $\vec{x}$ a $\vec{w}_c$ jsou klasifikovány jinak \\
-		\end{dcases*}	\\
-		\vec{w}_i(t+1) &= \vec{w}_i(t)\qquad \text{ pro $i \neq c$}\\
-	\end{align*}
-	kde $0 < \alpha(t) < 1$ je učící parametr.
+Je-li $d_i$ (resp. $d_j$ ) Euklidovská vzdálenost mezi $\vec{x}$ a $\vec{w}_i$ (resp. mezi $\vec{x}$ a $\vec{w}_j$), lze \uv{okénko} definovat pomocí vztahu:
+$$\min\left(\frac{d_i}{d_j},\frac{d_j}{d_i} \right) > s, \qquad \text{kde}\qquad s = \frac{1-w}{1+w}$$	
+(doporučované hodnoty $w$ (= šířky \uv{okénka}): $0.2 - 0.3$)
 	
-	\item[LVQ2.1] Motivace: Adaptace dvou nejbližších sousedů $\vec{x}$ současně. Jeden z nich musí patřit ke správné třídě, druhý k nesprávné. Navíc musí být $\vec{x}$ z okolí dělicí nadplochy mezi $\vec{w}_i$ a $\vec{w}_j$ ($\sim$ z \uv{okénka}).
-	
-	Je-li $d_i$ (resp. $d_j$ ) Euklidovská vzdálenost mezi $\vec{x}$ a $\vec{w}_i$ (resp. mezi $\vec{x}$ a $\vec{w}_j$), lze \uv{okénko} definovat pomocí vztahu:
-	$$\min\left(\frac{d_i}{d_j},\frac{d_j}{d_i} \right) > s, \qquad \text{kde}\qquad s = \frac{1-w}{1+w}$$	
-	(doporučované hodnoty $w$ (= šířky \uv{okénka}): $0.2 - 0.3$)
-	
-	Adaptace podle
-	\begin{align*}
-	\vec{w}_i(t+1) = \vec{w}_i(t) - \alpha(t)(\vec{x}(t) - \vec{w}_i(t))		
-	\vec{w}_j(t+1) = \vec{w}_j(t) + \alpha(t)(\vec{x}(t) - \vec{w}_j(t))
-	\end{align*}
-	kde $\vec{w}_i$ a $\vec{w}_j$ leží nejblíže $\vec{x}$, přitom $\vec{x}$ a $\vec{w}_j$ patří ke stejné třídě a $\vec{x}$ a $\vec{w}_i$ patří k různým třídám a $\vec{x}$ je z \uv{okénka}.
-	
-	\item[LVQ3] Stejná pravidla jako LVQ2.1, navíc:
-	$$\vec{w}_k(t+1) = \vec{w}_k(t) + \varepsilon\alpha(t)(\vec{x}(t) - \vec{w}_k(t))$$
-	pro $k\in \{i,j\}$ jestliže $\vec{x}, \vec{w}_i$ i $\vec{w}_j$ patří ke stejné třídě.
-\end{description}
+Adaptace podle
+\begin{align*}
+\vec{w}_i(t+1) = \vec{w}_i(t) - \alpha(t)(\vec{x}(t) - \vec{w}_i(t))		
+\vec{w}_j(t+1) = \vec{w}_j(t) + \alpha(t)(\vec{x}(t) - \vec{w}_j(t))
+\end{align*}
+kde $\vec{w}_i$ a $\vec{w}_j$ leží nejblíže $\vec{x}$, přitom $\vec{x}$ a $\vec{w}_j$ patří ke stejné třídě a $\vec{x}$ a $\vec{w}_i$ patří k různým třídám a $\vec{x}$ je z \uv{okénka}.
+
+\subsubsection{LVQ3} 
+Stejná pravidla jako LVQ2.1, navíc:
+$$\vec{w}_k(t+1) = \vec{w}_k(t) + \varepsilon\alpha(t)(\vec{x}(t) - \vec{w}_k(t))$$
+pro $k\in \{i,j\}$ jestliže $\vec{x}, \vec{w}_i$ i $\vec{w}_j$ patří ke stejné třídě.
+
 
 \section{Modulární, hierarchické a hybridní modely neuronových sítí.}
 Kombinace předchozích modelů. Inspirace v biologii.
 
 \subsection{Modulární sítě}
+Důležité vlastnosti, které chceme:
+\begin{itemize}
+	\item rychlost a konvergence učení
+	\item optimalizace architektury
+	\item robustnost a generalizace
+	\item \uv{užitečná různorodost} modulů
+\end{itemize}
 \subsubsection{Kaskádová korelace}
 Rostoucí architektura. Začíná bez skrytých neuronů, s přímým napojením vstupů na výstupy. Síť se adaptuje pomocí algoritmu Quickprop. Pokud je po konvergenci učení chyba stále větší než požadovaný práh, \textbf{přidá se do sítě nový skrytý neuron.} Tento neuron je natrénován (stranou od sítě samotné) tak, aby maximalizoval korelaci mezi svým výstupem a chybou na výstupu sítě. Pro jediný výstupní neuron tedy formálně maximalizujeme 
 $$S = |\sum_{i=1}^{p}(V_i - \overline{V})(E_i - \overline{E})|$$
@@ -6659,36 +6448,68 @@ Po natrénovaní je neuron přidán do sítě a jeho vstupní váhy jsou zmrazen
 
 V každém kroku algoritmu se de facto trénuje jediná vrstva vah, tj. jediná sigmoidální jednotka.
 
-\subsubsection{Optimální moduly a mixture of experts}
+\subsubsection{Mixture of experts}
+Obecně: více menších sítí spolupracuje na řešení. \textit{Comittee of machines} označuje skupinu sítí, které \uv{hlasují} o klasifikaci daného problému. Sítě mají typicky stejnou strukturu, jsou pouze trénovány s jinými počátečními vahami (což může vést k radikálně jiným výsledkům). Podobné jako \textit{bagging} u ensemble stromů, ty však používají různá vstupní data (pomocí bootstrappingu), zatímco CoM stejná data, jiné init váhy.
+
+CoM se liší typem struktury:
+\begin{itemize}
+	\item \textbf{statické struktury:} Kombinace predikcí modelů nezávisí na vstupních datech, je dána předem (např. průměr, best atd.)
+	\begin{itemize}
+		\item ensemble averaging
+		\item boosting
+	\end{itemize}
+
+	\item \textbf{dynamické struktury:} Vstup přímo ovlivňuje jak budou předpovědi zkombinovány.
+	\begin{itemize}
+		\item \textbf{Mixture of experts}
+		Lokální sítě jsou vrstevnaté neuronové sítě typu zpětného šíření. Všechny lokální sítě mají stejné vstupy a stejný počet výstupních neuronů. Řídicí síť je vrstevnatá síť s výstupy $P_j$ 
+		a stejnými vstupy, jako mají lokální sítě. Výstupy systému odpovídají $\sum_j P_j y^{(j)}$
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.9]{img/experts.png}
+		\end{figure}
+	
+		Nechť se soustava skládá z $t$ lokálních sítí $N_i$ s vahami $W^{(i)}$ a prahy $\theta^{(i)}$
+		a jedné řídicí sítě $N_g$  s vahami $W^{(g)}$ a prahy $\theta^{(g)}$. Dále nechť je pro daný trénovací vzor $(\vec{x},\vec{d})$ skutečný výstup lokálních sítí $\vec{y}^{(i)}$ a skutečný výstup řídicí sítě $\vec{y}^{(g)}$. Všechny výstupy jsou $\in (0,1)$ .
+		
+		Koeficienty $p_i$ jsou definovány jako
+		$$p_i = \frac{y_i^{(g)}}{\sum_{i=1}^{t}y_j^{(g)}}$$
+		platí $p_i \in (0,1)$ a $\sum_{i=1}^{t} p_i = 1$
+		
+		Cílová funkce $E = \sum_p E_p$ kde
+		$$E_p = \frac{1}{2}\sum_{i=1}^{t}(p_i(\vec{y}^{(i)}-\vec{d}))^2 = \frac{1}{2}\sum_{i=1}^{t}\left(\sum_{k} (g_k^{(i)})^2 \right)$$
+		kde $g_k^{(i)}$ je $(p_i(\vec{y}^{(i)}-\vec{d}))$ pokud je $k$ výstupní neuron a 0 jinak.
+		
+		Adaptace vah probíhá podle 
+		$$\frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial \theta_j}y_j$$
+		kde 
+		$$\frac{\partial E}{\partial \theta_j} = f'(\xi_j^{(g)})\left(g_j^{(g)} + \sum_{k} \frac{\partial E}{\partial \theta_k^{(g)}} w_{ij}^{(g)} \right)$$
+		
+		
+		TODO dodělat
+		
+		\item \textbf{Hierarchical mixture of experts} Několik gating networks uspořádaných hierarchicky.
+		
+		TODO něco k tomuhle
+	\end{itemize}
+	
+\end{itemize}
+
+
+
+
 
 \subsection{Hybridní sítě}
 Typicky kombinace samoorganizujících a dopředných sítí.
 
 \subsubsection{ART (Adaptive Resonance Theory)}
-Klastrovací sítě, shluky reprezentovanými váhovými vektory $w_1, w_2, \dots w_n$. Kolem každého vektoru je kužel o poloměru $r$, ten je nepřímo úměrný \uv{attention} parametru dané jednotky. Po předložení nového vzorku je nalezen nejbližší klastr a pokud je vzorek uvnitř kuželu, je klasifikace hotova. Pokud je mimo kužel, je pro něj založen nový shluk.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{img/art1.png}
-\end{figure}
-
-ART poměrně dobře řeší \textit{plasticity-stability dilema}: síť je plastická (dovede reagovat na neznámé vstupy) a současně stabilní (existující klastry zůstávají zachovány i po předložení nových informací.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{img/art2.png}
-\end{figure}
-
-\subparagraph{Struktura}
-ART se skládají ze 2 základních vrstev neuronů $F_1, F_2$. Neurony ve vrstvě $F_2$ se aktivují na principu \uv{winner takes all}. 
-
-Algoritmus:
-\begin{itemize}
-\item
-\end{itemize}
-
+TODO wtf
 
 \subsubsection{Sítě se vstřícným šířením (counterpropagation networks)}
+\textit{Tady se nějak rozchází zdroje, zejména v procesu učení.} TODO zkontrolovat, přepsat
+
 Síť se skládá ze vstupní, skryté (Kohonenovské) a výstupní (Grossbergovské) vrstvy.
 
 Původně navrženy pro aproximaci spojitého zobrazení $f$ a jeho inverze $f^{-1}$ pomocí dvou symetrických sekcí.
@@ -6697,7 +6518,7 @@ Skrytá vrstva je typicky Kohonenvská mřížka, výstupem je jediný lineárn�
 
 \bigskip
 \begin{algorithm}[H]
-	\caption{Kohonenovské učení}
+	\caption{Counterpropagation}
 	\begin{algorithmic}[1]
 		\State $\forall i,j,k : w_{ij}, z_{k} \gets$ náhodně inicializované váhy
 		\State $\vec{x} \gets X$ \Comment{předložen nový trénovací vzor}
@@ -6722,20 +6543,10 @@ Trénování probíhá ve 2 fázích:
 
 Obě fáze lze provádět buď odděleně za sebou nebo je prolínat. Síť lze přímočaře rozšířit i pro více výstupních jednotek (tj. funkce $\R^n \to \R^m$).
 
-\bigskip
-\begin{algorithm}[H]
-	\caption{Kohonenovské učení}
-	\begin{algorithmic}[1]
-		\Function{CounterpropagationLearning}{}
-			\State inicializuj náhodné hodnoty synaptických vah
-			\State
-		\EndFunction
-	\end{algorithmic}
-\end{algorithm}	
 \subsubsection{Spline networks}
 
 \subsubsection{RBF (Radial Basis Functions)}
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.7]{img/rbf_1.png}
 \end{figure}
@@ -6760,7 +6571,9 @@ Díky použití Gaussovských funkcí je výsledná aproximace spojitá, viz. ob
 	\caption{Aproximace funkce pomocí RBF.}
 \end{figure}
 
-\subsubsection{Vícevrstvé Kohonenovy mapy}
+\subsection{Vícevrstvé Kohonenovy mapy}
+
+TODO ?????
 
 
 \section{Genetické algoritmy a jejich využití při učení umělých neuronových sítí.}
