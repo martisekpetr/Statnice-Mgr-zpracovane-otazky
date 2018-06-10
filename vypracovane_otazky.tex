@@ -562,7 +562,7 @@ je částečně rozhodnutelný, ale není rozhodnutelný.
 $L_\mathcal{U}$ je částečně rozhodnutelný, neboť existuje univerzální Turingův stroj.
 
 Kdyby byl rozhodnutelný, tak podle Postovy věty je $\overline{L_\mathcal{U}}$ částečně rozhodnutelný, tj. existuje TS $M$ tak, že 
-$$\overline{L_\mathcal{U}} = L(M) = {\langle M,x\rangle\ |\ x \notin L(M)}$$
+$$\overline{L_\mathcal{U}} = L(M) = \{\langle M,x\rangle\ |\ x \notin L(M)\}$$
 
 Pomocí tohoto stroje $M$ sestrojíme $M'$, který bude přijímat $L_{DIAG}$. $M'$ bude se vstupem $e$ pracovat následovně: Pokud $e$ není syntakticky správný zápis TS, tak $e$ odpovídá TS, který vždy odmítne, a $M'(e)$ tedy přijme. Pokud je $e$ syntakticky správný zápis, tak $M'$ spustí $M$ pro $\langle e,e\rangle$. $M'$ následně přijme, odmítne, nebo se nezastaví, podle toho, jak se zachová M. Tedy máme $M'$ který přijímá $L_{DIAG}$, který ale není částečně rozhodnutelný. Spor.
 \end{proof}
@@ -587,9 +587,9 @@ Nyní se podívejme, jestli $\langle M' \rangle$ patří do $L'$, nebo ne.
 \begin{enumerate}
 	
 	
-	\item Pokud $\langle M' \rangle \in L$, znamená to, že se $M'(\langle M' \rangle)$ zastaví a přijme, protože $L' = L(M')$, to ale současně znamená, že $M'(\langle M' \rangle){\uparrow}$ podle definice $L'$, což je spor.
+	\item Pokud $\langle M' \rangle \in L'$, znamená to, že se $M'(\langle M' \rangle)$ zastaví a přijme, protože $L' = L(M')$, to ale současně znamená, že $M'(\langle M' \rangle){\uparrow}$ podle definice $L'$, což je spor.
 	
-	\item Pokud $\langle M' \rangle \notin L$, pak podle definice $L'$ to znamená, že $M'(\langle M' \rangle){\downarrow}$. Podle toho, jak jsme si popsali $M'$, znamená to, že přijme slovo $\langle M' \rangle$, z toho dostaneme $\langle M' \rangle \in L(M') = L'$, což je však ve sporu s předpokladem.
+	\item Pokud $\langle M' \rangle \notin L'$, pak podle definice $L'$ to znamená, že $M'(\langle M' \rangle){\downarrow}$. Podle toho, jak jsme si popsali $M'$, znamená to, že přijme slovo $\langle M' \rangle$, z toho dostaneme $\langle M' \rangle \in L(M') = L'$, což je však ve sporu s předpokladem.
 \end{enumerate}
 \end{proof}
 
@@ -715,13 +715,13 @@ $$\langle M_{(M,x)}\rangle \in K \quad \Leftrightarrow \quad \langle M,x\rangle 
 
 Z Riceovy věty plyne, že následující jazyky nejsou rozhodnutelné:
 \begin{align*}
-	K_1  &= \{\langle M\rangle\ |\ L(M) \notin \emptyset\} \\
-	\text{Fin} &= \{\langle M\rangle\ |\ L(M) \text{je konečný jazyk} \} \\
-	\text{Cof} &= \{\langle M\rangle\ |\  \overline{L(M)} \text{je konečný jazyk} \} \\
-	\text{Inf} &= \{\langle M\rangle\ |\  L(M) \text{je nekonečný jazyk}\} \\
-	\text{Dec} &= \{\langle M\rangle\ |\  L(M) \text{je rozhodnutelný jazyk}\} \\
-	\text{Tot} &= \{\langle M\rangle\ |\  L(M) = \Sigma^*\} \\
-	\text{Reg} &= \{\langle M\rangle\ |\  L(M) \text{je regulární jazyk}\} \\
+	K_1  &= \{\langle M\rangle \mid L(M) \notin \emptyset\} \\
+	\text{Fin} &= \{\langle M\rangle \mid L(M) \text{ je konečný jazyk} \} \\
+	\text{Cof} &= \{\langle M\rangle \mid \overline{L(M)} \text{ je konečný jazyk} \} \\
+	\text{Inf} &= \{\langle M\rangle \mid L(M) \text{ je nekonečný jazyk}\} \\
+	\text{Dec} &= \{\langle M\rangle \mid L(M) \text{ je rozhodnutelný jazyk}\} \\
+	\text{Tot} &= \{\langle M\rangle \mid L(M) = \Sigma^*\} \\
+	\text{Reg} &= \{\langle M\rangle \mid L(M) \text{ je regulární jazyk}\} \\
 \end{align*}
 
 
@@ -964,7 +964,7 @@ Zbývá spočítat prostorovou složitost funkce \textit{Dosažitelná}. Pro ote
 Jedna instance funkce Dosažitelná tedy vyžaduje prostor pro uložení $K_1, K_2, K$ a $i$, na všechny tyto proměnné stačí prostor $c_Mf(n)$. Navíc potřebujeme jen bity pro uložení odpovědí z rekurzivních volání, které už prostorovou složitost nenaruší. 
 
 Abychom mohli v cyklu generovat konfigurace K, musíme však vědět, jak velký prostor rezervovat pro jednu konfiguraci,
-potřebujeme tedy umět označit $c_Mf(n)$ buněk, máme-li vstup $x$ délky $n$, a při tom si musíme vystačit s prostorem $O(f(n))$. To platí, je-li funkce $f$ \textit{vyčíslitelná}\footnote{Funkce je \textit{f vyčíslitelná} v prostoru $O(f(n))$, pokud k ní existuje Turingův stroj $M_f$, který pracuje v prostoru $O(f(n))$ a při výpočtu nad vstupem $x = 1^n$ je po ukončení jeho činnosti na výstupu zapsán řetězec $y = 1^f(n)$. 
+potřebujeme tedy umět označit $c_Mf(n)$ buněk, máme-li vstup $x$ délky $n$, a při tom si musíme vystačit s prostorem $O(f(n))$. To platí, je-li funkce $f$ \textit{vyčíslitelná}\footnote{Funkce je \textit{f vyčíslitelná} v prostoru $O(f(n))$, pokud k ní existuje Turingův stroj $M_f$, který pracuje v prostoru $O(f(n))$ a při výpočtu nad vstupem $x = 1^n$ je po ukončení jeho činnosti na výstupu zapsán řetězec $y = 1^{f(n)}$. 
 
 Unární kódování přirozeně odpovídá tomu, co chceme: rezervovat buňky pro výsledek funkce; tj. zapíšeme jedničky na tolik polí, kolik chceme rezervovat. Ne každá funkce $f$ je vyčíslitelná v prostoru $O(f(n))$, nicméně pro běžné funkce to platí.}
 
@@ -1038,7 +1038,7 @@ Pro každou prostorově konstruovatelnou funkci $f : \N \mapsto \N$ existuje jaz
 \subsection{Věta o časové prostorové hierarchii}
 Funkci $f : \N \mapsto \N$, kde $f(n) \in \Omega(n\log n)$, nazveme \textbf{časově konstruovatelnou}, je-li funkce, která zobrazuje $1^n$ na binární reprezentaci $f(n)$ vyčíslitelná v čase $O(f(n))$.
 
-\begin{theorem}[o deterministické časové hierarchii] Pro každou časově konstruovatelnou funkci $f : \N \mapsto \N$ existuje jazyk $A$, který je rozhodnutelný v čase $O(f(n))$, nikoli však v čase $o(\frac{f(n)}{\log f(n)})$.
+\begin{theorem}[o deterministické časové hierarchii] Pro každou časově konstruovatelnou funkci $f : \N \mapsto \N$ existuje jazyk $A$, který je rozhodnutelný v čase $O(f(n))$, nikoli však v čase $o\big(\frac{f(n)}{\log f(n)}\big)$.
 \end{theorem}
 
 \begin{proof}\footnote{\textit{Zdroj důkazů: \url{http://idav.ucdavis.edu/~okreylos/TAship/Spring2001/LectureNotes27.pdf}}}
@@ -1063,11 +1063,11 @@ Zápis $10^k$ reprezentuje slovo skládající se z jedničky a $k$ nul, tj. $10
 		\item Pokud $M$ přijme, \textit{odmítni}. Jinak \textit{přijmi}.
 	\end{enumerate}
 	
-	Pro každý krok simulace $M$ musí algoritmus snížit interní čítač kroků o jedna. Tento čítač je inicializován na hodnotě $\frac{f(n)}{\log f(n)}$ a jeho binární zakódování má tedy délku $O(\log f(n))$. Jeho snížení v každém kroku simulace zabere dalších $O(\log f(n)$. Takže celková časová náročnost simulace stroje s časovou složitostí $O(\frac{f(n)}{\log f(n)})$ je skutečně $O(f(n))$.
+	Pro každý krok simulace $M$ musí algoritmus snížit interní čítač kroků o jedna. Tento čítač je inicializován na hodnotě $\frac{f(n)}{\log f(n)}$ a jeho binární zakódování má tedy délku $O(\log f(n))$. Jeho snížení v každém kroku simulace zabere dalších $O(\log f(n))$. Takže celková časová náročnost simulace stroje s časovou složitostí $O(\frac{f(n)}{\log f(n)})$ je skutečně $O(f(n))$.
 	
-	\item \textbf{$L$ je nerozhodnutelný v $o(\frac{f(n)}{\log f(n)})$:}
+	\item \textbf{$L$ je nerozhodnutelný v $o\big(\frac{f(n)}{\log f(n)}\big)$:}
 	
-	Dokážeme sporem. Nechť $L$ je \textit{rozhodnutelný} v $o(\frac{f(n)}{\log f(n)})$, pak existuje TS $M$, který jej rozhoduje. Uvažme slovo $w = (\langle M \rangle, 10^k)$, pro nějaké dostatečně velké $k$. Platí:
+	Dokážeme sporem. Nechť $L$ je \textit{rozhodnutelný} v $o\big(\frac{f(n)}{\log f(n)}\big)$, pak existuje TS $M$, který jej rozhoduje. Uvažme slovo $w = (\langle M \rangle, 10^k)$, pro nějaké dostatečně velké $k$. Platí:
 	
 	$$w \in L \Leftrightarrow M \text{ přijme } w \Leftrightarrow w \notin L \text{ (spor)}$$
 
@@ -1180,6 +1180,7 @@ Idea důkazu je taková, že hrany barev mezi dvěma řádky kachlíků budou k�
 přijímající konfiguraci, obě jsou dané jednoznačně, přijímající zcela jednoznačně, počáteční je sice závislá na x, ale pro dané x je již jednoznačná. Konstrukce je ilustrovaná na obrázku \ref{kachl_overview}.
 
 \begin{figure}[H]
+  \caption{Konstrukce kachlíkování.}
 	\label{kachl_overview}
 	\centering
 	\includegraphics[width=0.8\textwidth]{img/kachl_overview.png}
@@ -1291,7 +1292,7 @@ SAT je NP-úplný.
 	Definujeme:
 	\begin{align*}
 		V &= \{(p,q)\ |\ \text{spodní barva kachlíku typu $T_p$ se neshoduje s horní barvou $T_q$} \}\\
-		H &= \{(p,q)\ |\ \text{prava barva kachlíku typu $T_p$ se neshoduje s levou barvou $T_q$} \}		
+		H &= \{(p,q)\ |\ \text{pravá barva kachlíku typu $T_p$ se neshoduje s levou barvou $T_q$} \}		
 	\end{align*}
 	a pro $i \in \{1, \dots s\}$ definujeme
 	\begin{align*}
