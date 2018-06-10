@@ -367,128 +367,15 @@ $$L_\mathcal{U} = L(\mathcal{U}) = \{\langle M, x \rangle | x \in L(M)\}$$
 $\mathcal{U}$ popíšeme jako 3-páskový, protože je to technicky jednodušší. První páska obsahuje vstup $\mathcal{U}$, tedy kód $\langle M, x \rangle$. Na druhé pásce je uložen obsah pracovní pásky $M$. Symboly $X_i$ jsou zapsány jako $(i)_B$ v blocích téže délky oddělených znakem $|$. Třetí páska obsahuje číslo aktuálního stavu $q_i$ stroje $M$.
 
 
-\section{Rekurzivní a rekurzivně spočetné množiny. (TODO)}
-\textit{Nekompletní. Ale další roky prý už bude otázka změněna na Rekurzivní jazyky, takže cajk.}
 
-Rekurzivní a rekurzivně spočetné množiny se formálně definují pomocí rekurzivních funkcí. Následuje tedy posloupnost definic, které nás k nim dovedou.
-
-\subsection{Formální definice}
-Všechny funkce v následujících sekcích jsou $\N^n \mapsto \N$.
-
-\subsubsection{Základní funkce}
-\begin{enumerate}[label=\Roman*.]
-	\item \textit{konstantní nulová funkce:} $o(x) = 0$
-	\item \textit{funkce následníka:} $s(x) = x + 1$
-	\item \textit{projekce:} $I_n^j(x_1, x_2, \dots, x_n) = x_j$ (vrací hodnotu $j$-t=ho parametru)
-\end{enumerate}
-
-\subsubsection{Operátory}
-\begin{enumerate}[label=\Roman*.]
-	\item \textit{substituce:} Operátor $S_n^m$ přiřadí funkci $m$ proměnných $f$ a funkcím $n$ proměnných $g_1, g_2, \dots, g_m$ funkci $n$ proměnných $h$, pro níž platí 
-	$$h(x_1,x_2,\dots x_n) \simeq f(g_1(x_1,x_2,\dots x_n), \dots, g_m(x_1,x_2,\dots x_n))$$
-	
-	V programování odpovídá využívání funkcí a procedur v těle programu.
-	
-	\item \textit{primitivní rekurze:} Operátor $R_n(f,g)$ přiřadí funkci $n-1$ proměnných $f$ a funkci $n+1$ proměnných $g$ funkci $n$ proměnných $h$, pro níž platí
-	$$
-	h(x_1,x_2,\dots x_n) \simeq
-	\begin{dcases}
-	f(x_2,\dots x_n) &\quad x_1 = 0 \\
-	g(x_1 - 1, h(x_1 - 1,x_2,\dots x_n), x_2,\dots x_n) & x_1 > 0 \\
-	\end{dcases}
-	$$
-	
-	Odpovídá \textbf{for} cyklu. Proměnná $x_1$ slouží jako čítač.
-	
-	\item \textit{minimalizace:} Operátor $M_n(f)$ přiřadí funkci $n+1$ proměnných $f$ funkci $n$ proměnných $h$, pro níž platí
-	$$h(x_1,x_2,\dots x_n) \simeq \min\{y\ |\ f(x_1,x_2,\dots x_n,y){\downarrow}=0 \wedge (\forall z \leq y)[f(x_1,x_2,\dots x_n,z){\downarrow}]\}$$
-	
-	Odpovídá \textbf{while} cyklu.
-\end{enumerate}
-
-\subsubsection{Rekurzivní funkce}
-\textbf{Primitivně rekurzivní funkce (PRF)} jsou funkce, které vzniknou odvozením ze základních funkcí pomocí operátorů \textit{substituce} a \textit{primitivní rekurze} (tj. je to nejmenší třída funkcí obsahující základní funkce a uzavřená na dvě uvedené operace). Každá PRF je všude definovaná (=totální) (protože for cykly vždy konvergují).
-
-\textbf{Částečně rekurzivní funkce (ČRF)} jsou funkce, které vzniknou odvozením ze základních funkcí pomocí operátorů \textit{substituce}, \textit{primitivní rekurze} a \textit{minimalizace}.
-
-\textbf{Obecně rekurzivní funkce (ORF)} je ČRF, která je všude definovaná.
-
-\subsubsection{Rekurzivní predikáty a množiny}
-\textbf{Predikát} (nebo \textbf{relace}) je množina n-tic $R \subseteq \N^n, n \geq 1$. Fakt, že
-$(x_1, \dots, x_n) \in \R$ budeme též označovat pomocí $R(x_1, \dots, x_n)$. 
-
-\textbf{Množina} je \textit{unární} predikát, tj. $R \subseteq \N$. 
-
-\textbf{Charakteristickou funkcí} predikátu $R$ je funkce $\lambda_R(x_1, \dots, x_n)$, pro kterou platí, že
-$$
-\lambda_R(x_1, \dots, x_n) \simeq
-\begin{dcases*}
-1 &\quad $R(x_1, \dots, x_n)$\\
-0 &\quad jinak\\
-\end{dcases*}
-$$
-	
-\textbf{Primitivně rekurzivní predikát (PRP} je takový predikát, jehož charakteristická funkce je PRP.
-
-\textbf{Obecně rekurzivní predikát (ORP)}, též pouze \textbf{rekurzivní predikát} je takový predikát, jehož charakteristická funkce je ORP.
-
-\textbf{Rekurzivně spočetný predikát (RSP)} je takový predikát, pro který existuje funkce $n$ proměnných $f_R$, pro kterou platí, že
-$$(\forall(x_1, \dots, x_n) \in \N^n) \left[f_R(x_1, \dots, x_n){\downarrow}\ \Leftrightarrow R(x_1, \dots, x_n)\right]$$
-to jest, hodnota funkce $f_R$ je pro danou $n$-tici definovaná právě když je na ní predikát $R$ splněný.
-Hodnota funkce v tomto případě není důležitá. Takové funkci budeme také říkat \textit{částečná charakteristická funkce.} Tj. RSP je definičním oborem nějaké ČRF.
-
-Speciálně tedy: \textbf{Rekurzivní} resp. \textbf{rekurzivně spočetná množina} je \textit{unární} rekurzivní (resp. rekurzivně spočetný) predikát.
-
-\subsubsection{Vlastnosti PRF, ORF, ČRF}
-Následující platí pro PRF i ORF stejně (a často i ČRF)
-
-\begin{theorem}[konečný součet a součin]
-Je-li $f$ PRF dvou proměnných (pro jednoduchost), potom i funkce $g(z, x) = \sum_{y<z} f(y, x)$ (přičemž $g(0, x) = 0$) a $h(z, x) = \prod_{y<z} f(y, x)$ (přičemž $h(0, x) = 1$) jsou PRF.
-\end{theorem}
-\begin{proof}
-For cyklus.
-\end{proof}
-
-podmíněný příkaz
-omezené kvantifikátory
-logické spojky
-konečná konjunkce a disjunkce
-omezená minimalizace
-
-
-
-\subsubsection{Ekvivalence TS a ČRF}
-Rekurzivní a rekurzivně spočetné predikáty a množiny jsou ve skutečnosti jen nové názvy pro
-nám již známé rekurzivní a rekurzivně spočetné jazyky, vzhledem k tomu, že jsme popsali bijekci
-mezi binárními řetězci a kladnými čísly, odpovídají si vzájemně množiny čísel s jazyky jako
-množinami řetězců. 
-
-K tomu, že pojmy rekurzivní jazyk a rekurzivní množina jsou ekvivalentní, však musíme samozřejmě ukázat, že ČRF a TS jsou stejně silné výpočetní modely. 
-
-Množiny jsou ekvivalentní jazykům, protože TS je stejně silný výpošetní model jako ČRF (částečně rekurzivní funkce), pomocí kterých jsou rek. a rek. spoč. množiny definovány.
-
-Z ekvivalence TS a ČRF tedy plyne, že 
-
-číslování ČRF, $\phi^{(n)}_e$
-
-Kleeneho věta
-
-univerzální funkce
-\begin{itemize}
-	\item (algoritmicky) vyčíslitelné funkce = turingovsky vyčíslitelné funkce = ČRF
-	\item totální (algoritmicky) vyčíslitelné funkce = totální turingovsky vyčíslitelné funkce = ORF
-\end{itemize}
-
-
-Rozhodnutelnost, nerozhodnutelnost, halting problém s důkazem, uzavřenost na doplněk
-
- Postova věta, (ne)uzavřenost na operace, a pak ty vlastnost že RSM jsou oborem hodnot nějaké [rostoucí] ČRF. Doptal se mě na jiné matematické modely algoritmů, řekl jsem TS a ekvivalence RJ s RM a RSJ s RSM.
-
-
+\section{Rozhodnutelné a částečně rozhodnutelné problémy}
+Viz sekce~\ref{sec:halting}.
 
 
 
 \section{Algoritmicky nerozhodnutelné problémy (halting problem).}
+\label{sec:halting}
+
 Rozhodovací problém plně popisuje jazyk \textit{kladných instancí}. Budeme proto volně zaměňovat rozhodnutelnost problému a rozhodnutelnost jazyka.
 
 \subsection{(Částečně) rozhodnutelný jazyk}
