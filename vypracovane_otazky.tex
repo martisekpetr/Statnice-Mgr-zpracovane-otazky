@@ -1252,15 +1252,15 @@ SAT je NP-úplný.
 	\begin{itemize}
 		
 		
-		\item $k = 1$: \quad $\alpha_i = (e_1 \vee y_1^j \vee y_2^j) \wedge (e_1 \vee y_1^j \vee \overline{y}_2^j) \vee (e_1 \vee \overline{y}_1^j \vee y_2^j) \vee (e_1 \vee \overline{y}_1^j \vee \overline{y}_2^j)$
+		\item $k = 1$: \quad $\alpha_i = (e_1 \vee y_1^i \vee y_2^i) \wedge (e_1 \vee y_1^i \vee \overline{y}_2^i) \vee (e_1 \vee \overline{y}_1^i \vee y_2^i) \vee (e_1 \vee \overline{y}_1^i \vee \overline{y}_2^i)$
 		
-		\item $k = 2$: \quad $\alpha_i = (e_1 \vee e_2 \vee y^j) \wedge (e_1 \vee e_2 \vee \overline{y}^j)$
+		\item $k = 2$: \quad $\alpha_i = (e_1 \vee e_2 \vee y^i) \wedge (e_1 \vee e_2 \vee \overline{y}^i)$
 		
-		\item $k = 2$: \quad $\alpha_i = C_i$
+		\item $k = 3$: \quad $\alpha_i = C_i$
 		
-		\item $k > 3$: \quad $\alpha_i = (e_1 \vee e_2 \vee y_1^j) \wedge (\overline{y}_1^j \vee e_3 \vee e_2 \vee y_2^j) \wedge \dots \wedge (\overline{y}_{k-3}^j \vee e_{k-1} e_k)$
+		\item $k > 3$: \quad $\alpha_i = (e_1 \vee e_2 \vee y_1^i) \wedge (\overline{y}_1^i \vee e_3 \vee y_2^i) \wedge \dots \wedge (\overline{y}_{k-3}^i \vee e_{k-1} \vee e_k)$
 	\end{itemize}
-	Kde všechna $y$ jsou nové proměnné. Pak $\varphi = \bigwedge\limits_{j=1}^m$. Konstrukce je polynomiální. Ekvivalence rozborem případů.
+	Kde všechna $y$ jsou nové proměnné. Pak $\varphi = \bigwedge\limits_{i=1}^m{\alpha_i}$. Konstrukce je polynomiální. Ekvivalence rozborem případů.
 	\end{enumerate}
 \end{proof}
 
@@ -1329,17 +1329,15 @@ Převodem z VP. Pro graf $G = (V,E)$ chceme najít VP velikosti $k$, zkonstruuje
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\textwidth]{img/hamilton1.jpg}
-		\label{ham1}
 		\caption{Podgraf pro hranu (u,v)}
+		\label{ham1}
 	\end{figure}
 	Hamiltonovská kružnice může projít tímto podgrafem pouze 3 způsoby naznačenými na obrázku \ref{ham1}(b,c,d): 
-	\begin{enumerate}
-		
-		
+	\begin{itemize}
 		\item (b) hrana je pokrytá vrcholem $u$
 		\item (c) hrana je pokrytá oběma vrcholy $u, v$
 		\item (d) hrana je pokrytá vrcholem $v$
-	\end{enumerate}
+	\end{itemize}
 
 	\item do $V'$ přidáme $k$ \uv{výberových} vrcholů $s_1, \dots s_k$
 	
@@ -1348,8 +1346,8 @@ Převodem z VP. Pro graf $G = (V,E)$ chceme najít VP velikosti $k$, zkonstruuje
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\textwidth]{img/hamilton2.jpg}
-		\label{ham2}
 		\caption{Výsledné zapojení.}
+		\label{ham2}
 	\end{figure}
 \end{itemize}
 \end{proof}
@@ -1477,7 +1475,7 @@ Je-li problém A řešitelný pseudopolynomiálním algoritmem a není-li A čí
 			\textbf{Cíl}: Nalézt množinu předmětů $A' \subseteq A$, která dosahuje maximální
 			souhrnné hodnoty předmětů v ní obsažených, a přitom se předměty z $A'$ vejdou do batohu velikosti $B$. Tj. chceme, aby platilo:
 			$$\sum\limits_{a \in A'} s(a) \leq B$$
-			$$\sum\limits_{a\in A'} v(a) = \max_{A'' \subseteq A,\ \sum_{a \in A'} s(a) \leq B} \sum\limits_{a \in A''} v(a)$$
+			$$\sum\limits_{a\in A'} v(a) = \max_{A'' \subseteq A,\ \sum_{a \in A''} s(a) \leq B} \sum\limits_{a \in A''} v(a)$$
 		}
 	}
 	\bigskip
@@ -1489,37 +1487,41 @@ Následující pseudopolynomiální algoritmus je založen na dynamickém progra
 
 \begin{minipage}{\linewidth}
 	\label{batoh_pp}
-	\begin{lstlisting}[language=Python, frame=single, escapeinside={\%*}{*)}]
-Batoh(s, v, B): 
-	# s ... pole velikosti predmetu
-	# v ... pole cen predmetu
-	# B ... velikost batohu
+	\begin{lstlisting}[language=Python, frame=single, escapeinside={(*}{*)}]
+Batoh(s,v,B): 
+	# s (*$\dots$ pole velikostí předmětů*)
+	# v (*$\dots$ pole cen předmetů*)
+	# B (*$\dots$ velikost batohu*)
+
+	# V (*$\dots$ maximální možná celková hodnota předmětů*)
 	V = sum(v[i] for i in range(1,n))
+	# n (*$\dots$ počet předmětů*)
 	n = len(s)
-	T = [,]
-	S = [,]
-	for c in range (1, V):
-		T[0, c] = None
-		S[0, c] = B + 1
-	for j in range(0, n):
-		T[j,0] = None
+
+	T[0,0] = (*\O*); S[0,0] = (*$0$*)
+	for c in range(1,V):
+		T[0,c] = (*\O*)
+		S[0,c] = (*$B+1$*)
+
+	for j in range(1,n):
+		T[j,0] = (*\O*)
 		S[j,0] = 0
-		for c in range(1, V):
-			T[j, c] = T[j - 1, c]
-			S[j, c] = S[j - 1, c]
-			if v[j] <= c and S[j, c] > S[j - 1, c - v[j]] + s[j]:
-				T[j, c] = union(T[j - 1, c - v[j]], {j})
-				S[j, c] = S[j - 1, c - v[j]] + s[j]
-	cc = max{c for (n,c) in S if S[n, c] <= B}
-	return T[n, cc]
+		for c in range(1,V):
+			T[j,c] = T[j-1, c]
+			S[j,c] = S[j-1, c]
+			if v[j] (*$\le$*) c and S[j,c] > S[j-1, c-v[j]] + s[j]:
+				T[j,c] = union(T[j-1, c-v[j]], {j})
+				S[j,c] = S[j-1, c-v[j]] + s[j]
+	cc = max{c for (n,c) in S if S[n,c] (*$\le$*) B}
+	return T[n,cc]
 		
 	\end{lstlisting}
 \end{minipage}
 \bigskip
 
-$T$ je tabulka typu $(n + 1) \times (V + 1)$, na pozici $T[j, c], 0 \leq j \leq n, 0 \leq c \leq V$ , bude podmnožina indexů $\{1, \dots, j\}$ prvků celkové ceny přesně $c$ s minimální velikostí.
+$T$ je tabulka velikosti $(n + 1) \times (V + 1)$, na pozici $T[j, c], 0 \leq j \leq n, 0 \leq c \leq V$ , bude podmnožina indexů $\{1, \dots, j\}$ prvků celkové ceny přesně $c$ s minimální velikostí.
 
-$S$ je tabulka typu $(n+1)\times(V +1)$, na pozici $S[j, c]$ je celková velikost předmětů
+$S$ je tabulka velikosti $(n+1)\times(V+1)$, na pozici $S[j, c]$ je celková velikost předmětů
 v množině $T[j, c]$. Pokud neexistuje množina s předměty ceny přesně $c$, je na pozici
 $S[j, c]$ číslo $B + 1$.
 
@@ -1582,7 +1584,7 @@ Uvažme neorientovaný graf $G = (V, E)$ a sestavme na jeho základě instanci o
 	\item Vzdálenost mezi městy či vrcholy $v_i$ a $v_j$ pro $i \neq j$ a $i, j \in \{1, \dots, n\}$ určíme následujícím
 	předpisem:
 	$$
-	d(vi, vj) = 
+	d(v_i, v_j) = 
 	\begin{cases}
 	0 & \quad \text{pokud } \{v_i, v_j\} \in E \\
 	1 & \quad \text{jinak} \\
