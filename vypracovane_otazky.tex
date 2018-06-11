@@ -25,6 +25,7 @@
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode} 
 \usepackage{titlesec}
+\usepackage[shortcuts]{extdash}
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
@@ -1763,24 +1764,24 @@ Hodnota $V$ se do odhadu složitosti dostala jako horní odhad potenciálních c
 
 \begin{minipage}{\linewidth}
 	\label{batoh_apx}
-	\begin{lstlisting}[language=Python, frame=single, escapeinside={\%*}{*)}]
-	BatohAPX(s, v, B, epsilon): 
-	# s ... pole velikosti predmetu (0 < s[i] <= B pro kazde i) 
-	# v ... pole cen predmetu
-	# B ... velikost batohu
-	# %*$\varepsilon$*) ... racionalni cislo (apr. pomer)
+	\begin{lstlisting}[language=Python, frame=single, escapeinside={(*}{*)}]
+BatohAPX((*$s, v, B, \varepsilon$*)): 
+	# s (*$\dots$ pole velikostí předmětů ($\forall i \colon 0 < s[i] \le B$)*)
+	# v (*$\dots$ pole cen předmětů*)
+	# B (*$\dots$ velikost batohu*)
+	# (*$\varepsilon$ $\dots$ racionální číslo (apr. poměr)*)
 	
 	n = len(s)
 	m = argmax(v[i] for i in range(0,n))
-	if %*$\varepsilon \geq n-1$*):
+	if (*$\varepsilon \geq n-1$*):
 		return {m}
-	t = %*$\lfloor \log_2\left(\frac{\varepsilon \cdot v[m]}{n}\right)\rfloor - 1$*)
+	t = (*$\Bigl\lfloor \log_2\left(\frac{\varepsilon \cdot v[m]}{n}\right) \Bigr\rfloor - 1$*)
 	
 	c = []
 	for i in range(1,n):
-		c[i] = %*$\lfloor \frac{v[i]}{2^t} \rfloor$*)
+		c[i] = (*$\bigl\lfloor \frac{v[i]}{2^t} \bigr\rfloor$*)
 	
-	return Batoh(s,c,B)  # viz %*\ref{batoh_pp}*)
+	return Batoh((*$s,c,B$*))  # viz (*\ref{batoh_pp}*)
 	\end{lstlisting}
 \end{minipage}
 \bigskip
@@ -1799,7 +1800,7 @@ $$opt(I) \leq (1 + \varepsilon)\cdot BatohAPX(I, \varepsilon)$$
 \begin{enumerate}
 	\item \textbf{Nechť $\varepsilon \geq n-1$.}
 	
-	Algoritmus vrátí $\{m\}$, což je přípustné řešení, neboť předpokládáme $s[m] \leq B$. Zjevně platí $opt(I) \leq n \cdot [m]$. Dostáváme:
+	Algoritmus vrátí $\{m\}$, což je přípustné řešení, neboť předpokládáme $s[m] \leq B$. Zjevně platí $opt(I) \leq n \cdot v[m]$. Dostáváme:
 	$$\frac{opt(I)}{BatohAPX(I,\varepsilon)} = \frac{opt(I)}{v[m]} \leq \frac{n \cdot v[m]}{v[m]} = n \leq 1+\varepsilon$$
 	
 	\item \textbf{Nechť $\varepsilon < n-1$.}
@@ -1817,7 +1818,7 @@ $$opt(I) \leq (1 + \varepsilon)\cdot BatohAPX(I, \varepsilon)$$
 		Dle definice $c[i]$ a po vynásobení $2^t$:
 		\begin{equation}
 		\label{c_bounds}
-		v[i] - 2^t \leq c[i] \leq v[i]
+		v[i] - 2^t \leq c[i] \cdot 2^t \leq v[i]
 		\end{equation}
 		
 		\item \textbf{Horní a dolní odhad $2^t$:}
@@ -1845,7 +1846,7 @@ $$opt(I) \leq (1 + \varepsilon)\cdot BatohAPX(I, \varepsilon)$$
 		\begin{align*}
 			\sum\limits_{i\in M} c[i] \cdot 2^t &\geq \sum\limits_{i\in M^*} c[i] \cdot 2^t \\
 												&\geq \sum\limits_{i\in M^*} (v[i] - 2^t) \\
-												&= \sum\limits_{i\in M^*} v[i] - \sum\limits_{i\in M^*} 2^t) \\
+												&= \sum\limits_{i\in M^*} v[i] - \sum\limits_{i\in M^*} 2^t \\
 												&\geq opt(I) - n\cdot 2^t\\
 		\end{align*}
 		První nerovnost platí, neboť pro $I'$ je $M$ je optimální a $M^*$ pouze přípustná. Druhá nerovnost plyne z \ref{c_bounds}. 
@@ -1866,13 +1867,14 @@ $$opt(I) \leq (1 + \varepsilon)\cdot BatohAPX(I, \varepsilon)$$
 			\frac{n\cdot 2^t}{BatohAPX(I, \varepsilon)} \leq \varepsilon
 		\end{equation*}
 		
-		Protože $M$ je optimálním řešením $I'$ a ${m}$ je přípustným řešením $I'$, dostaneme, že
+		Protože $M$ je optimálním řešením $I'$ a $\{m\}$ je přípustným řešením $I'$, dostaneme
 		\begin{align*}
-			BatohAPX(I, \varepsilon) 	&= \sum\limits_{i \in M} c[i]\cdot 2^t \geq c[m] \cdot 2^t\\
+			BatohAPX(I, \varepsilon) 	&= \sum\limits_{i \in M} v[i] \geq \sum\limits_{i \in M} c[i]\cdot 2^t \\
+                    &\geq c[m] \cdot 2^t\\
 										&\geq v[m] - 2^t\\
 										&\geq v[m] - \frac{1}{2}v[m] = \frac{1}{2}v[m]
 		\end{align*}
-		Druhá nerovnost plyne z \ref{c_bounds}, třetí z \ref{2t_upper}.
+		První nerovnost plyne z~\ref{c_bounds}, druhá vyplývá z přípustnosti $\{m\}$, třetí opět z~\ref{c_bounds} a poslední z~\ref{2t_upper}.
 		
 		Dohromady s \ref{2t_upper} tedy dostaneme
 		\begin{equation*}
@@ -1890,7 +1892,7 @@ Kromě posledního kroku (řádek 17) lze všechny kroky provést v $O(n)$. Vol�
 \begin{equation*}
 	C = \sum\limits_{i=1}^{n} c[i] \leq n \cdot c[m] \leq \frac{n \cdot v[m]}{2^t} \leq \frac{n \cdot v[m]}{\frac{1}{4}\cdot \frac{\varepsilon \cdot v[m]}{n}} = \frac{4n^2}{\varepsilon}
 \end{equation*}
-kde předposlední nerovnost plyne z \ref{2t_bottom}. Tedy $C \in O(\frac{1}{\varepsilon}n^2)$, dohromady tedy $O(\frac{1}{\varepsilon}n^3)$
+kde předposlední nerovnost plyne z definice $c[i]$ a poslední z~\ref{2t_bottom}. Tedy $C \in O(\frac{1}{\varepsilon}n^2)$, dohromady tedy $O(\frac{1}{\varepsilon}n^3)$.
 \end{enumerate}
 
 \end{proof}
@@ -1906,7 +1908,7 @@ Postup z předchozí sekce lze i obrátit: pokud se nám pro úlohu A, která sp
 \begin{theorem}
 \label{apx_np}
 Nechť $A$ je optimalizační úloha, jejíž přípustná řešení mají nezápornou celočíselnou hodnotu a nechť existuje polynom $q$ dvou proměnných takový, že pro každou instanci $I$ úlohy $A$ platí, že
-$$opt(I) < q(len(I), max(I))$$
+$$opt(I) < q(len(I), max(I))\,.$$
 Pokud existuje úplně polynomiální aproximační schéma pro $A$, pak existuje i pseudopolynomiální algoritmus pro $A$.
 \end{theorem}
 
@@ -1922,11 +1924,11 @@ BÚNO $A$ je maximalizační úloha (minimalizační analogicky). Nechť $ALG$ j
 Čas výpočtu je polynomiální v $len(I)$ a $\sfrac{1}{\varepsilon} = q(len(I), max(I))$ (z definice ÚPAS), dohromady se tedy jedná o polynomiální algoritmus v $len(I)$ a $max(I)$, tedy o pseudopolynomiální algoritmus. Protože ALG je ÚPAS a protože A je maximalizační úloha, platí
 $$opt(I) \leq (1 + \varepsilon) \cdot ALG_\varepsilon(I)$$
 tedy
-$$opt(I) - ALG_\varepsilon(I) \leq \varepsilon \cdot ALG_\varepsilon(I) \leq \varepsilon \cdot OPT(I) < \frac{q(len(I), max(I)}{q(len(I), max(I)} = 1$$,
+$$opt(I) - ALG_\varepsilon(I) \leq \varepsilon \cdot ALG_\varepsilon(I) \leq \varepsilon \cdot opt(I) < \frac{q(len(I), max(I))}{q(len(I), max(I))} = 1\,,$$
 
 kde druhá nerovnost plyne z toho, že A je maximalizační úloha, a třetí nerovnost plyne z definice $\varepsilon$ a toho, že $q$ omezuje velikost $opt(I)$. 
 
-Protože hodnoty přípustných řešení úlohy A jsou \textit{nezáporná celá čísla}, musí ve skutečnosti platit, že $$opt(I) = ALG_\varepsilon(I)$$.
+Protože hodnoty přípustných řešení úlohy A jsou \textit{nezáporná celá čísla}, musí ve skutečnosti platit, že $$opt(I) = ALG_\varepsilon(I)\,.$$
 \end{proof}
 
 \begin{implication}
@@ -2026,25 +2028,26 @@ Složitost operací obecně závisí na výšce stromu $h$. Ta může zdegenerov
 
 
 \subsection{(a,b)-stromy}
-Nechť $a, b \in \N, a \geq 2, b \geq 2a-1$. Strom je \textbf{$(a, b)$ strom}, když platí:
+Nechť $a, b \in \N, a \geq 2, b \geq 2a-1$. Strom je \textbf{$\mathbf{\boldsymbol{(}a, b\boldsymbol{)}}$-strom}, když platí:
 \begin{enumerate}
 	
 	
+	\item Jde o vyhledávací strom.
 	\item Každý vnitřní vrchol kromě kořene má alespoň $a$ a nejvýše $b$ synů.
-	\item Kořen má alespoň 2 a nejvýše $b$ synů, nebo je listem.
+	\item Kořen má nejvýše $b$ synů.
 	\item Všechny cesty z kořene do listu jsou stejně dlouhé.
 \end{enumerate}
 
 Hodnoty jsou pouze v listech. Vnitřní vrcholy obsahují ukazatele na své podstromy jako pole/spojový seznam klíčů a dále seznam maxim svých podstromů.
 
-\noindent\textbf{Pozorování:} Buď $T$ $(a, b)$ strom s hloubkou $h$. Platí 
-$$2a^{h-1} \leq \text{počet listů } T \leq b^h$$
-tedy pro libovolné $n$ má každý $(a, b)$ strom $T$ s $n$ listy hloubku $h = \Theta(\log n)$, přesněji
+\noindent\textbf{Pozorování:} Buď $T$ $(a, b)$-strom s hloubkou $d$. Platí 
+$$a^{d-1} \leq \text{počet listů } T \leq b^d$$
+tedy pro libovolné $n$ má každý $(a, b)$-strom $T$ s $n$ listy hloubku $d = \Theta(\log n)$, přesněji
 $$\log_b n \leq d \leq 1 + \log_a n$$
 
 (Poznámka: change-of-base formula: $\log_a b = \frac{\log_d b}{\log_d a}$)
 
-Volba parametrů $a,b$ závisí na použití, např. (2,3) stromy nebo B-stromy, kde $a,b \approx $ velikost bloku na disku.
+Volba parametrů $a,b$ závisí na použití, např. (2,3)-stromy nebo B-stromy, kde $a,b \approx $ velikost bloku na disku.
 
 \subsubsection{Operace}
 \begin{itemize}
@@ -2054,7 +2057,7 @@ Volba parametrů $a,b$ závisí na použití, např. (2,3) stromy nebo B-stromy,
 	Prohledávej od kořene, vyber potomka pro zanoření podle maxim.
 	
 	\item \textbf{INSERT(x)}:
-	Najdi vrchol $v$, pod který patří $x$. Pokud $v$ má < $b$ potomků, přidej nový list s $x$ pod $v$, hotovo. Pokud má $v$ právě $b$ potomků, rozštěp $v$: vytvoř nový vrchol $v'$, pod který přemísti prvních $\frac{b+1}{2}$ potomků $v$ (operace SPLIT). Rekurzivně vlož $v'$ do rodiče $v$.
+	Najdi vrchol $v$, pod který patří $x$. Pokud $v$ má $< b$ potomků, přidej nový list s $x$ pod $v$, hotovo. Pokud má $v$ právě $b$ potomků, rozštěp $v$: vytvoř nový vrchol $v'$, pod který přemísti prvních $\frac{b+1}{2}$ potomků $v$ (operace SPLIT). Rekurzivně vlož $v'$ do rodiče $v$.
 
 	\item \textbf{DELETE(x)}:
 	Najdi $x$. Nechť $v$ je rodič $x$. 
@@ -2090,7 +2093,7 @@ Volba parametrů $a,b$ závisí na použití, např. (2,3) stromy nebo B-stromy,
 \end{itemize}
 
 \subsubsection{Paralelní verze}
-Chceme-li (a,b) stromy použít v paralelním prostředí, tj. s více procesy přistupujícími ke stromu, je třeba provést následující úpravy:
+Chceme-li (a,b)-stromy použít v paralelním prostředí, tj. s více procesy přistupujícími ke stromu, je třeba provést následující úpravy:
 \begin{itemize}
 	
 	
@@ -2107,7 +2110,7 @@ Počet štěpení a slučování vrcholů při $m$ insertech a $l$ deletech je $
 
 
 \subsubsection{A-sort}
-Třídící algoritmus, který nejprve z prvků sestaví (a,b) strom a poté je vypíše od nejlevějšího listu po nejpravější.
+Třídící algoritmus, který nejprve z prvků sestaví (a,b)-strom a poté je vypíše od nejlevějšího listu po nejpravější.
 
 Při vkládání hledáme pozici pro aktuální klíč nikoliv od kořene, ale od předchozího vloženého uzlu (strom s \uv{prstem} -- ukazatelem na posledně použitý list). Zajímá nás počet kroků nutný k nalezení správného místa pro $x_{i+1}$:
 \begin{itemize}
@@ -2133,7 +2136,7 @@ kde $F = \sum\limits_{i=1}^{n} |\{j\ |\ j\leq i; x_{i+1} < x_{j} \}|$ vyjadřuje
 
 Existuje alternativní varianta algoritmu, v níž se místo pro nový prvek hledá vždy od nejpravějšího/nejlevějšího listu. Složitost vychází stejná.
 
-Často se používají (2,3) stromy, protože mají nejmenší prostorové nároky a vzhledem k tomu, že nepoužíváme DELETE, nejsou ani tolik náročné na vyvažování (při obecném používání si ale právě z důvodu vyvažování vedou lépe (2,4) stromy).
+Často se používají (2,3)\=/stromy, protože mají nejmenší prostorové nároky a vzhledem k tomu, že nepoužíváme DELETE, nejsou ani tolik náročné na vyvažování (při obecném používání si ale právě z důvodu vyvažování vedou lépe (2,4)\=/stromy).
 
 \subsubsection{B-stromy}
 Varianta používaná pro velká data uložená na disku, velikost uzlu odpovídá bloku paměti, aby se minimalizoval počet přístupů.
@@ -2143,14 +2146,14 @@ Varianta používaná pro velká data uložená na disku, velikost uzlu odpovíd
 	
 	
 	\item hodnoty uloženy i ve vnitřních vrcholech (namísto maxim z podstromů). 
-	\item místo $a,b$ se volí pouze jediná hodnota, \textbf{řád stromu}: B-strom řádu $t$ je $\approx$ (t-1, 2t-1) strom (nebo (t,2t) strom nebo ($\lfloor t/2\rfloor$, t) strom -- záleží na konkrétní definici).
+	\item místo $a,b$ se volí pouze jediná hodnota, \textbf{řád stromu}: B-strom řádu $t$ je $\approx$ (t-1, 2t-1)\=/strom (nebo (t,2t)\=/strom nebo ($\lfloor t/2\rfloor$, t)\=/strom -- záleží na konkrétní definici).
 \end{itemize}
 
 \textbf{Varianty}
 \begin{description}
 	
 	
-	\item[B+ stromy] Data \textbf{pouze} v listech (jako u obecných (a,b) stromů), sousední listy spojeny ukazateli. Používá např NTFS.
+	\item[B+ stromy] Data \textbf{pouze} v listech (jako u obecných (a,b)-stromů), sousední listy spojeny ukazateli. Používá např NTFS.
 	
 	\item[B* stromy] Zaplněnější vrcholy: dolní limit na zaplnění není 1/2 maxima, nýbrž 2/3 maxima. Při plném zaplnění se vrchol hned nerozpadá, nýbrž sdílí klíče se svým sousedem, teprve po zaplnění obou uzlů se tyto dva rozštěpí na 3.
 \end{description}
@@ -2167,12 +2170,12 @@ Binární vyhledávací strom, kde každý vrchol je obarven buď červeně nebo
 
 Hodnoty jsou uloženy pouze ve vnitřních vrcholech, listy jsou ve skutečnosti pouze NULL pointery.
 
-Dá se ukázat ekvivalence s (2,4) stromy, často se ČČ používají pro jejich implementaci. Nicméně ekvivalence platí zejména co se týče složitosti, samotná implementace je odlišná, zejména aktualizační operace pro ČČ a reprezentace vrcholů.
+Dá se ukázat ekvivalence s (2,4)-stromy, často se ČČ používají pro jejich implementaci. Nicméně ekvivalence platí zejména co se týče složitosti, samotná implementace je odlišná, zejména aktualizační operace pro ČČ a reprezentace vrcholů.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.44\textwidth]{img/rbtree_24tree.jpg}
 	\label{rb24}
-	\caption{Ekvivalence ČČ a (2,4) stromů na příkladu.}
+	\caption{Ekvivalence ČČ a (2,4)-stromů na příkladu.}
 \end{figure}
 
 Používají se v knihovnách, např. STL v C++.
@@ -2293,7 +2296,7 @@ Vždy se mění pouze rank zúčastnených vrcholů $x$, $p$ (parent) a $g$ (gra
 							  &\geq \log_2\left(\frac{s'(x)}{\frac{s'(x)}{2}}\right) + \log_2\left(\frac{s'(x)}{\frac{s'(x)}{2}}\right)\\
 							  & = 1 + 1 = 2
 	\end{align*}
-	Druhá nerovnost je dána díky $s'(x) \geq s(x) + s'(g)$ (viz obrázek) a protože díky vlastnostem logaritmu je nejnižší možná hodnota dosažena právě při volbě $s(x) = s'(g) = \frac{s'(x)}{2}$ (TODO lépe vysvětlit)
+	Nerovnost platí díky $s'(x) \geq s(x) + s'(g)$ (viz obrázek) a protože díky vlastnostem logaritmu je nejnižší možná hodnota dosažena právě při volbě $s(x) = s'(g) = \frac{s'(x)}{2}$ (TODO lépe vysvětlit)
 
 	Aplikujeme-li toto pozorování na předchozí nerovnici, dostaneme	
     \begin{align*}
@@ -2344,7 +2347,7 @@ Operace FIND, INSERT i DELETE lze provést tak, že sestávají z operace SPLAY 
 
 To znamená, že pro $m \gg n$ (což bývá pravda) je složitost posloupnosti operací $O(m\log n)$, tj. amortizovaně $O(\log n)$ na operaci. 
 
-Splay stromy si vedou dokonce ještě lépe, pokud je ditribuce operací nevyvážená.	
+Splay stromy si vedou dokonce ještě lépe, pokud je distribuce operací nevyvážená.	
 
 \begin{theorem}[entropy bound]
 V \textit{optimálním} binárním vyhledávacím stromě, kde k prvku $x_i$ je přistupováno s pravděpodobností $p_i$, je očekávaná cena úspěšné vyhledávací operace 
@@ -2394,12 +2397,16 @@ Dotazovací operace mají tedy složitost $O(\log n)$.
 Modifikující operace Insert a Delete pracují stejně jako na normálním BVS s případným dodatečným vyvážením pomocí rotací. Při Insert je třeba $O(1)$ rotací, při Delete to může být až $O(\log n)$. Celková složitost obou operací je $O(\log n)$.
 
 \section{Haldy (regulární, binomiální).}
-\subsection{Regulérní halda}
-Halda je \textbf{stromová} datová struktura splňující tzv. \textbf{vlastnost haldy}: \textit{pokud je $B$ potomek $A$, pak $x(A) \leq x(B)$.} To znamená, že v kořenu je vždy prvek s nejnižším klíčem. Taková halda se pak označuje jako \textit{min heap}, opakem je je $max heap$. 
+\subsection{Regulární halda}
+Halda je \textbf{stromová} datová struktura splňující tzv. \textbf{vlastnost haldy}: \textit{pokud je $B$ potomek $A$, pak klíč$(A) \leq$ klíč$(B)$.} To znamená, že v kořenu je vždy prvek s nejnižším klíčem. Taková halda se pak označuje jako \textit{min\=/heap}, opakem je je \textit{max\=/heap}. 
 
-Regulární halda je co nejefektivněji zaplněná, přesněji všechny patra haldy jsou zcela zaplněné kromě nejspodnějšího, to je zaplněno zleva.
-
-Typicky uvažujeme \textit{binární} neboli \textbf{2-regulární} haldu, ale obecně může být halda $k$-regulární.
+\textbf{D-regulární halda} je halda, pro kterou platí:
+\begin{enumerate}
+  \item Každý vrchol má nejvýše $d$ synů.
+  \item Všechny vrstvy krom poslední jsou úplně zaplněné.
+  \item Poslední hladina je zaplněná zleva.
+\end{enumerate}
+Typicky uvažujeme \textit{binární} neboli \textbf{2-regulární} haldu.
 
 \subsubsection{Reprezentace}
 Haldy lze díky jejich zaplněnosti dobře implementovat pomocí pole, kde potomci uzlu na $n$-té pozici se nachází na pozici $2n$ a $(2n+1)$ (v případě binární haldy).
@@ -2408,7 +2415,7 @@ Haldy lze díky jejich zaplněnosti dobře implementovat pomocí pole, kde potom
 	\includegraphics[scale=0.6]{img/heap.png}
 \end{figure}
 
-Libovolné pole prvků lze rychle převést na reprezentaci haldy -- lze ukázat, že to jde v $O(n)$ (operace HEAPIFY()):
+Libovolné pole prvků lze rychle převést na reprezentaci haldy -- lze ukázat, že to jde v~čase~$O(n)$ (operace HEAPIFY()):
 \begin{proof}
 Nechť $n = 2^{h+1} - 1$ pro nějaké $h$ (tj. stavíme kompletní strom hloubky $h$). Haldu stavíme od spodních pater. Budeme zkoumat, o kolik nejvýše pater musí prvky \uv{probublat}, aby se dostaly na správnou pozici
 \begin{itemize}
@@ -2416,14 +2423,14 @@ Nechť $n = 2^{h+1} - 1$ pro nějaké $h$ (tj. stavíme kompletní strom hloubky
 	
 	\item poslední patro (hloubka $h$) má $2^h$ prvků, žádný z nich ale nikam neprobublává
 	\item patro $h-1$ má $2^{h-1}$ prvků, každý probublá nejvýše o 1 patro (do listu)
-	\item patro $h-2$ má $2^{h-2}$ prvků, každý probublá nejvýše o 2 patro (do listu)
+	\item patro $h-2$ má $2^{h-2}$ prvků, každý probublá nejvýše o 2 patra (do listu)
 	\item \dots
 \end{itemize}
 
 Celkový počet operací je tedy:
 \begin{align*}
-T &\leq 2^h \cdot 0 + \leq 2^{h-1}\cdot 1 + 2^{h-2} \cdot 2 + \dots + 2^1 \cdot (h-1) + 2^0 \cdot h \\
- &=\sum\limits_{i = 0}^{h} 2^{(h-i)} \cdot i =\sum\limits_{i = 0}^{h} \frac{2^{h}}{2^i} \cdot i =2^h \cdot\sum\limits_{i = 0}^{h} \frac{i}{2^i}\\
+T &\leq 2^h \cdot 0 + 2^{h-1} \cdot 1 + 2^{h-2} \cdot 2 + \dots + 2^1 \cdot (h-1) + 2^0 \cdot h \\
+ &=\sum\limits_{i = 0}^{h} 2^{h-i} \cdot i =\sum\limits_{i = 0}^{h} \frac{2^{h}}{2^i} \cdot i =2^h \cdot\sum\limits_{i = 0}^{h} \frac{i}{2^i}\\
 \end{align*}
 Jelikož řada $\sum\limits_{i = 0}^{\infty} \frac{i}{2^i}$ konverguje, lze ji shora omezit nějakou konstantou $C$ (lze ukázat $C = 2$) a tedy počet operací je $C\cdot 2^h$, tedy $O(n)$.
 \end{proof}
@@ -2435,7 +2442,7 @@ Jelikož řada $\sum\limits_{i = 0}^{\infty} \frac{i}{2^i}$ konverguje, lze ji s
 	
 	\item \textbf{INSERT(x)}: $O(\log n)$
 	
-	 Prvek je přidán na konec posledního patra a poté se opraví halda, tj. prvek probublává směrem ke kořeni, dokud není opravena \uv{haldovitost}. Složitost je daná výškou haldy, která je $O(\log n)$
+	 Prvek je přidán na konec posledního patra a poté se opraví halda, tj. prvek probublává směrem ke kořeni, dokud není opravena \uv{haldovitost}. Složitost je daná výškou haldy, která je $O(\log n)$.
 	
 	\item \textbf{MIN()}: $O(1)$
 	
