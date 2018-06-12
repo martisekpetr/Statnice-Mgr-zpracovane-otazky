@@ -2709,7 +2709,7 @@ Kvůli tomu, že řetězce začínají jinde než na svém místě, je počet te
 \begin{itemize}
 	
 	\item
-	Úspěšné hedání:
+	Úspěšné hledání:
 	$1+\frac{(n-1)(n-2)}{6m^2} + \frac{n-1}{2m}\approx 1 + \frac{\alpha^2}{6} + \frac{\alpha}{2}$
 	\item
 	Neúspěšné hledání přibližně
@@ -2856,32 +2856,38 @@ Při rehashování náhodně vygenerujeme nové funkce $h_1, h_2$ a můžeme zv�
 
 
 \paragraph{Analýza}
-Kukaččí graf funguje dobře pro $m \approx 2.3n$. My budeme pracovat s grafy, pro něž platí $m \leq 2cn, c>1$. (\textit{Pozn.: Koucký používal $m = 6n$, tj. $c = 3$}).
-
 Při analýze budeme pracovat s \textbf{kukaččím grafem}, kde 
 \begin{itemize}
 \item vrcholy jsou přihrádky tabulky
 \item hrany jsou dvojice $(h_1(x), h_2(x)), \forall x \in S$	
 \end{itemize}
 
+Kukaččí graf funguje dobře pro $m \approx 2.3n$. My budeme pracovat s grafy, pro něž platí $m \geq 2cn, c>1$. (\textit{Pozn.: Koucký používal $m = 6n$, tj. $c = 3$}).
+
 \begin{theorem}
-Nechť $S \subseteq U, |S| = n, m \leq 2cn, c>1$. Pravděpodobnost, že pro náhodně zvolené hašovací funkce $h_1, h_2$ jsou pozice $i,j$ spojeny cestou délky $k$, je nejvýše $\frac{1}{mc^k}$.
+Nechť $S \subseteq U, |S| = n, m \geq 2cn, c>1$. Pravděpodobnost, že pro náhodně zvolené hašovací funkce $h_1, h_2$ jsou pozice $i,j$ spojeny cestou délky $k$, je nejvýše $\frac{1}{mc^k}$.
 \end{theorem}
 \begin{proof}
-Induction on $k$:
+Matematickou indukcí přes $k$:
 \begin{enumerate}
-	\item [$k=1$] For one element, the probability that it forms an edge $ij$ is $2/m^2$ . So, the probability that there is an edge $ij$ is at most $\frac{2n}{m^2} \leq \frac{1}{mc}$
+	\item [$k=1$] Pravděpodobnost existence hrany $ij$ v kukaččím grafu pro prvek $x \in S$ je
+	\begin{align*}
+	  &P[h_1(x)=i \wedge h_2(x)=j] + P[h_1(x)=j \wedge h_2(x)=i] \\
+	  \leq & P[h_1(x)=i] \cdot P[h_2(x)=j] + P[h_1(x)=j] \cdot P[h_2(x)=i] \\
+	  \leq & \frac{1}{m} \cdot \frac{1}{m} + \frac{1}{m^2} = \frac{2}{m^2}\,. \\
+	\end{align*}
+Pravděpodobnost existence hrany $ij$ je tedy nejvýše $n\frac{2}{m^2} \leq \frac{1}{mc}$.
 	
-	\item[$k > 1$] There exists a path between $i$ and $j$ of length $k$ if there exists a path from $i$ to $u$ of length $k - 1$ and an edge $uj$. For one position $u$, the $i-u$ path exists with probability
-	$\frac{1}{mc^{k-1}}$. The conditional probability that there exists the edge $uj$ if there exists $i-u$
-	path is at most $\frac{1}{mc}$ because some elements are used for the $i-u$ path. By summing
-	over all positions $u$, the probability that there exists $i-j$ path is at most
+	\item[$k > 1$] There exists a path between $i$ and $j$ of length $k$ if there exists a path from $i$ to $u$ ($i\rightarrow u$) of length $k - 1$ and an edge $uj$. For one position $u$, the $i\rightarrow u$ path exists with probability
+	$\frac{1}{mc^{k-1}}$. The conditional probability that there exists the edge $uj$ if there exists $i\rightarrow u$
+	path is at most $\frac{1}{mc}$ because some elements are used for the $i\rightarrow u$ path. By summing
+	over all positions $u$, the probability that there exists $i\rightarrow j$ path is at most
 	$$m\frac{1}{mc^{k-1}}\frac{1}{mc} = \frac{1}{mc^k}$$
 \end{enumerate}
 \end{proof}
 
 \begin{theorem}
-Nechť $S \subseteq U, |S| = n, m \leq 2cn, c>1$. Pravděpodobnost, že pro náhodně zvolené hašovací funkce $h_1, h_2$ obsahuje kukačkový graf cyklus je nejvýše $\frac{1}{2}$.
+Nechť $S \subseteq U, |S| = n, m \geq 2cn, c>1$. Pravděpodobnost, že pro náhodně zvolené hašovací funkce $h_1, h_2$ obsahuje kukačkový graf cyklus je nejvýše $\frac{1}{2}$.
 \end{theorem}
 \begin{proof}
 Pravděpodobnost cyklu délky $k$ vedoucího přes $i$ je dle předchozí věty $\frac{1}{mc^k}$. 
@@ -2969,21 +2975,21 @@ Amortizovaná složitost přehašování je $O(1)$ (je ale vhodné jej dělat mi
 \subsection{Univerzální hashování}
 Problém pevné hašovací funkce: pokud $N > mn$, tak pro každou hašovací funkci $h$ existuje $S \subseteq U$ velikosti $n$ taková, že $h$ hašuje všechny prvky $S$ do jedné přihrádky.
 
-Budeme chtít sestrojit množinu funkcí $H : U \to M$, takový, že náhodně zvolená funkce $f \in H$ hešuje libovolnou množinu $S$ \uv{většinou dobře}. 
+Budeme chtít sestrojit množinu funkcí $H : U \to M$ takovou, že náhodně zvolená funkce $f \in H$ hešuje libovolnou množinu $S$ \uv{většinou dobře}. 
 
 \emph{Definice}: Systém funkcí $H = \{ h_i; i \in I\}: U\to \{0,\dots,m-1\}$ je univerzální, pokud:
-$$\forall x,y\in U, x\neq y: |\{i\in I; h_i(x)=h_i(y)\}|\leq \frac{|I|}{m}$$.
+$$\forall x,y\in U, x\neq y: |\{i\in I; h_i(x)=h_i(y)\}|\leq \frac{|I|}{m}\,.$$
 Tj. zaručuje se, že pro každé dva různé prvky má maximálně $1$ funkce kolizi.
 
-Jiná formulace: pro náhodnou $h$ z $H$ a pro $\forall x,y \in U, x \neq y$ platí $$P[h(x) = h(y)] \leq \frac{1}{m}$$
+Jiná formulace: pro náhodnou $h$ z $H$ a pro $\forall x,y \in U, x \neq y$ platí $$P[h(x) = h(y)] \leq \frac{1}{m}\,.$$
 
 \emph{Definice}: Systém funkcí $H = \{ h_i; i \in I\}: U\to \{0,\dots,m-1\}$ je $c$\emph{-univerzální}, pokud:
 
-$$\forall x,y\in U, x\neq y: |\{i\in I; h_i(x)=h_i(y)\}|\leq \frac{c|I|}{m}$$.
+$$\forall x,y\in U, x\neq y: |\{i\in I; h_i(x)=h_i(y)\}|\leq \frac{c|I|}{m}\,.$$
 
 Tj. zaručuje se, že pro každé dva různé prvky má maximálně $c$ funkcí kolizi.
 
-Jiná formulace: pro náhodnou $h$ z $H$ a pro $\forall x,y \in U, x \neq y$ platí $$P[h(x) = h(y)] \leq \frac{c}{m}$$
+Jiná formulace: pro náhodnou $h$ z $H$ a pro $\forall x,y \in U, x \neq y$ platí $$P[h(x) = h(y)] \leq \frac{c}{m}\,.$$
 
 \emph{Definice}: Systém funkcí $H = \{ h_i; i \in I\}: U\to \{0,\dots,m-1\}$ je $k$\emph{-nezávislý}, pokud pro náhodně zvolenou $h \in H$:
 
@@ -3088,7 +3094,7 @@ Existují 3 základní techniky pro amortizovanou analýzu:
 		$$\sum_{i=0}^{n}\left\lceil \frac{k}{2^i}\right\rceil \leq \sum_{i=0}^{k} (1 + \frac{k}{2^i}) \leq n + 2k$$
 		\item \textbf{Účetní metoda:} Změna jednoho bitu stojí jeden žeton a na každou operaci dostaneme dva žetony. U každého jedničkového bitu v původní bitové sekvenci si \uv{uschováme} jeden žeton. Při inkrementu máme vynulování jedničkových bitů předplaceno. Oba žetony využijeme na jedinou změnu nulového bitu na jedničku a předplacení vynulování tohoto bitu. 
 		
-		V každém okamžiku tedy máme na všech jedničkách žetony, které se použijí na jejich případné vynulování. Každá operace stojí 2 žetony, tj. $2k$ žetonů celkem. Nejvýše $n$ žetonů jsme utratili na iniciální předplacení jedniček, dohormady tedy spotřebujeme nejvýše $n + 2k$ žetonů.
+		V každém okamžiku tedy máme na všech jedničkách žetony, které se použijí na jejich případné vynulování. Každá operace stojí 2 žetony, tj. $2k$ žetonů celkem. Nejvýše $n$ žetonů jsme utratili na iniciální předplacení jedniček, dohromady tedy spotřebujeme nejvýše $n + 2k$ žetonů.
 		
 		\item\textbf{Potenciálová metoda:} Vhodnou potenciálovou funkcí je kupříkladu $\Phi = $\textit{počet jedničkových bitů}. Označíme $\Phi$ potenciál před operací a $\Phi'$ potenciál po provedení operace. Zajímá nás
 		$$\text{amortizovaný čas} = \text{skutečný čas} + (\Phi' - \Phi)$$
@@ -3102,7 +3108,7 @@ Existují 3 základní techniky pro amortizovanou analýzu:
 
 	\item \textbf{Dynamické pole}
 	
-	Máme pole, do kterého přidáváme prvky i je z něj mažeme. Implementace používá statická pole pevné velikosti $p$. Je-li v poli již $n = p$ prvků (tj. je plné) a my chceme přidat prvek, vytvoříme nové pole velikosti $2p$, do něj zkopírujeme obsah původního pole a přidám prvek. Je-li $p = 4n$ a my chceme přidat prvek, zmenšíme pole na polovinu.
+	Máme pole, do kterého přidáváme prvky i je z něj mažeme. Implementace používá statická pole pevné velikosti $p$. Je-li v poli již $n = p$ prvků (tj. je plné) a my chceme přidat prvek, vytvoříme nové pole velikosti $2p$, do něj zkopírujeme obsah původního pole a poté prvek přidáme. Je-li $p = 4n$ a my chceme prvek odebrat, zmenšíme pole na polovinu.
 	
 	\begin{enumerate}
 		\item \textbf{Agregovaná analýza:} (neformálně) Zkopírování pole trvá $O(n)$. Po zkopírování je $n = p/2$ a k dalšímu kopírování dojde nejdříve po $n/2$ operacích Insert nebo Delete. Předpokládáme-li, že operace Insert a Delete jsou konstantní (pokud nedošlo ke kopírování), pak je amortizovaná složitost $O(1)$.
@@ -3149,7 +3155,7 @@ Existují 3 základní techniky pro amortizovanou analýzu:
 \section{Chování a analýza datových struktur na systémech s paměťovou hierarchií.}
 \subsection{Paměťová hierarchie}
 
-Pamť je v moderních počítačích hierarchická, od registrů v procesoru přes cache, RAM až po pevný disk. S rostoucí velikostí však roste i doba odezvy. 
+Paměť je v moderních počítačích hierarchická, od registrů v procesoru přes cache, RAM až po pevný disk. S rostoucí velikostí však roste i doba odezvy. 
 \begin{figure}[H]
 	\centering\includegraphics[]{img/memory.png}
 	\caption{Paměťová hiearchie}
@@ -3188,7 +3194,7 @@ Procesor může přistupovat pouze k datům v cache. Paměť je plně asociativn
 
 \textbf{Cache-oblivious} algoritmus je takový algoritmus, který efektivně funguje \textbf{bez znalosti $B$ a $M$}. 
 
-Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious analýzy} -- tj. hodnoty $M$ a $B$ považujeme za neznáme a zkoumáme chování algoritmu, konkrétně počet přenesených bloků. 
+Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious analýzy} -- tj. hodnoty $M$ a $B$ považujeme za neznámé a zkoumáme chování algoritmu, konkrétně počet přenesených bloků. 
 
 \begin{itemize}
 	\item \textbf{přečtení souvislého pole:} Máme pole zapsané v paměti v kuse, chceme přečíst úsek délky $n$. Počet přenesených bloků je nejvýše 
@@ -3248,8 +3254,8 @@ Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious anal�
 						\begin{algorithmic}[1]
 							\For{$i = 1; i < n; i += B$}
 								\For{$j = i; j < n; j+= B$}
-									\For{$ii = i; ii < min(k, i+B); i++$}
-										\For{$jj = max(j,ii+1); jj < min(k, j+B); jj++$}
+									\For{$ii = i; ii < min(n, i+B); ii++$}
+										\For{$jj = max(j,ii+1); jj < min(n, j+B); jj++$}
 											\State swap($A[ii,jj], A[jj,ii]$)
 										\EndFor
 									\EndFor
@@ -3281,7 +3287,7 @@ Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious anal�
 			Rekurzivně transponujeme menší a menší podmatice, až se v nějakém $i$-tém kroku dostaneme na velikost $n_i$, která se již vejde do paměti, tj. $n_i \leq B \leq 2n_i$. Transponování v rámci této matice má stejné vlastnosti, jako v případě $B\times B$ matice u cache-aware algoritmu -- tj. nedochází k výpadkům a celkem je třeba načíst $4n_i \leq 4B$ bloků. Celkem máme $n/n_i$ těchto sumbatic, takže počet přenesených bloků je nejvýše
 			$$\left(\frac{n}{n_i} \right)^2 \cdot 4n_i \leq \frac{8n^2}{n_i} = O\left(\frac{n^2}{B}\right)$$
 			
-			To je stekný výsledek, jako v předchozím případě. Tento algoritmus však již nezávisí na $B$ a je tedy cache-oblivious.
+			To je stejný výsledek, jako v předchozím případě. Tento algoritmus však již nezávisí na $B$ a je tedy cache-oblivious.
 			
 			\begin{figure}[h]
 				\centering
@@ -3324,10 +3330,11 @@ Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious anal�
 		
 		\item \textbf{funnel-sort} Chceme dostat $O(\frac{n}{B}\log_{\frac{M}{B}}\frac{n}{M})$ (lze ukázat, že to je dolní mez pro cache oblivious třídící algoritmy). Funnelsort rozdělí data na $N^{\frac{1}{3}}$ částí o velikosti $N^{\frac{2}{3}}$, ty rekurzivně setřídí a slije pomocí $N^{\frac{1}{3}}$-mergeru. 
 		
-		Obecný \textbf{$k$-merger} je stromovitá struktura bufferů, která slije $k$ vstupních bufferů do jediného výstupního. Stuktura viz obrázek \ref{merger}.
+		Obecný \textbf{$k$-merger} je stromovitá struktura bufferů, která slije $k$ vstupních bufferů do jediného výstupního. Struktura viz obrázek \ref{merger}.
 		
-		Lze dokázat že za předpokladu tall cache je funnelsort optimální, tj. provede $O(\frac{n}{B}\log_{\frac{M}{B}}\frac{n}{M})$ přístupů do paměti.
+		Lze dokázat, že za předpokladu tall cache je funnelsort optimální, tj. provede $O(\frac{n}{B}\log_{\frac{M}{B}}\frac{n}{M})$ přístupů do paměti.
 		\begin{figure}[H]
+      \caption{Struktura pro $k$\=/merger.}
 			\label{merger}
 			\centering
 			\includegraphics[]{img/kmerger.png}
@@ -3385,8 +3392,8 @@ Pokud LRU může uložit dvojnásobný počet bloků než OPT, pak má LRU nejv�
 Zdvojnásobení velikosti cache většinou nemá vliv na asymptotický počet přenesených bloků, viz např.:
 \begin{itemize}
 	\item průchod polem: $O(\frac{n}{B})$
-	\item Mergesort: $O(\frac{n}{B}\log (\frac{n}{M})$
-	\item Funnelsort: $O(\frac{n}{B}\log_{\frac{M}{B}} (\frac{n}{B})$
+	\item Mergesort: $O(\frac{n}{B}\log (\frac{n}{M}))$
+	\item Funnelsort: $O(\frac{n}{B}\log_{\frac{M}{B}} (\frac{n}{B}))$
 	\item van Emde Boas: $O(\log_B n)$
 \end{itemize}
 
