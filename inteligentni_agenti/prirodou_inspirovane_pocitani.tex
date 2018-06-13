@@ -403,7 +403,7 @@ PSO nepoužívají gradient pro optimalizaci, což znamená, že optimalizovaná
 Obecně se definuje \textbf{Swarm Intelligence (SI)} jako \textit{“The emergent collective intelligence of groups of simple agents"}. Dvě základní vlastnosti jsou sebeorganizace a dělba práce. Kromě PSO sem lze zařadit ještě Ant Colony Optimization (ACO), Artificial Bee Colony (ABC), Glowworm Swarm Optimization, Cuckoo Search Algorithms a v jistém směru sem spadá i diferenciální evoluce (jelikož je population-based). Kromě DE se tyto algoritmy (a mnohé další, třeba i simulated annealing)  označují také nálepkou \textit{metaphor-based metaheuristics}, a to díky tomu, že jsou typicky inspirované nějakou reálnou skutečností (chování roje, chování mravenců, zpracování kovů apod.). Tyto se staly terčem kritiky pro nedostatek inovace a efektivity, kterou schovávají právě za poutavou metaforou (\url{https://en.wikipedia.org/wiki/List_of_metaphor-based_metaheuristics}).
 
 \subsubsection{Ant Colony Optimization (ACO)}
-Systém inspirovaný chování mravenců při hledání potravy, konkrétně použitím feromonů. V~podstatě jde o~techniku nalezení nejlepší cesty v~grafu. Agent (mravenec) se pohybuje v~grafu a zanechává za sebou feromonovou stopu. Pohyb se řídí rovnicí:
+Systém inspirovaný chováním mravenců při hledání potravy, konkrétně použitím feromonů. V~podstatě jde o~techniku nalezení nejlepší cesty v~grafu. Agent (mravenec) se pohybuje v~grafu a zanechává za sebou feromonovou stopu. Pohyb se řídí rovnicí:
 $$p^k_{ij}(t) = \frac{([\tau_{ij}(t)]^\alpha \cdot [\eta_{ij}]^\beta)}{(\sum\limits_{n \in J_k}[\tau_{in}(t)]^\alpha \cdot [\eta_{in}]^\beta)}$$
 
 $p^k_{ij}(t)$ je pravděpodobnost přechodu mravence $k$ z uzlu $i$ do uzlu $j$ v čase $t$, $J_k$ jsou uzly, kam má mravenec $k$ povoleno jít, $\eta_{ij}$ symbolizuje \uv{viditelnost} mezi $i$ a $j$ a $\tau_{ij}(t)$ reprezentuje množství nevypařeného feromonu mezi $i$ a $j$ v čase $t$. Parametry $\alpha$ a $\beta$ kontrolují, nakolik prohledávání závisí na feromonech. Každý mravenec $k$ má také tabu list navštívených uzlů, aby nenavštívil nějaký dvakrát.
@@ -474,7 +474,7 @@ Algoritmus tak expanduje uzly se stále vyšším ohodnocením, dokud nenarazí 
 \begin{description}
 	\leftskip 30pt
 	
-	\item[first choice HC vs. steepest ascent HC] First choide HC vezme prvního lepšího souseda, steepest zkusí všechny a vezme nejlepšího.
+	\item[first choice HC vs. steepest ascent HC] First choice HC vezme prvního lepšího souseda, steepest zkusí všechny a vezme nejlepšího.
 	\item[stochastic HC] Ze zlepšujících sousedů vybere náhodně podle míry zlepšení.
 	\item[random restart HC (or shotgun HC)] Náhodné restarty v různých místech, částečně řeší problém uvíznutí v lokálním optimu.
 \end{description}
@@ -554,7 +554,7 @@ Michiganský přístup funguje trochu jinak. Na klasifikaci se podílí \textit{
 
 Pravidla mohla mít na pravé straně kromě klasifikačního výstupu i další příznaky, tzv \uv{zprávy}. Na levé straně pravidel se pak mohly vyskytovat \uv{receptory} pro jejich příjem. Celý systém má frontu zpráv.
 
-Problémem při klasifikaci celou populací realizace algoritmu odměn pro pravidla. Původní Hollandův návrh obsahoval tzv. \textit{bucket brigade}: pravidla musejí dát část svého \uv{kreditu}, když chtějí soupeřit o možnost být v cestě k řešení. Tento systém byl ale poměrně těžkopádný. 
+Problémem při klasifikaci celou populací je realizace algoritmu odměn pro pravidla. Původní Hollandův návrh obsahoval tzv. \textit{bucket brigade}: pravidla musejí dát část svého \uv{kreditu}, když chtějí soupeřit o možnost být v cestě k řešení. Tento systém byl ale poměrně těžkopádný. 
 
 Zjednodušením tohoto systému byl \textbf{ZCS (Zero Classifier System)}. Neměl vnitřní zprávy ani žádný složitý systém alokace odměn. Síla pravidel se upravovala podle jednoduchého algoritmu:
 \begin{itemize}
@@ -757,7 +757,7 @@ Velmi často potřebujeme optimalizovat více funkcí současně, tj. místo jed
 
 Řekneme, že řešení $x$ \textbf{slabě dominuje} řešení $y$, jestliže $x$ je ve všech kritériích aspoň tak dobré jako $y$, tj. $f_i(x) \leq f_i(y)\quad \forall i \in \{1,\dots,n\}$. 
 
-Řekneme, že $x$ \textbf{dominuje} $y$, když jej slabě dominuje a navíc je aspoň v jedno kritériu lepší, tj. $\exists j: f_j(x) < f_j(y)$. 
+Řekneme, že $x$ \textbf{dominuje} $y$, když jej slabě dominuje a navíc je aspoň v jednom kritériu lepší, tj. $\exists j: f_j(x) < f_j(y)$. 
 
 Řešení $x$ a $y$ jsou \textbf{nesrovnatelná}, jestliže $x$ nedominuje $y$ a $y$ nedominuje $x$.
 

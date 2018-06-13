@@ -834,17 +834,17 @@ v nejvýše $2^i$ krocích Turingova stroje $M$.
 \bigskip
 
 \begin{minipage}{\linewidth}
-	\begin{lstlisting}[language=Python, frame=single, escapeinside={\%*}{*)}]
-	Dosazitelna(i, K1, K2):
-		if i = 0:
-			if (K1, K2) in E or K1 == K2:
-				return true
-			else
-				return false
-		for K in V:
-			if Dosazitelna(i-1, K1, K) and Dosazitelna(i-1, K, K2):
-				return true
-		return false
+	\begin{lstlisting}[language=Python, frame=single, escapeinside={(*}{*)}]
+(*\textit{Dosažitelná}($i, K_1, K_2$)*):
+  if i = 0:
+	  if (*$(K_1, K_2)$*) in E or (*$K_1 == K_2$*):
+		  return true
+	  else
+		  return false
+  for K in V:
+	  if (*\textit{Dosažitelná}($\left \lceil \frac{i}{2} \right \rceil, K_1, K$)*) and (*\textit{Dosažitelná}($\left \lceil \frac{i}{2} \right \rceil, K, K_2$)*):
+		  return true
+  return false
 	\end{lstlisting}
 \end{minipage}
 
@@ -3785,12 +3785,12 @@ Formalizovaný postup, který jsme doposud popsali:
 			\State označ \textit{root} atributem $X_j$
 			\For{$x_j$ \textbf{in} $X_j$}
 				\State přidej větev pod root
-				\State $data_{X_j = x_j} \gets$ podmonžina $data$, kde $X_j = x_j$
+				\State $data_{X_j = x_j} \gets$ podmnožina $data$, kde $X_j = x_j$
 				\If{$data_{X_j = x_j} = \emptyset$}
 					\State přidej list označený nejčastější $g$ v data
 					\State \textbf{return}	
 				\EndIf
-				\State přidej podstrem ID3($data_{X_j=x_j}, G, X \setminus {X_j}$)
+				\State přidej podstrom ID3($data_{X_j=x_j}, G, X \setminus {X_j}$)
 			\EndFor
 		\EndFunction
 	\end{algorithmic}
@@ -3851,7 +3851,7 @@ Jako míru chyby lze použít modifikované \textit{one-leave-out} a váhy jedno
 $$\hat{\vec{w}} = \arg\min_\vec{w} \sum_{i=1}^{N}\left(y_i - \sum_{m=1}^{M} w_m \hat{f}_m^{-i}(x_i) \right)^2$$
 kde $\hat{f}^{-i}_m$ je predikce $m$-tého modelu naučeného s vynecháním $i$-tého příkladu. Váhy $\vec{w}$ je lépe mít nezáporné a normalizované.
 
-Celková predikce je tedy $\sum_{m=1}^{N} \hat{w}_m \hat{f}_m(x)$.
+Celková predikce je tedy $\sum_{m=1}^{M} \hat{w}_m \hat{f}_m(x)$.
 
 \paragraph{Bumping}
 Bootstrap, ale místo agregace jen vybere nejlepší model (nejmenší chyba).
@@ -3862,7 +3862,7 @@ Stromy stavěny \emph{iterativně}, na základě chyb předchozího stromu. Nepo
 \textbf{Parametry:}
 \begin{itemize}
 \item $d$ = velikost stromů (počet listů) -- může být docela malé (i 1)
-\item $lambda$ = shrinkage parametr -- zpomaluje učení (0.001 - 0.001)
+\item $lambda$ = shrinkage parametr -- zpomaluje učení (0.0001 - 0.01)
 \item $B$ = počet stromů (\textbf{hrozí přeučení!!} ale jen pomalu, když vůbec)
 \end{itemize}
 
@@ -3983,7 +3983,7 @@ $$L_P = \min_{\beta,\beta_0}\left(\frac{1}{2}||\beta||^2 + \gamma\sum_{i=1}^{N}\
 Duální forma vyjde stejně jako pro separabilní případ, přibudou podmínky $0 \leq  \alpha_i \leq \gamma$.
 
 \paragraph{Support Vector Machine (SVM)}
-SVM přidávájí navíc oproti SVC ještě možnost nelineární transformace vstupního prostoru do příznakového prostoru (typicky vyšší dimenze) prostřednictvím tzv. \textbf{kernel} funkcí. Chceme tedy zobrazení $\Phi : X \mapsto F$. To může být však velmi výpočetně náročné. SVM využívají trik: v duální formulaci problému potebujeme (jak pro konstrukci, tak pro klasifikaci) \textit{vždy pouze skalární součin dvou vektorů}, tj. $\vec{x} \cdot \vec{z}$, resp. zobrazených vektorů $\Phi(\vec{x}) \cdot \Phi(\vec{z})$. Budou nám tedy stačit funkce počítající pro dva vektory tento součin v novém prostoru, tzv. \textbf{kernel funkce}:
+SVM přidávájí navíc oproti SVC ještě možnost nelineární transformace vstupního prostoru do příznakového prostoru (typicky vyšší dimenze) prostřednictvím tzv. \textbf{kernel} funkcí. Chceme tedy zobrazení $\Phi : X \mapsto F$. To může být však velmi výpočetně náročné. SVM využívají trik: v duální formulaci problému potřebujeme (jak pro konstrukci, tak pro klasifikaci) \textit{vždy pouze skalární součin dvou vektorů}, tj. $\vec{x} \cdot \vec{z}$, resp. zobrazených vektorů $\Phi(\vec{x}) \cdot \Phi(\vec{z})$. Budou nám tedy stačit funkce počítající pro dva vektory tento součin v novém prostoru, tzv. \textbf{kernel funkce}:
 $$K_\Phi(\vec{x},\vec{z}) = \Phi(\vec{x})\cdot\Phi(\vec{z})$$
 Předpokládáme tedy, že kernel funkce je jednodušší pro výpočet než spočíst dvě mapování do nového prostoru a poté skalární součin.
 Obvyklé kernel funkce:
@@ -4241,7 +4241,7 @@ Pro náš příklad směsi gaussovských rozdělení:
 		\State \textbf{Expectation step:} Spočti
 		$$\gamma_i = \frac{\tau\varphi_{\mu_1,\sigma_1(x_i)}}{\tau\varphi_{\mu_1,\sigma_1(x_i)} 
 			+ (1-\tau)\varphi_{\mu_2,\sigma_2(x_i)}}$$
-		\Comment{$\gamma_i$ je pravděpodobnost, že $z_i = 1$ v daném kroku, tj. pro aktuální parametry $\theta$. Máme tedy odhad $Z$, můžeme pokračovat k maximalizaci.}t
+		\Comment{$\gamma_i$ je pravděpodobnost, že $z_i = 1$ v daném kroku, tj. pro aktuální parametry $\theta$. Máme tedy odhad $Z$, můžeme pokračovat k maximalizaci.}
 		
 		\State \textbf{Maximization step:} Uprav parametry modelu $\theta$ na základě spočtených odhadů $Z$:
 		$$
@@ -4308,7 +4308,7 @@ Dva typy nekonzistence (pro binární klasifikaci) \textbf{falešně negativní}
 \paragraph{Metoda nejlepší současné hypotézy}
 Udržujeme jednu hypotézu (current-best hypothesis) a podle příkladů ji upravujeme:
 \begin{itemize}
-\item příklad je s hypotézou konzistentní konzistentní $\to$ hypotézu \textbf{neměníme}
+\item příklad je s hypotézou konzistentní $\to$ hypotézu \textbf{neměníme}
 \item falešně negativní $\to$ hypotézu \textbf{zobecníme}
 
 Pokud je hypotéza $h_1$ \textit{zobecněním} hypotézy $h_2$, potom platí $\forall x \ C_2(x) \Rightarrow C_1(x)$.
@@ -4462,7 +4462,7 @@ Využití metod strojového učení má mnoho výhod:
 	
 	
 	\item Statistické učení se automaticky zaměřuje na \textbf{nejčastější} (a tedy důležité) případy.
-	\item Budované modely jsou typicky \textbf{robustní} vůči novým \textbf{neznámémým datům} a \textbf{zašuměnému či chybnému vstupu}. Toho je u ručně psaných pravidel velmi obtížné dosáhnout.
+	\item Budované modely jsou typicky \textbf{robustní} vůči novým \textbf{neznámým datům} a \textbf{zašuměnému či chybnému vstupu}. Toho je u ručně psaných pravidel velmi obtížné dosáhnout.
 	\item Modely lze zpřesňovat poskytnutím dodatečných trénovacích dat. U ručně psaných pravidel to lze pouze zvyšováním komplexity modelu.
 \end{itemize}
 
@@ -4496,7 +4496,7 @@ $$H_p(p') = -\sum\limits_{x \in \Omega} \sum\limits_{y \in \Psi} p(x,y) \cdot \l
 $$H_p(p') = -\frac{1}{|T|}\sum\limits_{i = 1 \dots |T|}\log_2 p'(y_i|x_i)$$ 
 
 \subsection{Modelování jazyka, zašuměný kanál}
-\textbf{Zašuměný kanál} je označení pro modela média, které k přenášeným slovům přidá nějaký šum. Formálně: do kanálu vstupuje nějaká sekvence symbolů, z něj pak vystupuje pozměněná, zašuměná sekvence, kterou my přijmeme. Cílem je tedy na základě přijaté zašuměné sekvence uhodnout původní zprávu.
+\textbf{Zašuměný kanál} je označení pro model média, které k přenášeným slovům přidá nějaký šum. Formálně: do kanálu vstupuje nějaká sekvence symbolů, z něj pak vystupuje pozměněná, zašuměná sekvence, kterou my přijmeme. Cílem je tedy na základě přijaté zašuměné sekvence uhodnout původní zprávu.
 
 \begin{figure}[H]
 	\centering
@@ -4578,7 +4578,7 @@ Strategie:
 	
 	\textit{Idea:} zkombinovat různé řády $n$-gramů:
 	$$p'(w_i|w_{i-2}, w_{i-1}) = \lambda_3 p_3(w_i|w_{i-2}, w_{i-1}) + \lambda_2 p_2(w_{i}| w_{i-1}) + \lambda_1 p_1(w_i) + \lambda_0 \frac{1}{|V|}$$
-	kde $\lambda = (\lambda_0, \lambda_1, \lambda_2, \lambda_3)$ jsou parametry ovlivňující detailnost vs. vyhlazenost výsledné distribuce. Platí $\forall i \lambda_1 > 0, \sum_i \lambda_i = 1$. Tyto parametry se odhadnou EM algoritmem (detaily vynecháme) pomocí speciálně vyčleněného datesetu (\textit{heldout data}), na němž se budeme snažit minimalizovat cross-entropii pro fixní $p_1, p_2, p_3$. Je nutné použít jiná data, než trénovací (ze kterých jsme získali $p_1, p_2, p_3$), jinak by došlo k degeneraci modelu k $\lambda = (0,0,0,1)$. Obecně se v NLP rozdělují dostupná data na 3 části: \textit{trénovací, testovací} a \textit{heldout data}.
+	kde $\lambda = (\lambda_0, \lambda_1, \lambda_2, \lambda_3)$ jsou parametry ovlivňující detailnost vs. vyhlazenost výsledné distribuce. Platí $\forall i \lambda_i > 0, \sum_i \lambda_i = 1$. Tyto parametry se odhadnou EM algoritmem (detaily vynecháme) pomocí speciálně vyčleněného datesetu (\textit{heldout data}), na němž se budeme snažit minimalizovat cross-entropii pro fixní $p_1, p_2, p_3$. Je nutné použít jiná data, než trénovací (ze kterých jsme získali $p_1, p_2, p_3$), jinak by došlo k degeneraci modelu k $\lambda = (0,0,0,1)$. Obecně se v NLP rozdělují dostupná data na 3 části: \textit{trénovací, testovací} a \textit{heldout data}.
 	%TODO EM smoothing algoritmus
 	
 \end{description}
@@ -4598,7 +4598,7 @@ I pro třídy lze použít lineárně vyhlazený model.
 
 Rozdělení slov do tříd můžeme získat třeba z nějakého slovníku, nicméně jak je ve strojovém učení zvykem, raději ho sestrojíme z dostupných dat. Algoritmus je následující:
 
-Nechť $V$ je množina slov (=slovník), $C$ je množina tříd a $r : V \mapsto C$ je mapování slov do do tříd.
+Nechť $V$ je množina slov (=slovník), $C$ je množina tříd a $r : V \mapsto C$ je mapování slov do tříd.
 \begin{enumerate}
 	
 	
@@ -4651,7 +4651,7 @@ Výstup se v této nejobecnější verzi generuje \textit{na přechodových hran
 		
 		
 		\item iniciální trellis sloupec $t_0$: obsahuje jenom $s_0$, nastav $\alpha(s_0, 0) = 1$
-		\item na základě sloupce $t_{i-1}$ a aktuálního vstupního symbolu $y_i$ vytvoř následující sloupec trellis grafu, ale vyber pouze stavy, do nichž se dá dostat z aktuálního sloupce a které generují $y_1$ (resp. takové, že přechodová hrana generuje $y_1$)
+		\item na základě sloupce $t_{i-1}$ a aktuálního vstupního symbolu $y_i$ vytvoř následující sloupec trellis grafu, ale vyber pouze stavy, do nichž se dá dostat z aktuálního sloupce a které generují $y_{i+1}$ (resp. takové, že přechodová hrana generuje $y_{i+1}$)
 		\item nastav $\alpha(state,i) = \sum\limits_{s \in t_{i-1}, \exists\text{hrana }s\rightarrow state} P_S(state|s) \cdot \alpha(s, i-1) \cdot P_Y(y_i|s,state)$
 		\item jakmile $i = |Y|$ (vstup je vyčerpán), nastav $P(Y) = \sum\limits_{s \in t_{|Y|}} \alpha(s,|Y|)$	
 	\end{enumerate}
@@ -4742,7 +4742,7 @@ Různé přístupy k tagování:
 
 
 \subsection{Statistický parsing}
-\textbf{Parsing (parsování)} je označení pro proces, kdy je pro vstupní větu, o níž předpokládáme, že byla vytvořena nějakou gramatikou, nalezena posloupnost pravidel této gramatiky, kterou byla věta nejpravděpodobněji vytvořena. Typicky se pro větou rovnou sestrojí \textit{parsovací strom}.
+\textbf{Parsing (parsování)} je označení pro proces, kdy je pro vstupní větu, o níž předpokládáme, že byla vytvořena nějakou gramatikou, nalezena posloupnost pravidel této gramatiky, kterou byla věta nejpravděpodobněji vytvořena. Typicky se pro větu rovnou sestrojí \textit{parsovací strom}.
 
 TODO
 
@@ -5105,7 +5105,7 @@ Některé Na$^+$ a K$^+$ kanály jsou \textit{voltage-gated}, tj. při dosažen�
 
 \subsection{Modely pro učení s učitelem}
 \subsubsection{Formální neuron}
-\textbf{Formální neuron} s vahami $(w_1, w_2, \dots w_n) \in \R^n$, prahem $\theta \in \R$ a přenosovou funkcí $f : \R^{n+1} \times \R^n \rightarrow \R$ počítá pro libovolný vstup $\vec{x} \in \R^n$ svůj výstup $y$ jako hodnotu přenosové funkce $f$ v $\vec{x}$, $f[\vec{w}, \theta](\vec{z})$. Mezi nejznámější \textbf{přenosové funkce} (také \textbf{aktivační funkce}) patří \textit{skoková} (unit step), \textit{sigmoidální} nebo \textit{hyperbolická tangentoida}. \textbf{Potenciál neuronu} je vážená suma jeho vstupů: $\xi = \sum\limits_{i=1}^n x_i w_i + \theta$. Právě tento potenciál je vstupem přenosové funkce (na přehledu níže je potenciál neuronu označen písmenem $z$).
+\textbf{Formální neuron} s vahami $(w_1, w_2, \dots w_n) \in \R^n$, prahem $\theta \in \R$ a přenosovou funkcí $f : \R^{n+1} \times \R^n \rightarrow \R$ počítá pro libovolný vstup $\vec{x} \in \R^n$ svůj výstup $y$ jako hodnotu přenosové funkce $f$ v $\vec{x}$, $f[\vec{w}, \theta](\vec{x})$. Mezi nejznámější \textbf{přenosové funkce} (také \textbf{aktivační funkce}) patří \textit{skoková} (unit step), \textit{sigmoidální} nebo \textit{hyperbolická tangentoida}. \textbf{Potenciál neuronu} je vážená suma jeho vstupů: $\xi = \sum\limits_{i=1}^n x_i w_i + \theta$. Právě tento potenciál je vstupem přenosové funkce (na přehledu níže je potenciál neuronu označen písmenem $z$).
 
 \begin{figure}[H]
 	\centering
@@ -5434,7 +5434,7 @@ Každé váze $w_i$ přidělíme její vlastní lokální parametr $\alpha_i$. V
 \end{description}
 
 \subsubsection{Algoritmy 2. řádu}
-Algoritmy, které berou v úvahu i \textbf{druhou derivaci} chybové funkce, tj. nejen graident, ale i zakřivení. Používá se \textbf{kvadratická aproximace} chybové funkce pomocí Taylorovy řady:
+Algoritmy, které berou v úvahu i \textbf{druhou derivaci} chybové funkce, tj. nejen gradient, ale i zakřivení. Používá se \textbf{kvadratická aproximace} chybové funkce pomocí Taylorovy řady:
 $$E(\vec{w} + \vec{h}) \approx E(\vec{w}) + \nabla E(\vec{w})^{T} \vec{h} + \frac{1}{2} \vec{h}^T \nabla^2 E(\vec{w}) \vec{h}$$
 Člen $\nabla^2 E(\vec{w})$  je \textit{Hessovská matice} ($n\times n$) parciálních derivací druhého řádu:
 $$
@@ -5696,7 +5696,7 @@ $$\vec{x}^T = \text{sgn}(\vec{W}\vec{y}^T) = \text{sgn}(\vec{x}^T\vec{y}\vec{y}^
 
 Chceme-li uložit více vzorů, bude Hebbovské učení fungovat lépe, pokud jsou vstupní vektory navzájem ortogonální a výstupní rovněž. Pro $m$ dvojic vektorů, které chceme uložit, bude váhová matice mít tvar
 $$\vec{W} = \vec{x_1}^T\vec{y_1} + \vec{x_2}^T\vec{y_2} + \dots + \vec{x_m}^T\vec{y_m}$$
-BAM lze použí pro konstrukci autoasociativních sítí, protože matice vah vytvořené Hebbovským učením jsou symetrické.
+BAM lze použít pro konstrukci autoasociativních sítí, protože matice vah vytvořené Hebbovským učením jsou symetrické.
 
 
 \subsubsection{Energetická funkce BAM}
@@ -5869,9 +5869,10 @@ $m$ daných vektorů odpovídalo stabilním stavům sítě (i když taková mati
 
 Alternativou je použít percetronové učení. Uvažme Hopfieldovu síť s $n$ neurony, které mají nenulový práh a bipolární přenosovou funkci (výstup 1 nebo -1). Nechť $\vec{W}$ je $n\times n$ matice vah a $\theta$ $n$-rozměrný vektor prahů. Chceme-li si zapamatovat vektor $\vec{x} = (x_1,\dots x_n)$, pak tento vektor bude odpovídat stabilnímu stavu, jestliže se po jeho předložení síti nezmění stav sítě, tj. pro každou složku je znaménko excitace příslušného neuronu (mínus práh) stejné jako předchozí stav. Tedy
 \begin{align*}
-	\text{Neuron 1: } sgn(x_1)(0 +x_2w_{12}+x_3w_{13} + \dots  + x_nw_{1n} -\theta_1) < 0\\	\text{Neuron 2: } sgn(x_1)(x_1w_{21}  + 0 +x_3w_{23} + \dots  + x_nw_{2n} -\theta_2) < 0\\
+	\text{Neuron 1: } sgn(x_1)(0 + x_2w_{12} + x_3w_{13} + \dots + x_nw_{1n} - \theta_1) > 0\\
+	\text{Neuron 2: } sgn(x_2)(x_1w_{21} + 0 + x_3w_{23} + \dots + x_nw_{2n} - \theta_2) > 0\\
 	\vdots\\
-	\text{Neuron n: } sgn(x_1)(x_1w_{n1} +x_2w_{n2} + x_3w_{n3} + \dots + 0 -\theta_n) < 0\\
+	\text{Neuron n: } sgn(x_n)(x_1w_{n1} + x_2w_{n2} + x_3w_{n3} + \dots + 0 - \theta_n) > 0\\
 \end{align*}
 Díky symetrii vah má váhová matice $\vec{W}$ pouze $n\cdot(n-1)/2$ nenulových prvků. Sestrojíme vektor $\vec{v}$ dimenze $n(n-1)/2 + n$:
 $$\vec{v} = (
@@ -5901,7 +5902,7 @@ Nyní můžeme psát předchozí nerovnosti jako
 \text{Neuron n: } sgn(x_n)\vec{z}_n \vec{v} > 0\\	
 \end{align*}
 
-Což odpovídá lineární separaci $z_1,z_2,\dots z_n$. Pro $m$ vektoru $\vec{x}$ jde tedy o separaci $mn$ pomocných vektorů $z$. Pomocí perceptronového učení můžeme nalézt správný váhový vektor $\vec{v}$ (pokud separace existuje). Tento vektor kóduje váhovou matici a prahy odpovídající správnému řešení.
+Což odpovídá lineární separaci $z_1,z_2,\dots z_n$. Pro $m$ vektorů $\vec{x}$ jde tedy o separaci $mn$ pomocných vektorů $z$. Pomocí perceptronového učení můžeme nalézt správný váhový vektor $\vec{v}$ (pokud separace existuje). Tento vektor kóduje váhovou matici a prahy odpovídající správnému řešení.
 
 \subsubsection{Hledání suboptimálních řešení (řešení NP-úplných problémů pomocí Hopfieldovy sítě)}
 Hopfieldovy sítě lze použít pro řešení těžkých optimalizačních úloh. Základní myšlenkou je přeformulovat úlohu tak, aby její analytický zápis byl isomorfní energetické funkci nějakého Hopfieldova modelu. Ten pak nalezne lokální minimum této funkce a tím i nějaké suboptimální řešení daného problému.
@@ -5980,7 +5981,7 @@ Pro velké $T$ je $p_{\Delta E} \approx \frac{1}{2}$, tj. aktualizace nastane p�
 Navíc lze ukázat, že touto strategií lze dosáhnout (asymptoticky) globálního minima energetické funkce.
 
 \subsubsection{Boltzmannův stroj}
-\textbf{Boltzmannův stroj} je Hopfieldova síť, která se skládá z $n$ neuronů se stavy $x_1, x_2, \dots, x_n$. Stav neuronu i se aktualizuje asynchronně podle pravidla:
+\textbf{Boltzmannův stroj} je Hopfieldova síť, která se skládá z $n$ neuronů se stavy $x_1, x_2, \dots, x_n$. Stav neuronu $i$ se aktualizuje asynchronně podle pravidla:
 $$x_i = 
 \begin{dcases*}
 1 &\quad s pravděpodobností $p_i$ \\
@@ -6047,7 +6048,7 @@ kde $\vec{x^*}$ je centroid $X$ a $K$ je konstanta.
 \begin{description}
 	\item[$k$-NN ($k$ nejbližších sousedů) -- supervised] Trénovací vzory jsou klasifikovány do jedné z tříd a \textit{všechny uloženy}. Nový vzor se pak zařadí do té třídy, kam patří většina z jeho $k$ nejbližších sousedů.
 	
-	\item[$k$-means ($k$ středů) -- unsupervised] Na začátku máme $k$ vektorů, každý ve svém vlastním shluku. Nový vektor je klasifikován k tomu shluku, jehož centroid je mu nejblíž. Cetnroid se pak aktualizuje
+	\item[$k$-means ($k$ středů) -- unsupervised] Na začátku máme $k$ vektorů, každý ve svém vlastním shluku. Nový vektor je klasifikován k tomu shluku, jehož centroid je mu nejblíž. Centroid se pak aktualizuje
 	$$\vec{c}_k = \vec{c}_k + \frac{1}{n_k}(\vec{x} - \vec{c}_k)\qquad \text{kde $n_k$ je velikost shluku $k$}$$
 	Jedná se vlastně o vektorovou kvantizaci.
 \end{description}
@@ -6476,8 +6477,8 @@ Díky použití Gaussovských funkcí je výsledná aproximace spojitá, viz. ob
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7]{img/rbf_2.png}
-	\label{rbf_gauss}
 	\caption{Aproximace funkce pomocí RBF.}
+	\label{rbf_gauss}
 \end{figure}
 
 \subsection{Vícevrstvé Kohonenovy mapy}
