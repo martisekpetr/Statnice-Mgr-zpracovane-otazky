@@ -45,6 +45,9 @@
 
 %\setlist[enumerate]{labelsep=*, leftmargin=1.5pc}
 
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
@@ -3480,8 +3483,8 @@ Očekávaná hodnota:
 $$E(Y-\hat{Y})^2 = E[f(X) + \epsilon - \hat{f}(X)]^2$$
 
 \begin{itemize}		
-	\item reducibilní chyba ($[f(X) - \hat{f}(X)]^2$ -- špatně naučený model
-	\item ireducibilní chyba($Var(\epsilon)$)-- vliv neměřených veličin, náhody, šumu v datech 
+	\item reducibilní chyba ($[f(X) - \hat{f}(X)]^2$) -- špatně naučený model
+	\item ireducibilní chyba ($Var(\epsilon)$) -- vliv neměřených veličin, náhody, šumu v datech 
 \end{itemize}
 
 \paragraph{Míry chyby pro regresi}
@@ -3550,7 +3553,7 @@ Máme $N$ vzorků, z nich vybereme \textit{s opakováním} $N$ vzorků do tréno
 
 Provedeme mnoho bootstrap výběrů a celkovou chybu spočteme jako 
 $$\overline{Err}^{(1)} = \frac{1}{N}\sum_{i=1}^{N}\frac{1}{|C^{-i}|}\sum_{b\in C^{-i}} L(y_i, \hat{f}^{b}(x_i))$$
-kde $C^{-1}$ je množina bootstrap výběrů nebosahujících vzorek $i$.
+kde $C^{-1}$ je množina bootstrap výběrů neobsahujících vzorek $i$.
 
 Takto formulovaná chyba je pesimistická, neboť učíme na $N$ datech, která ale reálně pocházejí pouze z 0.632$N$ dat, proto korekce přičtením chyby na trénovacích datech:
 
@@ -3568,10 +3571,12 @@ $$w = \frac{0.632}{1 - 0.368\cdot\hat{R}}
 $$
 
 
-regularizace: p >> n
-* subset selection
-* shrinkage (ridge, lasso)
-* dimension reduction (PCA, PCR, PLS)
+regularizace: $p >> n$
+\begin{itemize}
+  \item subset selection
+  \item shrinkage (ridge, lasso)
+  \item dimension reduction (PCA, PCR, PLS)
+\end{itemize}
 
 \subsubsection{PCA (Principal Component Analysis)}
 Statistická metoda pro redukci prostoru příznaků pomocí ortogonální transformace. Z původních potenciálně korelovaných příznaků získáme menší množství dekorelovaných příznaků, tzv. \textit{principal components}. První komponenta má největší možný rozptyl (tj. vysvětluje nejvíce rozdílů v datech), další jsou na ni kolmé a opět mají co největší rozptyl. Získáme dekorelovanou ortogonální bázi.
@@ -3580,7 +3585,7 @@ Intuitivně: hledáme elipsoid obalující data. Osy elipsoidu jsou principal ko
 
 Synonyma: PCA, Karhunen-Loeve transformace, Singular Value Decomposition, Eigenvalue Decomposition, factor analysis, \dots
 
-Výpočet 
+Výpočet:
 1. eigenvalue decomposition
 2. singular value decomposition
 
@@ -3592,7 +3597,7 @@ Předpokládáme lineární vztah, tj. $Y \approx \beta_0 + \beta_1 X$. Náš mo
 
 Odhadneme $\hat{\beta}_0, \hat{\beta}_1$ z dat: 
 \begin{itemize}
-	\item definujeme \textbf{residuum} vzorku jako $y_i - \hat{y}_i = y_i - (\hat\beta_0 + \hat\beta_1x_i)$
+	\item definujeme \textbf{residuum} $i$-tého vzorku jako $e_i = y_i - \hat{y}_i = y_i - (\hat\beta_0 + \hat\beta_1x_i)$
 	\item \textbf{RSS (residual sum of squares)} = $e_1^2 + e_2^2 + \dots + e_n^2$
 	\item RSS chceme minimalizovat (=MSE, minimal square error), takže zderivujeme a položíme rovno 0. Dostaneme
 	$$\hat\beta_1 = \frac{\sum_{i=1}^{n}(x_i-\overline{x})(y_i - \overline{y})}{\sum_{i=1}^{n}(x_i-\overline{x})^2}
@@ -3610,7 +3615,7 @@ SE(\hat{\beta}_1)^2 = \frac{\delta^2}{\sum_{i=1}^{n}(x_i - \overline{x})}
 \qquad
 SE(\hat{\beta}_0)^2 = \delta^2 \left[\frac{1}{n} + \frac{\overline{x}^2}{\sum_{i=1}^{n}(x_i - \overline{x})} \right]$$
 
-kde $\delta^2 = Var(\epsilon)$, taktéž označován jako RSE (standard residual error). Odhaduje se jako $RSE = \sqrt{RSS/(n-2}$.
+kde $\delta^2 = Var(\epsilon)$, taktéž označován jako RSE (standard residual error). Odhaduje se jako $RSE = \sqrt{RSS/(n-2)}$.
 
 \subparagraph{Intervaly věrohodnosti:} na 95\,\% leží $\beta_1$ v intervalu $[\hat{\beta}_1 - 2\cdot SE(\hat{\beta}_1), \hat{\beta}_1 + 2\cdot SE(\hat{\beta}_1)]$, analogicky $\beta_0$.
 
@@ -3629,7 +3634,7 @@ Chceme-li ohodnotit, jak dobře model odpovídá datům, můžeme použít
 	\item $R^2 = \frac{TSS - RSS}{TSS}$, kde $RSS = \sum_{i=1}^{n}(y_i - \hat{y}_i)^2$ a $TSS = \sum_{i=1}^{n}(y_i - \overline{y})^2$ (total sum of squares). Hodnota TSS vyjadřuje rozptyl v Y, RSS je rozptyl, který zůstal \uv{nevysvětlen} regresí; TSS - RSS je pak rozptyl v Y, který \uv{vysvětluje} regrese. $R^2$ tedy vyjadřuje \textbf{kolik procent rozptylu v $Y$ lze vysvětlit pomocí $X$}.
 \end{itemize}
 \paragraph{Vícerozměrná lineární regrese}
-Vícerozměrná lineární funkce, tj. $Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \dots + \beta_px_p + \epsilon$. Náš model bude tedy $\hat{y} = \hat{\beta}_0 + \sum_{i=1}^{n}X_i\hat{\beta}_i$. Rozšíříme li vektory $x$ na $x = \langle1, x_1, x_2,\dots\rangle$, můžeme psát maticově:
+Vícerozměrná lineární funkce, tj. $Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \dots + \beta_px_p + \epsilon$. Náš model bude tedy $\hat{y} = \hat{\beta}_0 + \sum_{i=1}^{n}X_i\hat{\beta}_i$. Rozšíříme-li vektory $x$ na $x = \langle1, x_1, x_2,\dots\rangle$, můžeme psát maticově:
 $$\hat{y} = X\beta$$
 
 Pro odhad parametrů $\beta$ použijeme opět RSS:
@@ -3660,8 +3665,8 @@ Derivací podle $\beta$ dostaneme $X^T(y-X\beta) = 0$. Pro regulární matice vy
 \subsubsection{Lineární metody pro klasifikaci (logistická regrese, LDA, QDA)}
   \begin{itemize}
 	\item klasifikace: kvalitativní cílová proměnná $G$, předpověz správnou $G_k \in G$ nebo $p_k = P(G=G_k | X)$
-	\item LINEÁRNÍ metody = hranice mezi třídami je linární
-	\item NE lineární regrese:
+	\item LINEÁRNÍ metody = hranice mezi třídami je lineární
+	\item NElineární regrese:
 	\begin{itemize}
 		\item číselné kódování je špatně (není přirozené pořadí, škála; jiná pořadí mohou dát jiné výsledky)
 		\item pro bin. G by šlo, ale logistická je lepší (žádné negativní pravděpodobnosti)
@@ -3681,9 +3686,9 @@ Derivací podle $\beta$ dostaneme $X^T(y-X\beta) = 0$. Pro regulární matice vy
 	
 	Kvalitativní prediktory lze řešit dummy proměnnými stejně jako u lin. regrese.
 
-	\subparagraph{Více rozměrná logistická regrese}
+	\subparagraph{Vícerozměrná logistická regrese}
 	Více prediktorů:
-	$$p(X) = \frac{\exp(\beta_0 + \beta_1X_1 + \dots + \beta_pX_p)}{1 + \exp(\beta_0 + \beta_1 X_ + \dots + \beta_pX_p)}$$
+	$$p(X) = \frac{\exp(\beta_0 + \beta_1X_1 + \dots + \beta_pX_p)}{1 + \exp(\beta_0 + \beta_1 X_1 + \dots + \beta_pX_p)}$$
 	
 	Více cílových tříd: existuje, spíše se ale používá LDA.
 
@@ -3695,7 +3700,7 @@ Derivací podle $\beta$ dostaneme $X^T(y-X\beta) = 0$. Pro regulární matice vy
 			\item každá třída vlastní mean, ale společná kovarianční matice (kovariance mezi prediktory) $\to$ stejně tvarované elipsy
 		\end{itemize}
 		\item aproximuje bayesovský klasifikátor (=ideální klasifikátor při znalosti tříd)
-		\item různá cena chyby -\textgreater{} posun hranice z 0.5 třeba na 0.2
+		\item různá cena chyby $\to$ posun hranice z 0.5 třeba na 0.2
 		\item ROC křivka
 	\end{itemize}
 	\paragraph{QDA (Quadratic Discriminant Analysis)}
@@ -3716,7 +3721,7 @@ Derivací podle $\beta$ dostaneme $X^T(y-X\beta) = 0$. Pro regulární matice vy
 \subsubsection{Rozhodovací stromy}
 Rozhodovací strom pro daný cílový atribut $G$ je kořenový strom tvořený z 
 \begin{itemize}
-	\item \textit{kořene a vnitřních listů označených atributem}, ze kterého vede jedna hrana pro každou možnou hodnotu tohoto atributu (případně interval pro spojité predikáty)
+	\item \textit{kořene a vnitřních vrcholů označených atributem}, ze kterého vede jedna hrana pro každou možnou hodnotu tohoto atributu (případně interval pro spojité predikáty)
 	\item \textit{listů označených předpokládanou hodnotou cílového atributu G} za předpokladu, že ostatní atributy nabývají hodnot daných uzly na cestě od kořene do tohoto listu
 \end{itemize}
 
@@ -3731,7 +3736,7 @@ Stromy mohou být
 \begin{itemize}
 	\item \textbf{regresní} -- list obsahuje průměr hodnot cílové veličiny v regionu daném atributy ($\to$ schodovitý graf). Jako míru chyby lze použít RSS.
 	
-	\item \textbf{klasifikační} -- list obsahuje najčetnější třídu v regionu daném atributy. Jako míru chyby lze použít:
+	\item \textbf{klasifikační} -- list obsahuje nejčetnější třídu v regionu daném atributy. Jako míru chyby lze použít:
 	\begin{itemize}
 		\item \textbf{classification error rate}: pro každý region $R_m$ (jehož vypočtenou třídu označíme jako $k(m)$) spočti
 		$$\frac{1}{|R_m|} \sum_{i \in R_m} I(y_i \neq k(m)) = 1 - p_{m,k(m)}$$
@@ -3830,7 +3835,7 @@ Abych mohli vytrénovat mnoho různých modelů, potřebujeme mnoho trénovacíc
 Užité rozhodovací stromy \textit{nejsou prořezané}. Čím víc stromů, tím lépe (nehrozí overfitting), stačí zastavit jakmile se chyba ustálí (používá se cca 100 - 1000 stromů, záleží na problému).
 
 \subparagraph{OOB (Out Of Bag) error estimation}
-Pro odhad chyby bagged modelu nepotřebujeme krosvalidaci, protože bootstrapping přirozeně vytváří vhodná \uv{testovací data}. Pro každý model totiž použijeme jen cca $0.638\cdot N$ původních dat, zbytek jsou tzv. \textit{out-of-the-bag observations} = data nepoužitá v daném modelu. To znamená, že libovolný $i$-tý prvek jej cca $B/3$ modelů nepoužívá pro učení ($B$ = celkový počet stromů v ansámblu) -- na těchto modelech tedy můžeme testovat, jak dobře zvládnou $i$-tý prvek klasifikovat.
+Pro odhad chyby bagged modelu nepotřebujeme krosvalidaci, protože bootstrapping přirozeně vytváří vhodná \uv{testovací data}. Pro každý model totiž použijeme jen cca $0.638\cdot N$ původních dat, zbytek jsou tzv. \textit{out-of-the-bag observations} = data nepoužitá v daném modelu. To znamená, že libovolný $i$-tý prvek cca $B/3$ modelů nepoužívá pro učení ($B$ = celkový počet stromů v ansámblu) -- na těchto modelech tedy můžeme testovat, jak dobře zvládnou $i$-tý prvek klasifikovat.
 
 Celková průmerná chyba se tedy spočte jako průměr chyb pro predikci jednotlivých prvků, které vypočteme na stromech, v nichž nebyl prvek použit při učení. Typ chyby záleží na úloze (MSE pro regresi; 0-1 chyba nebo log-likelihood pro klasifikaci).
 
@@ -3856,9 +3861,9 @@ Stromy stavěny \emph{iterativně}, na základě chyb předchozího stromu. Nepo
 
 \textbf{Parametry:}
 \begin{itemize}
-\item $d$ = velikost stromů (počet listů) - může být docela malé (i 1)
-\item $lambda$ = shrinkage parametr - zpomaluje učení (0.001 - 0.001)
-\item $B$ = počet stromů (\textbf{hrozí přeučení!! }ale jen pomalu, když vůbec
+\item $d$ = velikost stromů (počet listů) -- může být docela malé (i 1)
+\item $lambda$ = shrinkage parametr -- zpomaluje učení (0.001 - 0.001)
+\item $B$ = počet stromů (\textbf{hrozí přeučení!!} ale jen pomalu, když vůbec)
 \end{itemize}
 
 \textbf{Algoritmy:}
@@ -4016,8 +4021,8 @@ Vzdálenost prvků $d(x_i, x_j)$ je typicky aplikačně závislá, silně na ní
 Většinou není dán, třeba nějak zvolit. Chceme minimalizovat součet vzdáleností uvnitř klastrů, tj.
 
 $$W(C) = \frac{1}{2} \sum_{k=1}^{K} \sum_{i \in C_k} \sum_{j \in C_k}  d(x_i, x_j)$$
-to ale klesá s rostoucím $K$ i pro rovnoměrně rozložená data, tzn. minimum nastane pro každý prvek ve vlastním klastru. Zkusíme tedy místo toho najít $K$, při němž dojde ke \textit{zpomalení klesání}, tj
-$\{W_k - W_{k+1} |\ k < k^* \} \gg \{W_{k} - W_{k+1}\ |\ k \geq k* \}$
+to ale klesá s rostoucím $K$ i pro rovnoměrně rozložená data, tzn. minimum nastane pro každý prvek ve vlastním klastru. Zkusíme tedy místo toho najít $K$, při němž dojde ke \textit{zpomalení klesání}, tj.
+$\{W_k - W_{k+1} |\ k < K \} \gg \{W_{k} - W_{k+1}\ |\ k \geq K \}$
 což je docela dobře fungující heuristika. Lze také použít \textit{\uv{gap} statistiku}, která porovnává $\log W_k$ s křivkou získanou pro uniformně rozložená data (přes obdélník obsahující data). Optimální K $\sim$ největší \uv{gap} mezi křivkami (expected curve - observed curve). 
 
 \paragraph{$k$-medoids}
@@ -4028,7 +4033,7 @@ Postupně shlukujeme data až do jediného klastru, přitom vytváříme \textit
 
 \subparagraph{Metody}
 \begin{itemize}
-	\item \textbf{odspoda (bottom-up}) Na začátku každý vzorek ve svém klastru. Sloučuje dva klastry s minimální vzdáleností (maximal similarity) dokud nemáme 1 klastr. Možnosti měření vzdálenosti/podobnosti mezi klastry (=\textit{linkage}):
+	\item \textbf{odspoda (bottom-up}) Na začátku každý vzorek ve svém klastru. Slučuje dva klastry s minimální vzdáleností (maximal similarity) dokud nemáme 1 klastr. Možnosti měření vzdálenosti/podobnosti mezi klastry (=\textit{linkage}):
 	\begin{itemize}
 		\item \textbf{single linkage}: Vzdálenost mezi nejbližšími body.
 		\item \textbf{complete linkage}: Vzdálenost mezi nejvzdálenějšími body.
@@ -4046,7 +4051,7 @@ Problémy: volba dissimilarity measure, linkage, K, \dots (typicky ad hoc). Outl
 \subsubsection{Asociační pravidla}
 Pozorování $X$ sdružená pravděpodobnost $P(X)$. Chceme místa hustého výskytu dat. 
 
-\textbf{Asociační pravidla} mají za cíl najít v datech nejčastěji se vyskytující kombinace hodnot proměnných $X$. Nejčastěji uvažujeme binární data ($X_j in \{0, 1\}$). Často označováno jako \textbf{analýza nákupního koše}. 
+\textbf{Asociační pravidla} mají za cíl najít v datech nejčastěji se vyskytující kombinace hodnot proměnných $X$. Nejčastěji uvažujeme binární data ($X_j \in \{0, 1\}$). Často označováno jako \textbf{analýza nákupního koše}. 
 
 Chceme najít $L$ souřadnic a hodnoty $v_1, \dots, v_L$ tak, že $P(v_l)$ je pro každou hodnotu velká. Na to však máme málo dat, proto místo hodnot hledáme \textbf{oblasti} (intervaly / výčet hodnot), resp. pouze průniky oblastí přes různé souřadnice.
 
@@ -4467,7 +4472,7 @@ Strojové učení a NLP se vlastně dobře doplňují. NLP samotné nedokáže t
 \medskip
 \textit{Následující sekce jsou výtahem z přednášek NPFL067 a NPFL068}
 \subsection{Základy teorie informace}
-Nechť $p_X{x}$ je pravděpodobnostní rozdělení náhodné proměnné $X$ a nechť $\Omega$ je množina základních jevů. Pak \textbf{entropie} tohoto rozdělení je 
+Nechť $p_X(x)$ je pravděpodobnostní rozdělení náhodné proměnné $X$ a nechť $\Omega$ je množina základních jevů. Pak \textbf{entropie} tohoto rozdělení je 
 $$H(X) = -\sum\limits_{x \in \Omega} p(x) \cdot \log_2(p(x))$$
 Entropie vyjadřuje \textit{míru nejistoty}. Vyjadřuje se v bitech. Nejnižší možná hodnota je 0 (pokud je výsledek experimentu dán předem), horní limit obecně není -- nicméně největší nejistota odpovídá uniformnímu rozdělení, tj. pro $|\Omega| = n : H(X) \leq \log_2 (n)$. Entropii lze taktéž interpretovat jako minimální počet bitů nutných pro zakódování nějaké informace: čím předvídatelnějí jsou data, tím úspornější kódování.
 
@@ -4501,9 +4506,9 @@ $$H_p(p') = -\frac{1}{|T|}\sum\limits_{i = 1 \dots |T|}\log_2 p'(y_i|x_i)$$
 Mnoho problémů NLP lze chápat jako případ zašuměného kanálu, např. rozpoznávání mluvené řeči, OCR, strojový překlad (\uv{šum} kvůli překladu), \dots
 
 Formálně nás tedy zajímá podmíněná pravděpodobnost původní zprávy $A$ za předpokladu přijaté zprávy $B$, tedy $p(A|B)$. Díky Bayesově větě:
-$$p(A|B) = p(B|A)p(A)/p(B)$$
+$$p(A|B) = \frac{p(B|A)p(A)}{p(B)}$$
 Zajímá nás nejpravděpodobnější možnost, tj.
-$$A_best = \text{argmax}_A p(B|A)p(A)/p(B) =\text{argmax}_A p(B|A)p(A)$$
+$$A_{best} = \argmax_A \frac{p(B|A)p(A)}{p(B)} =\argmax_A p(B|A)p(A)$$
 kde $p(B)$ lze ignorovat, protože je pro všechny možnosti $A$ stejné. Náš výpočet má tedy nyní dvě složky:
 \begin{itemize}
 	
@@ -4599,7 +4604,7 @@ Nechť $V$ je množina slov (=slovník), $C$ je množina tříd a $r : V \mapsto
 	
 	\item Na začátku je každé slovo ve vlastní třídě, tj. $V = C, r = \text{id}$
 	\item Vyber dvě třídy $k,j$ takové, že
-	$$(k,l) = \text{argmax}_{k,l} I_{merge(r,k,l)}(D,E)$$
+	$$(k,l) = \argmax_{k,l} I_{merge(r,k,l)}(D,E)$$
 	kde $I(D,E)$ vyjadřuje \textit{vzájemnou informaci} pro sousední třídy, tj. $D,E$ jsou náhodné proměnné takové, že $d \in D, e \in E$ jsou třídy z $C$, které se v trénovacích datech vyskytují vedle sebe. $I_{merge(r,k,l)}(D,E)$ vyjadřuje tuto hodnotu po hypotetickém sloučení tříd $k,l$.
 	\item sluč třídy $k,l$, přitom uprav $C$ a $r$
 	\item opakuj kroky 2 a 3 dokud $|C|$ nedosáhne předem dané velikosti
@@ -4743,7 +4748,7 @@ TODO
 
 \subsection{Statistický strojový překlad}
 Klasickým přístupem je chápat strojový překlad jako problém \textbf{zašuměného kanálu}, kdy například při překladu z francouzštiny do angličtiny je nezkresleným vstupem anglická věta $E$ a \uv{zašuměným výstupem} je francouzská věta $F$. Naším cílem je pak nalézt nejpravděpodobnější původní řetězec, tj. nejpravděpodobnější překlad do EN. Formálně $P(E|F) = P(F|E)\cdot P(E) / P(F)$, nejpravděpodobnější překlad je 
-$$\text{argmax}_E = \text{argmax}_E P(E|F) = P(F|E)\cdot P(E)$$
+$$\argmax_E = \argmax_E P(E|F) = P(F|E)\cdot P(E)$$
 Opět vynecháme člen $P(F)$, jelikož ten je pro všechna $E$ stejný.
 
 Potřebujeme tedy \textbf{language model (LM)} $P(E)$, \textbf{translation model (TM)} $P(F|E)$ a vyhledávací proceduru, která k $E$ nalezne nejlepší $F$ pomocí LM a TM. 
@@ -5023,7 +5028,7 @@ Můžeme se setkat s těmito změnami: reversal, translokace, fusion a fission. 
 
 \textbf{Pořadí genů} v sekvenci budeme reprezentovat permutací $$\pi = \pi_1 \dots \pi_{i-1} \pi_{i} \pi_{i+1} \dots \pi_{j-1} \pi_{j} \pi_{j+1} \dots \pi_{n}$$
 
-\textbf{Reveresal $\rho(i,j)$} přetočí prvky $i$ až $j$ v $\pi$, tj. vznikne 
+\textbf{Reversal $\rho(i,j)$} přetočí prvky $i$ až $j$ v $\pi$, tj. vznikne 
 $$\pi = \pi_1 \dots \pi_{i-1} \pi_{j} \pi_{j-1} \dots \pi_{i+1} \pi_{i} \pi_{j+1} \dots \pi_{n}$$
 
 \textbf{Reversal distance problem:} Máme dvě permutace $\pi$ a $\sigma$, chceme nalézt nejkratší posloupnost reversalů $\rho_1,\dots \rho_t$, která transformuje $\pi$ na $\sigma$. Označíme $d(\pi, \sigma) = \min t$ jako \textbf{reversal distance permutací $\pi$ a $\sigma$}.
@@ -5150,7 +5155,7 @@ Nalezení vhodné dělicí nadroviny pro zadané body je ekvivalentní nalezení
 	\item pokud $t$ nedosáhl požadované hodnoty, přejdi ke kroku 2
 \end{enumerate}
 
-Základním principem je natáčení vektoru $\vec{w}$ (který je kolmý na dělicí nadrovinu) ve směru kladných vzorků. Je-li výstupv kroku 3 kladný, svírají $\vec{w}$ a $\vec{x}$ úhel menší než 90\,°, je-li záporný, je úhel větší než 90\,°. 
+Základním principem je natáčení vektoru $\vec{w}$ (který je kolmý na dělicí nadrovinu) ve směru kladných vzorků. Je-li výstup v~kroku 3 kladný, svírají $\vec{w}$ a $\vec{x}$ úhel menší než 90\,°, je-li záporný, je úhel větší než 90\,°. 
 
 Pro nastavení počátečních vah může být použita jednoduchá heuristika: vezmi průměr kladných vstupů mínus průměr záporných vstupů.
 
