@@ -798,7 +798,7 @@ $$|\Sigma|^{f(n)}\cdot f(n)\cdot |Q| = 2^{f(n) \log_2 |\Sigma|}2^{\log_2 f(n)}2^
 
 Horní odhad na počet konfigurací je současně i horním odhadem na časovou složitost, neboť přijímací výpočet se v každé konfiguraci octne nejvýše jednou. Pokud bychom se totiž do nějaké dostali vícekrát, pak jsme se nutně octli v cyklu a výpočet tedy nikdy neskončí, což je pro slova z $L$ spor.
 
-Stačí tedy zvolit $c_M = (\log_2 |\Sigma| + \log_2 |Q| + 1)$. 
+Stačí tedy zvolit $c_L = (\log_2 |\Sigma| + \log_2 |Q| + 1)$. 
 \end{proof}
 
 \begin{theorem}
@@ -830,7 +830,7 @@ Díky \ref{complexity_nspace_time} víme, že každý $M$ pracující v prostoru
 Hledáme cestu z $K_0^x$ (poč. konfigurace nad slovem $x$) do $K_F^x$ (přijímající konfigurace, BÚNO každá je jen jedna (jediný přijímací stav, smazaná páska, hlava na začátku)). $M$ přijme $x$ pokud existuje orientovaná cesta z $K_0^x$ do $K_F^x$. Chceme tedy algoritmus, který existenci této cesty ověří. 
 
 Zavedeme funkci \textit{Dosažitelná}($i,K_1,K_2$), která zjistí, zda z konfigurace $K_1$ je konfigurace $K_2$ dosažitelná
-v nejvýše $2^i$ krocích Turingova stroje $M$.
+v nejvýše $i$ krocích Turingova stroje $M$.
 \bigskip
 
 \begin{minipage}{\linewidth}
@@ -848,7 +848,7 @@ v nejvýše $2^i$ krocích Turingova stroje $M$.
 	\end{lstlisting}
 \end{minipage}
 
-Víme, že počet vrcholů je nejvýše $2^{c_Mf(n)}$ a tedy voláním \textit{Dosažitelná}$(c_Mf(n), K_0^x, K_F^x)$ na grafu $G_{M,x}$ zjistíme, zda existuje přijímací výpočet.
+Víme, že počet vrcholů je nejvýše $2^{c_Mf(n)}$ a tedy voláním \textit{Dosažitelná}$(2^{c_M f(n)}, K_0^x, K_F^x)$ na grafu $G_{M,x}$ zjistíme, zda existuje přijímací výpočet.
 
 Zbývá spočítat prostorovou složitost funkce \textit{Dosažitelná}. Pro otestování existence hrany na řádku 3 nám stačí přechodová funkce $\delta$ stroje $M$, která je konstatně velká a nezávislá na $n$. V cyklu na řádcích 7-9 potřebujeme generovat všechny konfigurace. Na uložení jedné konfigurace stačí $c_Mf(n)$ bitů, stačí tedy generovat všechny binární řetězce této délky a vybírat si ty, které kódují konfigurace.
 
@@ -859,7 +859,7 @@ potřebujeme tedy umět označit $c_Mf(n)$ buněk, máme-li vstup $x$ délky $n$
 
 Unární kódování přirozeně odpovídá tomu, co chceme: rezervovat buňky pro výsledek funkce; tj. zapíšeme jedničky na tolik polí, kolik chceme rezervovat. Ne každá funkce $f$ je vyčíslitelná v prostoru $O(f(n))$, nicméně pro běžné funkce to platí.}
 
-Hloubka rekurze je omezena pomocí $c_Mf(n) = O(f(n))$, protože to je počáteční hodnota $i$, které předáváme funkci jako parametr a v každém dalším voláním toto $i$ snížíme o jedna. 
+Hloubka rekurze je omezena pomocí $\log_2(2^{c_M f(n)}) = c_Mf(n) = O(f(n))$, protože počáteční hodnota $i$ je $2^{c_M f(n)}$ a v každém dalším voláním toto $i$ snížíme na polovinu. 
 
 Dohromady tedy dostaneme, že celkový prostor, který potřebujeme, je velký $O(f(n) \cdot f(n)) = O(f^2(n))$. Protože funkce Dosažitelná je deterministická, vyžaduje její volání \textit{deterministický} prostor $O(f^2(n))$. Nebylo by také obtížné na základě této funkce vytvořit DTS $M'$, který by vyžadoval týž prostor a přijímal jazyk $L$. Z toho plyne, že
 $L \in \text{SPACE}(O(f^2(n)))$.
