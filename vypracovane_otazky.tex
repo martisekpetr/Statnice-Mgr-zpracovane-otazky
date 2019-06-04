@@ -25,6 +25,7 @@
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode} 
 \usepackage{titlesec}
+\usepackage[shortcuts]{extdash}
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
@@ -43,6 +44,9 @@
 %\setlist[1]{labelindent=\parindent} % < Usually a good idea
 
 %\setlist[enumerate]{labelsep=*, leftmargin=1.5pc}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 
 \newcommand{\R}{\mathbb{R}}
@@ -367,128 +371,15 @@ $$L_\mathcal{U} = L(\mathcal{U}) = \{\langle M, x \rangle | x \in L(M)\}$$
 $\mathcal{U}$ popíšeme jako 3-páskový, protože je to technicky jednodušší. První páska obsahuje vstup $\mathcal{U}$, tedy kód $\langle M, x \rangle$. Na druhé pásce je uložen obsah pracovní pásky $M$. Symboly $X_i$ jsou zapsány jako $(i)_B$ v blocích téže délky oddělených znakem $|$. Třetí páska obsahuje číslo aktuálního stavu $q_i$ stroje $M$.
 
 
-\section{Rekurzivní a rekurzivně spočetné množiny. (TODO)}
-\textit{Nekompletní. Ale další roky prý už bude otázka změněna na Rekurzivní jazyky, takže cajk.}
 
-Rekurzivní a rekurzivně spočetné množiny se formálně definují pomocí rekurzivních funkcí. Následuje tedy posloupnost definic, které nás k nim dovedou.
-
-\subsection{Formální definice}
-Všechny funkce v následujících sekcích jsou $\N^n \mapsto \N$.
-
-\subsubsection{Základní funkce}
-\begin{enumerate}[label=\Roman*.]
-	\item \textit{konstantní nulová funkce:} $o(x) = 0$
-	\item \textit{funkce následníka:} $s(x) = x + 1$
-	\item \textit{projekce:} $I_n^j(x_1, x_2, \dots, x_n) = x_j$ (vrací hodnotu $j$-t=ho parametru)
-\end{enumerate}
-
-\subsubsection{Operátory}
-\begin{enumerate}[label=\Roman*.]
-	\item \textit{substituce:} Operátor $S_n^m$ přiřadí funkci $m$ proměnných $f$ a funkcím $n$ proměnných $g_1, g_2, \dots, g_m$ funkci $n$ proměnných $h$, pro níž platí 
-	$$h(x_1,x_2,\dots x_n) \simeq f(g_1(x_1,x_2,\dots x_n), \dots, g_m(x_1,x_2,\dots x_n))$$
-	
-	V programování odpovídá využívání funkcí a procedur v těle programu.
-	
-	\item \textit{primitivní rekurze:} Operátor $R_n(f,g)$ přiřadí funkci $n-1$ proměnných $f$ a funkci $n+1$ proměnných $g$ funkci $n$ proměnných $h$, pro níž platí
-	$$
-	h(x_1,x_2,\dots x_n) \simeq
-	\begin{dcases}
-	f(x_2,\dots x_n) &\quad x_1 = 0 \\
-	g(x_1 - 1, h(x_1 - 1,x_2,\dots x_n), x_2,\dots x_n) & x_1 > 0 \\
-	\end{dcases}
-	$$
-	
-	Odpovídá \textbf{for} cyklu. Proměnná $x_1$ slouží jako čítač.
-	
-	\item \textit{minimalizace:} Operátor $M_n(f)$ přiřadí funkci $n+1$ proměnných $f$ funkci $n$ proměnných $h$, pro níž platí
-	$$h(x_1,x_2,\dots x_n) \simeq \min\{y\ |\ f(x_1,x_2,\dots x_n,y){\downarrow}=0 \wedge (\forall z \leq y)[f(x_1,x_2,\dots x_n,z){\downarrow}]\}$$
-	
-	Odpovídá \textbf{while} cyklu.
-\end{enumerate}
-
-\subsubsection{Rekurzivní funkce}
-\textbf{Primitivně rekurzivní funkce (PRF)} jsou funkce, které vzniknou odvozením ze základních funkcí pomocí operátorů \textit{substituce} a \textit{primitivní rekurze} (tj. je to nejmenší třída funkcí obsahující základní funkce a uzavřená na dvě uvedené operace). Každá PRF je všude definovaná (=totální) (protože for cykly vždy konvergují).
-
-\textbf{Částečně rekurzivní funkce (ČRF)} jsou funkce, které vzniknou odvozením ze základních funkcí pomocí operátorů \textit{substituce}, \textit{primitivní rekurze} a \textit{minimalizace}.
-
-\textbf{Obecně rekurzivní funkce (ORF)} je ČRF, která je všude definovaná.
-
-\subsubsection{Rekurzivní predikáty a množiny}
-\textbf{Predikát} (nebo \textbf{relace}) je množina n-tic $R \subseteq \N^n, n \geq 1$. Fakt, že
-$(x_1, \dots, x_n) \in \R$ budeme též označovat pomocí $R(x_1, \dots, x_n)$. 
-
-\textbf{Množina} je \textit{unární} predikát, tj. $R \subseteq \N$. 
-
-\textbf{Charakteristickou funkcí} predikátu $R$ je funkce $\lambda_R(x_1, \dots, x_n)$, pro kterou platí, že
-$$
-\lambda_R(x_1, \dots, x_n) \simeq
-\begin{dcases*}
-1 &\quad $R(x_1, \dots, x_n)$\\
-0 &\quad jinak\\
-\end{dcases*}
-$$
-	
-\textbf{Primitivně rekurzivní predikát (PRP} je takový predikát, jehož charakteristická funkce je PRP.
-
-\textbf{Obecně rekurzivní predikát (ORP)}, též pouze \textbf{rekurzivní predikát} je takový predikát, jehož charakteristická funkce je ORP.
-
-\textbf{Rekurzivně spočetný predikát (RSP)} je takový predikát, pro který existuje funkce $n$ proměnných $f_R$, pro kterou platí, že
-$$(\forall(x_1, \dots, x_n) \in \N^n) \left[f_R(x_1, \dots, x_n){\downarrow}\ \Leftrightarrow R(x_1, \dots, x_n)\right]$$
-to jest, hodnota funkce $f_R$ je pro danou $n$-tici definovaná právě když je na ní predikát $R$ splněný.
-Hodnota funkce v tomto případě není důležitá. Takové funkci budeme také říkat \textit{částečná charakteristická funkce.} Tj. RSP je definičním oborem nějaké ČRF.
-
-Speciálně tedy: \textbf{Rekurzivní} resp. \textbf{rekurzivně spočetná množina} je \textit{unární} rekurzivní (resp. rekurzivně spočetný) predikát.
-
-\subsubsection{Vlastnosti PRF, ORF, ČRF}
-Následující platí pro PRF i ORF stejně (a často i ČRF)
-
-\begin{theorem}[konečný součet a součin]
-Je-li $f$ PRF dvou proměnných (pro jednoduchost), potom i funkce $g(z, x) = \sum_{y<z} f(y, x)$ (přičemž $g(0, x) = 0$) a $h(z, x) = \prod_{y<z} f(y, x)$ (přičemž $h(0, x) = 1$) jsou PRF.
-\end{theorem}
-\begin{proof}
-For cyklus.
-\end{proof}
-
-podmíněný příkaz
-omezené kvantifikátory
-logické spojky
-konečná konjunkce a disjunkce
-omezená minimalizace
-
-
-
-\subsubsection{Ekvivalence TS a ČRF}
-Rekurzivní a rekurzivně spočetné predikáty a množiny jsou ve skutečnosti jen nové názvy pro
-nám již známé rekurzivní a rekurzivně spočetné jazyky, vzhledem k tomu, že jsme popsali bijekci
-mezi binárními řetězci a kladnými čísly, odpovídají si vzájemně množiny čísel s jazyky jako
-množinami řetězců. 
-
-K tomu, že pojmy rekurzivní jazyk a rekurzivní množina jsou ekvivalentní, však musíme samozřejmě ukázat, že ČRF a TS jsou stejně silné výpočetní modely. 
-
-Množiny jsou ekvivalentní jazykům, protože TS je stejně silný výpošetní model jako ČRF (částečně rekurzivní funkce), pomocí kterých jsou rek. a rek. spoč. množiny definovány.
-
-Z ekvivalence TS a ČRF tedy plyne, že 
-
-číslování ČRF, $\phi^{(n)}_e$
-
-Kleeneho věta
-
-univerzální funkce
-\begin{itemize}
-	\item (algoritmicky) vyčíslitelné funkce = turingovsky vyčíslitelné funkce = ČRF
-	\item totální (algoritmicky) vyčíslitelné funkce = totální turingovsky vyčíslitelné funkce = ORF
-\end{itemize}
-
-
-Rozhodnutelnost, nerozhodnutelnost, halting problém s důkazem, uzavřenost na doplněk
-
- Postova věta, (ne)uzavřenost na operace, a pak ty vlastnost že RSM jsou oborem hodnot nějaké [rostoucí] ČRF. Doptal se mě na jiné matematické modely algoritmů, řekl jsem TS a ekvivalence RJ s RM a RSJ s RSM.
-
-
+\section{Rozhodnutelné a částečně rozhodnutelné problémy}
+Viz sekce~\ref{sec:halting}.
 
 
 
 \section{Algoritmicky nerozhodnutelné problémy (halting problem).}
+\label{sec:halting}
+
 Rozhodovací problém plně popisuje jazyk \textit{kladných instancí}. Budeme proto volně zaměňovat rozhodnutelnost problému a rozhodnutelnost jazyka.
 
 \subsection{(Částečně) rozhodnutelný jazyk}
@@ -562,7 +453,7 @@ je částečně rozhodnutelný, ale není rozhodnutelný.
 $L_\mathcal{U}$ je částečně rozhodnutelný, neboť existuje univerzální Turingův stroj.
 
 Kdyby byl rozhodnutelný, tak podle Postovy věty je $\overline{L_\mathcal{U}}$ částečně rozhodnutelný, tj. existuje TS $M$ tak, že 
-$$\overline{L_\mathcal{U}} = L(M) = {\langle M,x\rangle\ |\ x \notin L(M)}$$
+$$\overline{L_\mathcal{U}} = L(M) = \{\langle M,x\rangle\ |\ x \notin L(M)\}$$
 
 Pomocí tohoto stroje $M$ sestrojíme $M'$, který bude přijímat $L_{DIAG}$. $M'$ bude se vstupem $e$ pracovat následovně: Pokud $e$ není syntakticky správný zápis TS, tak $e$ odpovídá TS, který vždy odmítne, a $M'(e)$ tedy přijme. Pokud je $e$ syntakticky správný zápis, tak $M'$ spustí $M$ pro $\langle e,e\rangle$. $M'$ následně přijme, odmítne, nebo se nezastaví, podle toho, jak se zachová M. Tedy máme $M'$ který přijímá $L_{DIAG}$, který ale není částečně rozhodnutelný. Spor.
 \end{proof}
@@ -587,9 +478,9 @@ Nyní se podívejme, jestli $\langle M' \rangle$ patří do $L'$, nebo ne.
 \begin{enumerate}
 	
 	
-	\item Pokud $\langle M' \rangle \in L$, znamená to, že se $M'(\langle M' \rangle)$ zastaví a přijme, protože $L' = L(M')$, to ale současně znamená, že $M'(\langle M' \rangle){\uparrow}$ podle definice $L'$, což je spor.
+	\item Pokud $\langle M' \rangle \in L'$, znamená to, že se $M'(\langle M' \rangle)$ zastaví a přijme, protože $L' = L(M')$, to ale současně znamená, že $M'(\langle M' \rangle){\uparrow}$ podle definice $L'$, což je spor.
 	
-	\item Pokud $\langle M' \rangle \notin L$, pak podle definice $L'$ to znamená, že $M'(\langle M' \rangle){\downarrow}$. Podle toho, jak jsme si popsali $M'$, znamená to, že přijme slovo $\langle M' \rangle$, z toho dostaneme $\langle M' \rangle \in L(M') = L'$, což je však ve sporu s předpokladem.
+	\item Pokud $\langle M' \rangle \notin L'$, pak podle definice $L'$ to znamená, že $M'(\langle M' \rangle){\downarrow}$. Podle toho, jak jsme si popsali $M'$, znamená to, že přijme slovo $\langle M' \rangle$, z toho dostaneme $\langle M' \rangle \in L(M') = L'$, což je však ve sporu s předpokladem.
 \end{enumerate}
 \end{proof}
 
@@ -715,13 +606,13 @@ $$\langle M_{(M,x)}\rangle \in K \quad \Leftrightarrow \quad \langle M,x\rangle 
 
 Z Riceovy věty plyne, že následující jazyky nejsou rozhodnutelné:
 \begin{align*}
-	K_1  &= \{\langle M\rangle\ |\ L(M) \notin \emptyset\} \\
-	\text{Fin} &= \{\langle M\rangle\ |\ L(M) \text{je konečný jazyk} \} \\
-	\text{Cof} &= \{\langle M\rangle\ |\  \overline{L(M)} \text{je konečný jazyk} \} \\
-	\text{Inf} &= \{\langle M\rangle\ |\  L(M) \text{je nekonečný jazyk}\} \\
-	\text{Dec} &= \{\langle M\rangle\ |\  L(M) \text{je rozhodnutelný jazyk}\} \\
-	\text{Tot} &= \{\langle M\rangle\ |\  L(M) = \Sigma^*\} \\
-	\text{Reg} &= \{\langle M\rangle\ |\  L(M) \text{je regulární jazyk}\} \\
+	K_1  &= \{\langle M\rangle \mid L(M) \notin \emptyset\} \\
+	\text{Fin} &= \{\langle M\rangle \mid L(M) \text{ je konečný jazyk} \} \\
+	\text{Cof} &= \{\langle M\rangle \mid \overline{L(M)} \text{ je konečný jazyk} \} \\
+	\text{Inf} &= \{\langle M\rangle \mid L(M) \text{ je nekonečný jazyk}\} \\
+	\text{Dec} &= \{\langle M\rangle \mid L(M) \text{ je rozhodnutelný jazyk}\} \\
+	\text{Tot} &= \{\langle M\rangle \mid L(M) = \Sigma^*\} \\
+	\text{Reg} &= \{\langle M\rangle \mid L(M) \text{ je regulární jazyk}\} \\
 \end{align*}
 
 
@@ -907,7 +798,7 @@ $$|\Sigma|^{f(n)}\cdot f(n)\cdot |Q| = 2^{f(n) \log_2 |\Sigma|}2^{\log_2 f(n)}2^
 
 Horní odhad na počet konfigurací je současně i horním odhadem na časovou složitost, neboť přijímací výpočet se v každé konfiguraci octne nejvýše jednou. Pokud bychom se totiž do nějaké dostali vícekrát, pak jsme se nutně octli v cyklu a výpočet tedy nikdy neskončí, což je pro slova z $L$ spor.
 
-Stačí tedy zvolit $c_M = (\log_2 |\Sigma| + \log_2 |Q| + 1)$. 
+Stačí tedy zvolit $c_L = (\log_2 |\Sigma| + \log_2 |Q| + 1)$. 
 \end{proof}
 
 \begin{theorem}
@@ -939,36 +830,36 @@ Díky \ref{complexity_nspace_time} víme, že každý $M$ pracující v prostoru
 Hledáme cestu z $K_0^x$ (poč. konfigurace nad slovem $x$) do $K_F^x$ (přijímající konfigurace, BÚNO každá je jen jedna (jediný přijímací stav, smazaná páska, hlava na začátku)). $M$ přijme $x$ pokud existuje orientovaná cesta z $K_0^x$ do $K_F^x$. Chceme tedy algoritmus, který existenci této cesty ověří. 
 
 Zavedeme funkci \textit{Dosažitelná}($i,K_1,K_2$), která zjistí, zda z konfigurace $K_1$ je konfigurace $K_2$ dosažitelná
-v nejvýše $2^i$ krocích Turingova stroje $M$.
+v nejvýše $i$ krocích Turingova stroje $M$.
 \bigskip
 
 \begin{minipage}{\linewidth}
-	\begin{lstlisting}[language=Python, frame=single, escapeinside={\%*}{*)}]
-	Dosazitelna(i, K1, K2):
-		if i = 0:
-			if (K1, K2) in E or K1 == K2:
-				return true
-			else
-				return false
-		for K in V:
-			if Dosazitelna(i-1, K1, K) and Dosazitelna(i-1, K, K2):
-				return true
-		return false
+	\begin{lstlisting}[language=Python, frame=single, escapeinside={(*}{*)}]
+(*\textit{Dosažitelná}($i, K_1, K_2$)*):
+  if i = 0:
+	  if (*$(K_1, K_2)$*) in E or (*$K_1 == K_2$*):
+		  return true
+	  else
+		  return false
+  for K in V:
+	  if (*\textit{Dosažitelná}($\left \lceil \frac{i}{2} \right \rceil, K_1, K$)*) and (*\textit{Dosažitelná}($\left \lceil \frac{i}{2} \right \rceil, K, K_2$)*):
+		  return true
+  return false
 	\end{lstlisting}
 \end{minipage}
 
-Víme, že počet vrcholů je nejvýše $2^{c_Mf(n)}$ a tedy voláním \textit{Dosažitelná}$(c_Mf(n), K_0^x, K_F^x)$ na grafu $G_{M,x}$ zjistíme, zda existuje přijímací výpočet.
+Víme, že počet vrcholů je nejvýše $2^{c_Mf(n)}$ a tedy voláním \textit{Dosažitelná}$(2^{c_M f(n)}, K_0^x, K_F^x)$ na grafu $G_{M,x}$ zjistíme, zda existuje přijímací výpočet.
 
 Zbývá spočítat prostorovou složitost funkce \textit{Dosažitelná}. Pro otestování existence hrany na řádku 3 nám stačí přechodová funkce $\delta$ stroje $M$, která je konstatně velká a nezávislá na $n$. V cyklu na řádcích 7-9 potřebujeme generovat všechny konfigurace. Na uložení jedné konfigurace stačí $c_Mf(n)$ bitů, stačí tedy generovat všechny binární řetězce této délky a vybírat si ty, které kódují konfigurace.
 
 Jedna instance funkce Dosažitelná tedy vyžaduje prostor pro uložení $K_1, K_2, K$ a $i$, na všechny tyto proměnné stačí prostor $c_Mf(n)$. Navíc potřebujeme jen bity pro uložení odpovědí z rekurzivních volání, které už prostorovou složitost nenaruší. 
 
 Abychom mohli v cyklu generovat konfigurace K, musíme však vědět, jak velký prostor rezervovat pro jednu konfiguraci,
-potřebujeme tedy umět označit $c_Mf(n)$ buněk, máme-li vstup $x$ délky $n$, a při tom si musíme vystačit s prostorem $O(f(n))$. To platí, je-li funkce $f$ \textit{vyčíslitelná}\footnote{Funkce je \textit{f vyčíslitelná} v prostoru $O(f(n))$, pokud k ní existuje Turingův stroj $M_f$, který pracuje v prostoru $O(f(n))$ a při výpočtu nad vstupem $x = 1^n$ je po ukončení jeho činnosti na výstupu zapsán řetězec $y = 1^f(n)$. 
+potřebujeme tedy umět označit $c_Mf(n)$ buněk, máme-li vstup $x$ délky $n$, a při tom si musíme vystačit s prostorem $O(f(n))$. To platí, je-li funkce $f$ \textit{vyčíslitelná}\footnote{Funkce je \textit{f vyčíslitelná} v prostoru $O(f(n))$, pokud k ní existuje Turingův stroj $M_f$, který pracuje v prostoru $O(f(n))$ a při výpočtu nad vstupem $x = 1^n$ je po ukončení jeho činnosti na výstupu zapsán řetězec $y = 1^{f(n)}$. 
 
 Unární kódování přirozeně odpovídá tomu, co chceme: rezervovat buňky pro výsledek funkce; tj. zapíšeme jedničky na tolik polí, kolik chceme rezervovat. Ne každá funkce $f$ je vyčíslitelná v prostoru $O(f(n))$, nicméně pro běžné funkce to platí.}
 
-Hloubka rekurze je omezena pomocí $c_Mf(n) = O(f(n))$, protože to je počáteční hodnota $i$, které předáváme funkci jako parametr a v každém dalším voláním toto $i$ snížíme o jedna. 
+Hloubka rekurze je omezena pomocí $\log_2(2^{c_M f(n)}) = c_Mf(n) = O(f(n))$, protože počáteční hodnota $i$ je $2^{c_M f(n)}$ a v každém dalším voláním toto $i$ snížíme na polovinu. 
 
 Dohromady tedy dostaneme, že celkový prostor, který potřebujeme, je velký $O(f(n) \cdot f(n)) = O(f^2(n))$. Protože funkce Dosažitelná je deterministická, vyžaduje její volání \textit{deterministický} prostor $O(f^2(n))$. Nebylo by také obtížné na základě této funkce vytvořit DTS $M'$, který by vyžadoval týž prostor a přijímal jazyk $L$. Z toho plyne, že
 $L \in \text{SPACE}(O(f^2(n)))$.
@@ -1038,7 +929,7 @@ Pro každou prostorově konstruovatelnou funkci $f : \N \mapsto \N$ existuje jaz
 \subsection{Věta o časové prostorové hierarchii}
 Funkci $f : \N \mapsto \N$, kde $f(n) \in \Omega(n\log n)$, nazveme \textbf{časově konstruovatelnou}, je-li funkce, která zobrazuje $1^n$ na binární reprezentaci $f(n)$ vyčíslitelná v čase $O(f(n))$.
 
-\begin{theorem}[o deterministické časové hierarchii] Pro každou časově konstruovatelnou funkci $f : \N \mapsto \N$ existuje jazyk $A$, který je rozhodnutelný v čase $O(f(n))$, nikoli však v čase $o(\frac{f(n)}{\log f(n)})$.
+\begin{theorem}[o deterministické časové hierarchii] Pro každou časově konstruovatelnou funkci $f : \N \mapsto \N$ existuje jazyk $A$, který je rozhodnutelný v čase $O(f(n))$, nikoli však v čase $o\big(\frac{f(n)}{\log f(n)}\big)$.
 \end{theorem}
 
 \begin{proof}\footnote{\textit{Zdroj důkazů: \url{http://idav.ucdavis.edu/~okreylos/TAship/Spring2001/LectureNotes27.pdf}}}
@@ -1063,11 +954,11 @@ Zápis $10^k$ reprezentuje slovo skládající se z jedničky a $k$ nul, tj. $10
 		\item Pokud $M$ přijme, \textit{odmítni}. Jinak \textit{přijmi}.
 	\end{enumerate}
 	
-	Pro každý krok simulace $M$ musí algoritmus snížit interní čítač kroků o jedna. Tento čítač je inicializován na hodnotě $\frac{f(n)}{\log f(n)}$ a jeho binární zakódování má tedy délku $O(\log f(n))$. Jeho snížení v každém kroku simulace zabere dalších $O(\log f(n)$. Takže celková časová náročnost simulace stroje s časovou složitostí $O(\frac{f(n)}{\log f(n)})$ je skutečně $O(f(n))$.
+	Pro každý krok simulace $M$ musí algoritmus snížit interní čítač kroků o jedna. Tento čítač je inicializován na hodnotě $\frac{f(n)}{\log f(n)}$ a jeho binární zakódování má tedy délku $O(\log f(n))$. Jeho snížení v každém kroku simulace zabere dalších $O(\log f(n))$. Takže celková časová náročnost simulace stroje s časovou složitostí $O(\frac{f(n)}{\log f(n)})$ je skutečně $O(f(n))$.
 	
-	\item \textbf{$L$ je nerozhodnutelný v $o(\frac{f(n)}{\log f(n)})$:}
+	\item \textbf{$L$ je nerozhodnutelný v $o\big(\frac{f(n)}{\log f(n)}\big)$:}
 	
-	Dokážeme sporem. Nechť $L$ je \textit{rozhodnutelný} v $o(\frac{f(n)}{\log f(n)})$, pak existuje TS $M$, který jej rozhoduje. Uvažme slovo $w = (\langle M \rangle, 10^k)$, pro nějaké dostatečně velké $k$. Platí:
+	Dokážeme sporem. Nechť $L$ je \textit{rozhodnutelný} v $o\big(\frac{f(n)}{\log f(n)}\big)$, pak existuje TS $M$, který jej rozhoduje. Uvažme slovo $w = (\langle M \rangle, 10^k)$, pro nějaké dostatečně velké $k$. Platí:
 	
 	$$w \in L \Leftrightarrow M \text{ přijme } w \Leftrightarrow w \notin L \text{ (spor)}$$
 
@@ -1180,6 +1071,7 @@ Idea důkazu je taková, že hrany barev mezi dvěma řádky kachlíků budou k�
 přijímající konfiguraci, obě jsou dané jednoznačně, přijímající zcela jednoznačně, počáteční je sice závislá na x, ale pro dané x je již jednoznačná. Konstrukce je ilustrovaná na obrázku \ref{kachl_overview}.
 
 \begin{figure}[H]
+  \caption{Konstrukce kachlíkování.}
 	\label{kachl_overview}
 	\centering
 	\includegraphics[width=0.8\textwidth]{img/kachl_overview.png}
@@ -1291,7 +1183,7 @@ SAT je NP-úplný.
 	Definujeme:
 	\begin{align*}
 		V &= \{(p,q)\ |\ \text{spodní barva kachlíku typu $T_p$ se neshoduje s horní barvou $T_q$} \}\\
-		H &= \{(p,q)\ |\ \text{prava barva kachlíku typu $T_p$ se neshoduje s levou barvou $T_q$} \}		
+		H &= \{(p,q)\ |\ \text{pravá barva kachlíku typu $T_p$ se neshoduje s levou barvou $T_q$} \}		
 	\end{align*}
 	a pro $i \in \{1, \dots s\}$ definujeme
 	\begin{align*}
@@ -1364,15 +1256,15 @@ SAT je NP-úplný.
 	\begin{itemize}
 		
 		
-		\item $k = 1$: \quad $\alpha_i = (e_1 \vee y_1^j \vee y_2^j) \wedge (e_1 \vee y_1^j \vee \overline{y}_2^j) \vee (e_1 \vee \overline{y}_1^j \vee y_2^j) \vee (e_1 \vee \overline{y}_1^j \vee \overline{y}_2^j)$
+		\item $k = 1$: \quad $\alpha_i = (e_1 \vee y_1^i \vee y_2^i) \wedge (e_1 \vee y_1^i \vee \overline{y}_2^i) \vee (e_1 \vee \overline{y}_1^i \vee y_2^i) \vee (e_1 \vee \overline{y}_1^i \vee \overline{y}_2^i)$
 		
-		\item $k = 2$: \quad $\alpha_i = (e_1 \vee e_2 \vee y^j) \wedge (e_1 \vee e_2 \vee \overline{y}^j)$
+		\item $k = 2$: \quad $\alpha_i = (e_1 \vee e_2 \vee y^i) \wedge (e_1 \vee e_2 \vee \overline{y}^i)$
 		
-		\item $k = 2$: \quad $\alpha_i = C_i$
+		\item $k = 3$: \quad $\alpha_i = C_i$
 		
-		\item $k > 3$: \quad $\alpha_i = (e_1 \vee e_2 \vee y_1^j) \wedge (\overline{y}_1^j \vee e_3 \vee e_2 \vee y_2^j) \wedge \dots \wedge (\overline{y}_{k-3}^j \vee e_{k-1} e_k)$
+		\item $k > 3$: \quad $\alpha_i = (e_1 \vee e_2 \vee y_1^i) \wedge (\overline{y}_1^i \vee e_3 \vee y_2^i) \wedge \dots \wedge (\overline{y}_{k-3}^i \vee e_{k-1} \vee e_k)$
 	\end{itemize}
-	Kde všechna $y$ jsou nové proměnné. Pak $\varphi = \bigwedge\limits_{j=1}^m$. Konstrukce je polynomiální. Ekvivalence rozborem případů.
+	Kde všechna $y$ jsou nové proměnné. Pak $\varphi = \bigwedge\limits_{i=1}^m{\alpha_i}$. Konstrukce je polynomiální. Ekvivalence rozborem případů.
 	\end{enumerate}
 \end{proof}
 
@@ -1441,17 +1333,15 @@ Převodem z VP. Pro graf $G = (V,E)$ chceme najít VP velikosti $k$, zkonstruuje
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\textwidth]{img/hamilton1.jpg}
-		\label{ham1}
 		\caption{Podgraf pro hranu (u,v)}
+		\label{ham1}
 	\end{figure}
 	Hamiltonovská kružnice může projít tímto podgrafem pouze 3 způsoby naznačenými na obrázku \ref{ham1}(b,c,d): 
-	\begin{enumerate}
-		
-		
+	\begin{itemize}
 		\item (b) hrana je pokrytá vrcholem $u$
 		\item (c) hrana je pokrytá oběma vrcholy $u, v$
 		\item (d) hrana je pokrytá vrcholem $v$
-	\end{enumerate}
+	\end{itemize}
 
 	\item do $V'$ přidáme $k$ \uv{výberových} vrcholů $s_1, \dots s_k$
 	
@@ -1460,8 +1350,8 @@ Převodem z VP. Pro graf $G = (V,E)$ chceme najít VP velikosti $k$, zkonstruuje
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\textwidth]{img/hamilton2.jpg}
-		\label{ham2}
 		\caption{Výsledné zapojení.}
+		\label{ham2}
 	\end{figure}
 \end{itemize}
 \end{proof}
@@ -1589,7 +1479,7 @@ Je-li problém A řešitelný pseudopolynomiálním algoritmem a není-li A čí
 			\textbf{Cíl}: Nalézt množinu předmětů $A' \subseteq A$, která dosahuje maximální
 			souhrnné hodnoty předmětů v ní obsažených, a přitom se předměty z $A'$ vejdou do batohu velikosti $B$. Tj. chceme, aby platilo:
 			$$\sum\limits_{a \in A'} s(a) \leq B$$
-			$$\sum\limits_{a\in A'} v(a) = \max_{A'' \subseteq A,\ \sum_{a \in A'} s(a) \leq B} \sum\limits_{a \in A''} v(a)$$
+			$$\sum\limits_{a\in A'} v(a) = \max_{A'' \subseteq A,\ \sum_{a \in A''} s(a) \leq B} \sum\limits_{a \in A''} v(a)$$
 		}
 	}
 	\bigskip
@@ -1601,37 +1491,41 @@ Následující pseudopolynomiální algoritmus je založen na dynamickém progra
 
 \begin{minipage}{\linewidth}
 	\label{batoh_pp}
-	\begin{lstlisting}[language=Python, frame=single, escapeinside={\%*}{*)}]
-Batoh(s, v, B): 
-	# s ... pole velikosti predmetu
-	# v ... pole cen predmetu
-	# B ... velikost batohu
+	\begin{lstlisting}[language=Python, frame=single, escapeinside={(*}{*)}]
+Batoh(s,v,B): 
+	# s (*$\dots$ pole velikostí předmětů*)
+	# v (*$\dots$ pole cen předmetů*)
+	# B (*$\dots$ velikost batohu*)
+
+	# V (*$\dots$ maximální možná celková hodnota předmětů*)
 	V = sum(v[i] for i in range(1,n))
+	# n (*$\dots$ počet předmětů*)
 	n = len(s)
-	T = [,]
-	S = [,]
-	for c in range (1, V):
-		T[0, c] = None
-		S[0, c] = B + 1
-	for j in range(0, n):
-		T[j,0] = None
+
+	T[0,0] = (*\O*); S[0,0] = (*$0$*)
+	for c in range(1,V):
+		T[0,c] = (*\O*)
+		S[0,c] = (*$B+1$*)
+
+	for j in range(1,n):
+		T[j,0] = (*\O*)
 		S[j,0] = 0
-		for c in range(1, V):
-			T[j, c] = T[j - 1, c]
-			S[j, c] = S[j - 1, c]
-			if v[j] <= c and S[j, c] > S[j - 1, c - v[j]] + s[j]:
-				T[j, c] = union(T[j - 1, c - v[j]], {j})
-				S[j, c] = S[j - 1, c - v[j]] + s[j]
-	cc = max{c for (n,c) in S if S[n, c] <= B}
-	return T[n, cc]
+		for c in range(1,V):
+			T[j,c] = T[j-1, c]
+			S[j,c] = S[j-1, c]
+			if v[j] (*$\le$*) c and S[j,c] > S[j-1, c-v[j]] + s[j]:
+				T[j,c] = union(T[j-1, c-v[j]], {j})
+				S[j,c] = S[j-1, c-v[j]] + s[j]
+	cc = max{c for (n,c) in S if S[n,c] (*$\le$*) B}
+	return T[n,cc]
 		
 	\end{lstlisting}
 \end{minipage}
 \bigskip
 
-$T$ je tabulka typu $(n + 1) \times (V + 1)$, na pozici $T[j, c], 0 \leq j \leq n, 0 \leq c \leq V$ , bude podmnožina indexů $\{1, \dots, j\}$ prvků celkové ceny přesně $c$ s minimální velikostí.
+$T$ je tabulka velikosti $(n + 1) \times (V + 1)$, na pozici $T[j, c], 0 \leq j \leq n, 0 \leq c \leq V$ , bude podmnožina indexů $\{1, \dots, j\}$ prvků celkové ceny přesně $c$ s minimální velikostí.
 
-$S$ je tabulka typu $(n+1)\times(V +1)$, na pozici $S[j, c]$ je celková velikost předmětů
+$S$ je tabulka velikosti $(n+1)\times(V+1)$, na pozici $S[j, c]$ je celková velikost předmětů
 v množině $T[j, c]$. Pokud neexistuje množina s předměty ceny přesně $c$, je na pozici
 $S[j, c]$ číslo $B + 1$.
 
@@ -1694,7 +1588,7 @@ Uvažme neorientovaný graf $G = (V, E)$ a sestavme na jeho základě instanci o
 	\item Vzdálenost mezi městy či vrcholy $v_i$ a $v_j$ pro $i \neq j$ a $i, j \in \{1, \dots, n\}$ určíme následujícím
 	předpisem:
 	$$
-	d(vi, vj) = 
+	d(v_i, v_j) = 
 	\begin{cases}
 	0 & \quad \text{pokud } \{v_i, v_j\} \in E \\
 	1 & \quad \text{jinak} \\
@@ -1854,7 +1748,7 @@ Algoritmus ALG je \textbf{aproximačním schématem} pro optimalizační úlohu 
 $I \in D_A$ a racionální číslo $\varepsilon > 0$ a na výstupu vydá řešení $\sigma \in S_A(I)$ s aproximačním poměrem $(1 + \varepsilon)$. Tj. pro maximalizační úlohu platí, že 
 $$opt(I) \leq (1 + \varepsilon) \cdot ALG(I, \varepsilon)$$
 a pro minimalizační úlohu platí, že
-$$ALG(I, \varepsilon) \leq (1 + \varepsilon) \cdot OPT(I)$$
+$$ALG(I, \varepsilon) \leq (1 + \varepsilon) \cdot opt(I)$$
 
 Označíme $ALG_\varepsilon$ instanci algoritmu $ALG$ se zafixovaným $\varepsilon$.
 
@@ -1873,24 +1767,24 @@ Hodnota $V$ se do odhadu složitosti dostala jako horní odhad potenciálních c
 
 \begin{minipage}{\linewidth}
 	\label{batoh_apx}
-	\begin{lstlisting}[language=Python, frame=single, escapeinside={\%*}{*)}]
-	BatohAPX(s, v, B, epsilon): 
-	# s ... pole velikosti predmetu (0 < s[i] <= B pro kazde i) 
-	# v ... pole cen predmetu
-	# B ... velikost batohu
-	# %*$\varepsilon$*) ... racionalni cislo (apr. pomer)
+	\begin{lstlisting}[language=Python, frame=single, escapeinside={(*}{*)}]
+BatohAPX((*$s, v, B, \varepsilon$*)): 
+	# s (*$\dots$ pole velikostí předmětů ($\forall i \colon 0 < s[i] \le B$)*)
+	# v (*$\dots$ pole cen předmětů*)
+	# B (*$\dots$ velikost batohu*)
+	# (*$\varepsilon$ $\dots$ racionální číslo (apr. poměr)*)
 	
 	n = len(s)
 	m = argmax(v[i] for i in range(0,n))
-	if %*$\varepsilon \geq n-1$*):
+	if (*$\varepsilon \geq n-1$*):
 		return {m}
-	t = %*$\lfloor \log_2\left(\frac{\varepsilon \cdot v[m]}{n}\right)\rfloor - 1$*)
+	t = (*$\Bigl\lfloor \log_2\left(\frac{\varepsilon \cdot v[m]}{n}\right) \Bigr\rfloor - 1$*)
 	
 	c = []
 	for i in range(1,n):
-		c[i] = %*$\lfloor \frac{v[i]}{2^t} \rfloor$*)
+		c[i] = (*$\bigl\lfloor \frac{v[i]}{2^t} \bigr\rfloor$*)
 	
-	return Batoh(s,c,B)  # viz %*\ref{batoh_pp}*)
+	return Batoh((*$s,c,B$*))  # viz (*\ref{batoh_pp}*)
 	\end{lstlisting}
 \end{minipage}
 \bigskip
@@ -1909,7 +1803,7 @@ $$opt(I) \leq (1 + \varepsilon)\cdot BatohAPX(I, \varepsilon)$$
 \begin{enumerate}
 	\item \textbf{Nechť $\varepsilon \geq n-1$.}
 	
-	Algoritmus vrátí $\{m\}$, což je přípustné řešení, neboť předpokládáme $s[m] \leq B$. Zjevně platí $opt(I) \leq n \cdot [m]$. Dostáváme:
+	Algoritmus vrátí $\{m\}$, což je přípustné řešení, neboť předpokládáme $s[m] \leq B$. Zjevně platí $opt(I) \leq n \cdot v[m]$. Dostáváme:
 	$$\frac{opt(I)}{BatohAPX(I,\varepsilon)} = \frac{opt(I)}{v[m]} \leq \frac{n \cdot v[m]}{v[m]} = n \leq 1+\varepsilon$$
 	
 	\item \textbf{Nechť $\varepsilon < n-1$.}
@@ -1927,7 +1821,7 @@ $$opt(I) \leq (1 + \varepsilon)\cdot BatohAPX(I, \varepsilon)$$
 		Dle definice $c[i]$ a po vynásobení $2^t$:
 		\begin{equation}
 		\label{c_bounds}
-		v[i] - 2^t \leq c[i] \leq v[i]
+		v[i] - 2^t \leq c[i] \cdot 2^t \leq v[i]
 		\end{equation}
 		
 		\item \textbf{Horní a dolní odhad $2^t$:}
@@ -1955,7 +1849,7 @@ $$opt(I) \leq (1 + \varepsilon)\cdot BatohAPX(I, \varepsilon)$$
 		\begin{align*}
 			\sum\limits_{i\in M} c[i] \cdot 2^t &\geq \sum\limits_{i\in M^*} c[i] \cdot 2^t \\
 												&\geq \sum\limits_{i\in M^*} (v[i] - 2^t) \\
-												&= \sum\limits_{i\in M^*} v[i] - \sum\limits_{i\in M^*} 2^t) \\
+												&= \sum\limits_{i\in M^*} v[i] - \sum\limits_{i\in M^*} 2^t \\
 												&\geq opt(I) - n\cdot 2^t\\
 		\end{align*}
 		První nerovnost platí, neboť pro $I'$ je $M$ je optimální a $M^*$ pouze přípustná. Druhá nerovnost plyne z \ref{c_bounds}. 
@@ -1976,13 +1870,14 @@ $$opt(I) \leq (1 + \varepsilon)\cdot BatohAPX(I, \varepsilon)$$
 			\frac{n\cdot 2^t}{BatohAPX(I, \varepsilon)} \leq \varepsilon
 		\end{equation*}
 		
-		Protože $M$ je optimálním řešením $I'$ a ${m}$ je přípustným řešením $I'$, dostaneme, že
+		Protože $M$ je optimálním řešením $I'$ a $\{m\}$ je přípustným řešením $I'$, dostaneme
 		\begin{align*}
-			BatohAPX(I, \varepsilon) 	&= \sum\limits_{i \in M} c[i]\cdot 2^t \geq c[m] \cdot 2^t\\
+			BatohAPX(I, \varepsilon) 	&= \sum\limits_{i \in M} v[i] \geq \sum\limits_{i \in M} c[i]\cdot 2^t \\
+                    &\geq c[m] \cdot 2^t\\
 										&\geq v[m] - 2^t\\
 										&\geq v[m] - \frac{1}{2}v[m] = \frac{1}{2}v[m]
 		\end{align*}
-		Druhá nerovnost plyne z \ref{c_bounds}, třetí z \ref{2t_upper}.
+		První nerovnost plyne z~\ref{c_bounds}, druhá vyplývá z přípustnosti $\{m\}$, třetí opět z~\ref{c_bounds} a poslední z~\ref{2t_upper}.
 		
 		Dohromady s \ref{2t_upper} tedy dostaneme
 		\begin{equation*}
@@ -2000,7 +1895,7 @@ Kromě posledního kroku (řádek 17) lze všechny kroky provést v $O(n)$. Vol�
 \begin{equation*}
 	C = \sum\limits_{i=1}^{n} c[i] \leq n \cdot c[m] \leq \frac{n \cdot v[m]}{2^t} \leq \frac{n \cdot v[m]}{\frac{1}{4}\cdot \frac{\varepsilon \cdot v[m]}{n}} = \frac{4n^2}{\varepsilon}
 \end{equation*}
-kde předposlední nerovnost plyne z \ref{2t_bottom}. Tedy $C \in O(\frac{1}{\varepsilon}n^2)$, dohromady tedy $O(\frac{1}{\varepsilon}n^3)$
+kde předposlední nerovnost plyne z definice $c[i]$ a poslední z~\ref{2t_bottom}. Tedy $C \in O(\frac{1}{\varepsilon}n^2)$, dohromady tedy $O(\frac{1}{\varepsilon}n^3)$.
 \end{enumerate}
 
 \end{proof}
@@ -2016,7 +1911,7 @@ Postup z předchozí sekce lze i obrátit: pokud se nám pro úlohu A, která sp
 \begin{theorem}
 \label{apx_np}
 Nechť $A$ je optimalizační úloha, jejíž přípustná řešení mají nezápornou celočíselnou hodnotu a nechť existuje polynom $q$ dvou proměnných takový, že pro každou instanci $I$ úlohy $A$ platí, že
-$$opt(I) < q(len(I), max(I))$$
+$$opt(I) < q(len(I), max(I))\,.$$
 Pokud existuje úplně polynomiální aproximační schéma pro $A$, pak existuje i pseudopolynomiální algoritmus pro $A$.
 \end{theorem}
 
@@ -2032,11 +1927,11 @@ BÚNO $A$ je maximalizační úloha (minimalizační analogicky). Nechť $ALG$ j
 Čas výpočtu je polynomiální v $len(I)$ a $\sfrac{1}{\varepsilon} = q(len(I), max(I))$ (z definice ÚPAS), dohromady se tedy jedná o polynomiální algoritmus v $len(I)$ a $max(I)$, tedy o pseudopolynomiální algoritmus. Protože ALG je ÚPAS a protože A je maximalizační úloha, platí
 $$opt(I) \leq (1 + \varepsilon) \cdot ALG_\varepsilon(I)$$
 tedy
-$$opt(I) - ALG_\varepsilon(I) \leq \varepsilon \cdot ALG_\varepsilon(I) \leq \varepsilon \cdot OPT(I) < \frac{q(len(I), max(I)}{q(len(I), max(I)} = 1$$,
+$$opt(I) - ALG_\varepsilon(I) \leq \varepsilon \cdot ALG_\varepsilon(I) \leq \varepsilon \cdot opt(I) < \frac{q(len(I), max(I))}{q(len(I), max(I))} = 1\,,$$
 
 kde druhá nerovnost plyne z toho, že A je maximalizační úloha, a třetí nerovnost plyne z definice $\varepsilon$ a toho, že $q$ omezuje velikost $opt(I)$. 
 
-Protože hodnoty přípustných řešení úlohy A jsou \textit{nezáporná celá čísla}, musí ve skutečnosti platit, že $$opt(I) = ALG_\varepsilon(I)$$.
+Protože hodnoty přípustných řešení úlohy A jsou \textit{nezáporná celá čísla}, musí ve skutečnosti platit, že $$opt(I) = ALG_\varepsilon(I)\,.$$
 \end{proof}
 
 \begin{implication}
@@ -2136,25 +2031,26 @@ Složitost operací obecně závisí na výšce stromu $h$. Ta může zdegenerov
 
 
 \subsection{(a,b)-stromy}
-Nechť $a, b \in \N, a \geq 2, b \geq 2a-1$. Strom je \textbf{$(a, b)$ strom}, když platí:
+Nechť $a, b \in \N, a \geq 2, b \geq 2a-1$. Strom je \textbf{$\mathbf{\boldsymbol{(}a, b\boldsymbol{)}}$-strom}, když platí:
 \begin{enumerate}
 	
 	
+	\item Jde o vyhledávací strom.
 	\item Každý vnitřní vrchol kromě kořene má alespoň $a$ a nejvýše $b$ synů.
-	\item Kořen má alespoň 2 a nejvýše $b$ synů, nebo je listem.
+	\item Kořen má nejvýše $b$ synů.
 	\item Všechny cesty z kořene do listu jsou stejně dlouhé.
 \end{enumerate}
 
 Hodnoty jsou pouze v listech. Vnitřní vrcholy obsahují ukazatele na své podstromy jako pole/spojový seznam klíčů a dále seznam maxim svých podstromů.
 
-\noindent\textbf{Pozorování:} Buď $T$ $(a, b)$ strom s hloubkou $h$. Platí 
-$$2a^{h-1} \leq \text{počet listů } T \leq b^h$$
-tedy pro libovolné $n$ má každý $(a, b)$ strom $T$ s $n$ listy hloubku $h = \Theta(\log n)$, přesněji
+\noindent\textbf{Pozorování:} Buď $T$ $(a, b)$-strom s hloubkou $d$. Platí 
+$$a^{d-1} \leq \text{počet listů } T \leq b^d$$
+tedy pro libovolné $n$ má každý $(a, b)$-strom $T$ s $n$ listy hloubku $d = \Theta(\log n)$, přesněji
 $$\log_b n \leq d \leq 1 + \log_a n$$
 
 (Poznámka: change-of-base formula: $\log_a b = \frac{\log_d b}{\log_d a}$)
 
-Volba parametrů $a,b$ závisí na použití, např. (2,3) stromy nebo B-stromy, kde $a,b \approx $ velikost bloku na disku.
+Volba parametrů $a,b$ závisí na použití, např. (2,3)-stromy nebo B-stromy, kde $a,b \approx $ velikost bloku na disku.
 
 \subsubsection{Operace}
 \begin{itemize}
@@ -2164,7 +2060,7 @@ Volba parametrů $a,b$ závisí na použití, např. (2,3) stromy nebo B-stromy,
 	Prohledávej od kořene, vyber potomka pro zanoření podle maxim.
 	
 	\item \textbf{INSERT(x)}:
-	Najdi vrchol $v$, pod který patří $x$. Pokud $v$ má < $b$ potomků, přidej nový list s $x$ pod $v$, hotovo. Pokud má $v$ právě $b$ potomků, rozštěp $v$: vytvoř nový vrchol $v'$, pod který přemísti prvních $\frac{b+1}{2}$ potomků $v$ (operace SPLIT). Rekurzivně vlož $v'$ do rodiče $v$.
+	Najdi vrchol $v$, pod který patří $x$. Pokud $v$ má $< b$ potomků, přidej nový list s $x$ pod $v$, hotovo. Pokud má $v$ právě $b$ potomků, rozštěp $v$: vytvoř nový vrchol $v'$, pod který přemísti prvních $\frac{b+1}{2}$ potomků $v$ (operace SPLIT). Rekurzivně vlož $v'$ do rodiče $v$.
 
 	\item \textbf{DELETE(x)}:
 	Najdi $x$. Nechť $v$ je rodič $x$. 
@@ -2200,7 +2096,7 @@ Volba parametrů $a,b$ závisí na použití, např. (2,3) stromy nebo B-stromy,
 \end{itemize}
 
 \subsubsection{Paralelní verze}
-Chceme-li (a,b) stromy použít v paralelním prostředí, tj. s více procesy přistupujícími ke stromu, je třeba provést následující úpravy:
+Chceme-li (a,b)-stromy použít v paralelním prostředí, tj. s více procesy přistupujícími ke stromu, je třeba provést následující úpravy:
 \begin{itemize}
 	
 	
@@ -2217,7 +2113,7 @@ Počet štěpení a slučování vrcholů při $m$ insertech a $l$ deletech je $
 
 
 \subsubsection{A-sort}
-Třídící algoritmus, který nejprve z prvků sestaví (a,b) strom a poté je vypíše od nejlevějšího listu po nejpravější.
+Třídící algoritmus, který nejprve z prvků sestaví (a,b)-strom a poté je vypíše od nejlevějšího listu po nejpravější.
 
 Při vkládání hledáme pozici pro aktuální klíč nikoliv od kořene, ale od předchozího vloženého uzlu (strom s \uv{prstem} -- ukazatelem na posledně použitý list). Zajímá nás počet kroků nutný k nalezení správného místa pro $x_{i+1}$:
 \begin{itemize}
@@ -2243,7 +2139,7 @@ kde $F = \sum\limits_{i=1}^{n} |\{j\ |\ j\leq i; x_{i+1} < x_{j} \}|$ vyjadřuje
 
 Existuje alternativní varianta algoritmu, v níž se místo pro nový prvek hledá vždy od nejpravějšího/nejlevějšího listu. Složitost vychází stejná.
 
-Často se používají (2,3) stromy, protože mají nejmenší prostorové nároky a vzhledem k tomu, že nepoužíváme DELETE, nejsou ani tolik náročné na vyvažování (při obecném používání si ale právě z důvodu vyvažování vedou lépe (2,4) stromy).
+Často se používají (2,3)\=/stromy, protože mají nejmenší prostorové nároky a vzhledem k tomu, že nepoužíváme DELETE, nejsou ani tolik náročné na vyvažování (při obecném používání si ale právě z důvodu vyvažování vedou lépe (2,4)\=/stromy).
 
 \subsubsection{B-stromy}
 Varianta používaná pro velká data uložená na disku, velikost uzlu odpovídá bloku paměti, aby se minimalizoval počet přístupů.
@@ -2253,14 +2149,14 @@ Varianta používaná pro velká data uložená na disku, velikost uzlu odpovíd
 	
 	
 	\item hodnoty uloženy i ve vnitřních vrcholech (namísto maxim z podstromů). 
-	\item místo $a,b$ se volí pouze jediná hodnota, \textbf{řád stromu}: B-strom řádu $t$ je $\approx$ (t-1, 2t-1) strom (nebo (t,2t) strom nebo ($\lfloor t/2\rfloor$, t) strom -- záleží na konkrétní definici).
+	\item místo $a,b$ se volí pouze jediná hodnota, \textbf{řád stromu}: B-strom řádu $t$ je $\approx$ (t-1, 2t-1)\=/strom (nebo (t,2t)\=/strom nebo ($\lfloor t/2\rfloor$, t)\=/strom -- záleží na konkrétní definici).
 \end{itemize}
 
 \textbf{Varianty}
 \begin{description}
 	
 	
-	\item[B+ stromy] Data \textbf{pouze} v listech (jako u obecných (a,b) stromů), sousední listy spojeny ukazateli. Používá např NTFS.
+	\item[B+ stromy] Data \textbf{pouze} v listech (jako u obecných (a,b)-stromů), sousední listy spojeny ukazateli. Používá např NTFS.
 	
 	\item[B* stromy] Zaplněnější vrcholy: dolní limit na zaplnění není 1/2 maxima, nýbrž 2/3 maxima. Při plném zaplnění se vrchol hned nerozpadá, nýbrž sdílí klíče se svým sousedem, teprve po zaplnění obou uzlů se tyto dva rozštěpí na 3.
 \end{description}
@@ -2277,12 +2173,12 @@ Binární vyhledávací strom, kde každý vrchol je obarven buď červeně nebo
 
 Hodnoty jsou uloženy pouze ve vnitřních vrcholech, listy jsou ve skutečnosti pouze NULL pointery.
 
-Dá se ukázat ekvivalence s (2,4) stromy, často se ČČ používají pro jejich implementaci. Nicméně ekvivalence platí zejména co se týče složitosti, samotná implementace je odlišná, zejména aktualizační operace pro ČČ a reprezentace vrcholů.
+Dá se ukázat ekvivalence s (2,4)-stromy, často se ČČ používají pro jejich implementaci. Nicméně ekvivalence platí zejména co se týče složitosti, samotná implementace je odlišná, zejména aktualizační operace pro ČČ a reprezentace vrcholů.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.44\textwidth]{img/rbtree_24tree.jpg}
 	\label{rb24}
-	\caption{Ekvivalence ČČ a (2,4) stromů na příkladu.}
+	\caption{Ekvivalence ČČ a (2,4)-stromů na příkladu.}
 \end{figure}
 
 Používají se v knihovnách, např. STL v C++.
@@ -2403,7 +2299,7 @@ Vždy se mění pouze rank zúčastnených vrcholů $x$, $p$ (parent) a $g$ (gra
 							  &\geq \log_2\left(\frac{s'(x)}{\frac{s'(x)}{2}}\right) + \log_2\left(\frac{s'(x)}{\frac{s'(x)}{2}}\right)\\
 							  & = 1 + 1 = 2
 	\end{align*}
-	Druhá nerovnost je dána díky $s'(x) \geq s(x) + s'(g)$ (viz obrázek) a protože díky vlastnostem logaritmu je nejnižší možná hodnota dosažena právě při volbě $s(x) = s'(g) = \frac{s'(x)}{2}$ (TODO lépe vysvětlit)
+	Nerovnost platí díky $s'(x) \geq s(x) + s'(g)$ (viz obrázek) a protože díky vlastnostem logaritmu je nejnižší možná hodnota dosažena právě při volbě $s(x) = s'(g) = \frac{s'(x)}{2}$ (TODO lépe vysvětlit)
 
 	Aplikujeme-li toto pozorování na předchozí nerovnici, dostaneme	
     \begin{align*}
@@ -2454,7 +2350,7 @@ Operace FIND, INSERT i DELETE lze provést tak, že sestávají z operace SPLAY 
 
 To znamená, že pro $m \gg n$ (což bývá pravda) je složitost posloupnosti operací $O(m\log n)$, tj. amortizovaně $O(\log n)$ na operaci. 
 
-Splay stromy si vedou dokonce ještě lépe, pokud je ditribuce operací nevyvážená.	
+Splay stromy si vedou dokonce ještě lépe, pokud je distribuce operací nevyvážená.	
 
 \begin{theorem}[entropy bound]
 V \textit{optimálním} binárním vyhledávacím stromě, kde k prvku $x_i$ je přistupováno s pravděpodobností $p_i$, je očekávaná cena úspěšné vyhledávací operace 
@@ -2504,12 +2400,16 @@ Dotazovací operace mají tedy složitost $O(\log n)$.
 Modifikující operace Insert a Delete pracují stejně jako na normálním BVS s případným dodatečným vyvážením pomocí rotací. Při Insert je třeba $O(1)$ rotací, při Delete to může být až $O(\log n)$. Celková složitost obou operací je $O(\log n)$.
 
 \section{Haldy (regulární, binomiální).}
-\subsection{Regulérní halda}
-Halda je \textbf{stromová} datová struktura splňující tzv. \textbf{vlastnost haldy}: \textit{pokud je $B$ potomek $A$, pak $x(A) \leq x(B)$.} To znamená, že v kořenu je vždy prvek s nejnižším klíčem. Taková halda se pak označuje jako \textit{min heap}, opakem je je $max heap$. 
+\subsection{Regulární halda}
+Halda je \textbf{stromová} datová struktura splňující tzv. \textbf{vlastnost haldy}: \textit{pokud je $B$ potomek $A$, pak klíč$(A) \leq$ klíč$(B)$.} To znamená, že v kořenu je vždy prvek s nejnižším klíčem. Taková halda se pak označuje jako \textit{min\=/heap}, opakem je je \textit{max\=/heap}. 
 
-Regulární halda je co nejefektivněji zaplněná, přesněji všechny patra haldy jsou zcela zaplněné kromě nejspodnějšího, to je zaplněno zleva.
-
-Typicky uvažujeme \textit{binární} neboli \textbf{2-regulární} haldu, ale obecně může být halda $k$-regulární.
+\textbf{D-regulární halda} je halda, pro kterou platí:
+\begin{enumerate}
+  \item Každý vrchol má nejvýše $d$ synů.
+  \item Všechny vrstvy krom poslední jsou úplně zaplněné.
+  \item Poslední hladina je zaplněná zleva.
+\end{enumerate}
+Typicky uvažujeme \textit{binární} neboli \textbf{2-regulární} haldu.
 
 \subsubsection{Reprezentace}
 Haldy lze díky jejich zaplněnosti dobře implementovat pomocí pole, kde potomci uzlu na $n$-té pozici se nachází na pozici $2n$ a $(2n+1)$ (v případě binární haldy).
@@ -2518,7 +2418,7 @@ Haldy lze díky jejich zaplněnosti dobře implementovat pomocí pole, kde potom
 	\includegraphics[scale=0.6]{img/heap.png}
 \end{figure}
 
-Libovolné pole prvků lze rychle převést na reprezentaci haldy -- lze ukázat, že to jde v $O(n)$ (operace HEAPIFY()):
+Libovolné pole prvků lze rychle převést na reprezentaci haldy -- lze ukázat, že to jde v~čase~$O(n)$ (operace HEAPIFY()):
 \begin{proof}
 Nechť $n = 2^{h+1} - 1$ pro nějaké $h$ (tj. stavíme kompletní strom hloubky $h$). Haldu stavíme od spodních pater. Budeme zkoumat, o kolik nejvýše pater musí prvky \uv{probublat}, aby se dostaly na správnou pozici
 \begin{itemize}
@@ -2526,14 +2426,14 @@ Nechť $n = 2^{h+1} - 1$ pro nějaké $h$ (tj. stavíme kompletní strom hloubky
 	
 	\item poslední patro (hloubka $h$) má $2^h$ prvků, žádný z nich ale nikam neprobublává
 	\item patro $h-1$ má $2^{h-1}$ prvků, každý probublá nejvýše o 1 patro (do listu)
-	\item patro $h-2$ má $2^{h-2}$ prvků, každý probublá nejvýše o 2 patro (do listu)
+	\item patro $h-2$ má $2^{h-2}$ prvků, každý probublá nejvýše o 2 patra (do listu)
 	\item \dots
 \end{itemize}
 
 Celkový počet operací je tedy:
 \begin{align*}
-T &\leq 2^h \cdot 0 + \leq 2^{h-1}\cdot 1 + 2^{h-2} \cdot 2 + \dots + 2^1 \cdot (h-1) + 2^0 \cdot h \\
- &=\sum\limits_{i = 0}^{h} 2^{(h-i)} \cdot i =\sum\limits_{i = 0}^{h} \frac{2^{h}}{2^i} \cdot i =2^h \cdot\sum\limits_{i = 0}^{h} \frac{i}{2^i}\\
+T &\leq 2^h \cdot 0 + 2^{h-1} \cdot 1 + 2^{h-2} \cdot 2 + \dots + 2^1 \cdot (h-1) + 2^0 \cdot h \\
+ &=\sum\limits_{i = 0}^{h} 2^{h-i} \cdot i =\sum\limits_{i = 0}^{h} \frac{2^{h}}{2^i} \cdot i =2^h \cdot\sum\limits_{i = 0}^{h} \frac{i}{2^i}\\
 \end{align*}
 Jelikož řada $\sum\limits_{i = 0}^{\infty} \frac{i}{2^i}$ konverguje, lze ji shora omezit nějakou konstantou $C$ (lze ukázat $C = 2$) a tedy počet operací je $C\cdot 2^h$, tedy $O(n)$.
 \end{proof}
@@ -2545,7 +2445,7 @@ Jelikož řada $\sum\limits_{i = 0}^{\infty} \frac{i}{2^i}$ konverguje, lze ji s
 	
 	\item \textbf{INSERT(x)}: $O(\log n)$
 	
-	 Prvek je přidán na konec posledního patra a poté se opraví halda, tj. prvek probublává směrem ke kořeni, dokud není opravena \uv{haldovitost}. Složitost je daná výškou haldy, která je $O(\log n)$
+	 Prvek je přidán na konec posledního patra a poté se opraví halda, tj. prvek probublává směrem ke kořeni, dokud není opravena \uv{haldovitost}. Složitost je daná výškou haldy, která je $O(\log n)$.
 	
 	\item \textbf{MIN()}: $O(1)$
 	
@@ -2812,7 +2712,7 @@ Kvůli tomu, že řetězce začínají jinde než na svém místě, je počet te
 \begin{itemize}
 	
 	\item
-	Úspěšné hedání:
+	Úspěšné hledání:
 	$1+\frac{(n-1)(n-2)}{6m^2} + \frac{n-1}{2m}\approx 1 + \frac{\alpha^2}{6} + \frac{\alpha}{2}$
 	\item
 	Neúspěšné hledání přibližně
@@ -2959,32 +2859,38 @@ Při rehashování náhodně vygenerujeme nové funkce $h_1, h_2$ a můžeme zv�
 
 
 \paragraph{Analýza}
-Kukaččí graf funguje dobře pro $m \approx 2.3n$. My budeme pracovat s grafy, pro něž platí $m \leq 2cn, c>1$. (\textit{Pozn.: Koucký používal $m = 6n$, tj. $c = 3$}).
-
 Při analýze budeme pracovat s \textbf{kukaččím grafem}, kde 
 \begin{itemize}
 \item vrcholy jsou přihrádky tabulky
 \item hrany jsou dvojice $(h_1(x), h_2(x)), \forall x \in S$	
 \end{itemize}
 
+Kukaččí graf funguje dobře pro $m \approx 2.3n$. My budeme pracovat s grafy, pro něž platí $m \geq 2cn, c>1$. (\textit{Pozn.: Koucký používal $m = 6n$, tj. $c = 3$}).
+
 \begin{theorem}
-Nechť $S \subseteq U, |S| = n, m \leq 2cn, c>1$. Pravděpodobnost, že pro náhodně zvolené hašovací funkce $h_1, h_2$ jsou pozice $i,j$ spojeny cestou délky $k$, je nejvýše $\frac{1}{mc^k}$.
+Nechť $S \subseteq U, |S| = n, m \geq 2cn, c>1$. Pravděpodobnost, že pro náhodně zvolené hašovací funkce $h_1, h_2$ jsou pozice $i,j$ spojeny cestou délky $k$, je nejvýše $\frac{1}{mc^k}$.
 \end{theorem}
 \begin{proof}
-Induction on $k$:
+Matematickou indukcí přes $k$:
 \begin{enumerate}
-	\item [$k=1$] For one element, the probability that it forms an edge $ij$ is $2/m^2$ . So, the probability that there is an edge $ij$ is at most $\frac{2n}{m^2} \leq \frac{1}{mc}$
+	\item [$k=1$] Pravděpodobnost existence hrany $ij$ v kukaččím grafu pro prvek $x \in S$ je
+	\begin{align*}
+	  &P[h_1(x)=i \wedge h_2(x)=j] + P[h_1(x)=j \wedge h_2(x)=i] \\
+	  \leq & P[h_1(x)=i] \cdot P[h_2(x)=j] + P[h_1(x)=j] \cdot P[h_2(x)=i] \\
+	  \leq & \frac{1}{m} \cdot \frac{1}{m} + \frac{1}{m^2} = \frac{2}{m^2}\,. \\
+	\end{align*}
+Pravděpodobnost existence hrany $ij$ je tedy nejvýše $n\frac{2}{m^2} \leq \frac{1}{mc}$.
 	
-	\item[$k > 1$] There exists a path between $i$ and $j$ of length $k$ if there exists a path from $i$ to $u$ of length $k - 1$ and an edge $uj$. For one position $u$, the $i-u$ path exists with probability
-	$\frac{1}{mc^{k-1}}$. The conditional probability that there exists the edge $uj$ if there exists $i-u$
-	path is at most $\frac{1}{mc}$ because some elements are used for the $i-u$ path. By summing
-	over all positions $u$, the probability that there exists $i-j$ path is at most
+	\item[$k > 1$] There exists a path between $i$ and $j$ of length $k$ if there exists a path from $i$ to $u$ ($i\rightarrow u$) of length $k - 1$ and an edge $uj$. For one position $u$, the $i\rightarrow u$ path exists with probability
+	$\frac{1}{mc^{k-1}}$. The conditional probability that there exists the edge $uj$ if there exists $i\rightarrow u$
+	path is at most $\frac{1}{mc}$ because some elements are used for the $i\rightarrow u$ path. By summing
+	over all positions $u$, the probability that there exists $i\rightarrow j$ path is at most
 	$$m\frac{1}{mc^{k-1}}\frac{1}{mc} = \frac{1}{mc^k}$$
 \end{enumerate}
 \end{proof}
 
 \begin{theorem}
-Nechť $S \subseteq U, |S| = n, m \leq 2cn, c>1$. Pravděpodobnost, že pro náhodně zvolené hašovací funkce $h_1, h_2$ obsahuje kukačkový graf cyklus je nejvýše $\frac{1}{2}$.
+Nechť $S \subseteq U, |S| = n, m \geq 2cn, c>1$. Pravděpodobnost, že pro náhodně zvolené hašovací funkce $h_1, h_2$ obsahuje kukačkový graf cyklus je nejvýše $\frac{1}{2}$.
 \end{theorem}
 \begin{proof}
 Pravděpodobnost cyklu délky $k$ vedoucího přes $i$ je dle předchozí věty $\frac{1}{mc^k}$. 
@@ -3072,21 +2978,21 @@ Amortizovaná složitost přehašování je $O(1)$ (je ale vhodné jej dělat mi
 \subsection{Univerzální hashování}
 Problém pevné hašovací funkce: pokud $N > mn$, tak pro každou hašovací funkci $h$ existuje $S \subseteq U$ velikosti $n$ taková, že $h$ hašuje všechny prvky $S$ do jedné přihrádky.
 
-Budeme chtít sestrojit množinu funkcí $H : U \to M$, takový, že náhodně zvolená funkce $f \in H$ hešuje libovolnou množinu $S$ \uv{většinou dobře}. 
+Budeme chtít sestrojit množinu funkcí $H : U \to M$ takovou, že náhodně zvolená funkce $f \in H$ hešuje libovolnou množinu $S$ \uv{většinou dobře}. 
 
 \emph{Definice}: Systém funkcí $H = \{ h_i; i \in I\}: U\to \{0,\dots,m-1\}$ je univerzální, pokud:
-$$\forall x,y\in U, x\neq y: |\{i\in I; h_i(x)=h_i(y)\}|\leq \frac{|I|}{m}$$.
+$$\forall x,y\in U, x\neq y: |\{i\in I; h_i(x)=h_i(y)\}|\leq \frac{|I|}{m}\,.$$
 Tj. zaručuje se, že pro každé dva různé prvky má maximálně $1$ funkce kolizi.
 
-Jiná formulace: pro náhodnou $h$ z $H$ a pro $\forall x,y \in U, x \neq y$ platí $$P[h(x) = h(y)] \leq \frac{1}{m}$$
+Jiná formulace: pro náhodnou $h$ z $H$ a pro $\forall x,y \in U, x \neq y$ platí $$P[h(x) = h(y)] \leq \frac{1}{m}\,.$$
 
 \emph{Definice}: Systém funkcí $H = \{ h_i; i \in I\}: U\to \{0,\dots,m-1\}$ je $c$\emph{-univerzální}, pokud:
 
-$$\forall x,y\in U, x\neq y: |\{i\in I; h_i(x)=h_i(y)\}|\leq \frac{c|I|}{m}$$.
+$$\forall x,y\in U, x\neq y: |\{i\in I; h_i(x)=h_i(y)\}|\leq \frac{c|I|}{m}\,.$$
 
 Tj. zaručuje se, že pro každé dva různé prvky má maximálně $c$ funkcí kolizi.
 
-Jiná formulace: pro náhodnou $h$ z $H$ a pro $\forall x,y \in U, x \neq y$ platí $$P[h(x) = h(y)] \leq \frac{c}{m}$$
+Jiná formulace: pro náhodnou $h$ z $H$ a pro $\forall x,y \in U, x \neq y$ platí $$P[h(x) = h(y)] \leq \frac{c}{m}\,.$$
 
 \emph{Definice}: Systém funkcí $H = \{ h_i; i \in I\}: U\to \{0,\dots,m-1\}$ je $k$\emph{-nezávislý}, pokud pro náhodně zvolenou $h \in H$:
 
@@ -3191,7 +3097,7 @@ Existují 3 základní techniky pro amortizovanou analýzu:
 		$$\sum_{i=0}^{n}\left\lceil \frac{k}{2^i}\right\rceil \leq \sum_{i=0}^{k} (1 + \frac{k}{2^i}) \leq n + 2k$$
 		\item \textbf{Účetní metoda:} Změna jednoho bitu stojí jeden žeton a na každou operaci dostaneme dva žetony. U každého jedničkového bitu v původní bitové sekvenci si \uv{uschováme} jeden žeton. Při inkrementu máme vynulování jedničkových bitů předplaceno. Oba žetony využijeme na jedinou změnu nulového bitu na jedničku a předplacení vynulování tohoto bitu. 
 		
-		V každém okamžiku tedy máme na všech jedničkách žetony, které se použijí na jejich případné vynulování. Každá operace stojí 2 žetony, tj. $2k$ žetonů celkem. Nejvýše $n$ žetonů jsme utratili na iniciální předplacení jedniček, dohormady tedy spotřebujeme nejvýše $n + 2k$ žetonů.
+		V každém okamžiku tedy máme na všech jedničkách žetony, které se použijí na jejich případné vynulování. Každá operace stojí 2 žetony, tj. $2k$ žetonů celkem. Nejvýše $n$ žetonů jsme utratili na iniciální předplacení jedniček, dohromady tedy spotřebujeme nejvýše $n + 2k$ žetonů.
 		
 		\item\textbf{Potenciálová metoda:} Vhodnou potenciálovou funkcí je kupříkladu $\Phi = $\textit{počet jedničkových bitů}. Označíme $\Phi$ potenciál před operací a $\Phi'$ potenciál po provedení operace. Zajímá nás
 		$$\text{amortizovaný čas} = \text{skutečný čas} + (\Phi' - \Phi)$$
@@ -3205,7 +3111,7 @@ Existují 3 základní techniky pro amortizovanou analýzu:
 
 	\item \textbf{Dynamické pole}
 	
-	Máme pole, do kterého přidáváme prvky i je z něj mažeme. Implementace používá statická pole pevné velikosti $p$. Je-li v poli již $n = p$ prvků (tj. je plné) a my chceme přidat prvek, vytvoříme nové pole velikosti $2p$, do něj zkopírujeme obsah původního pole a přidám prvek. Je-li $p = 4n$ a my chceme přidat prvek, zmenšíme pole na polovinu.
+	Máme pole, do kterého přidáváme prvky i je z něj mažeme. Implementace používá statická pole pevné velikosti $p$. Je-li v poli již $n = p$ prvků (tj. je plné) a my chceme přidat prvek, vytvoříme nové pole velikosti $2p$, do něj zkopírujeme obsah původního pole a poté prvek přidáme. Je-li $p = 4n$ a my chceme prvek odebrat, zmenšíme pole na polovinu.
 	
 	\begin{enumerate}
 		\item \textbf{Agregovaná analýza:} (neformálně) Zkopírování pole trvá $O(n)$. Po zkopírování je $n = p/2$ a k dalšímu kopírování dojde nejdříve po $n/2$ operacích Insert nebo Delete. Předpokládáme-li, že operace Insert a Delete jsou konstantní (pokud nedošlo ke kopírování), pak je amortizovaná složitost $O(1)$.
@@ -3252,7 +3158,7 @@ Existují 3 základní techniky pro amortizovanou analýzu:
 \section{Chování a analýza datových struktur na systémech s paměťovou hierarchií.}
 \subsection{Paměťová hierarchie}
 
-Pamť je v moderních počítačích hierarchická, od registrů v procesoru přes cache, RAM až po pevný disk. S rostoucí velikostí však roste i doba odezvy. 
+Paměť je v moderních počítačích hierarchická, od registrů v procesoru přes cache, RAM až po pevný disk. S rostoucí velikostí však roste i doba odezvy. 
 \begin{figure}[H]
 	\centering\includegraphics[]{img/memory.png}
 	\caption{Paměťová hiearchie}
@@ -3291,7 +3197,7 @@ Procesor může přistupovat pouze k datům v cache. Paměť je plně asociativn
 
 \textbf{Cache-oblivious} algoritmus je takový algoritmus, který efektivně funguje \textbf{bez znalosti $B$ a $M$}. 
 
-Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious analýzy} -- tj. hodnoty $M$ a $B$ považujeme za neznáme a zkoumáme chování algoritmu, konkrétně počet přenesených bloků. 
+Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious analýzy} -- tj. hodnoty $M$ a $B$ považujeme za neznámé a zkoumáme chování algoritmu, konkrétně počet přenesených bloků. 
 
 \begin{itemize}
 	\item \textbf{přečtení souvislého pole:} Máme pole zapsané v paměti v kuse, chceme přečíst úsek délky $n$. Počet přenesených bloků je nejvýše 
@@ -3351,8 +3257,8 @@ Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious anal�
 						\begin{algorithmic}[1]
 							\For{$i = 1; i < n; i += B$}
 								\For{$j = i; j < n; j+= B$}
-									\For{$ii = i; ii < min(k, i+B); i++$}
-										\For{$jj = max(j,ii+1); jj < min(k, j+B); jj++$}
+									\For{$ii = i; ii < min(n, i+B); ii++$}
+										\For{$jj = max(j,ii+1); jj < min(n, j+B); jj++$}
 											\State swap($A[ii,jj], A[jj,ii]$)
 										\EndFor
 									\EndFor
@@ -3384,7 +3290,7 @@ Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious anal�
 			Rekurzivně transponujeme menší a menší podmatice, až se v nějakém $i$-tém kroku dostaneme na velikost $n_i$, která se již vejde do paměti, tj. $n_i \leq B \leq 2n_i$. Transponování v rámci této matice má stejné vlastnosti, jako v případě $B\times B$ matice u cache-aware algoritmu -- tj. nedochází k výpadkům a celkem je třeba načíst $4n_i \leq 4B$ bloků. Celkem máme $n/n_i$ těchto sumbatic, takže počet přenesených bloků je nejvýše
 			$$\left(\frac{n}{n_i} \right)^2 \cdot 4n_i \leq \frac{8n^2}{n_i} = O\left(\frac{n^2}{B}\right)$$
 			
-			To je stekný výsledek, jako v předchozím případě. Tento algoritmus však již nezávisí na $B$ a je tedy cache-oblivious.
+			To je stejný výsledek, jako v předchozím případě. Tento algoritmus však již nezávisí na $B$ a je tedy cache-oblivious.
 			
 			\begin{figure}[h]
 				\centering
@@ -3427,10 +3333,11 @@ Budeme zkoumat různé algoritmy prostřednictvím \textbf{cache-oblivious anal�
 		
 		\item \textbf{funnel-sort} Chceme dostat $O(\frac{n}{B}\log_{\frac{M}{B}}\frac{n}{M})$ (lze ukázat, že to je dolní mez pro cache oblivious třídící algoritmy). Funnelsort rozdělí data na $N^{\frac{1}{3}}$ částí o velikosti $N^{\frac{2}{3}}$, ty rekurzivně setřídí a slije pomocí $N^{\frac{1}{3}}$-mergeru. 
 		
-		Obecný \textbf{$k$-merger} je stromovitá struktura bufferů, která slije $k$ vstupních bufferů do jediného výstupního. Stuktura viz obrázek \ref{merger}.
+		Obecný \textbf{$k$-merger} je stromovitá struktura bufferů, která slije $k$ vstupních bufferů do jediného výstupního. Struktura viz obrázek \ref{merger}.
 		
-		Lze dokázat že za předpokladu tall cache je funnelsort optimální, tj. provede $O(\frac{n}{B}\log_{\frac{M}{B}}\frac{n}{M})$ přístupů do paměti.
+		Lze dokázat, že za předpokladu tall cache je funnelsort optimální, tj. provede $O(\frac{n}{B}\log_{\frac{M}{B}}\frac{n}{M})$ přístupů do paměti.
 		\begin{figure}[H]
+      \caption{Struktura pro $k$\=/merger.}
 			\label{merger}
 			\centering
 			\includegraphics[]{img/kmerger.png}
@@ -3488,8 +3395,8 @@ Pokud LRU může uložit dvojnásobný počet bloků než OPT, pak má LRU nejv�
 Zdvojnásobení velikosti cache většinou nemá vliv na asymptotický počet přenesených bloků, viz např.:
 \begin{itemize}
 	\item průchod polem: $O(\frac{n}{B})$
-	\item Mergesort: $O(\frac{n}{B}\log (\frac{n}{M})$
-	\item Funnelsort: $O(\frac{n}{B}\log_{\frac{M}{B}} (\frac{n}{B})$
+	\item Mergesort: $O(\frac{n}{B}\log (\frac{n}{M}))$
+	\item Funnelsort: $O(\frac{n}{B}\log_{\frac{M}{B}} (\frac{n}{B}))$
 	\item van Emde Boas: $O(\log_B n)$
 \end{itemize}
 
@@ -3576,8 +3483,8 @@ Očekávaná hodnota:
 $$E(Y-\hat{Y})^2 = E[f(X) + \epsilon - \hat{f}(X)]^2$$
 
 \begin{itemize}		
-	\item reducibilní chyba ($[f(X) - \hat{f}(X)]^2$ -- špatně naučený model
-	\item ireducibilní chyba($Var(\epsilon)$)-- vliv neměřených veličin, náhody, šumu v datech 
+	\item reducibilní chyba ($[f(X) - \hat{f}(X)]^2$) -- špatně naučený model
+	\item ireducibilní chyba ($Var(\epsilon)$) -- vliv neměřených veličin, náhody, šumu v datech 
 \end{itemize}
 
 \paragraph{Míry chyby pro regresi}
@@ -3646,7 +3553,7 @@ Máme $N$ vzorků, z nich vybereme \textit{s opakováním} $N$ vzorků do tréno
 
 Provedeme mnoho bootstrap výběrů a celkovou chybu spočteme jako 
 $$\overline{Err}^{(1)} = \frac{1}{N}\sum_{i=1}^{N}\frac{1}{|C^{-i}|}\sum_{b\in C^{-i}} L(y_i, \hat{f}^{b}(x_i))$$
-kde $C^{-1}$ je množina bootstrap výběrů nebosahujících vzorek $i$.
+kde $C^{-1}$ je množina bootstrap výběrů neobsahujících vzorek $i$.
 
 Takto formulovaná chyba je pesimistická, neboť učíme na $N$ datech, která ale reálně pocházejí pouze z 0.632$N$ dat, proto korekce přičtením chyby na trénovacích datech:
 
@@ -3664,10 +3571,12 @@ $$w = \frac{0.632}{1 - 0.368\cdot\hat{R}}
 $$
 
 
-regularizace: p >> n
-* subset selection
-* shrinkage (ridge, lasso)
-* dimension reduction (PCA, PCR, PLS)
+regularizace: $p >> n$
+\begin{itemize}
+  \item subset selection
+  \item shrinkage (ridge, lasso)
+  \item dimension reduction (PCA, PCR, PLS)
+\end{itemize}
 
 \subsubsection{PCA (Principal Component Analysis)}
 Statistická metoda pro redukci prostoru příznaků pomocí ortogonální transformace. Z původních potenciálně korelovaných příznaků získáme menší množství dekorelovaných příznaků, tzv. \textit{principal components}. První komponenta má největší možný rozptyl (tj. vysvětluje nejvíce rozdílů v datech), další jsou na ni kolmé a opět mají co největší rozptyl. Získáme dekorelovanou ortogonální bázi.
@@ -3676,7 +3585,7 @@ Intuitivně: hledáme elipsoid obalující data. Osy elipsoidu jsou principal ko
 
 Synonyma: PCA, Karhunen-Loeve transformace, Singular Value Decomposition, Eigenvalue Decomposition, factor analysis, \dots
 
-Výpočet 
+Výpočet:
 1. eigenvalue decomposition
 2. singular value decomposition
 
@@ -3688,7 +3597,7 @@ Předpokládáme lineární vztah, tj. $Y \approx \beta_0 + \beta_1 X$. Náš mo
 
 Odhadneme $\hat{\beta}_0, \hat{\beta}_1$ z dat: 
 \begin{itemize}
-	\item definujeme \textbf{residuum} vzorku jako $y_i - \hat{y}_i = y_i - (\hat\beta_0 + \hat\beta_1x_i)$
+	\item definujeme \textbf{residuum} $i$-tého vzorku jako $e_i = y_i - \hat{y}_i = y_i - (\hat\beta_0 + \hat\beta_1x_i)$
 	\item \textbf{RSS (residual sum of squares)} = $e_1^2 + e_2^2 + \dots + e_n^2$
 	\item RSS chceme minimalizovat (=MSE, minimal square error), takže zderivujeme a položíme rovno 0. Dostaneme
 	$$\hat\beta_1 = \frac{\sum_{i=1}^{n}(x_i-\overline{x})(y_i - \overline{y})}{\sum_{i=1}^{n}(x_i-\overline{x})^2}
@@ -3706,7 +3615,7 @@ SE(\hat{\beta}_1)^2 = \frac{\delta^2}{\sum_{i=1}^{n}(x_i - \overline{x})}
 \qquad
 SE(\hat{\beta}_0)^2 = \delta^2 \left[\frac{1}{n} + \frac{\overline{x}^2}{\sum_{i=1}^{n}(x_i - \overline{x})} \right]$$
 
-kde $\delta^2 = Var(\epsilon)$, taktéž označován jako RSE (standard residual error). Odhaduje se jako $RSE = \sqrt{RSS/(n-2}$.
+kde $\delta^2 = Var(\epsilon)$, taktéž označován jako RSE (standard residual error). Odhaduje se jako $RSE = \sqrt{RSS/(n-2)}$.
 
 \subparagraph{Intervaly věrohodnosti:} na 95\,\% leží $\beta_1$ v intervalu $[\hat{\beta}_1 - 2\cdot SE(\hat{\beta}_1), \hat{\beta}_1 + 2\cdot SE(\hat{\beta}_1)]$, analogicky $\beta_0$.
 
@@ -3725,7 +3634,7 @@ Chceme-li ohodnotit, jak dobře model odpovídá datům, můžeme použít
 	\item $R^2 = \frac{TSS - RSS}{TSS}$, kde $RSS = \sum_{i=1}^{n}(y_i - \hat{y}_i)^2$ a $TSS = \sum_{i=1}^{n}(y_i - \overline{y})^2$ (total sum of squares). Hodnota TSS vyjadřuje rozptyl v Y, RSS je rozptyl, který zůstal \uv{nevysvětlen} regresí; TSS - RSS je pak rozptyl v Y, který \uv{vysvětluje} regrese. $R^2$ tedy vyjadřuje \textbf{kolik procent rozptylu v $Y$ lze vysvětlit pomocí $X$}.
 \end{itemize}
 \paragraph{Vícerozměrná lineární regrese}
-Vícerozměrná lineární funkce, tj. $Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \dots + \beta_px_p + \epsilon$. Náš model bude tedy $\hat{y} = \hat{\beta}_0 + \sum_{i=1}^{n}X_i\hat{\beta}_i$. Rozšíříme li vektory $x$ na $x = \langle1, x_1, x_2,\dots\rangle$, můžeme psát maticově:
+Vícerozměrná lineární funkce, tj. $Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \dots + \beta_px_p + \epsilon$. Náš model bude tedy $\hat{y} = \hat{\beta}_0 + \sum_{i=1}^{n}X_i\hat{\beta}_i$. Rozšíříme-li vektory $x$ na $x = \langle1, x_1, x_2,\dots\rangle$, můžeme psát maticově:
 $$\hat{y} = X\beta$$
 
 Pro odhad parametrů $\beta$ použijeme opět RSS:
@@ -3756,8 +3665,8 @@ Derivací podle $\beta$ dostaneme $X^T(y-X\beta) = 0$. Pro regulární matice vy
 \subsubsection{Lineární metody pro klasifikaci (logistická regrese, LDA, QDA)}
   \begin{itemize}
 	\item klasifikace: kvalitativní cílová proměnná $G$, předpověz správnou $G_k \in G$ nebo $p_k = P(G=G_k | X)$
-	\item LINEÁRNÍ metody = hranice mezi třídami je linární
-	\item NE lineární regrese:
+	\item LINEÁRNÍ metody = hranice mezi třídami je lineární
+	\item NElineární regrese:
 	\begin{itemize}
 		\item číselné kódování je špatně (není přirozené pořadí, škála; jiná pořadí mohou dát jiné výsledky)
 		\item pro bin. G by šlo, ale logistická je lepší (žádné negativní pravděpodobnosti)
@@ -3777,9 +3686,9 @@ Derivací podle $\beta$ dostaneme $X^T(y-X\beta) = 0$. Pro regulární matice vy
 	
 	Kvalitativní prediktory lze řešit dummy proměnnými stejně jako u lin. regrese.
 
-	\subparagraph{Více rozměrná logistická regrese}
+	\subparagraph{Vícerozměrná logistická regrese}
 	Více prediktorů:
-	$$p(X) = \frac{\exp(\beta_0 + \beta_1X_1 + \dots + \beta_pX_p)}{1 + \exp(\beta_0 + \beta_1 X_ + \dots + \beta_pX_p)}$$
+	$$p(X) = \frac{\exp(\beta_0 + \beta_1X_1 + \dots + \beta_pX_p)}{1 + \exp(\beta_0 + \beta_1 X_1 + \dots + \beta_pX_p)}$$
 	
 	Více cílových tříd: existuje, spíše se ale používá LDA.
 
@@ -3791,7 +3700,7 @@ Derivací podle $\beta$ dostaneme $X^T(y-X\beta) = 0$. Pro regulární matice vy
 			\item každá třída vlastní mean, ale společná kovarianční matice (kovariance mezi prediktory) $\to$ stejně tvarované elipsy
 		\end{itemize}
 		\item aproximuje bayesovský klasifikátor (=ideální klasifikátor při znalosti tříd)
-		\item různá cena chyby -\textgreater{} posun hranice z 0.5 třeba na 0.2
+		\item různá cena chyby $\to$ posun hranice z 0.5 třeba na 0.2
 		\item ROC křivka
 	\end{itemize}
 	\paragraph{QDA (Quadratic Discriminant Analysis)}
@@ -3812,7 +3721,7 @@ Derivací podle $\beta$ dostaneme $X^T(y-X\beta) = 0$. Pro regulární matice vy
 \subsubsection{Rozhodovací stromy}
 Rozhodovací strom pro daný cílový atribut $G$ je kořenový strom tvořený z 
 \begin{itemize}
-	\item \textit{kořene a vnitřních listů označených atributem}, ze kterého vede jedna hrana pro každou možnou hodnotu tohoto atributu (případně interval pro spojité predikáty)
+	\item \textit{kořene a vnitřních vrcholů označených atributem}, ze kterého vede jedna hrana pro každou možnou hodnotu tohoto atributu (případně interval pro spojité predikáty)
 	\item \textit{listů označených předpokládanou hodnotou cílového atributu G} za předpokladu, že ostatní atributy nabývají hodnot daných uzly na cestě od kořene do tohoto listu
 \end{itemize}
 
@@ -3827,7 +3736,7 @@ Stromy mohou být
 \begin{itemize}
 	\item \textbf{regresní} -- list obsahuje průměr hodnot cílové veličiny v regionu daném atributy ($\to$ schodovitý graf). Jako míru chyby lze použít RSS.
 	
-	\item \textbf{klasifikační} -- list obsahuje najčetnější třídu v regionu daném atributy. Jako míru chyby lze použít:
+	\item \textbf{klasifikační} -- list obsahuje nejčetnější třídu v regionu daném atributy. Jako míru chyby lze použít:
 	\begin{itemize}
 		\item \textbf{classification error rate}: pro každý region $R_m$ (jehož vypočtenou třídu označíme jako $k(m)$) spočti
 		$$\frac{1}{|R_m|} \sum_{i \in R_m} I(y_i \neq k(m)) = 1 - p_{m,k(m)}$$
@@ -3876,12 +3785,12 @@ Formalizovaný postup, který jsme doposud popsali:
 			\State označ \textit{root} atributem $X_j$
 			\For{$x_j$ \textbf{in} $X_j$}
 				\State přidej větev pod root
-				\State $data_{X_j = x_j} \gets$ podmonžina $data$, kde $X_j = x_j$
+				\State $data_{X_j = x_j} \gets$ podmnožina $data$, kde $X_j = x_j$
 				\If{$data_{X_j = x_j} = \emptyset$}
 					\State přidej list označený nejčastější $g$ v data
 					\State \textbf{return}	
 				\EndIf
-				\State přidej podstrem ID3($data_{X_j=x_j}, G, X \setminus {X_j}$)
+				\State přidej podstrom ID3($data_{X_j=x_j}, G, X \setminus {X_j}$)
 			\EndFor
 		\EndFunction
 	\end{algorithmic}
@@ -3926,7 +3835,7 @@ Abych mohli vytrénovat mnoho různých modelů, potřebujeme mnoho trénovacíc
 Užité rozhodovací stromy \textit{nejsou prořezané}. Čím víc stromů, tím lépe (nehrozí overfitting), stačí zastavit jakmile se chyba ustálí (používá se cca 100 - 1000 stromů, záleží na problému).
 
 \subparagraph{OOB (Out Of Bag) error estimation}
-Pro odhad chyby bagged modelu nepotřebujeme krosvalidaci, protože bootstrapping přirozeně vytváří vhodná \uv{testovací data}. Pro každý model totiž použijeme jen cca $0.638\cdot N$ původních dat, zbytek jsou tzv. \textit{out-of-the-bag observations} = data nepoužitá v daném modelu. To znamená, že libovolný $i$-tý prvek jej cca $B/3$ modelů nepoužívá pro učení ($B$ = celkový počet stromů v ansámblu) -- na těchto modelech tedy můžeme testovat, jak dobře zvládnou $i$-tý prvek klasifikovat.
+Pro odhad chyby bagged modelu nepotřebujeme krosvalidaci, protože bootstrapping přirozeně vytváří vhodná \uv{testovací data}. Pro každý model totiž použijeme jen cca $0.638\cdot N$ původních dat, zbytek jsou tzv. \textit{out-of-the-bag observations} = data nepoužitá v daném modelu. To znamená, že libovolný $i$-tý prvek cca $B/3$ modelů nepoužívá pro učení ($B$ = celkový počet stromů v ansámblu) -- na těchto modelech tedy můžeme testovat, jak dobře zvládnou $i$-tý prvek klasifikovat.
 
 Celková průmerná chyba se tedy spočte jako průměr chyb pro predikci jednotlivých prvků, které vypočteme na stromech, v nichž nebyl prvek použit při učení. Typ chyby záleží na úloze (MSE pro regresi; 0-1 chyba nebo log-likelihood pro klasifikaci).
 
@@ -3942,7 +3851,7 @@ Jako míru chyby lze použít modifikované \textit{one-leave-out} a váhy jedno
 $$\hat{\vec{w}} = \arg\min_\vec{w} \sum_{i=1}^{N}\left(y_i - \sum_{m=1}^{M} w_m \hat{f}_m^{-i}(x_i) \right)^2$$
 kde $\hat{f}^{-i}_m$ je predikce $m$-tého modelu naučeného s vynecháním $i$-tého příkladu. Váhy $\vec{w}$ je lépe mít nezáporné a normalizované.
 
-Celková predikce je tedy $\sum_{m=1}^{N} \hat{w}_m \hat{f}_m(x)$.
+Celková predikce je tedy $\sum_{m=1}^{M} \hat{w}_m \hat{f}_m(x)$.
 
 \paragraph{Bumping}
 Bootstrap, ale místo agregace jen vybere nejlepší model (nejmenší chyba).
@@ -3952,9 +3861,9 @@ Stromy stavěny \emph{iterativně}, na základě chyb předchozího stromu. Nepo
 
 \textbf{Parametry:}
 \begin{itemize}
-\item $d$ = velikost stromů (počet listů) - může být docela malé (i 1)
-\item $lambda$ = shrinkage parametr - zpomaluje učení (0.001 - 0.001)
-\item $B$ = počet stromů (\textbf{hrozí přeučení!! }ale jen pomalu, když vůbec
+\item $d$ = velikost stromů (počet listů) -- může být docela malé (i 1)
+\item $lambda$ = shrinkage parametr -- zpomaluje učení (0.0001 - 0.01)
+\item $B$ = počet stromů (\textbf{hrozí přeučení!!} ale jen pomalu, když vůbec)
 \end{itemize}
 
 \textbf{Algoritmy:}
@@ -4074,7 +3983,7 @@ $$L_P = \min_{\beta,\beta_0}\left(\frac{1}{2}||\beta||^2 + \gamma\sum_{i=1}^{N}\
 Duální forma vyjde stejně jako pro separabilní případ, přibudou podmínky $0 \leq  \alpha_i \leq \gamma$.
 
 \paragraph{Support Vector Machine (SVM)}
-SVM přidávájí navíc oproti SVC ještě možnost nelineární transformace vstupního prostoru do příznakového prostoru (typicky vyšší dimenze) prostřednictvím tzv. \textbf{kernel} funkcí. Chceme tedy zobrazení $\Phi : X \mapsto F$. To může být však velmi výpočetně náročné. SVM využívají trik: v duální formulaci problému potebujeme (jak pro konstrukci, tak pro klasifikaci) \textit{vždy pouze skalární součin dvou vektorů}, tj. $\vec{x} \cdot \vec{z}$, resp. zobrazených vektorů $\Phi(\vec{x}) \cdot \Phi(\vec{z})$. Budou nám tedy stačit funkce počítající pro dva vektory tento součin v novém prostoru, tzv. \textbf{kernel funkce}:
+SVM přidávájí navíc oproti SVC ještě možnost nelineární transformace vstupního prostoru do příznakového prostoru (typicky vyšší dimenze) prostřednictvím tzv. \textbf{kernel} funkcí. Chceme tedy zobrazení $\Phi : X \mapsto F$. To může být však velmi výpočetně náročné. SVM využívají trik: v duální formulaci problému potřebujeme (jak pro konstrukci, tak pro klasifikaci) \textit{vždy pouze skalární součin dvou vektorů}, tj. $\vec{x} \cdot \vec{z}$, resp. zobrazených vektorů $\Phi(\vec{x}) \cdot \Phi(\vec{z})$. Budou nám tedy stačit funkce počítající pro dva vektory tento součin v novém prostoru, tzv. \textbf{kernel funkce}:
 $$K_\Phi(\vec{x},\vec{z}) = \Phi(\vec{x})\cdot\Phi(\vec{z})$$
 Předpokládáme tedy, že kernel funkce je jednodušší pro výpočet než spočíst dvě mapování do nového prostoru a poté skalární součin.
 Obvyklé kernel funkce:
@@ -4112,8 +4021,8 @@ Vzdálenost prvků $d(x_i, x_j)$ je typicky aplikačně závislá, silně na ní
 Většinou není dán, třeba nějak zvolit. Chceme minimalizovat součet vzdáleností uvnitř klastrů, tj.
 
 $$W(C) = \frac{1}{2} \sum_{k=1}^{K} \sum_{i \in C_k} \sum_{j \in C_k}  d(x_i, x_j)$$
-to ale klesá s rostoucím $K$ i pro rovnoměrně rozložená data, tzn. minimum nastane pro každý prvek ve vlastním klastru. Zkusíme tedy místo toho najít $K$, při němž dojde ke \textit{zpomalení klesání}, tj
-$\{W_k - W_{k+1} |\ k < k^* \} \gg \{W_{k} - W_{k+1}\ |\ k \geq k* \}$
+to ale klesá s rostoucím $K$ i pro rovnoměrně rozložená data, tzn. minimum nastane pro každý prvek ve vlastním klastru. Zkusíme tedy místo toho najít $K$, při němž dojde ke \textit{zpomalení klesání}, tj.
+$\{W_k - W_{k+1} |\ k < K \} \gg \{W_{k} - W_{k+1}\ |\ k \geq K \}$
 což je docela dobře fungující heuristika. Lze také použít \textit{\uv{gap} statistiku}, která porovnává $\log W_k$ s křivkou získanou pro uniformně rozložená data (přes obdélník obsahující data). Optimální K $\sim$ největší \uv{gap} mezi křivkami (expected curve - observed curve). 
 
 \paragraph{$k$-medoids}
@@ -4124,7 +4033,7 @@ Postupně shlukujeme data až do jediného klastru, přitom vytváříme \textit
 
 \subparagraph{Metody}
 \begin{itemize}
-	\item \textbf{odspoda (bottom-up}) Na začátku každý vzorek ve svém klastru. Sloučuje dva klastry s minimální vzdáleností (maximal similarity) dokud nemáme 1 klastr. Možnosti měření vzdálenosti/podobnosti mezi klastry (=\textit{linkage}):
+	\item \textbf{odspoda (bottom-up}) Na začátku každý vzorek ve svém klastru. Slučuje dva klastry s minimální vzdáleností (maximal similarity) dokud nemáme 1 klastr. Možnosti měření vzdálenosti/podobnosti mezi klastry (=\textit{linkage}):
 	\begin{itemize}
 		\item \textbf{single linkage}: Vzdálenost mezi nejbližšími body.
 		\item \textbf{complete linkage}: Vzdálenost mezi nejvzdálenějšími body.
@@ -4142,7 +4051,7 @@ Problémy: volba dissimilarity measure, linkage, K, \dots (typicky ad hoc). Outl
 \subsubsection{Asociační pravidla}
 Pozorování $X$ sdružená pravděpodobnost $P(X)$. Chceme místa hustého výskytu dat. 
 
-\textbf{Asociační pravidla} mají za cíl najít v datech nejčastěji se vyskytující kombinace hodnot proměnných $X$. Nejčastěji uvažujeme binární data ($X_j in \{0, 1\}$). Často označováno jako \textbf{analýza nákupního koše}. 
+\textbf{Asociační pravidla} mají za cíl najít v datech nejčastěji se vyskytující kombinace hodnot proměnných $X$. Nejčastěji uvažujeme binární data ($X_j \in \{0, 1\}$). Často označováno jako \textbf{analýza nákupního koše}. 
 
 Chceme najít $L$ souřadnic a hodnoty $v_1, \dots, v_L$ tak, že $P(v_l)$ je pro každou hodnotu velká. Na to však máme málo dat, proto místo hodnot hledáme \textbf{oblasti} (intervaly / výčet hodnot), resp. pouze průniky oblastí přes různé souřadnice.
 
@@ -4332,7 +4241,7 @@ Pro náš příklad směsi gaussovských rozdělení:
 		\State \textbf{Expectation step:} Spočti
 		$$\gamma_i = \frac{\tau\varphi_{\mu_1,\sigma_1(x_i)}}{\tau\varphi_{\mu_1,\sigma_1(x_i)} 
 			+ (1-\tau)\varphi_{\mu_2,\sigma_2(x_i)}}$$
-		\Comment{$\gamma_i$ je pravděpodobnost, že $z_i = 1$ v daném kroku, tj. pro aktuální parametry $\theta$. Máme tedy odhad $Z$, můžeme pokračovat k maximalizaci.}t
+		\Comment{$\gamma_i$ je pravděpodobnost, že $z_i = 1$ v daném kroku, tj. pro aktuální parametry $\theta$. Máme tedy odhad $Z$, můžeme pokračovat k maximalizaci.}
 		
 		\State \textbf{Maximization step:} Uprav parametry modelu $\theta$ na základě spočtených odhadů $Z$:
 		$$
@@ -4399,7 +4308,7 @@ Dva typy nekonzistence (pro binární klasifikaci) \textbf{falešně negativní}
 \paragraph{Metoda nejlepší současné hypotézy}
 Udržujeme jednu hypotézu (current-best hypothesis) a podle příkladů ji upravujeme:
 \begin{itemize}
-\item příklad je s hypotézou konzistentní konzistentní $\to$ hypotézu \textbf{neměníme}
+\item příklad je s hypotézou konzistentní $\to$ hypotézu \textbf{neměníme}
 \item falešně negativní $\to$ hypotézu \textbf{zobecníme}
 
 Pokud je hypotéza $h_1$ \textit{zobecněním} hypotézy $h_2$, potom platí $\forall x \ C_2(x) \Rightarrow C_1(x)$.
@@ -4553,7 +4462,7 @@ Využití metod strojového učení má mnoho výhod:
 	
 	
 	\item Statistické učení se automaticky zaměřuje na \textbf{nejčastější} (a tedy důležité) případy.
-	\item Budované modely jsou typicky \textbf{robustní} vůči novým \textbf{neznámémým datům} a \textbf{zašuměnému či chybnému vstupu}. Toho je u ručně psaných pravidel velmi obtížné dosáhnout.
+	\item Budované modely jsou typicky \textbf{robustní} vůči novým \textbf{neznámým datům} a \textbf{zašuměnému či chybnému vstupu}. Toho je u ručně psaných pravidel velmi obtížné dosáhnout.
 	\item Modely lze zpřesňovat poskytnutím dodatečných trénovacích dat. U ručně psaných pravidel to lze pouze zvyšováním komplexity modelu.
 \end{itemize}
 
@@ -4563,7 +4472,7 @@ Strojové učení a NLP se vlastně dobře doplňují. NLP samotné nedokáže t
 \medskip
 \textit{Následující sekce jsou výtahem z přednášek NPFL067 a NPFL068}
 \subsection{Základy teorie informace}
-Nechť $p_X{x}$ je pravděpodobnostní rozdělení náhodné proměnné $X$ a nechť $\Omega$ je množina základních jevů. Pak \textbf{entropie} tohoto rozdělení je 
+Nechť $p_X(x)$ je pravděpodobnostní rozdělení náhodné proměnné $X$ a nechť $\Omega$ je množina základních jevů. Pak \textbf{entropie} tohoto rozdělení je 
 $$H(X) = -\sum\limits_{x \in \Omega} p(x) \cdot \log_2(p(x))$$
 Entropie vyjadřuje \textit{míru nejistoty}. Vyjadřuje se v bitech. Nejnižší možná hodnota je 0 (pokud je výsledek experimentu dán předem), horní limit obecně není -- nicméně největší nejistota odpovídá uniformnímu rozdělení, tj. pro $|\Omega| = n : H(X) \leq \log_2 (n)$. Entropii lze taktéž interpretovat jako minimální počet bitů nutných pro zakódování nějaké informace: čím předvídatelnějí jsou data, tím úspornější kódování.
 
@@ -4587,7 +4496,7 @@ $$H_p(p') = -\sum\limits_{x \in \Omega} \sum\limits_{y \in \Psi} p(x,y) \cdot \l
 $$H_p(p') = -\frac{1}{|T|}\sum\limits_{i = 1 \dots |T|}\log_2 p'(y_i|x_i)$$ 
 
 \subsection{Modelování jazyka, zašuměný kanál}
-\textbf{Zašuměný kanál} je označení pro modela média, které k přenášeným slovům přidá nějaký šum. Formálně: do kanálu vstupuje nějaká sekvence symbolů, z něj pak vystupuje pozměněná, zašuměná sekvence, kterou my přijmeme. Cílem je tedy na základě přijaté zašuměné sekvence uhodnout původní zprávu.
+\textbf{Zašuměný kanál} je označení pro model média, které k přenášeným slovům přidá nějaký šum. Formálně: do kanálu vstupuje nějaká sekvence symbolů, z něj pak vystupuje pozměněná, zašuměná sekvence, kterou my přijmeme. Cílem je tedy na základě přijaté zašuměné sekvence uhodnout původní zprávu.
 
 \begin{figure}[H]
 	\centering
@@ -4597,9 +4506,9 @@ $$H_p(p') = -\frac{1}{|T|}\sum\limits_{i = 1 \dots |T|}\log_2 p'(y_i|x_i)$$
 Mnoho problémů NLP lze chápat jako případ zašuměného kanálu, např. rozpoznávání mluvené řeči, OCR, strojový překlad (\uv{šum} kvůli překladu), \dots
 
 Formálně nás tedy zajímá podmíněná pravděpodobnost původní zprávy $A$ za předpokladu přijaté zprávy $B$, tedy $p(A|B)$. Díky Bayesově větě:
-$$p(A|B) = p(B|A)p(A)/p(B)$$
+$$p(A|B) = \frac{p(B|A)p(A)}{p(B)}$$
 Zajímá nás nejpravděpodobnější možnost, tj.
-$$A_best = \text{argmax}_A p(B|A)p(A)/p(B) =\text{argmax}_A p(B|A)p(A)$$
+$$A_{best} = \argmax_A \frac{p(B|A)p(A)}{p(B)} =\argmax_A p(B|A)p(A)$$
 kde $p(B)$ lze ignorovat, protože je pro všechny možnosti $A$ stejné. Náš výpočet má tedy nyní dvě složky:
 \begin{itemize}
 	
@@ -4669,7 +4578,7 @@ Strategie:
 	
 	\textit{Idea:} zkombinovat různé řády $n$-gramů:
 	$$p'(w_i|w_{i-2}, w_{i-1}) = \lambda_3 p_3(w_i|w_{i-2}, w_{i-1}) + \lambda_2 p_2(w_{i}| w_{i-1}) + \lambda_1 p_1(w_i) + \lambda_0 \frac{1}{|V|}$$
-	kde $\lambda = (\lambda_0, \lambda_1, \lambda_2, \lambda_3)$ jsou parametry ovlivňující detailnost vs. vyhlazenost výsledné distribuce. Platí $\forall i \lambda_1 > 0, \sum_i \lambda_i = 1$. Tyto parametry se odhadnou EM algoritmem (detaily vynecháme) pomocí speciálně vyčleněného datesetu (\textit{heldout data}), na němž se budeme snažit minimalizovat cross-entropii pro fixní $p_1, p_2, p_3$. Je nutné použít jiná data, než trénovací (ze kterých jsme získali $p_1, p_2, p_3$), jinak by došlo k degeneraci modelu k $\lambda = (0,0,0,1)$. Obecně se v NLP rozdělují dostupná data na 3 části: \textit{trénovací, testovací} a \textit{heldout data}.
+	kde $\lambda = (\lambda_0, \lambda_1, \lambda_2, \lambda_3)$ jsou parametry ovlivňující detailnost vs. vyhlazenost výsledné distribuce. Platí $\forall i \lambda_i > 0, \sum_i \lambda_i = 1$. Tyto parametry se odhadnou EM algoritmem (detaily vynecháme) pomocí speciálně vyčleněného datesetu (\textit{heldout data}), na němž se budeme snažit minimalizovat cross-entropii pro fixní $p_1, p_2, p_3$. Je nutné použít jiná data, než trénovací (ze kterých jsme získali $p_1, p_2, p_3$), jinak by došlo k degeneraci modelu k $\lambda = (0,0,0,1)$. Obecně se v NLP rozdělují dostupná data na 3 části: \textit{trénovací, testovací} a \textit{heldout data}.
 	%TODO EM smoothing algoritmus
 	
 \end{description}
@@ -4689,13 +4598,13 @@ I pro třídy lze použít lineárně vyhlazený model.
 
 Rozdělení slov do tříd můžeme získat třeba z nějakého slovníku, nicméně jak je ve strojovém učení zvykem, raději ho sestrojíme z dostupných dat. Algoritmus je následující:
 
-Nechť $V$ je množina slov (=slovník), $C$ je množina tříd a $r : V \mapsto C$ je mapování slov do do tříd.
+Nechť $V$ je množina slov (=slovník), $C$ je množina tříd a $r : V \mapsto C$ je mapování slov do tříd.
 \begin{enumerate}
 	
 	
 	\item Na začátku je každé slovo ve vlastní třídě, tj. $V = C, r = \text{id}$
 	\item Vyber dvě třídy $k,j$ takové, že
-	$$(k,l) = \text{argmax}_{k,l} I_{merge(r,k,l)}(D,E)$$
+	$$(k,l) = \argmax_{k,l} I_{merge(r,k,l)}(D,E)$$
 	kde $I(D,E)$ vyjadřuje \textit{vzájemnou informaci} pro sousední třídy, tj. $D,E$ jsou náhodné proměnné takové, že $d \in D, e \in E$ jsou třídy z $C$, které se v trénovacích datech vyskytují vedle sebe. $I_{merge(r,k,l)}(D,E)$ vyjadřuje tuto hodnotu po hypotetickém sloučení tříd $k,l$.
 	\item sluč třídy $k,l$, přitom uprav $C$ a $r$
 	\item opakuj kroky 2 a 3 dokud $|C|$ nedosáhne předem dané velikosti
@@ -4742,7 +4651,7 @@ Výstup se v této nejobecnější verzi generuje \textit{na přechodových hran
 		
 		
 		\item iniciální trellis sloupec $t_0$: obsahuje jenom $s_0$, nastav $\alpha(s_0, 0) = 1$
-		\item na základě sloupce $t_{i-1}$ a aktuálního vstupního symbolu $y_i$ vytvoř následující sloupec trellis grafu, ale vyber pouze stavy, do nichž se dá dostat z aktuálního sloupce a které generují $y_1$ (resp. takové, že přechodová hrana generuje $y_1$)
+		\item na základě sloupce $t_{i-1}$ a aktuálního vstupního symbolu $y_i$ vytvoř následující sloupec trellis grafu, ale vyber pouze stavy, do nichž se dá dostat z aktuálního sloupce a které generují $y_{i+1}$ (resp. takové, že přechodová hrana generuje $y_{i+1}$)
 		\item nastav $\alpha(state,i) = \sum\limits_{s \in t_{i-1}, \exists\text{hrana }s\rightarrow state} P_S(state|s) \cdot \alpha(s, i-1) \cdot P_Y(y_i|s,state)$
 		\item jakmile $i = |Y|$ (vstup je vyčerpán), nastav $P(Y) = \sum\limits_{s \in t_{|Y|}} \alpha(s,|Y|)$	
 	\end{enumerate}
@@ -4833,13 +4742,13 @@ Různé přístupy k tagování:
 
 
 \subsection{Statistický parsing}
-\textbf{Parsing (parsování)} je označení pro proces, kdy je pro vstupní větu, o níž předpokládáme, že byla vytvořena nějakou gramatikou, nalezena posloupnost pravidel této gramatiky, kterou byla věta nejpravděpodobněji vytvořena. Typicky se pro větou rovnou sestrojí \textit{parsovací strom}.
+\textbf{Parsing (parsování)} je označení pro proces, kdy je pro vstupní větu, o níž předpokládáme, že byla vytvořena nějakou gramatikou, nalezena posloupnost pravidel této gramatiky, kterou byla věta nejpravděpodobněji vytvořena. Typicky se pro větu rovnou sestrojí \textit{parsovací strom}.
 
 TODO
 
 \subsection{Statistický strojový překlad}
 Klasickým přístupem je chápat strojový překlad jako problém \textbf{zašuměného kanálu}, kdy například při překladu z francouzštiny do angličtiny je nezkresleným vstupem anglická věta $E$ a \uv{zašuměným výstupem} je francouzská věta $F$. Naším cílem je pak nalézt nejpravděpodobnější původní řetězec, tj. nejpravděpodobnější překlad do EN. Formálně $P(E|F) = P(F|E)\cdot P(E) / P(F)$, nejpravděpodobnější překlad je 
-$$\text{argmax}_E = \text{argmax}_E P(E|F) = P(F|E)\cdot P(E)$$
+$$\argmax_E = \argmax_E P(E|F) = P(F|E)\cdot P(E)$$
 Opět vynecháme člen $P(F)$, jelikož ten je pro všechna $E$ stejný.
 
 Potřebujeme tedy \textbf{language model (LM)} $P(E)$, \textbf{translation model (TM)} $P(F|E)$ a vyhledávací proceduru, která k $E$ nalezne nejlepší $F$ pomocí LM a TM. 
@@ -5119,7 +5028,7 @@ Můžeme se setkat s těmito změnami: reversal, translokace, fusion a fission. 
 
 \textbf{Pořadí genů} v sekvenci budeme reprezentovat permutací $$\pi = \pi_1 \dots \pi_{i-1} \pi_{i} \pi_{i+1} \dots \pi_{j-1} \pi_{j} \pi_{j+1} \dots \pi_{n}$$
 
-\textbf{Reveresal $\rho(i,j)$} přetočí prvky $i$ až $j$ v $\pi$, tj. vznikne 
+\textbf{Reversal $\rho(i,j)$} přetočí prvky $i$ až $j$ v $\pi$, tj. vznikne 
 $$\pi = \pi_1 \dots \pi_{i-1} \pi_{j} \pi_{j-1} \dots \pi_{i+1} \pi_{i} \pi_{j+1} \dots \pi_{n}$$
 
 \textbf{Reversal distance problem:} Máme dvě permutace $\pi$ a $\sigma$, chceme nalézt nejkratší posloupnost reversalů $\rho_1,\dots \rho_t$, která transformuje $\pi$ na $\sigma$. Označíme $d(\pi, \sigma) = \min t$ jako \textbf{reversal distance permutací $\pi$ a $\sigma$}.
@@ -5196,7 +5105,7 @@ Některé Na$^+$ a K$^+$ kanály jsou \textit{voltage-gated}, tj. při dosažen�
 
 \subsection{Modely pro učení s učitelem}
 \subsubsection{Formální neuron}
-\textbf{Formální neuron} s vahami $(w_1, w_2, \dots w_n) \in \R^n$, prahem $\theta \in \R$ a přenosovou funkcí $f : \R^{n+1} \times \R^n \rightarrow \R$ počítá pro libovolný vstup $\vec{x} \in \R^n$ svůj výstup $y$ jako hodnotu přenosové funkce $f$ v $\vec{x}$, $f[\vec{w}, \theta](\vec{z})$. Mezi nejznámější \textbf{přenosové funkce} (také \textbf{aktivační funkce}) patří \textit{skoková} (unit step), \textit{sigmoidální} nebo \textit{hyperbolická tangentoida}. \textbf{Potenciál neuronu} je vážená suma jeho vstupů: $\xi = \sum\limits_{i=1}^n x_i w_i + \theta$. Právě tento potenciál je vstupem přenosové funkce (na přehledu níže je potenciál neuronu označen písmenem $z$).
+\textbf{Formální neuron} s vahami $(w_1, w_2, \dots w_n) \in \R^n$, prahem $\theta \in \R$ a přenosovou funkcí $f : \R^{n+1} \times \R^n \rightarrow \R$ počítá pro libovolný vstup $\vec{x} \in \R^n$ svůj výstup $y$ jako hodnotu přenosové funkce $f$ v $\vec{x}$, $f[\vec{w}, \theta](\vec{x})$. Mezi nejznámější \textbf{přenosové funkce} (také \textbf{aktivační funkce}) patří \textit{skoková} (unit step), \textit{sigmoidální} nebo \textit{hyperbolická tangentoida}. \textbf{Potenciál neuronu} je vážená suma jeho vstupů: $\xi = \sum\limits_{i=1}^n x_i w_i + \theta$. Právě tento potenciál je vstupem přenosové funkce (na přehledu níže je potenciál neuronu označen písmenem $z$).
 
 \begin{figure}[H]
 	\centering
@@ -5246,7 +5155,7 @@ Nalezení vhodné dělicí nadroviny pro zadané body je ekvivalentní nalezení
 	\item pokud $t$ nedosáhl požadované hodnoty, přejdi ke kroku 2
 \end{enumerate}
 
-Základním principem je natáčení vektoru $\vec{w}$ (který je kolmý na dělicí nadrovinu) ve směru kladných vzorků. Je-li výstupv kroku 3 kladný, svírají $\vec{w}$ a $\vec{x}$ úhel menší než 90\,°, je-li záporný, je úhel větší než 90\,°. 
+Základním principem je natáčení vektoru $\vec{w}$ (který je kolmý na dělicí nadrovinu) ve směru kladných vzorků. Je-li výstup v~kroku 3 kladný, svírají $\vec{w}$ a $\vec{x}$ úhel menší než 90\,°, je-li záporný, je úhel větší než 90\,°. 
 
 Pro nastavení počátečních vah může být použita jednoduchá heuristika: vezmi průměr kladných vstupů mínus průměr záporných vstupů.
 
@@ -5525,7 +5434,7 @@ Každé váze $w_i$ přidělíme její vlastní lokální parametr $\alpha_i$. V
 \end{description}
 
 \subsubsection{Algoritmy 2. řádu}
-Algoritmy, které berou v úvahu i \textbf{druhou derivaci} chybové funkce, tj. nejen graident, ale i zakřivení. Používá se \textbf{kvadratická aproximace} chybové funkce pomocí Taylorovy řady:
+Algoritmy, které berou v úvahu i \textbf{druhou derivaci} chybové funkce, tj. nejen gradient, ale i zakřivení. Používá se \textbf{kvadratická aproximace} chybové funkce pomocí Taylorovy řady:
 $$E(\vec{w} + \vec{h}) \approx E(\vec{w}) + \nabla E(\vec{w})^{T} \vec{h} + \frac{1}{2} \vec{h}^T \nabla^2 E(\vec{w}) \vec{h}$$
 Člen $\nabla^2 E(\vec{w})$  je \textit{Hessovská matice} ($n\times n$) parciálních derivací druhého řádu:
 $$
@@ -5787,7 +5696,7 @@ $$\vec{x}^T = \text{sgn}(\vec{W}\vec{y}^T) = \text{sgn}(\vec{x}^T\vec{y}\vec{y}^
 
 Chceme-li uložit více vzorů, bude Hebbovské učení fungovat lépe, pokud jsou vstupní vektory navzájem ortogonální a výstupní rovněž. Pro $m$ dvojic vektorů, které chceme uložit, bude váhová matice mít tvar
 $$\vec{W} = \vec{x_1}^T\vec{y_1} + \vec{x_2}^T\vec{y_2} + \dots + \vec{x_m}^T\vec{y_m}$$
-BAM lze použí pro konstrukci autoasociativních sítí, protože matice vah vytvořené Hebbovským učením jsou symetrické.
+BAM lze použít pro konstrukci autoasociativních sítí, protože matice vah vytvořené Hebbovským učením jsou symetrické.
 
 
 \subsubsection{Energetická funkce BAM}
@@ -5960,9 +5869,10 @@ $m$ daných vektorů odpovídalo stabilním stavům sítě (i když taková mati
 
 Alternativou je použít percetronové učení. Uvažme Hopfieldovu síť s $n$ neurony, které mají nenulový práh a bipolární přenosovou funkci (výstup 1 nebo -1). Nechť $\vec{W}$ je $n\times n$ matice vah a $\theta$ $n$-rozměrný vektor prahů. Chceme-li si zapamatovat vektor $\vec{x} = (x_1,\dots x_n)$, pak tento vektor bude odpovídat stabilnímu stavu, jestliže se po jeho předložení síti nezmění stav sítě, tj. pro každou složku je znaménko excitace příslušného neuronu (mínus práh) stejné jako předchozí stav. Tedy
 \begin{align*}
-	\text{Neuron 1: } sgn(x_1)(0 +x_2w_{12}+x_3w_{13} + \dots  + x_nw_{1n} -\theta_1) < 0\\	\text{Neuron 2: } sgn(x_1)(x_1w_{21}  + 0 +x_3w_{23} + \dots  + x_nw_{2n} -\theta_2) < 0\\
+	\text{Neuron 1: } sgn(x_1)(0 + x_2w_{12} + x_3w_{13} + \dots + x_nw_{1n} - \theta_1) > 0\\
+	\text{Neuron 2: } sgn(x_2)(x_1w_{21} + 0 + x_3w_{23} + \dots + x_nw_{2n} - \theta_2) > 0\\
 	\vdots\\
-	\text{Neuron n: } sgn(x_1)(x_1w_{n1} +x_2w_{n2} + x_3w_{n3} + \dots + 0 -\theta_n) < 0\\
+	\text{Neuron n: } sgn(x_n)(x_1w_{n1} + x_2w_{n2} + x_3w_{n3} + \dots + 0 - \theta_n) > 0\\
 \end{align*}
 Díky symetrii vah má váhová matice $\vec{W}$ pouze $n\cdot(n-1)/2$ nenulových prvků. Sestrojíme vektor $\vec{v}$ dimenze $n(n-1)/2 + n$:
 $$\vec{v} = (
@@ -5992,7 +5902,7 @@ Nyní můžeme psát předchozí nerovnosti jako
 \text{Neuron n: } sgn(x_n)\vec{z}_n \vec{v} > 0\\	
 \end{align*}
 
-Což odpovídá lineární separaci $z_1,z_2,\dots z_n$. Pro $m$ vektoru $\vec{x}$ jde tedy o separaci $mn$ pomocných vektorů $z$. Pomocí perceptronového učení můžeme nalézt správný váhový vektor $\vec{v}$ (pokud separace existuje). Tento vektor kóduje váhovou matici a prahy odpovídající správnému řešení.
+Což odpovídá lineární separaci $z_1,z_2,\dots z_n$. Pro $m$ vektorů $\vec{x}$ jde tedy o separaci $mn$ pomocných vektorů $z$. Pomocí perceptronového učení můžeme nalézt správný váhový vektor $\vec{v}$ (pokud separace existuje). Tento vektor kóduje váhovou matici a prahy odpovídající správnému řešení.
 
 \subsubsection{Hledání suboptimálních řešení (řešení NP-úplných problémů pomocí Hopfieldovy sítě)}
 Hopfieldovy sítě lze použít pro řešení těžkých optimalizačních úloh. Základní myšlenkou je přeformulovat úlohu tak, aby její analytický zápis byl isomorfní energetické funkci nějakého Hopfieldova modelu. Ten pak nalezne lokální minimum této funkce a tím i nějaké suboptimální řešení daného problému.
@@ -6071,7 +5981,7 @@ Pro velké $T$ je $p_{\Delta E} \approx \frac{1}{2}$, tj. aktualizace nastane p�
 Navíc lze ukázat, že touto strategií lze dosáhnout (asymptoticky) globálního minima energetické funkce.
 
 \subsubsection{Boltzmannův stroj}
-\textbf{Boltzmannův stroj} je Hopfieldova síť, která se skládá z $n$ neuronů se stavy $x_1, x_2, \dots, x_n$. Stav neuronu i se aktualizuje asynchronně podle pravidla:
+\textbf{Boltzmannův stroj} je Hopfieldova síť, která se skládá z $n$ neuronů se stavy $x_1, x_2, \dots, x_n$. Stav neuronu $i$ se aktualizuje asynchronně podle pravidla:
 $$x_i = 
 \begin{dcases*}
 1 &\quad s pravděpodobností $p_i$ \\
@@ -6138,7 +6048,7 @@ kde $\vec{x^*}$ je centroid $X$ a $K$ je konstanta.
 \begin{description}
 	\item[$k$-NN ($k$ nejbližších sousedů) -- supervised] Trénovací vzory jsou klasifikovány do jedné z tříd a \textit{všechny uloženy}. Nový vzor se pak zařadí do té třídy, kam patří většina z jeho $k$ nejbližších sousedů.
 	
-	\item[$k$-means ($k$ středů) -- unsupervised] Na začátku máme $k$ vektorů, každý ve svém vlastním shluku. Nový vektor je klasifikován k tomu shluku, jehož centroid je mu nejblíž. Cetnroid se pak aktualizuje
+	\item[$k$-means ($k$ středů) -- unsupervised] Na začátku máme $k$ vektorů, každý ve svém vlastním shluku. Nový vektor je klasifikován k tomu shluku, jehož centroid je mu nejblíž. Centroid se pak aktualizuje
 	$$\vec{c}_k = \vec{c}_k + \frac{1}{n_k}(\vec{x} - \vec{c}_k)\qquad \text{kde $n_k$ je velikost shluku $k$}$$
 	Jedná se vlastně o vektorovou kvantizaci.
 \end{description}
@@ -6567,8 +6477,8 @@ Díky použití Gaussovských funkcí je výsledná aproximace spojitá, viz. ob
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7]{img/rbf_2.png}
-	\label{rbf_gauss}
 	\caption{Aproximace funkce pomocí RBF.}
+	\label{rbf_gauss}
 \end{figure}
 
 \subsection{Vícevrstvé Kohonenovy mapy}

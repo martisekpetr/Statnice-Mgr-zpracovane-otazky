@@ -27,10 +27,26 @@ Základní struktura obecného EA je následující:
 \end{figure}
 
 \subsection{Genetické algoritmy (GA)}
-Původní Hollandův GA (dnes označován jako Simple GA, SGA) je nejstarší a nejjednodušší varianta EA, jejímž klíčovým rysem je to, že jedinci jsou \textbf{binární řetězce}. Používá ruletovou selekci (rodičovskou, environmentální se nepoužívá), 1-bodové křížení, bitové mutace (viz níže). V původním Hollandově návrhu je i operátor \textit{inverze}, který obrátí část řetězce, ovšem se zachováním významu bitů. Inverze se ukázala být nevýhodnou.
+Původní Hollandův GA (dnes označován jako Simple GA, SGA) je nejstarší a nejjednodušší varianta EA, jejímž klíčovým rysem je to, že jedinci jsou \textbf{binární řetězce}.
 
+SGA používá ruletovou selekci (rodičovskou, environmentální se nepoužívá). Křížení je zde hlavním operátorem, používá se jednobodové, které se aplikuje s pravděpodobností $p_C$ v náhodném místě. Mutace hraje pouze roli pojistky proti uvíznutí v lokálních extrémech, s pravděpodobností $p_M$ se změní každý bit jedince. V původním Hollandově návrhu je i přírodou inspirovaný operátor \textit{inverze}, který obrátí část řetězce, ovšem se zachováním významu bitů. Inverze se ukázala být nevýhodnou.
 
-TODO GA mutace, křížení, selekce a taková ta klasika.
+SGA:
+\begin{itemize}
+  \item t=0; Náhodně vygeneruj populaci $P(0)$ $n$ $l$-bitových jedinců
+  \item Přechod od $P(t)$ k $P(t+1)$:
+    \begin{itemize}
+      \item Spočti $f(x)$ pro každé $x \in P(t)$
+      \item Opakuj $n/2$-krát:
+        \begin{itemize}
+          \item selekcí vyber pár rodičů $x,y$ z $P(t)$
+          \item s pravděpodobností $p_C$ aplikuj křížení na $x,y$
+          \item s pravděpodobností $p_M$ mutuj každý bit $x,y$
+          \item vlož $x,y$ do $P(t+1)$
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
 
 \subsection{Genetické programování (GP)}
 \begin{wrapfigure}{r}{0.3\textwidth}
@@ -46,7 +62,7 @@ GP se často potýká s problémem bobtnání (\textbf{bloat}), tj. programy maj
 Kromě stromů lze použít i jiné struktury. \uv{Cestou dolů} jsou \textbf{lineární GP}, tj. program je lineární sekvence příkazů. To vede k jednodušším operátorům i celkové reprezentaci, rovněž rychlejší emulaci běhu; nicméně je tu velké riziko toho, že vznikne nesmyslný program. \uv{Cestou nahoru} jsou \textbf{grafové GP}, kde program je (často acyklický) graf. Vznikly nejprve jako rozšíření na paralelní programy, později získaly obecnější tvar a dnes se používají např. pro evoluci obvodů či neuronových sítí. Kvůli větší komplexitě reprezentace jsou komplikovanější i genetické operátory.
 
 \subsection{Evoluční programování (EP)}
-Evoluční programování je jeden z nejstarších směrů vývoje evolučních algoritmů, dokonce ještě o něco starší než Hollandovy GA (60. léta). Průkopníkem je Lawrence Fogel. Zásadní myšlenkou je vyvinout \uv{umělou inteligence}, konkrétně agenta, který bude umět předpovídat stav prostředí -- jinými slovy bude umět odvodit patřičnou akci v reakci na prostředí, v němž se nachází. Agent je zde reprezentován \textbf{konečným automatem}, prostředí je pak \textbf{sekvence symbolů konečné abecedy}.
+Evoluční programování je jeden z nejstarších směrů vývoje evolučních algoritmů, dokonce ještě o něco starší než Hollandovy GA (60. léta). Průkopníkem je Lawrence Fogel. Zásadní myšlenkou je vyvinout \uv{umělou inteligenci}, konkrétně agenta, který bude umět předpovídat stav prostředí -- jinými slovy bude umět odvodit patřičnou akci v reakci na prostředí, v němž se nachází. Agent je zde reprezentován \textbf{konečným automatem}, prostředí je pak \textbf{sekvence symbolů konečné abecedy}.
 
 Samotná evoluce pak vypadá takto: jedinci v populaci jsou konečné automaty, těm jsou předkládány vstupy. Jejich výstup je vždy porovnán s následujícím vstupem v posloupnosti. Fitness je úspěšnost predikce, přičemž se může měřit různě: vše nebo nic, absolutní chyba, mean square error. Často je do fitness započítána i velikost automatu.
 
@@ -108,7 +124,7 @@ Tedy
 $$C(S,t+1) = C(S,t) \cdot n \cdot p_s(S)$$
 neboť provádím $n$ výběrů do nové populace pomocí ruletové selekce, přičemž na ruletě zabírají jedinci odpovídající schématu $S$ právě $C(S,t) \cdot p_s(S)$ procent místa. Ekvivalentně lze psát
 $$C(S,t+1) = C(S,t) \cdot \frac{F(S)}{\frac{\sum_{u \in P(t)}F(u)}{n}} = C(S,t) \cdot \frac{F(S)}{F_{avg}(t)}$$
-kde $F_avg(t)$ označuje průměrnou fitness v populaci $P(t)$. 
+kde $F_{avg}(t)$ označuje průměrnou fitness v populaci $P(t)$. 
 
 Představme si, že schéma $S$ je nadprůměrné o $\varepsilon$\,\%, tj. $F(S) = F_{avg}(t) + \varepsilon\cdot F_{avg}(t)$. Pak 
 $$C(S,t+1) = C(S,t)(1+\varepsilon)$$
@@ -219,10 +235,10 @@ Jedinec je tvaru $C(i) = [G_n(i), S_k(i)], k \in \{1, n, 2n\}$, tedy první čá
 \begin{description}
 	
 	
-	\item[k=1]: jedna společná odchylka pro všechny parametry
-	\item[k=n]: nekorelované mutace; geometricky se mutuje po elipse rovnoběžné s osami
-	\item[k=2n]: korelované mutace, odpovídají mutování z n-rozměrného normálního rozdělení. 
-	Pro uložení korelační matice stačí n-rozměrný vektor (???). Tato matice odpovídá matici rotace (tj. elipsa se natočí v optimálním směru).
+	\item[$k=1$]: jedna společná odchylka pro všechny parametry
+	\item[$k=n$]: nekorelované mutace; geometricky se mutuje po elipse rovnoběžné s osami
+	\item[$k=2n$]: korelované mutace, odpovídají mutování z $n$-rozměrného normálního rozdělení. 
+	Pro uložení korelační matice stačí $n$-rozměrný vektor (???). Tato matice odpovídá matici rotace (tj. elipsa se natočí v optimálním směru).
 \end{description}
 
 \begin{figure}[h]
@@ -384,10 +400,10 @@ PSO nepoužívají gradient pro optimalizaci, což znamená, že optimalizovaná
 
 
 \subsection{Další rojové optimalizační algoritmy}
-Obecně se definuje \textbf{Swarm Intelligence (SI)} jako \textit{“The emergent collective intelligence of groups of simple agents"}. Dvě základní vlastnosti jsou sebeorganizace a dělba práce. Kromě PSO sem lze zařadit ještě Ant Colony Optimization (ACO), Artificial Bee Colony (ABC), Glowworm Swarm Optimization, Cuckoo Search Algorithms a v jistém směru sem spadá i diferenciální evoluce (jelikož je population-based). Kromě DE se tyto algoritmy (a mnohé další, třeba i simlated annealing)  označují také nálepkou \textit{metaphor-based metaheuristics}, a to díky tomu, že jsou typicky insipirované nějakou reálnou skutečností (chování roje, chování mravenců, zpracování kovů apod.). Tyto se staly terčem kritiky pro nedostatek inovace a efektivity, kterou schovávají právě za poutavou metaforou (\url{https://en.wikipedia.org/wiki/List_of_metaphor-based_metaheuristics}).
+Obecně se definuje \textbf{Swarm Intelligence (SI)} jako \textit{“The emergent collective intelligence of groups of simple agents"}. Dvě základní vlastnosti jsou sebeorganizace a dělba práce. Kromě PSO sem lze zařadit ještě Ant Colony Optimization (ACO), Artificial Bee Colony (ABC), Glowworm Swarm Optimization, Cuckoo Search Algorithms a v jistém směru sem spadá i diferenciální evoluce (jelikož je population-based). Kromě DE se tyto algoritmy (a mnohé další, třeba i simulated annealing)  označují také nálepkou \textit{metaphor-based metaheuristics}, a to díky tomu, že jsou typicky inspirované nějakou reálnou skutečností (chování roje, chování mravenců, zpracování kovů apod.). Tyto se staly terčem kritiky pro nedostatek inovace a efektivity, kterou schovávají právě za poutavou metaforou (\url{https://en.wikipedia.org/wiki/List_of_metaphor-based_metaheuristics}).
 
 \subsubsection{Ant Colony Optimization (ACO)}
-Systém inspirovaný chování mravenců při hledání potravy, konkrétně použitím feromonů. V podstatě jde o techniku nalezení nejlepší cesty v grafu. Agent (mravenec) se pohybuje v grafu a zanechává za sebou feromonovou stopu. Pohyb se řídí rovnicí:
+Systém inspirovaný chováním mravenců při hledání potravy, konkrétně použitím feromonů. V~podstatě jde o~techniku nalezení nejlepší cesty v~grafu. Agent (mravenec) se pohybuje v~grafu a zanechává za sebou feromonovou stopu. Pohyb se řídí rovnicí:
 $$p^k_{ij}(t) = \frac{([\tau_{ij}(t)]^\alpha \cdot [\eta_{ij}]^\beta)}{(\sum\limits_{n \in J_k}[\tau_{in}(t)]^\alpha \cdot [\eta_{in}]^\beta)}$$
 
 $p^k_{ij}(t)$ je pravděpodobnost přechodu mravence $k$ z uzlu $i$ do uzlu $j$ v čase $t$, $J_k$ jsou uzly, kam má mravenec $k$ povoleno jít, $\eta_{ij}$ symbolizuje \uv{viditelnost} mezi $i$ a $j$ a $\tau_{ij}(t)$ reprezentuje množství nevypařeného feromonu mezi $i$ a $j$ v čase $t$. Parametry $\alpha$ a $\beta$ kontrolují, nakolik prohledávání závisí na feromonech. Každý mravenec $k$ má také tabu list navštívených uzlů, aby nenavštívil nějaký dvakrát.
@@ -419,7 +435,7 @@ Dobrý přehled dalších algoritmů (např Artificial Bee Colony) lze nalézt n
 \section{Memetické algoritmy, hill climbing, simulované žíhání.}
 \subsection{Memetické algoritmy}
 
-\textbf{Memetické algoritmy} jsou EA obohacené o lokální prohledávání uvnitř cyklu. Základní princip je ten, že evolucí vyvinutý jedinec ještě před ohodnocením podstoupí proceduru lokálního prohledávání -- to může být např. hill climbing, simulované žíhání nebo backpropagation u ANN). 
+\textbf{Memetické algoritmy} jsou EA obohacené o lokální prohledávání uvnitř cyklu. Základní princip je ten, že evolucí vyvinutý jedinec ještě před ohodnocením podstoupí proceduru lokálního prohledávání -- to může být např. hill climbing, simulované žíhání nebo backpropagation u ANN. 
 
 Inspirováno \textbf{mémy} (angl. \textit{meme} (čti /mi:m/)), což jsou ideje/myšlenky šířící se ve společnosti, které mohou podstoupit mutaci či selekci, stejně jedinci v klasické evoluci. 
 
@@ -458,7 +474,7 @@ Algoritmus tak expanduje uzly se stále vyšším ohodnocením, dokud nenarazí 
 \begin{description}
 	\leftskip 30pt
 	
-	\item[first choice HC vs. steepest ascent HC] First choide HC vezme prvního lepšího souseda, steepest zkusí všechny a vezme nejlepšího.
+	\item[first choice HC vs. steepest ascent HC] First choice HC vezme prvního lepšího souseda, steepest zkusí všechny a vezme nejlepšího.
 	\item[stochastic HC] Ze zlepšujících sousedů vybere náhodně podle míry zlepšení.
 	\item[random restart HC (or shotgun HC)] Náhodné restarty v různých místech, částečně řeší problém uvíznutí v lokálním optimu.
 \end{description}
@@ -538,7 +554,7 @@ Michiganský přístup funguje trochu jinak. Na klasifikaci se podílí \textit{
 
 Pravidla mohla mít na pravé straně kromě klasifikačního výstupu i další příznaky, tzv \uv{zprávy}. Na levé straně pravidel se pak mohly vyskytovat \uv{receptory} pro jejich příjem. Celý systém má frontu zpráv.
 
-Problémem při klasifikaci celou populací realizace algoritmu odměn pro pravidla. Původní Hollandův návrh obsahoval tzv. \textit{bucket brigade}: pravidla musejí dát část svého \uv{kreditu}, když chtějí soupeřit o možnost být v cestě k řešení. Tento systém byl ale poměrně těžkopádný. 
+Problémem při klasifikaci celou populací je realizace algoritmu odměn pro pravidla. Původní Hollandův návrh obsahoval tzv. \textit{bucket brigade}: pravidla musejí dát část svého \uv{kreditu}, když chtějí soupeřit o možnost být v cestě k řešení. Tento systém byl ale poměrně těžkopádný. 
 
 Zjednodušením tohoto systému byl \textbf{ZCS (Zero Classifier System)}. Neměl vnitřní zprávy ani žádný složitý systém alokace odměn. Síla pravidel se upravovala podle jednoduchého algoritmu:
 \begin{itemize}
@@ -741,7 +757,7 @@ Velmi často potřebujeme optimalizovat více funkcí současně, tj. místo jed
 
 Řekneme, že řešení $x$ \textbf{slabě dominuje} řešení $y$, jestliže $x$ je ve všech kritériích aspoň tak dobré jako $y$, tj. $f_i(x) \leq f_i(y)\quad \forall i \in \{1,\dots,n\}$. 
 
-Řekneme, že $x$ \textbf{dominuje} $y$, když jej slabě dominuje a navíc je aspoň v jedno kritériu lepší, tj. $\exists j: f_j(x) < f_j(y)$. 
+Řekneme, že $x$ \textbf{dominuje} $y$, když jej slabě dominuje a navíc je aspoň v jednom kritériu lepší, tj. $\exists j: f_j(x) < f_j(y)$. 
 
 Řešení $x$ a $y$ jsou \textbf{nesrovnatelná}, jestliže $x$ nedominuje $y$ a $y$ nedominuje $x$.
 
